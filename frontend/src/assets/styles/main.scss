@@ -4,10 +4,12 @@
 @import 'setup/typography';
 @import 'setup/main-setup';
 
-//pages
+//components 
+@import 'components/Header';
 
 // Basics
 @import 'basics/helpers';
+@import 'basics/buttons';
 
 
 

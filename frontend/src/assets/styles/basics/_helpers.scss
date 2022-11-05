@@ -36,6 +36,7 @@
 //link helper
 .clean-link {
   text-decoration: none;
+  color: unset;
 }
 .clean-link:hover {
   text-decoration: none;
@@ -82,6 +83,4 @@
   display: flex;
 }
 
-.align-center {
-  align-items: center;
-}
+

@@ -1,0 +1,76 @@
+.header {
+    overflow: hidden;
+    height: 100px;
+    padding: 0 80px;
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 6px rgba(186, 167, 167, 0.25);
+    .header-logo {
+        gap: 10px;
+        img {
+            width: 19px;
+            height: 38px;
+        }
+        h1 {
+            font-family: Prata;
+            font-weight: 400;
+            background: $clr1;
+            background-clip: text ;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 28px;
+        }
+    }
+    .nav-links  {
+        position: relative;
+        gap: 50px;
+        font-family: Poppins; 
+        font-weight: 500;
+        color: $clr2;
+        font-size: 18px;
+
+        a:hover {
+            color: lightgray
+        }
+
+        .is-active {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            position: relative;
+            transition: 0.3s;
+    
+            &::before {
+              content: "";
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              height: 5px;
+              background: $clr1;
+              border-radius: 8px 8px 0 0;
+              opacity: 1;
+              transition: 0.3s;
+
+          }
+            
+            
+        }
+        button {
+            width: 172px;
+            height: 50px;
+            border-radius: $borderRad1;
+            font-family: Poppins; 
+            font-weight: 500;
+            color: $clr2;
+            font-size: 16px;
+
+            &:hover {
+                filter: brightness(110%);
+            }
+        }
+
+
+    }
+}
+
+
