@@ -1,5 +1,8 @@
 .header {
-  // position: sticky;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
   overflow: hidden;
   height: 100px;
   padding: 0 80px;

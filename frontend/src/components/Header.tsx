@@ -1,7 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import MainLogo from "../assets/images/MainLogo.png";
 
 const Header = () => {
+  const navigate = useNavigate();
   return (
     <div className="header flex justify-space-between">
       <div className="header-logo flex align-center">
@@ -25,7 +26,12 @@ const Header = () => {
         >
           Abouts us
         </NavLink>
-        <button className="primary-btn clean-btn fs16">Log in/Sign up</button>
+        <button
+          className="primary-btn clean-btn fs16"
+          onClick={() => navigate("/login")}
+        >
+          Log in/Sign up
+        </button>
       </div>
     </div>
   );

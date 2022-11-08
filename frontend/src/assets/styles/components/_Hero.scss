@@ -1,0 +1,36 @@
+.hero-container {
+  display: flex;
+  padding-left: 80px;
+  padding-right: 36px;
+  margin-top: 151px;
+
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 38px;
+
+    h2 {
+      font-weight: 600;
+      color: $clr2;
+      line-height: 70px;
+    }
+
+    h3 {
+      font-weight: 400;
+      color: $clr3;
+      line-height: 40.13px;
+    }
+
+    button {
+      width: 161px;
+      height: 50px;
+      font-weight: 500;
+    }
+  }
+
+  img {
+    width: 790px;
+    height: 526px;
+  }
+}
