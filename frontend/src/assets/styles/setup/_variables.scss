@@ -1,15 +1,15 @@
 // Colors
-$clr1: linear-gradient(85.17deg, #FBB527 0%, #FCDD6A 100%); //primary-color
+$clr1: linear-gradient(85.17deg, #fbb527 0%, #fcdd6a 100%); //primary-color
 $clr2: black; //black-color
-$clr3: #F5F5F5; //main-backgorund-color
-$clr4: #FFFFFF; //white-color
-$clr5: #c4c9cc; //main-nav home-user
+$clr3: rgba(144, 135, 170, 1); // sub-color
+$clr4: #ffffff; //white-color
+$clr5: linear-gradient(#00000000 0%, #000000 100%); //main-nav home-user
 $clr6: #ebecf0; //list-color
 $clr7: #172b4d;
 $clr8: #b04632;
 
 // BackgroundColors
-$bgClr1: #f4f5f7; //card-details-bg-color
+$bgClr1: #f5f5f5; //card-details-bg-color
 
 // Border radius
 $borderRad1: 6px;

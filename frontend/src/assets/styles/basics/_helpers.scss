@@ -1,25 +1,23 @@
 // Font Sizes
 .fs12 {
-  font-size: rem(12px);
+  font-size: 12px;
 }
 .fs14 {
-  font-size: rem(14px);
+  font-size: 14px;
+}
+.fs16 {
+  font-size: 16px;
 }
 .fs18 {
-  font-size: rem(18px);
-}
-.fs20 {
-  font-size: rem(20px);
+  font-size: 18px;
 }
 .fs24 {
-  font-size: rem(24px);
+  font-size: 24px;
 }
 .fs28 {
-  font-size: rem(28px);
+  font-size: 28px;
 }
-.fs30 {
-  font-size: rem(30px);
-}
+
 // List helpers
 .clean-list {
   list-style-type: none;
@@ -73,7 +71,6 @@
   }
 }
 
-
 //HIDDEN - SHOW
 .hidden {
   display: none;
@@ -82,5 +79,3 @@
 .show {
   display: flex;
 }
-
-

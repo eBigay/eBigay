@@ -1,7 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  background-color: $clr3;
+  background-color: $bgClr1;
+  font-family: Poppins;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: unset;
+  margin: 0;
+  padding: 0;
+}
+input,
+textarea {
+  outline: none;
+}
+p {
+  margin: 0;
+  padding: 0;
+}
