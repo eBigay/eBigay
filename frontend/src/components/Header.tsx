@@ -9,7 +9,7 @@ const Header = () => {
         <img src={MainLogo} alt="main-logo-eBigay" />
         <h1 className="fs28">eBigay</h1>
       </div>
-      <div className="nav-links clean-list flex align-center fs18">
+      <div className="nav-links flex align-center fs18">
         <NavLink
           className={(navData) =>
             navData.isActive ? "is-active" + " clean-link" : "clean-link"

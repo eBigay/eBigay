@@ -1,18 +1,15 @@
 // Setup
-@import 'setup/variables';
-@import 'setup/functions';
-@import 'setup/typography';
-@import 'setup/main-setup';
+@import "setup/variables";
+@import "setup/functions";
+@import "setup/typography";
+@import "setup/main-setup";
 
-//components 
-@import 'components/Header';
-@import 'components/Hero';
-@import 'components/CategoryItem';
-@import 'components/Categoris';
+//components
+@import "components/Header";
+@import "components/Hero";
+@import "components/CategoryItem";
+@import "components/Categoris";
 
 // Basics
-@import 'basics/helpers';
-@import 'basics/buttons';
-
-
-
+@import "basics/helpers";
+@import "basics/buttons";
