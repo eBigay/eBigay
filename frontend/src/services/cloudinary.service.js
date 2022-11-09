@@ -1,24 +1,23 @@
 export const cloudinaryService = {
-    uploadFile
-}
-function uploadFile(ev) {
-    const CLOUD_NAME = 'plcrased'
-    const PRESET_NAME = 'suhu9tpl'
-    const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`;
-    const formData = new FormData();
-    formData.append('file', ev.target.files[0])
-    formData.append('upload_preset', PRESET_NAME);
+  uploadFile,
+};
+const uploadFile = (ev) => {
+  const CLOUD_NAME = "plcrased";
+  const PRESET_NAME = "suhu9tpl";
+  const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`;
+  const formData = new FormData();
+  formData.append("file", ev.target.files[0]);
+  formData.append("upload_preset", PRESET_NAME);
 
-    return fetch(UPLOAD_URL, {
-        method: 'POST',
-        body: formData
+  return fetch(UPLOAD_URL, {
+    method: "POST",
+    body: formData,
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      console.log(res);
+
+      return res;
     })
-        .then(res => res.json())
-        .then(res => {
-            console.log(res)
-
-            return res
-        })
-        .catch(err => console.error(err))
-}  
-
+    .catch((err) => console.error(err));
+};

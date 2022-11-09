@@ -1,15 +1,13 @@
-import Categories from "../components/Categories"
-import Header from "../components/Header"
-import Hero from "../components/Hero"
+import Categories from "../components/Categories";
+import Hero from "../components/Hero";
 
 const Home = () => {
   return (
-    <>
-    <Header/> 
-    <Hero/>
-    <Categories/>
-    </>
-  )
-}
+    <div className="fade-in">
+      <Hero />
+      <Categories />
+    </div>
+  );
+};
 
-export default Home
+export default Home;

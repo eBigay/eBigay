@@ -1,9 +1,5 @@
-import Header from "../components/Header"
-
 const About = () => {
-  return (
-    <Header/> 
-  )
-}
+  return <div className="fade-in">About</div>;
+};
 
-export default About
+export default About;

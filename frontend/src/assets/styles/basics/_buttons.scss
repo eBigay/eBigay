@@ -2,12 +2,11 @@
   background: $clr1;
   color: $clr2;
   border-radius: $borderRad1;
-  font-family: Poppins; 
+  font-family: Poppins;
   font-weight: 500;
+  transition: 0.3s ease;
 
   &:hover {
     filter: brightness(110%);
-}
-  &:active {
   }
 }
