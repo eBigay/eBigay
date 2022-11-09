@@ -5,7 +5,13 @@ const Header = () => {
   const navigate = useNavigate();
   return (
     <div className="header flex justify-space-between">
-      <div className="header-logo flex align-center">
+      <div
+        className="header-logo flex align-center"
+        onClick={() => {
+          navigate("/");
+          window.scroll({ top: 0, behavior: "smooth" });
+        }}
+      >
         <img src={MainLogo} alt="main-logo-eBigay" />
         <h1 className="fs28">eBigay</h1>
       </div>
@@ -24,7 +30,7 @@ const Header = () => {
           }
           to="/about"
         >
-          Abouts us
+          About us
         </NavLink>
         <button
           className="primary-btn clean-btn fs16"
