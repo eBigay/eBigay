@@ -53,17 +53,14 @@ export const Input: FC<inputProps> = ({
       <img src={image} className="inputLeftImage" />
       <input
         type={type === "password" ? passwordType : type}
-        placeholder={placeholder}
-        value={
-          location[0] ? `lat: ${location[0]}, long: ${location[1]}` : undefined
-        }
+        placeholder={location[0]? `lat: ${location[0]}, long: ${location[1]}` : placeholder}
       />
       {otherImage && (
         <img
-          className="otherImage"
+          className="inputRightImage"
           src={otherImage}
           onClick={type === "password" ? changeInputType : getGeoLocation}
-        ></img>
+        />
       )}
       {isSearchInput && (
         <button className="primary-btn clean-btn">Search</button>

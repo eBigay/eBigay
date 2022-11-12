@@ -1,3 +1,4 @@
+import {FC} from 'react'
 import { useNavigate } from "react-router-dom";
 
 type PrivateProps = {
@@ -7,20 +8,20 @@ type PrivateProps = {
   navUrl: string;
 };
 
-const CategoryItem = ({
+const CardItem:FC<PrivateProps> = ({
   title,
   description,
   imageUrl,
   navUrl,
-}: PrivateProps) => {
+}) => {
   const navigate = useNavigate();
 
   return (
-    <div className="category-container">
+    <div className="card-container">
       <img src={imageUrl} alt={title} />
-      <div className="category-info">
-        <h1 className="category-title fs24">{title}</h1>
-        <p className="category-desc fs12">{description}</p>
+      <div className="card-info">
+        <h1 className="card-title fs24">{title}</h1>
+        <p className="card-desc fs12">{description}</p>
         <button
           className="primary-btn clean-btn fs12"
           onClick={() => navigate(navUrl)}
@@ -32,4 +33,4 @@ const CategoryItem = ({
   );
 };
 
-export default CategoryItem;
+export default CardItem;

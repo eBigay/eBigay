@@ -11,6 +11,9 @@
 .fs18 {
   font-size: 18px;
 }
+.fs20 {
+  font-size: 20px;
+}
 .fs24 {
   font-size: 24px;
 }
@@ -89,6 +92,7 @@
   display: flex;
 }
 
+// Intro Animation
 .fade-in {
   -webkit-animation: fade-in 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
   animation: fade-in 0.5s cubic-bezier(0.39, 0.575, 0.565, 1) both;
