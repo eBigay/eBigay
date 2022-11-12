@@ -3,30 +3,30 @@ import { LoginInput, RegisterInput, SearchInput } from "../components/Inputs";
 
 const fakeCategories = [
   {
-    category: 'Electronics',
-    url: '/category/electronics'
+    category: "Electronics",
+    url: "/category/electronics",
   },
   {
-    category: 'Hardware',
-    url: '/category/hardware'
+    category: "Hardware",
+    url: "/category/hardware",
   },
   {
     category: "Man's Clothes",
-    url: '/category/mans-clothes'
+    url: "/category/mans-clothes",
   },
   {
     category: "Woman's Clothes",
-    url: '/category/womans-clothes'
+    url: "/category/womans-clothes",
   },
   {
     category: "Furniture",
-    url: '/category/furniture'
+    url: "/category/furniture",
   },
   {
-    category: 'etc',
-    url: '/category/etc'
-  }
-]
+    category: "etc",
+    url: "/category/etc",
+  },
+];
 
 const Login = () => {
   return (
@@ -39,7 +39,7 @@ const Login = () => {
       <RegisterInput />
       <br /> <br />
       <SearchInput />
-      <Categories categories={fakeCategories}/>
+      <Categories categories={fakeCategories} />
     </div>
   );
 };

@@ -48,12 +48,16 @@ export const Input: FC<inputProps> = ({
   return (
     <div
       className="inputContainer fs16"
-      style={{ width: width ? width : 500, height: height ? height : 70 }}
+      style={{ width: width || 500, height: height || 70 }}
     >
       <img src={image} className="inputLeftImage" />
       <input
         type={type === "password" ? passwordType : type}
-        placeholder={location[0]? `lat: ${location[0]}, long: ${location[1]}` : placeholder}
+        placeholder={
+          location[0]
+            ? `lat: ${location[0]}, long: ${location[1]}`
+            : placeholder
+        }
       />
       {otherImage && (
         <img
