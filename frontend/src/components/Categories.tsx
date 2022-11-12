@@ -1,19 +1,14 @@
-import { categoriesDemo } from "../data";
-import CategoryItem from "./CategoryItem";
-const Categories = () => {
-  return (
-    <div className="categories-container">
-      {categoriesDemo.map((item) => (
-        <CategoryItem
-          navUrl={item.navUrl}
-          key={item.id}
-          title={item.title}
-          description={item.description}
-          imageUrl={item.img}
-        />
-      ))}
-    </div>
-  );
-};
+import Category, {categoryProps} from './Category'
 
-export default Categories;
+const Categories=({categories}: {categories: categoryProps[]}) => {
+  return (
+    <div className='categories-container'>
+        <h1 className='fs24'>Categories</h1>
+        {categories.map((category, index) => (
+            <Category key={index} category={category.category} url={category.url}/>
+    ))}
+    </div>
+  )
+}
+
+export default Categories
