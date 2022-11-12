@@ -1,4 +1,4 @@
-import {FC} from 'react'
+import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
 type PrivateProps = {
@@ -8,7 +8,7 @@ type PrivateProps = {
   navUrl: string;
 };
 
-const CardItem:FC<PrivateProps> = ({
+const CardItem: FC<PrivateProps> = ({
   title,
   description,
   imageUrl,
