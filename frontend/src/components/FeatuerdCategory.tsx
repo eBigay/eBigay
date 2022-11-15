@@ -1,28 +1,29 @@
+import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 
-type PrivateProps = {
+interface ICategoryProps {
   title: string;
   description: string;
   imageUrl: string;
   navUrl: string;
-};
+}
 
-const CategoryItem = ({
+const FeatuerdCategory: FC<ICategoryProps> = ({
   title,
   description,
   imageUrl,
   navUrl,
-}: PrivateProps) => {
+}) => {
   const navigate = useNavigate();
 
   return (
     <div className="category-container">
-      <img src={imageUrl} alt={title} />
+      <img src={imageUrl} alt={description} />
       <div className="category-info">
-        <h1 className="category-title fs24">{title}</h1>
-        <p className="category-desc fs12">{description}</p>
+        <h1 className="category-title">{title}</h1>
+        <p className="category-desc">{description}</p>
         <button
-          className="primary-btn clean-btn fs12"
+          className="primary-btn clean-btn"
           onClick={() => navigate(navUrl)}
         >
           Explore More
@@ -32,4 +33,4 @@ const CategoryItem = ({
   );
 };
 
-export default CategoryItem;
+export default FeatuerdCategory;

@@ -1,17 +1,5 @@
-// Setup
-@import "setup/variables";
-@import "setup/functions";
-@import "setup/typography";
-@import "setup/main-setup";
-
-//components
-@import "components/Header";
-@import "components/Hero";
-@import "components/CategoryItem";
-@import "components/Categoris";
-@import "components/ScreenOverlay";
-
-// Basics
-@import "basics/helpers";
-@import "basics/buttons";
-@import "basics/Input";
+@use "base";
+@use "components";
+@use "pages";
+@use "utils";
+@use "layouts";

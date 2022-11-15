@@ -1,0 +1,41 @@
+@use "../abstracts" as *;
+
+.footer {
+  background-color: $clr6;
+  gap: 1.9rem;
+  width: 100%;
+  padding: 50px 80px;
+  margin-top: 96px;
+  .footer-logo {
+    gap: 10px;
+    img {
+      width: 19px;
+      min-height: 38px;
+    }
+    h1 {
+      font-size: $fs-logo;
+      font-family: Prata;
+      font-weight: 400;
+      background: $clr1;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  p {
+    font-size: $fs-l;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  hr {
+    width: 100%;
+    border-top: 1px solid $clr7;
+  }
+
+  h3 {
+    font-size: $fs-s;
+    color: rgba(144, 135, 170, 1);
+  }
+}

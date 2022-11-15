@@ -1,3 +1,5 @@
+@use "../abstracts" as *;
+
 .hero-container {
   display: flex;
   padding-left: 80px;
@@ -11,12 +13,14 @@
     gap: 38px;
 
     h2 {
+      font-size: $fs-xxl;
       font-weight: 600;
       color: $clr2;
       line-height: 70px;
     }
 
     h3 {
+      font-size: $fs-xl;
       font-weight: 400;
       color: $clr3;
       line-height: 40.13px;
@@ -30,7 +34,13 @@
   }
 
   img {
-    width: 790px;
-    height: 526px;
+    min-width: 450px;
+    max-height: 526px;
+  }
+}
+
+@include for-mobile-layout {
+  .hero-img {
+    display: none;
   }
 }

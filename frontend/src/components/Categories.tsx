@@ -1,18 +1,14 @@
-import { categoriesDemo } from "../data";
-import CategoryItem from "./CategoryItem";
-const Categories = () => {
+import { CategoriesContainer } from "../assets/styledComponents/components/Categories.styled";
+import Category, { categoryProps } from "./Category";
+
+const Categories = ({ categories }: { categories: categoryProps[] }) => {
   return (
-    <div className="categories-container">
-      {categoriesDemo.map((item) => (
-        <CategoryItem
-          navUrl={item.navUrl}
-          key={item.id}
-          title={item.title}
-          description={item.description}
-          imageUrl={item.img}
-        />
+    <CategoriesContainer>
+      <h1 className="fs24">Categories</h1>
+      {categories.map((category, index) => (
+        <Category key={index} category={category.category} url={category.url} />
       ))}
-    </div>
+    </CategoriesContainer>
   );
 };
 

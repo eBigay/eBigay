@@ -1,0 +1,12 @@
+@use "../abstracts" as *;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $bgClr1;
+  font-family: Poppins;
+}

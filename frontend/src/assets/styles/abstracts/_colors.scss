@@ -4,20 +4,9 @@ $clr2: black; //black-color
 $clr3: rgba(144, 135, 170, 1); // sub-color
 $clr4: #ffffff; //white-color
 $clr5: linear-gradient(#00000000 0%, #000000 100%); //main-nav home-user
-$clr6: #ebecf0; //list-color
-$clr7: #172b4d;
-$clr8: #b04632;
+$clr6: rgba(253, 241, 225, 0.4); //foter-color
+$clr7: rgba(215, 215, 215, 1); //footer hr
+$clr8: rgba(144, 135, 170, 1); //rights-color
 
 // BackgroundColors
 $bgClr1: #f5f5f5; //card-details-bg-color
-
-// Border radius
-$borderRad1: 6px;
-$borderRad2: 5px;
-
-// Breakpoints
-$mobile-breakpoint: 550px;
-$narrow-breakpoint: 640px;
-$details-breakpoint: 784px;
-$normal-breakpoint: 860px;
-$header-breakbpoint: 760px;

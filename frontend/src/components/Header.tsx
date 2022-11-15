@@ -13,9 +13,9 @@ const Header = () => {
         }}
       >
         <img src={MainLogo} alt="main-logo-eBigay" />
-        <h1 className="fs28">eBigay</h1>
+        <h1>eBigay</h1>
       </div>
-      <div className="nav-links flex align-center fs18">
+      <div className="nav-links flex align-center">
         <NavLink
           className={(navData) =>
             navData.isActive ? "is-active" + " clean-link" : "clean-link"
@@ -33,7 +33,7 @@ const Header = () => {
           About us
         </NavLink>
         <button
-          className="primary-btn clean-btn fs16"
+          className="primary-btn clean-btn"
           onClick={() => navigate("/login")}
         >
           Log in/Sign up

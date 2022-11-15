@@ -1,0 +1,85 @@
+@use "../abstracts/" as *;
+
+.item-card {
+  gap: 15px;
+
+  .image-container {
+    position: relative;
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .item-info {
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.2);
+      z-index: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.5s ease;
+      cursor: pointer;
+      > * {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: $clr4;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px;
+        transition: all 0.5s ease;
+        &:hover {
+          background: $clr1;
+          transform: scale(1.1);
+        }
+      }
+    }
+
+    &:hover {
+      .item-info {
+        opacity: 1;
+      }
+    }
+  }
+
+  .item-details {
+    align-items: flex-start;
+    gap: 10px;
+
+    .item-name {
+      font-size: $fs-l;
+      font-weight: 600;
+    }
+
+    .item-category {
+      font-size: $fs-s;
+      font-weight: 400;
+      color: $clr8;
+    }
+
+    .item-location {
+      gap: 8.75px;
+      img {
+        color: $clr8;
+        max-width: 12.5px;
+        min-height: 15px;
+      }
+      .location-name {
+        font-size: $fs-s;
+        font-weight: 400;
+        color: $clr8;
+      }
+    }
+    button {
+      display: none;
+      min-width: 194px;
+      min-height: 34px;
+    }
+  }
+}

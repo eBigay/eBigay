@@ -1,4 +1,6 @@
-.inputContainer {
+@use "../abstracts" as *;
+
+.input-container {
   position: relative;
   height: 70px;
   border-radius: 10px;
@@ -6,13 +8,14 @@
   margin: 1.5rem;
   display: flex;
   align-items: center;
+  font-size: $fs-s;
   input {
     width: 100%;
     color: $clr3;
     font-family: Poppins;
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: $fs-l;
     line-height: 167.2%;
     border: none;
     background-color: transparent;
@@ -22,11 +25,11 @@
     }
   }
 
-  .inputLeftImage {
+  .input-left-image {
     padding: 0 1rem;
   }
 
-  .otherImage {
+  .other-image {
     position: absolute;
     right: 6%;
     cursor: pointer;
@@ -40,8 +43,8 @@
   button {
     height: 100%;
     width: 125px;
-    border-radius: 10px;
+    border-radius: $borderRad3;
     font-weight: 500;
-    font-size: 16px;
+    font-size: $fs-s;
   }
 }
