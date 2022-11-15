@@ -11,6 +11,7 @@ export const CategoriesContainer = styled.div`
       padding-left: 1.5rem;
       font-weight: 600;
       margin-bottom: 1.5rem;
+      font-size: 24px;
       cursor: default;
     }
 `
