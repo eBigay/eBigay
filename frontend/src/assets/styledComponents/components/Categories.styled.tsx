@@ -1,20 +1,20 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const CategoriesContainer = styled.div`
-    width: 300px;
-    border: 1px solid ${({theme}) => theme.colors.clr3light};
-    border-radius: 10px;
-    padding: 2rem 0;
-    margin: 1rem;
+  width: 300px;
+  border: 1px solid ${({ theme }) => theme.colors.clr3light};
+  border-radius: 10px;
+  padding: 2rem 0;
+  margin: 1rem;
 
-    h1 {
-      padding-left: 1.5rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-      font-size: 24px;
-      cursor: default;
-    }
-`
+  h1 {
+    padding-left: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-size: 24px;
+    cursor: default;
+  }
+`;
 
 export const StyledCategory = styled.div`
   display: flex;
@@ -30,6 +30,6 @@ export const StyledCategory = styled.div`
   }
 
   &:hover {
-    background-color: ${({theme}) => theme.colors.clr6};
+    background-color: ${({ theme }) => theme.colors.clr6};
   }
-`
+`;
