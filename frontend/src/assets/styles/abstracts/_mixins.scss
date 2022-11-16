@@ -1,3 +1,4 @@
+@use "./breakpoints" as *;
 /* Breakpoint mixins */
 
 @mixin for-mobile-layout {
@@ -6,20 +7,20 @@
   }
 }
 
-@mixin for-narrow-layout {
+@mixin for-tablet-layout {
   @media (min-width: $mobile-breakpoint) {
     @content;
   }
 }
 
-@mixin for-normal-layout {
-  @media (min-width: $narrow-breakpoint) {
+@mixin for-laptop-layout {
+  @media (min-width: $laptop-breakpoint) {
     @content;
   }
 }
 
 @mixin for-wide-layout {
-  @media (min-width: $normal-breakpoint) {
+  @media (min-width: $wide-breakpoint) {
     @content;
   }
 }
@@ -55,4 +56,8 @@
       @content;
     }
   }
+}
+
+@mixin layout-padding-setup {
+  padding: 0 5rem;
 }

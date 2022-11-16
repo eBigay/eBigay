@@ -1,20 +1,5 @@
-// Setup
-@import "setup/variables";
-@import "setup/functions";
-@import "setup/main-setup";
-
-//components
-@import "components/Header";
-@import "components/Hero";
-@import "components/Card";
-@import "components/CardsMenu";
-@import "components/Input";
-@import "components/Category";
-@import "components/Categories";
-
-// Basics
-@import "basics/helpers";
-@import "basics/buttons";
-
-// Typography
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+@use "base";
+@use "components";
+@use "pages";
+@use "utils";
+@use "layouts";

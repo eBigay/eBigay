@@ -1,6 +1,5 @@
 import Categories from "../components/Categories";
 import { LoginInput, RegisterInput, SearchInput } from "../components/Inputs";
-
 const fakeCategories = [
   {
     category: "Electronics",
@@ -27,7 +26,6 @@ const fakeCategories = [
     url: "/category/etc",
   },
 ];
-
 const Login = () => {
   return (
     <div className="fade-in">
@@ -43,5 +41,4 @@ const Login = () => {
     </div>
   );
 };
-
 export default Login;

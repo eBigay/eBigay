@@ -1,14 +1,15 @@
-import { FC, useState } from "react";
-import Profile from "../assets/images/Profile.svg";
-import Lock from "../assets/images/Lock.svg";
-import Hide from "../assets/images/Hide.svg";
-import Message from "../assets/images/Message.svg";
-import Calling from "../assets/images/Calling.svg";
-import Location from "../assets/images/Location.svg";
-import Discovery from "../assets/images/Discovery.svg";
-import Search from "../assets/images/Search.svg";
+import { useState } from "react";
+import Profile from "../assets/svgs/Profile.svg";
+import Lock from "../assets/svgs/Lock.svg";
+import Hide from "../assets/svgs/Hide.svg";
+import Message from "../assets/svgs/Message.svg";
+import Calling from "../assets/svgs/Calling.svg";
+import Location from "../assets/svgs/Location.svg";
+import Discovery from "../assets/svgs/Discovery.svg";
+import Search from "../assets/svgs/Search.svg";
+import StyledInput from "../assets/styledComponents/components/Inputs.styled";
 
-type inputProps = {
+type InputProps = {
   image: string;
   otherImage?: string; // optional argument - for the password and location inputs
   type: string;
@@ -18,7 +19,7 @@ type inputProps = {
   height?: number;
 };
 
-export const Input: FC<inputProps> = ({
+export const Input = ({
   image,
   otherImage,
   type,
@@ -26,7 +27,7 @@ export const Input: FC<inputProps> = ({
   isSearchInput,
   width,
   height,
-}) => {
+}: InputProps) => {
   const [passwordType, setPasswordType] = useState<string>("password");
   const [location, setLocation] = useState<number[]>([]);
 
@@ -46,10 +47,7 @@ export const Input: FC<inputProps> = ({
   };
 
   return (
-    <div
-      className="inputContainer fs16"
-      style={{ width: width || 500, height: height || 70 }}
-    >
+    <StyledInput width={width || -1} height={height || -1}>
       <img src={image} className="inputLeftImage" />
       <input
         type={type === "password" ? passwordType : type}
@@ -69,11 +67,11 @@ export const Input: FC<inputProps> = ({
       {isSearchInput && (
         <button className="primary-btn clean-btn">Search</button>
       )}
-    </div>
+    </StyledInput>
   );
 };
 
-export const LoginInput: FC = () => (
+export const LoginInput = () => (
   <>
     <Input image={Profile} type="text" placeholder="Username" />
     <Input
@@ -85,7 +83,7 @@ export const LoginInput: FC = () => (
   </>
 );
 
-export const RegisterInput: FC = () => (
+export const RegisterInput = () => (
   <>
     <Input image={Profile} type="text" placeholder="Username" />
     <Input image={Message} type="email" placeholder="Email" />
@@ -105,7 +103,7 @@ export const RegisterInput: FC = () => (
   </>
 );
 
-export const SearchInput: FC = () => (
+export const SearchInput = () => (
   <>
     <Input
       image={Search}

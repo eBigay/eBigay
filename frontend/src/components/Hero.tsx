@@ -5,8 +5,8 @@ const Hero = () => {
   return (
     <div className="hero-container">
       <div className="hero-content">
-        <h2 className="fs50">Join Positive Karma Movement Today</h2>
-        <h3 className="fs24">
+        <h2>Join Positive Karma Movement Today</h2>
+        <h3>
           Give away long forgotten item another chance to serve the humanity
         </h3>
         <button className="primary-btn clean-btn">Explore more</button>
