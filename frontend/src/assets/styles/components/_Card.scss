@@ -8,7 +8,7 @@
     height: 100%;
     object-fit: cover;
   }
-  .category-info {
+  .card-info {
     position: absolute;
     top: 0;
     left: 0;
@@ -26,7 +26,7 @@
       margin: 0 0 0 20px;
     }
 
-    .category-desc {
+    .card-desc {
       color: $clr4;
       font-size: $fs-xs;
       font-weight: 400;

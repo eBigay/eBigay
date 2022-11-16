@@ -30,7 +30,7 @@ const Header = () => {
           }
           to="/about"
         >
-          About us
+          About Us
         </NavLink>
         <button
           className="primary-btn clean-btn"

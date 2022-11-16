@@ -49,7 +49,7 @@
   }
 }
 
-// Mixin for removing hover efects on iphone screen
+// Mixin for removing hover effects on iphone screen
 @mixin hover-supported {
   @media not all and (pointer: coarse) {
     &:hover {
