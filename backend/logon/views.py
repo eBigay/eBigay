@@ -2,7 +2,6 @@ from django.shortcuts import render
 from pymongo import MongoClient
 from django.http import HttpResponse
 
-from logon import models
 
 # DB Connection
 cluster = MongoClient("mongodb://localhost:27017")
