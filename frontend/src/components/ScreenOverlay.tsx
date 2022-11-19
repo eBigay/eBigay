@@ -16,9 +16,8 @@ const ScreenOverlay: FC<overlayProps> = ({
         className={`screen-overlay ${styleMode}`}
         onClick={() => {
           if (goBack) goBack();
-          return;
         }}
-      ></div>
+      />
       {children}
     </div>
   );

@@ -1,4 +1,5 @@
 import MainLogo from "../assets/images/MainLogo.png";
+
 const Footer = () => {
   return (
     <div className="footer flex column align-center justify-center">

@@ -104,14 +104,12 @@ export const RegisterInput = () => (
 );
 
 export const SearchInput = () => (
-  <>
-    <Input
-      image={Search}
-      type="text"
-      placeholder="Search Here..."
-      isSearchInput={true}
-      width={527}
-      height={50}
-    />
-  </>
+  <Input
+    image={Search}
+    type="text"
+    placeholder="Search Here..."
+    isSearchInput
+    width={527}
+    height={50}
+  />
 );

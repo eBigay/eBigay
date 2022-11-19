@@ -1,5 +1,6 @@
 import { categoriesDemo } from "../data";
 import FeatuerdCategory from "./FeatuerdCategory";
+
 const FeaturedCategories = () => {
   return (
     <div className="categories-container">
