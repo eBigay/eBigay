@@ -25,7 +25,6 @@
 }
 .recent-items-container {
   @include layout-padding-setup;
-  display: flex;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-template-rows: auto;
