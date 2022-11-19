@@ -21,7 +21,8 @@
     "react-query": "^3.39.2",
     "react-router": "^6.4.3",
     "react-router-dom": "^6.4.3",
-    "sass": "^1.55.0"
+    "sass": "^1.55.0",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "@types/react": "^18.0.22",
