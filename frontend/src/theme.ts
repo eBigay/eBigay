@@ -10,5 +10,20 @@ const theme = {
     clr7: "#172b4d",
     clr8: "#b04632",
   },
+  fontSizes: {
+ fsLogo: "1.75rem",
+fsXs: "0.75rem",
+fsSm: "0.875rem",
+fsS: "1rem",
+fsM: "1.125rem",
+fsL: "1.25rem",
+fsXL: "1.5rem",
+fsXxl: "3.125rem"
+  },
+  borders: {
+    borderRad1: "6px",
+borderRad2: "5px",
+borderRad3: "10px"
+  }
 };
 export default theme;

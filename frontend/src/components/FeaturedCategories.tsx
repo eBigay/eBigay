@@ -1,8 +1,9 @@
 import { categoriesDemo } from "../data";
 import FeatuerdCategory from "./FeatuerdCategory";
+import { FeaturedContainer } from "../assets/styledComponents/components/FeaturedCategories.styled";
 const FeaturedCategories = () => {
   return (
-    <div className="categories-container">
+    <FeaturedContainer>
       {categoriesDemo.map((cat) => (
         <FeatuerdCategory
           navUrl={cat.navUrl}
@@ -12,7 +13,7 @@ const FeaturedCategories = () => {
           imageUrl={cat.img}
         />
       ))}
-    </div>
+    </FeaturedContainer>
   );
 };
 

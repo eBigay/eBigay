@@ -7,7 +7,7 @@ import Calling from "../assets/svgs/Calling.svg";
 import Location from "../assets/svgs/Location.svg";
 import Discovery from "../assets/svgs/Discovery.svg";
 import Search from "../assets/svgs/Search.svg";
-import StyledInput from "../assets/styledComponents/components/Inputs.styled";
+import StyledInput from "../assets/styledComponents/layout/Inputs.styled";
 
 type InputProps = {
   image: string;
