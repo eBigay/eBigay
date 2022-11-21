@@ -6,8 +6,8 @@ type Props = {
 };
 
 const StyledInput = styled.div<Props>`
-  width: ${({ width }) => (width > 0 ? `${width}px` : "500px")};
-  height: ${({ height }) => (height > 0 ? `${height}px` : "70px")};
+  width: ${({ width }) => `${width}px`};
+  height: ${({ height }) => `${height}px`};
   position: relative;
   border-radius: 10px;
   border: 1px solid ${({ theme }) => theme.colors.clr3light};

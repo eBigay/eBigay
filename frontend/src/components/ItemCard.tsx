@@ -47,7 +47,7 @@ const ItemCard: FC<IItemCard> = ({ item }) => {
           <img src={Location} alt="" />
           <h3 className="location-name">{item.location}</h3>
         </div>
-        <button className="primary-btn clean-btn">
+        <button type="button" className="primary-btn clean-btn">
           Sign up for phone number
         </button>
       </div>

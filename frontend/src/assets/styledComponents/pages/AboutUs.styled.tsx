@@ -5,7 +5,6 @@ const StyledAbout = styled.div`
 
   a {
     p {
-      display: inline;
       position: absolute;
       width: 36px;
       height: 21px;
@@ -34,11 +33,6 @@ const StyledAbout = styled.div`
     font-weight: 600;
     font-size: 30px;
     line-height: 70px;
-    /* identical to box height, or 233% */
-
-    display: flex;
-    align-items: flex-end;
-    text-align: center;
   }
 
   .aboutUsImage,
