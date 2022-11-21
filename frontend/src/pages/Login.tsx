@@ -1,5 +1,6 @@
 import Categories from "../components/Categories";
 import { LoginInput, RegisterInput, SearchInput } from "../components/Inputs";
+
 const fakeCategories = [
   {
     category: "Electronics",

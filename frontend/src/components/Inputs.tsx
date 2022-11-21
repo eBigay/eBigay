@@ -25,8 +25,8 @@ export const Input = ({
   type,
   placeholder,
   isSearchInput,
-  width,
-  height,
+  width = 500,
+  height = 70,
 }: InputProps) => {
   const [passwordType, setPasswordType] = useState<string>("password");
   const [location, setLocation] = useState<number[]>([]);
@@ -37,18 +37,18 @@ export const Input = ({
 
   const getGeoLocation = () => {
     if (navigator.geolocation) {
-      alert("Receiving Your GeoLocation");
+      alert("Receiving Your GeoLocation"); /* eslint-disable-line */
       navigator.geolocation.getCurrentPosition((position) => {
         setLocation([position.coords.latitude, position.coords.longitude]);
       });
     } else {
-      alert("Sorry Not available!");
+      alert("Sorry Not available!"); /* eslint-disable-line */
     }
   };
 
   return (
-    <StyledInput width={width || -1} height={height || -1}>
-      <img src={image} className="inputLeftImage" />
+    <StyledInput width={width} height={height}>
+      <img src={image} className="inputLeftImage" alt="" />
       <input
         type={type === "password" ? passwordType : type}
         placeholder={
@@ -59,13 +59,17 @@ export const Input = ({
       />
       {otherImage && (
         <img
+          alt=""
           className="inputRightImage"
           src={otherImage}
           onClick={type === "password" ? changeInputType : getGeoLocation}
+          role="presentation" // solving 'jsx-a11y/no-static-element-interactions' (eslint)
         />
       )}
       {isSearchInput && (
-        <button className="primary-btn clean-btn">Search</button>
+        <button type="button" className="primary-btn clean-btn">
+          Search
+        </button>
       )}
     </StyledInput>
   );
@@ -104,14 +108,12 @@ export const RegisterInput = () => (
 );
 
 export const SearchInput = () => (
-  <>
-    <Input
-      image={Search}
-      type="text"
-      placeholder="Search Here..."
-      isSearchInput={true}
-      width={527}
-      height={50}
-    />
-  </>
+  <Input
+    image={Search}
+    type="text"
+    placeholder="Search Here..."
+    isSearchInput
+    width={527}
+    height={50}
+  />
 );

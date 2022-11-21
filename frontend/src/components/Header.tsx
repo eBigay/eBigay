@@ -6,7 +6,7 @@ import {
   StyledHeader,
   StyledLink,
 } from "../assets/styledComponents/layout/Header.styled";
-import { PrimaryButton } from "../assets/styledComponents/base/Button.styled";
+import PrimaryButton from "../assets/styledComponents/base/Button.styled";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -23,8 +23,8 @@ const Header = () => {
       </Logo>
 
       <LinksContainer>
-        <StyledLink to={"/"}>Home</StyledLink>
-        <StyledLink to={"/about"}>About Us</StyledLink>
+        <StyledLink to="/">Home</StyledLink>
+        <StyledLink to="/about">About Us</StyledLink>
         <PrimaryButton
           width="172px"
           height="50px"

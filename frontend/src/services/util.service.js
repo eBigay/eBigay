@@ -6,11 +6,11 @@ export const utilService = {
 };
 
 const makeId = (length = 6) => {
-  var txt = "";
-  var possible =
+  let txt = "";
+  const possible =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-  for (var i = 0; i < length; i++) {
+  for (let i = 0; i < length; i++) {
     txt += possible.charAt(Math.floor(Math.random() * possible.length));
   }
 
@@ -18,7 +18,7 @@ const makeId = (length = 6) => {
 };
 
 const makeLorem = (size = 100) => {
-  var words = [
+  const words = [
     "The sky",
     "above",
     "the port",
@@ -52,10 +52,10 @@ const makeLorem = (size = 100) => {
     "to",
     "burn",
   ];
-  var txt = "";
+  let txt = "";
   while (size > 0) {
     size--;
-    txt += words[Math.floor(Math.random() * words.length)] + " ";
+    txt += `${words[Math.floor(Math.random() * words.length)]} `;
   }
   return txt;
 };
@@ -63,7 +63,7 @@ const makeLorem = (size = 100) => {
 const getRandomIntInclusive = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive
+  return Math.floor(Math.random() * (max - min + 1)) + min; // The maximum is inclusive and the minimum is inclusive
 };
 
 const delay = (ms = 1500) => {
