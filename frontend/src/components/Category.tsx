@@ -1,6 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import ArrowRight from "../assets/svgs/ArrowRight.svg";
-import { StyledCategory } from "../assets/styledComponents/components/Categories.styled";
+import {
+  CategoryLink,
+  StyledCategory,
+} from "../assets/styledComponents/components/Categories.styled";
 
 export type CategoryProps = {
   category: string;
@@ -11,9 +14,9 @@ const Category = ({ category, url }: CategoryProps) => {
   const navigate = useNavigate();
   return (
     <StyledCategory onClick={() => navigate(url)}>
-      <Link to={url} className="fs20">
-        {category}
-      </Link>
+      <CategoryLink>
+        <Link to={url}>{category}</Link>
+      </CategoryLink>
       <img src={ArrowRight} alt="Right Arrow" />
     </StyledCategory>
   );
