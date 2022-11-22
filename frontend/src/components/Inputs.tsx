@@ -7,7 +7,12 @@ import Calling from "../assets/svgs/Calling.svg";
 import Location from "../assets/svgs/Location.svg";
 import Discovery from "../assets/svgs/Discovery.svg";
 import Search from "../assets/svgs/Search.svg";
-import StyledInput from "../assets/styledComponents/layout/Inputs.styled";
+import StyledInput, {
+  InnerInput,
+  InputLeftImage,
+  InputRightImage,
+} from "../assets/styledComponents/layout/Inputs.styled";
+import PrimaryButton from "../assets/styledComponents/base/Button.styled";
 
 type InputProps = {
   image: string;
@@ -48,8 +53,8 @@ export const Input = ({
 
   return (
     <StyledInput width={width} height={height}>
-      <img src={image} className="inputLeftImage" alt="" />
-      <input
+      <InputLeftImage src={image} alt="" />
+      <InnerInput
         type={type === "password" ? passwordType : type}
         placeholder={
           location[0]
@@ -58,18 +63,17 @@ export const Input = ({
         }
       />
       {otherImage && (
-        <img
+        <InputRightImage
           alt=""
-          className="inputRightImage"
           src={otherImage}
           onClick={type === "password" ? changeInputType : getGeoLocation}
           role="presentation" // solving 'jsx-a11y/no-static-element-interactions' (eslint)
         />
       )}
       {isSearchInput && (
-        <button type="button" className="primary-btn clean-btn">
+        <PrimaryButton height="100%" width="125px" fontSize="s">
           Search
-        </button>
+        </PrimaryButton>
       )}
     </StyledInput>
   );
