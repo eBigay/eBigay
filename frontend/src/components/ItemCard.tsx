@@ -16,7 +16,7 @@ interface IItemCard {
     category: string;
     location: any;
     createdAt: number;
-    isAvialable: boolean;
+    isAvailable: boolean;
     description: string;
   };
 }
