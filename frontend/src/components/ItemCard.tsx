@@ -1,4 +1,3 @@
-import { FC } from "react";
 import {
   MessageOutlined,
   SearchOutlined,
@@ -21,7 +20,7 @@ interface IItemCard {
   };
 }
 
-const ItemCard: FC<IItemCard> = ({ item }) => {
+const ItemCard = ({ item }: IItemCard) => {
   return (
     <div className="item-card flex column">
       <div className="image-container">

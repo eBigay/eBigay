@@ -1,5 +1,11 @@
-import { FC } from "react";
 import { useNavigate } from "react-router-dom";
+import PrimaryButton from "../assets/styledComponents/base/Button.styled";
+import FeaturedCategoryContainer, {
+  FeaturedCategoryImage,
+  FeaturedCategoryInfo,
+  FeaturedCategoryTitle,
+  FeaturedCategoryDesc,
+} from "../assets/styledComponents/components/FeaturedCategory.styled";
 
 interface ICategoryProps {
   title: string;
@@ -8,29 +14,30 @@ interface ICategoryProps {
   navUrl: string;
 }
 
-const FeaturedCategory: FC<ICategoryProps> = ({
+const FeaturedCategory = ({
   title,
   description,
   imageUrl,
   navUrl,
-}) => {
+}: ICategoryProps) => {
   const navigate = useNavigate();
 
   return (
-    <div className="category-container">
-      <img src={imageUrl} alt={description} />
-      <div className="category-info">
-        <h1 className="category-title">{title}</h1>
-        <p className="category-desc">{description}</p>
-        <button
-          type="button"
-          className="primary-btn clean-btn"
+    <FeaturedCategoryContainer>
+      <FeaturedCategoryImage src={imageUrl} alt={description} />
+      <FeaturedCategoryInfo>
+        <FeaturedCategoryTitle>{title}</FeaturedCategoryTitle>
+        <FeaturedCategoryDesc>{description}</FeaturedCategoryDesc>
+        <PrimaryButton
+          width="115px"
+          height="34"
+          fontSize="xs"
           onClick={() => navigate(navUrl)}
         >
           Explore More
-        </button>
-      </div>
-    </div>
+        </PrimaryButton>
+      </FeaturedCategoryInfo>
+    </FeaturedCategoryContainer>
   );
 };
 

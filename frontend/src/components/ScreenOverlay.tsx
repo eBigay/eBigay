@@ -1,15 +1,13 @@
-import { FC } from "react";
-
 type OverlayProps = {
   goBack: Function;
   styleMode: string;
   children?: React.ReactNode;
 };
-const ScreenOverlay: FC<OverlayProps> = ({
-  goBack = null,
+const ScreenOverlay = ({
+  goBack = () => {},
   styleMode,
   children,
-}) => {
+}: OverlayProps) => {
   return (
     <div className="screen-overlay-wrapper">
       <div
