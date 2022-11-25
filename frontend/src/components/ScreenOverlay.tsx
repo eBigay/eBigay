@@ -1,3 +1,5 @@
+import StyledScreenOverlay from "../assets/styledComponents/components/ScreenOverlay.styled";
+
 type OverlayProps = {
   goBack: Function;
   styleMode: string;
@@ -9,10 +11,10 @@ const ScreenOverlay = ({
   children,
 }: OverlayProps) => {
   return (
-    <div className="screen-overlay-wrapper">
-      <div
+    <div>
+      <StyledScreenOverlay
         role="presentation" // solving 'jsx-a11y/no-static-element-interactions' (eslint)
-        className={`screen-overlay ${styleMode}`}
+        className={`${styleMode}`}
         onClick={() => {
           if (goBack) goBack();
         }}
