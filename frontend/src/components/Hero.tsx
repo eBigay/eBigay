@@ -1,20 +1,27 @@
 import React from "react";
 import HeroImg from "../assets/images/HeroImg.png";
+import PrimaryButton from "../assets/styledComponents/base/Button.styled";
+import HeroContainer, {
+  HeroContent,
+  HeroHeader,
+  HeroImage,
+  HeroSubHeader,
+} from "../assets/styledComponents/components/Hero.styled";
 
 const Hero = () => {
   return (
-    <div className="hero-container">
-      <div className="hero-content">
-        <h2>Join Positive Karma Movement Today</h2>
-        <h3>
+    <HeroContainer>
+      <HeroContent>
+        <HeroHeader>Join Positive Karma Movement Today</HeroHeader>
+        <HeroSubHeader>
           Give away long forgotten item another chance to serve the humanity
-        </h3>
-        <button type="button" className="primary-btn clean-btn">
+        </HeroSubHeader>
+        <PrimaryButton width="161px" height="50px" fontSize="s">
           Explore more
-        </button>
-      </div>
-      <img src={HeroImg} alt="" className="hero-img" />
-    </div>
+        </PrimaryButton>
+      </HeroContent>
+      <HeroImage src={HeroImg} alt="" />
+    </HeroContainer>
   );
 };
 

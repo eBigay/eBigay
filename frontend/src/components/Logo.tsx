@@ -14,7 +14,7 @@ const Logo = () => {
         window.scroll({ top: 0, behavior: "smooth" });
       }}
     >
-      <LogoImage src={MainLogo} alt="main-logo-eBigay" />
+      <LogoImage src={MainLogo} alt="eBigay" />
       <LogoHeader>eBigay</LogoHeader>
     </LogoContainer>
   );

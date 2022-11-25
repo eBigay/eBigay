@@ -1,4 +1,6 @@
-.screen-overlay {
+import styled from "styled-components";
+
+const StyledScreenOverlay = styled.div`
   display: flex;
   height: 100%;
   left: 0;
@@ -16,4 +18,6 @@
   &.transparent {
     background-color: transparent;
   }
-}
+`;
+
+export default StyledScreenOverlay;
