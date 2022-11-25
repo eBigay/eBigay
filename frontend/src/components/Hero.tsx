@@ -9,7 +9,9 @@ const Hero = () => {
         <h3>
           Give away long forgotten item another chance to serve the humanity
         </h3>
-        <button className="primary-btn clean-btn">Explore more</button>
+        <button type="button" className="primary-btn clean-btn">
+          Explore more
+        </button>
       </div>
       <img src={HeroImg} alt="" className="hero-img" />
     </div>

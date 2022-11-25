@@ -1,8 +1,9 @@
-import routes from "./routes";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Header from "./components/Header";
 import { ThemeProvider } from "styled-components";
-import theme from "./theme";
+import routes from "./routes";
+import Header from "./components/layout/Header";
+import theme from "./assets/theme/theme";
+
 const App = () => {
   return (
     <ThemeProvider theme={theme}>

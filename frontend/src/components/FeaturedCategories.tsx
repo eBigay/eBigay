@@ -1,11 +1,12 @@
-import { categoriesDemo } from "../data";
-import FeatuerdCategory from "./FeatuerdCategory";
-import { FeaturedContainer } from "../assets/styledComponents/components/FeaturedCategories.styled";
+import categoriesDemo from "../data";
+import FeaturedContainer from "../assets/styledComponents/components/FeaturedCategories.styled";
+import FeaturedCategory from "./FeaturedCategory";
+
 const FeaturedCategories = () => {
   return (
     <FeaturedContainer>
       {categoriesDemo.map((cat) => (
-        <FeatuerdCategory
+        <FeaturedCategory
           navUrl={cat.navUrl}
           key={cat.id}
           title={cat.title}

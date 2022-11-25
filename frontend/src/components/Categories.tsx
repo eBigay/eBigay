@@ -1,7 +1,7 @@
 import { CategoriesContainer } from "../assets/styledComponents/components/Categories.styled";
-import Category, { categoryProps } from "./Category";
+import Category, { CategoryProps } from "./Category";
 
-const Categories = ({ categories }: { categories: categoryProps[] }) => {
+const Categories = ({ categories }: { categories: CategoryProps[] }) => {
   return (
     <CategoriesContainer>
       <h1 className="fs24">Categories</h1>

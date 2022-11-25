@@ -6,7 +6,7 @@ type ButtonProps = {
   fontSize: string;
 };
 
-export const PrimaryButton = styled.button<ButtonProps>`
+const PrimaryButton = styled.button<ButtonProps>`
   background: ${({ theme }) => theme.colors.clr1};
   color: ${({ theme }) => theme.colors.clr2};
   border-radius: ${({ theme }) => theme.borders.borderRad1};
@@ -16,7 +16,7 @@ export const PrimaryButton = styled.button<ButtonProps>`
   width: ${(props) => (props.width ? props.width : "auto")};
   height: ${(props) => (props.height ? props.height : "auto")};
   font-size: ${(props) =>
-    props.fontSize === "s"
+    props.fontSize === "s" /* eslint-disable-line */
       ? props.theme.fsS
       : props.fontSize === "m"
       ? props.theme.fsM
@@ -30,3 +30,5 @@ export const PrimaryButton = styled.button<ButtonProps>`
     filter: brightness(110%);
   }
 `;
+
+export default PrimaryButton;

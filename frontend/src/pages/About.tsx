@@ -7,11 +7,11 @@ const About = () => {
   return (
     <StyledAbout className="fade-in">
       <Link to="../">
-        <img src={Arrow}></img>
+        <img src={Arrow} alt="" />
         <p>Back</p>
       </Link>
       <h1>About Us</h1>
-      <img className="aboutUsImage" src={Image}></img>
+      <img className="aboutUsImage" src={Image} alt="" />
       <p className="aboutUsDescription">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dignissim
         purus felis, ac fermentum erat feugiat eu. Sed pellentesque erat arcu,

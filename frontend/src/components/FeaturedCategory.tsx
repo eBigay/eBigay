@@ -8,7 +8,7 @@ interface ICategoryProps {
   navUrl: string;
 }
 
-const FeatuerdCategory: FC<ICategoryProps> = ({
+const FeaturedCategory: FC<ICategoryProps> = ({
   title,
   description,
   imageUrl,
@@ -23,6 +23,7 @@ const FeatuerdCategory: FC<ICategoryProps> = ({
         <h1 className="category-title">{title}</h1>
         <p className="category-desc">{description}</p>
         <button
+          type="button"
           className="primary-btn clean-btn"
           onClick={() => navigate(navUrl)}
         >
@@ -33,4 +34,4 @@ const FeatuerdCategory: FC<ICategoryProps> = ({
   );
 };
 
-export default FeatuerdCategory;
+export default FeaturedCategory;
