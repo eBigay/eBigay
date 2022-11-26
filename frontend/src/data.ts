@@ -1,28 +1,28 @@
 const categoriesDemo = [
   {
     id: 1,
-    img: "https://s3-alpha-sig.figma.com/img/4b4e/9674/6fd6a71b372ac0dc44a372fe264be416?Expires=1668988800&Signature=ay~eAkFe0m9ZJwMMznl984StjzC5jsYwpUq~L8RsXAXI2sT~Tbg3qB3l8qnrut3ZP2Hvve~ASArPnU7~Sb7zniHFy18ED0aPJftsZFUZ3cC22cwjMI5V8kuXhawYcRP5YOh74tmos6V2x9dTvozhaGaSRBu1PC5ZoOWa51AvUdcmS31qol2SAeqzP~rmbmkFufLbFW6z~O7NzR70fwKawlrMMGDT7sy~0agHiGvxJI6eHYyvxdF6j5fB9jaabMzMsA7zqgKZyKsRkgc8StmKdezeKPnVxO7O11LM28wbpnGrXQ-KLopTwkb7Mp9NBWQ2JkkLUi-0LgvOpd-hkY4acg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+    img: "https://s3-alpha-sig.figma.com/img/4b4e/9674/6fd6a71b372ac0dc44a372fe264be416?Expires=1670198400&Signature=UMQdmaMGDqLOgry9UQz7vJlHLWxCWFWsUDv8mhesX-XGHIwfNAs2fjpUsyzJVASU4n04mVVPVho8-mo3kluta-x~YKymzjgJN981Q~6LuCAjS7Tn5NAy9yp~wIGzBtK8857cAIkmsvI2xg2pgDvXrzA5oJ0NMWiBJtUsNl1rhaTnmZ6u29rGaOtSBKOVWe3ZXeZ1qmYDGMfBCgdFqyVtDeBgzmh-Y-5eKzoMkECKF3t-dx6Hdr6lQyOeUXNQrH9nwdxLDgb-1dhRRtusfVQGI2qzhsTm4bAOpLkbPbFJeziYPRPNfwr81Bt9J~VGWWDdZTYB79~ZR1d9uly3bGiMTg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
     title: "Women",
     description: "Clothes, Shoes, Bags, Jewelry, Accessories",
     navUrl: "women",
   },
   {
     id: 2,
-    img: "https://s3-alpha-sig.figma.com/img/d36e/9929/0dd7b24a40af8c9e26dae93ef6916b6b?Expires=1668988800&Signature=MYvTOSEEGeJWlzJJ~-HqNLJRHwN26v-EDaEqQ0DnFm20rT70eLgyLQ-IZzeRlNIcE42CRld-jQY1tBq0ZWSbrgtV3Hdme2e9FbFwMyUnFlJTwm0NWuseIx7ncX4YXiIW3zv~6bf4TxZfDjbOrvj8XP32WCrp4j7NbNpDFCi7kYTLxwG7FHV-KfczT8qkmYPeBr2CYn3DUOqMXGM9y1h-mZlfy1iHjKfzsTKb~OW93-jikfp0AEr26I3T0X70xd5JdSSxzh9Y9hlcxDXTj~r5i44gZipqH0UZiaLgkvizlarsL3gvGWS00AhfW3MKNaY3pCsYyBVk0YHXrnNUDywdeg__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+    img: "https://s3-alpha-sig.figma.com/img/d36e/9929/0dd7b24a40af8c9e26dae93ef6916b6b?Expires=1670198400&Signature=YHKPLDU2d1JWQEHPcQQSpgAe~EQTh4JX9LjxHrVEwv11LeiMf0ZEznp3vUF3JHsqmB4hC-Nk2SBKW3BABcbCLQBfpmn8cs7eJx1cLhf-rMTidcAwPIUjd8Snjy-GvmlriRuLvHzQfZaNjTJoM7vNrzyZkVLpUstoYX4iyuKt0QpLlshEGTU7yUQPpMfrs05Q0QJE8Y5y4BOqYuPOn8sKrP4BRtuphq0VCWbGYwF4yp2JjK8tsw3lT-efhu9FBwsa09aLPbm~9MWbGNgqz6wFIEsl8xqeLe3GvOrL6GtAaH56pzm0~2e1eeu~7XO7yHPmRVbTvf2ki8VMgk8Nk3GWKw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
     title: "Man",
     description: "Clothes, Shoes, Bags, Jewelry, Accessories",
     navUrl: "man",
   },
   {
     id: 3,
-    img: "https://s3-alpha-sig.figma.com/img/a00a/b85d/274f0d122ef7e3c2993e289c4443ca7b?Expires=1668988800&Signature=hvqCo6MDXHDpMlj7ofMl2wlfJUudhCbR8gN203olKpECGI4Oek4-C8mIzx5nqXyV5PBt6ugX26i8VEKpDKcviLr1dAFQqr0ARGmzyhTG~D6eALnlGiewDcr1zQItkjUToY16K2~XcGHJkEnVct8uPrnj1yqQAnlYldi7GpOG12gLI0jE7d6ExmUIhDHNuklyecHIJecpkWz7jGjWUIDBumOJ36yUzXTmoyfXLr2e11CtwWFaM-LLbEtCyZgoyLErzsgpZa~0iRivn3t6Xku7SkrazSCHyuJg1vI3Za1rDS1rHRIVylzLUwgd0wx8uI7vM0CTnS98df8hSsukg8uQvQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+    img: "https://s3-alpha-sig.figma.com/img/a00a/b85d/274f0d122ef7e3c2993e289c4443ca7b?Expires=1670198400&Signature=Jy-U06aszk4K4SSRwaZc3BEStqVHQ3pmNeDsYA9q~ooUYN4A~1aVfDJEzqzo8RoGbbATCSLcMjPa~hKEimGmLFjYCk8rfjfICzg51LlOdM1EGuAKDpqdHkBF4YOD1SIH2N-eAsomfKzaop1L6XF3JSYRiqpqAQ8IdMJca6PjjlR9OHGlwk~RUMIg6H1pyoFdAXD3cayb2Fxbrrh3QcIvwOGHQOUT2U7NnuSrG72O42CHCkCxmXgN8VTXAK7lor9XPjplPCyGQg-QqptnIOYI-96ur4xzLAR0WstIMT-kMXHuRWsIoEVGbM8BUfD-~ICt4Few8PfAY1jGL4-idP4Jnw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
     title: "Furniture",
     description: "Clothes, Shoes, Bags, Jewelry, Accessories",
     navUrl: "furniture",
   },
   {
     id: 4,
-    img: "https://s3-alpha-sig.figma.com/img/41b3/fe2e/e4c67f4980800a10bee71b8c05a5f63c?Expires=1668988800&Signature=EoNtXP4VxUKxROBuI01TQ3mVdj55~OEluJdUwGqlQJeBUFvbwb5n-U7ScFnpG9WUctuKHcbDn4jHaxPjqS-mRGFPnmLnqa4~wzGwDZJmGZiYNHyXDe~-87xlWeBnLypaLuBdZtD4Utl4ktrFeuk92wQSYGBdMhQyqVXxiLmanFjGQg753hKe4k-1lAQt6x64uYaXKUGVkTKmYGIFkrOzuy6ZJSJ4x3~9pVqAVD4s0pcSXq69KnyJN~t1oX7soJXOIhrHCB8Ppl63qUO42fKzippbkqvmelgSNwIUGsBfAPDW-rU3vApDIw~BETHs~iCCa0fHS1KQdaeHdQJ71fxPEQ__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
+    img: "https://s3-alpha-sig.figma.com/img/41b3/fe2e/e4c67f4980800a10bee71b8c05a5f63c?Expires=1670198400&Signature=FPRoeRgS4eOtVHPWhWvzZoFw70eCop3krj0AWcz4llC54qfUdLY0DUb~BSmz6-~AqDy5F-T4PTHwGB4S5CKhDy77qxB5GHaTTR9DgYx7jKXv3bp9qlZ-0k~Oqf2QCAV~U7uPKBmkvJc2SmeOMQp-fvyNSzjVVYmoZGhg2oqSdPwp-6zg1OUyVBsx819wleOpC1a4PKQ7t82-CxWW-fvbP32HR7BacBIh~TgZIbv8J5CfIXpzOlAmJnJM5Ipsd-61XSJsJWu0DCTwixlWGT7uaOuTrYVzM9Gmmu1552GKJ59t1GdNQd1FbdCeROg05SMaFqK3~4nRtzbFwWJztjt49w__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
     title: "Various items",
     description: "Clothes, Shoes, Bags, Jewelry, Accessories",
     navUrl: "various",

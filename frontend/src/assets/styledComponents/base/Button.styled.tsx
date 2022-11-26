@@ -16,11 +16,13 @@ const PrimaryButton = styled.button<ButtonProps>`
   width: ${(props) => (props.width ? props.width : "auto")};
   height: ${(props) => (props.height ? props.height : "auto")};
   font-size: ${(props) =>
-    props.fontSize === "s" /* eslint-disable-line */
-      ? props.theme.fsS
+    props.fontSize === "xs" /* eslint-disable-line */
+      ? props.theme.fontSizes.fsXs
+      : props.fontSize === "s" /* eslint-disable-line */
+      ? props.theme.fontSizes.fsS
       : props.fontSize === "m"
-      ? props.theme.fsM
-      : props.theme.fsL};
+      ? props.theme.fontSizes.fsM
+      : props.theme.fontSizes.fsL};
   font-weight: 500;
   outline: none;
   border: none;

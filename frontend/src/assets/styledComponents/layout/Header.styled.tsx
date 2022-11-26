@@ -27,27 +27,6 @@ export const LinksContainer = styled.div`
   color: ${({ theme }) => theme.colors.clr2};
 `;
 
-export const Logo = styled.div`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  gap: 10px;
-  cursor: pointer;
-  img {
-    width: 19px;
-    height: 38px;
-  }
-  h1 {
-    font-size: ${({ theme }) => theme.fontSizes.fsLogo};
-    font-family: Prata;
-    font-weight: 400;
-    background: ${({ theme }) => theme.colors.clr1};
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-`;
-
 export const StyledLink = styled(NavLink)`
   text-decoration: none;
   color: unset;

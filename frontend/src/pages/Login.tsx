@@ -1,3 +1,4 @@
+import Loading from "../components/Loading";
 import Categories from "../components/Categories";
 import { LoginInput, RegisterInput, SearchInput } from "../components/Inputs";
 
@@ -29,16 +30,14 @@ const fakeCategories = [
 ];
 const Login = () => {
   return (
-    <div className="fade-in">
-      <br /> <br />
-      <br /> <br />
-      <br /> <br />
+    <div className="fade-in" style={{ paddingTop: "10rem" }}>
       <LoginInput />
       <br /> <br />
       <RegisterInput />
       <br /> <br />
       <SearchInput />
       <Categories categories={fakeCategories} />
+      <Loading />
     </div>
   );
 };
