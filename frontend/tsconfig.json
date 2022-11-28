@@ -19,6 +19,11 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
+  "include": [
+    "src",
+    "src/typings/theme.d.ts",
+    "src/typings/palette.d.ts",
+    "src/typings/svg.d.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

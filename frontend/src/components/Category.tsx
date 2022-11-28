@@ -3,7 +3,7 @@ import ArrowRight from "../assets/svgs/ArrowRight.svg";
 import {
   CategoryLink,
   StyledCategory,
-} from "../assets/styledComponents/components/Categories.styled";
+} from "../assets/styles/components/Categories.styled";
 
 export type CategoryProps = {
   category: string;

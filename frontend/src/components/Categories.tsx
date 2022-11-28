@@ -1,7 +1,7 @@
 import {
   CategoriesContainer,
   CategoriesHeader,
-} from "../assets/styledComponents/components/Categories.styled";
+} from "../assets/styles/components/Categories.styled";
 import Category, { CategoryProps } from "./Category";
 
 const Categories = ({ categories }: { categories: CategoryProps[] }) => (

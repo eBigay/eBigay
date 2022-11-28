@@ -1,9 +1,21 @@
-import { CircularProgress } from "@mui/material";
-import LoadingContainer from "../assets/styledComponents/base/Loading.styled";
+import LoadingContainer from "../assets/styles/base/Loading.styled";
+import {
+  Spinner,
+  SpinnerContainer,
+} from "../assets/styles/layout/Spinner.styled";
 
-const Loading = () => (
+type InputProps = {
+  width?: string;
+  height?: string;
+};
+
+const Loading = ({ width = "100px", height = "100px" }: InputProps) => (
   <LoadingContainer>
-    <CircularProgress size={80} style={{ color: "#fbb527" }} />
+    <SpinnerContainer width={width} height={height}>
+      <svg>
+        <Spinner cx="50" cy="50" r="45" />
+      </svg>
+    </SpinnerContainer>
   </LoadingContainer>
 );
 

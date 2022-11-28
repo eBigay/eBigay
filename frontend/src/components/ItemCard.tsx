@@ -3,8 +3,8 @@ import {
   SearchOutlined,
   FavoriteBorderOutlined,
 } from "@mui/icons-material";
-import { Link } from "react-router-dom";
-import PrimaryButton from "../assets/styledComponents/base/Button.styled";
+import { useNavigate } from "react-router-dom";
+import PrimaryButton from "../assets/styles/base/Button.styled";
 import ItemCardContainer, {
   ItemCategory,
   ItemDetails,
@@ -15,7 +15,7 @@ import ItemCardContainer, {
   ItemName,
   LocationImage,
   LocationName,
-} from "../assets/styledComponents/components/ItemCard.styled";
+} from "../assets/styles/components/ItemCard.styled";
 import Location from "../assets/svgs/Location.svg";
 
 interface IItemCard {
@@ -32,14 +32,14 @@ interface IItemCard {
 }
 
 const ItemCard = ({ item }: IItemCard) => {
+  const navigate = useNavigate();
   return (
     <ItemCardContainer>
       <ItemImageContainer>
         <ItemImage src={item.mainImg} alt={item.itemName} />
         <ItemInfo>
           <div>
-            <SearchOutlined />
-            <Link to={`/product/${item._id}`} />
+            <SearchOutlined onClick={() => navigate(`/product/${item._id}`)} />
           </div>
           <div>
             <MessageOutlined />

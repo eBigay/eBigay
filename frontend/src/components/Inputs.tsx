@@ -11,8 +11,8 @@ import StyledInput, {
   InnerInput,
   InputLeftImage,
   InputRightImage,
-} from "../assets/styledComponents/layout/Inputs.styled";
-import PrimaryButton from "../assets/styledComponents/base/Button.styled";
+} from "../assets/styles/layout/Inputs.styled";
+import PrimaryButton from "../assets/styles/base/Button.styled";
 
 type InputProps = {
   image: string;

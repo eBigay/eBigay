@@ -1,4 +1,4 @@
-import StyledScreenOverlay from "../assets/styledComponents/components/ScreenOverlay.styled";
+import StyledScreenOverlay from "../assets/styles/components/ScreenOverlay.styled";
 
 type OverlayProps = {
   goBack: Function;

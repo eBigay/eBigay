@@ -7,7 +7,7 @@ import StyledAbout, {
   AboutUsText,
   BackImage,
   BackLink,
-} from "../assets/styledComponents/pages/AboutUs.styled";
+} from "../assets/styles/pages/AboutUs.styled";
 
 const About = () => {
   return (

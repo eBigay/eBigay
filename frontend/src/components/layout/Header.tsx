@@ -3,8 +3,8 @@ import {
   LinksContainer,
   StyledHeader,
   StyledLink,
-} from "../../assets/styledComponents/layout/Header.styled";
-import PrimaryButton from "../../assets/styledComponents/base/Button.styled";
+} from "../../assets/styles/layout/Header.styled";
+import PrimaryButton from "../../assets/styles/base/Button.styled";
 import Logo from "./Logo";
 
 const Header = () => {

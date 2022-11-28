@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import PrimaryButton from "../assets/styledComponents/base/Button.styled";
+import PrimaryButton from "../assets/styles/base/Button.styled";
 import FeaturedCategoryContainer, {
   FeaturedCategoryImage,
   FeaturedCategoryInfo,
   FeaturedCategoryTitle,
   FeaturedCategoryDesc,
-} from "../assets/styledComponents/components/FeaturedCategory.styled";
+} from "../assets/styles/components/FeaturedCategory.styled";
 
 interface ICategoryProps {
   title: string;

@@ -1,7 +1,7 @@
 import {
   RecentItemsContainer,
   RecentItemsHeader,
-} from "../assets/styledComponents/components/RecentItems.styled";
+} from "../assets/styles/components/RecentItems.styled";
 import Items from "../json/items.json";
 import ItemCard from "./ItemCard";
 

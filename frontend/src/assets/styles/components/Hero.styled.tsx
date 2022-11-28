@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mobile } from "../../../responsive";
 
 const HeroContainer = styled.div`
   display: flex;
@@ -23,7 +24,7 @@ export const HeroHeader = styled.h2`
 `;
 
 export const HeroSubHeader = styled.h3`
-  width: 480px;
+  max-width: 480px;
   font-size: ${({ theme }) => theme.fontSizes.fsXL};
   font-weight: 400;
   color: ${({ theme }) => theme.colors.clr3};
@@ -33,6 +34,7 @@ export const HeroSubHeader = styled.h3`
 export const HeroImage = styled.img`
   min-width: 450px;
   max-height: 526px;
+  ${mobile({ display: "none" })}
 `;
 
 export default HeroContainer;
