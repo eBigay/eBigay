@@ -65,10 +65,11 @@ const theme = {
     borderRad3: "10px",
   },
   breakpoints: {
-    mobileBreakpoint: "590px",
-    tabletBreakpoint: "640px",
-    laptopBreakpoint: "850px",
-    wideBreakpoint: "1250px",
+    mobileBreakpoint: "600px",
+    tabletBreakpoint: "800px",
+    laptopBreakpoint: "1200px",
+    narrowBreakpoint: "1480px",
+    wideBreakpoint: "1600px",
   },
 };
 export default theme;

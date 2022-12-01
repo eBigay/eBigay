@@ -1,29 +1,17 @@
-import { useNavigate } from "react-router-dom";
-import {
-  LinksContainer,
-  StyledHeader,
-  StyledLink,
-} from "../../assets/styles/layout/Header.styled";
-import PrimaryButton from "../../assets/styles/base/Button.styled";
+import { useState } from "react";
+import { StyledHeader } from "../../assets/styles/layout/Header.styled";
 import Logo from "./Logo";
+import { BurgerMenu } from "./BurgerMenu";
+import Nav from "./Nav";
 
 const Header = () => {
-  const navigate = useNavigate();
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
   return (
     <StyledHeader>
       <Logo />
-      <LinksContainer>
-        <StyledLink to="/">Home</StyledLink>
-        <StyledLink to="/about">About Us</StyledLink>
-        <PrimaryButton
-          width="172px"
-          height="50px"
-          fontSize="s"
-          onClick={() => navigate("/login")}
-        >
-          Log in/Sign up
-        </PrimaryButton>
-      </LinksContainer>
+      <Nav isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
+      <BurgerMenu isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />
     </StyledHeader>
   );
 };

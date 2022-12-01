@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { mobile } from "../../../responsive";
+import { respondTo } from "../../theme/responsive";
 
 const HeroContainer = styled.div`
   display: flex;
@@ -34,7 +34,9 @@ export const HeroSubHeader = styled.h3`
 export const HeroImage = styled.img`
   min-width: 450px;
   max-height: 526px;
-  ${mobile({ display: "none" })}
+  ${respondTo.laptopBreakpoint`
+    display: none; 
+  `}
 `;
 
 export default HeroContainer;

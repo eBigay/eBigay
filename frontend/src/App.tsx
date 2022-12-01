@@ -6,8 +6,6 @@ import Header from "./components/layout/Header";
 import theme from "./assets/theme/theme";
 import Loading from "./components/Loading";
 import { Suspense } from "react";
-import Home from "./pages/Home";
-import ProductDetails from "./components/ProductDetails";
 
 const App = () => {
   return (
