@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { respondTo } from "../../theme/responsive";
 
 const HeroContainer = styled.div`
@@ -14,6 +14,10 @@ export const HeroContent = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 38px;
+  ${respondTo.laptopBreakpoint`
+  text-align:center;
+  align-items:center;
+  `}
 `;
 
 export const HeroHeader = styled.h2`

@@ -3,9 +3,11 @@ import {
   SearchOutlined,
   FavoriteBorderOutlined,
 } from "@mui/icons-material";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import ItemCardContainer, {
+  Icon,
   ItemCategory,
   ItemDetails,
   ItemImage,
@@ -17,36 +19,37 @@ import ItemCardContainer, {
   LocationName,
 } from "../assets/styles/components/ItemCard.styled";
 import Location from "../assets/svgs/Location.svg";
+import { ItemContext } from "../context/itemContext";
+import { IItem } from "../interfaces/IItem.interface";
 
 interface IItemCard {
-  item: {
-    _id: string;
-    qty: number;
-    itemName: string;
-    mainImg: string;
-    category: string;
-    location: any;
-    createdAt: number;
-    description: string;
-  };
+  item: IItem;
 }
 
 const ItemCard = ({ item }: IItemCard) => {
   const navigate = useNavigate();
+
+  const { dispatch } = useContext(ItemContext);
+
+  const handleOpenProductDetails = () => {
+    dispatch({ type: "SET_ITEM", payload: item });
+    navigate(`/product/${item._id}`);
+  };
+
   return (
     <ItemCardContainer>
       <ItemImageContainer>
         <ItemImage src={item.mainImg} alt={item.itemName} />
         <ItemInfo>
-          <div>
-            <SearchOutlined onClick={() => navigate(`/product/${item._id}`)} />
-          </div>
-          <div>
+          <Icon>
+            <SearchOutlined onClick={handleOpenProductDetails} />
+          </Icon>
+          <Icon>
             <MessageOutlined />
-          </div>
-          <div>
+          </Icon>
+          <Icon>
             <FavoriteBorderOutlined />
-          </div>
+          </Icon>
         </ItemInfo>
       </ItemImageContainer>
 
@@ -54,8 +57,8 @@ const ItemCard = ({ item }: IItemCard) => {
         <ItemName>{item.itemName}</ItemName>
         <ItemCategory>{item.category}</ItemCategory>
         <ItemLocation>
-          <LocationImage src={Location} alt="" />
-          <LocationName className="location-name">{item.location}</LocationName>
+          <LocationImage src={Location} alt="location" />
+          <LocationName>{item.location}</LocationName>
         </ItemLocation>
         <PrimaryButton width="194px" height="34px" fontSize="xs" type="button">
           Sign up for phone number

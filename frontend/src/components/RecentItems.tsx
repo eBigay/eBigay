@@ -2,7 +2,7 @@ import {
   RecentItemsContainer,
   RecentItemsHeader,
 } from "../assets/styles/components/RecentItems.styled";
-import Items from "../json/items.json";
+import Items from "../data/json/items.json";
 import ItemCard from "./ItemCard";
 
 const RecentItems = () => {

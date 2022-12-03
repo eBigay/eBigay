@@ -1,4 +1,4 @@
-import categoriesDemo from "../data";
+import categoriesDemo from "../data/data";
 import FeaturedContainer from "../assets/styles/components/FeaturedCategories.styled";
 import FeaturedCategory from "./FeaturedCategory";
 

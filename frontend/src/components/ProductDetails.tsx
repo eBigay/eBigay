@@ -1,20 +1,25 @@
 import { PopUp } from "../assets/styles/components/ProductDetails.styled";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ScreenOverlay from "./ScreenOverlay";
-import { useCallback, useState } from "react";
-import { useEffect } from "react";
+import { useState } from "react";
+import { useContext } from "react";
+import { ItemContext } from "../context/itemContext";
 
 const ProductDetails = () => {
   const [isProductDetailsOpen, setIsProductDetailsOpen] =
     useState<boolean>(true);
 
   const navigate = useNavigate();
-  const { id } = useParams();
 
-  const toggleProductDetailsOpen = useCallback(() => {
+  const { dispatch, itemState } = useContext(ItemContext);
+
+  const { description, mainImg, _id } = itemState;
+
+  const toggleProductDetailsOpen = () => {
     setIsProductDetailsOpen((isProductDetailsOpen) => !isProductDetailsOpen);
+    dispatch({ type: "RESET_ITEM" });
     navigate("/");
-  }, []);
+  };
 
   return (
     <>
@@ -24,7 +29,9 @@ const ProductDetails = () => {
         isProductDetailsOpen={isProductDetailsOpen}
       />
       <PopUp>
-        <h1>ID: {id}</h1>
+        <img src={mainImg} alt="" />
+        <h1>ID: {_id}</h1>
+        <p>{description}</p>
       </PopUp>
     </>
   );

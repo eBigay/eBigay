@@ -38,7 +38,7 @@ export const LinksContainer = styled.div<IStyledLinksProps>`
 		top: 0;
 		right: 0;
 		z-index: 50;
-		width: 70%;
+		width: 65%;
 		height: 100%;
 		padding-top: 6.9rem;
 		flex-direction: column;

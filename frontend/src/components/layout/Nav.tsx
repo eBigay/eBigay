@@ -21,9 +21,11 @@ const Nav = ({ isMenuOpen, setIsMenuOpen }: INavBarProps) => {
   }, [location]);
 
   const navigate = useNavigate();
-  const toggleIsMenuOpen = useCallback(() => {
+
+  const toggleIsMenuOpen = () => {
     setIsMenuOpen((isMenuOpen) => !isMenuOpen);
-  }, []);
+  };
+
   return (
     <>
       <ScreenOverlay handleClick={toggleIsMenuOpen} isMenuOpen={isMenuOpen} />
