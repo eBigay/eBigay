@@ -13,10 +13,10 @@ export const socketService = createSocketService();
 
 window.socketService = socketService;
 
-var socketIsReady = false;
+let socketIsReady = false;
 
 const createSocketService = () => {
-  var socket = null;
+  let socket = null;
   const socketService = {
     async setup() {
       if (socket) return;

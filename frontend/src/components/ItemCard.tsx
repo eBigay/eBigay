@@ -1,11 +1,22 @@
-import { FC } from "react";
-import Location from "../assets/svgs/Location.svg";
 import {
   MessageOutlined,
   SearchOutlined,
   FavoriteBorderOutlined,
 } from "@mui/icons-material";
 import { Link } from "react-router-dom";
+import PrimaryButton from "../assets/styledComponents/base/Button.styled";
+import ItemCardContainer, {
+  ItemCategory,
+  ItemDetails,
+  ItemImage,
+  ItemImageContainer,
+  ItemInfo,
+  ItemLocation,
+  ItemName,
+  LocationImage,
+  LocationName,
+} from "../assets/styledComponents/components/ItemCard.styled";
+import Location from "../assets/svgs/Location.svg";
 
 interface IItemCard {
   item: {
@@ -16,42 +27,42 @@ interface IItemCard {
     category: string;
     location: any;
     createdAt: number;
-    isAvialable: boolean;
+    isAvailable: boolean;
     description: string;
   };
 }
 
-const ItemCard: FC<IItemCard> = ({ item }) => {
+const ItemCard = ({ item }: IItemCard) => {
   return (
-    <div className="item-card flex column">
-      <div className="image-container">
-        <img src={item.mainImg} alt={item.itemName} />
-        <div className="item-info">
-          <div className="iten-info-icon">
+    <ItemCardContainer>
+      <ItemImageContainer>
+        <ItemImage src={item.mainImg} alt={item.itemName} />
+        <ItemInfo>
+          <div>
             <SearchOutlined />
-            <Link to={`/product/${item._id}`}></Link>
+            <Link to={`/product/${item._id}`} />
           </div>
-          <div className="iten-info-icon">
+          <div>
             <MessageOutlined />
           </div>
-          <div className="iten-info-icon">
+          <div>
             <FavoriteBorderOutlined />
           </div>
-        </div>
-      </div>
+        </ItemInfo>
+      </ItemImageContainer>
 
-      <div className="item-details flex column">
-        <h2 className="item-name">{item.itemName}</h2>
-        <h4 className="item-category">{item.category}</h4>
-        <div className="item-location flex align-center">
-          <img src={Location} alt="" />
-          <h3 className="location-name">{item.location}</h3>
-        </div>
-        <button className="primary-btn clean-btn">
+      <ItemDetails>
+        <ItemName>{item.itemName}</ItemName>
+        <ItemCategory>{item.category}</ItemCategory>
+        <ItemLocation>
+          <LocationImage src={Location} alt="" />
+          <LocationName className="location-name">{item.location}</LocationName>
+        </ItemLocation>
+        <PrimaryButton width="194px" height="34px" fontSize="xs" type="button">
           Sign up for phone number
-        </button>
-      </div>
-    </div>
+        </PrimaryButton>
+      </ItemDetails>
+    </ItemCardContainer>
   );
 };
 

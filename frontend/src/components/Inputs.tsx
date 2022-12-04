@@ -7,7 +7,12 @@ import Calling from "../assets/svgs/Calling.svg";
 import Location from "../assets/svgs/Location.svg";
 import Discovery from "../assets/svgs/Discovery.svg";
 import Search from "../assets/svgs/Search.svg";
-import StyledInput from "../assets/styledComponents/components/Inputs.styled";
+import StyledInput, {
+  InnerInput,
+  InputLeftImage,
+  InputRightImage,
+} from "../assets/styledComponents/layout/Inputs.styled";
+import PrimaryButton from "../assets/styledComponents/base/Button.styled";
 
 type InputProps = {
   image: string;
@@ -25,8 +30,8 @@ export const Input = ({
   type,
   placeholder,
   isSearchInput,
-  width,
-  height,
+  width = 500,
+  height = 70,
 }: InputProps) => {
   const [passwordType, setPasswordType] = useState<string>("password");
   const [location, setLocation] = useState<number[]>([]);
@@ -37,19 +42,19 @@ export const Input = ({
 
   const getGeoLocation = () => {
     if (navigator.geolocation) {
-      alert("Receiving Your GeoLocation");
+      alert("Receiving Your GeoLocation"); /* eslint-disable-line */
       navigator.geolocation.getCurrentPosition((position) => {
         setLocation([position.coords.latitude, position.coords.longitude]);
       });
     } else {
-      alert("Sorry Not available!");
+      alert("Sorry Not available!"); /* eslint-disable-line */
     }
   };
 
   return (
-    <StyledInput width={width || -1} height={height || -1}>
-      <img src={image} className="inputLeftImage" />
-      <input
+    <StyledInput width={width} height={height}>
+      <InputLeftImage src={image} alt="" />
+      <InnerInput
         type={type === "password" ? passwordType : type}
         placeholder={
           location[0]
@@ -58,14 +63,17 @@ export const Input = ({
         }
       />
       {otherImage && (
-        <img
-          className="inputRightImage"
+        <InputRightImage
+          alt=""
           src={otherImage}
           onClick={type === "password" ? changeInputType : getGeoLocation}
+          role="presentation" // solving 'jsx-a11y/no-static-element-interactions' (eslint)
         />
       )}
       {isSearchInput && (
-        <button className="primary-btn clean-btn">Search</button>
+        <PrimaryButton height="100%" width="125px" fontSize="s">
+          Search
+        </PrimaryButton>
       )}
     </StyledInput>
   );
@@ -104,14 +112,12 @@ export const RegisterInput = () => (
 );
 
 export const SearchInput = () => (
-  <>
-    <Input
-      image={Search}
-      type="text"
-      placeholder="Search Here..."
-      isSearchInput={true}
-      width={527}
-      height={50}
-    />
-  </>
+  <Input
+    image={Search}
+    type="text"
+    placeholder="Search Here..."
+    isSearchInput
+    width={527}
+    height={50}
+  />
 );

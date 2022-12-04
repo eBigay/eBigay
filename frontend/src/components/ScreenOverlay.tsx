@@ -1,24 +1,24 @@
-import { FC } from "react";
+import StyledScreenOverlay from "../assets/styledComponents/components/ScreenOverlay.styled";
 
-type overlayProps = {
+type OverlayProps = {
   goBack: Function;
   styleMode: string;
   children?: React.ReactNode;
 };
-const ScreenOverlay: FC<overlayProps> = ({
-  goBack = null,
+const ScreenOverlay = ({
+  goBack = () => {},
   styleMode,
   children,
-}) => {
+}: OverlayProps) => {
   return (
-    <div className="screen-overlay-wrapper">
-      <div
-        className={`screen-overlay ${styleMode}`}
+    <div>
+      <StyledScreenOverlay
+        role="presentation" // solving 'jsx-a11y/no-static-element-interactions' (eslint)
+        className={`${styleMode}`}
         onClick={() => {
           if (goBack) goBack();
-          return;
         }}
-      ></div>
+      />
       {children}
     </div>
   );
