@@ -1,6 +1,4 @@
 import { lazy } from "react";
-import ProductDetails from "./components/ProductDetails";
-import { NotFound } from "./pages/NotFound";
 const Home = lazy(async () => {
   await new Promise((resolve) => setTimeout(resolve, 1200));
   return import("./pages/Home");
@@ -14,6 +12,8 @@ const Login = lazy(async () => {
   return import("./pages/Login");
 });
 import Search from "./pages/Search";
+import ProductDetails from "./components/ProductDetails";
+import { NotFound } from "./pages/NotFound";
 
 const routes = [
   {

@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 const FeaturedCategoryContainer = styled.div`
   height: 400px;
+  max-height: 100%;
   position: relative;
   button {
     margin: 0 0 20px 20px;

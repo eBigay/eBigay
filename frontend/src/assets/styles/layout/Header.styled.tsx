@@ -22,6 +22,9 @@ export const StyledHeader = styled.div`
   ${respondTo.tabletBreakpoint`
   align-items:center;
   `}
+  ${respondTo.mobileBreakpoint`
+   padding: 0 2rem
+  `}
 `;
 
 export const LinksContainer = styled.div<IStyledLinksProps>`

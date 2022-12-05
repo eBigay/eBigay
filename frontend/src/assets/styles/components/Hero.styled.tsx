@@ -6,6 +6,12 @@ const HeroContainer = styled.div`
   padding-left: 80px;
   padding-right: 36px;
   margin-top: 151px;
+  ${respondTo.laptopBreakpoint`
+  padding: 0 5rem;
+  `}
+  ${respondTo.mobileBreakpoint`
+   padding: 0 2rem
+  `}
 `;
 
 export const HeroContent = styled.div`

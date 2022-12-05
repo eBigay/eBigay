@@ -1,7 +1,6 @@
 import { Dispatch } from "react";
 import { useEffect } from "react";
 import { createContext, useReducer, ReactNode } from "react";
-import { useLocalStorage } from "../hooks/useLocalStorage";
 import { IItem } from "../interfaces/IItem.interface";
 
 const INITIAL_STATE: IItem = {
@@ -13,6 +12,12 @@ const INITIAL_STATE: IItem = {
   location: "",
   createdAt: 0,
   description: "",
+  imgs: [],
+  createdBy: {
+    _id: "",
+    fullname: "",
+    imgUrl: "",
+  },
 };
 
 type ItemContextProps = {
@@ -48,7 +53,6 @@ export const ItemContextProvider = ({ children }: ItemProviderProps) => {
   });
 
   useEffect(() => {
-    console.log("state change");
     localStorage.setItem("current-item", JSON.stringify(itemState));
   }, [itemState]);
 
