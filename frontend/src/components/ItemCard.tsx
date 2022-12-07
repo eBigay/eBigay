@@ -7,6 +7,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import PrimaryButton from "../assets/styledComponents/base/Button.styled";
 import ItemCardContainer, {
+  Icon,
   ItemCategory,
   ItemDetails,
   ItemImage,
@@ -16,23 +17,14 @@ import ItemCardContainer, {
   ItemName,
   LocationImage,
   LocationName,
-} from "../assets/styledComponents/components/ItemCard.styled";
+} from "../assets/styles/components/ItemCard.styled";
 import Location from "../assets/svgs/Location.svg";
 import { rootContext } from "../context/RootContext";
 import ItemModal from "./ItemModal";
 
+
 interface IItemCard {
-  item: {
-    _id: string;
-    qty: number;
-    itemName: string;
-    mainImg: string;
-    category: string;
-    location: any;
-    createdAt: number;
-    isAvailable: boolean;
-    description: string;
-  };
+  item: IItem;
 }
 
 const ItemCard = ({ item }: IItemCard) => {

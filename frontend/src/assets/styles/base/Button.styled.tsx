@@ -13,6 +13,7 @@ const PrimaryButton = styled.button<ButtonProps>`
   font-family: Poppins;
   font-weight: 500;
   transition: 0.3s ease;
+  max-width: 100%;
   width: ${(props) => (props.width ? props.width : "auto")};
   height: ${(props) => (props.height ? props.height : "auto")};
   font-size: ${(props) =>

@@ -1,10 +1,10 @@
-import { Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import routes from "./routes";
-import Header from "./components/Header";
-import theme from "./theme";
+import Header from "./components/layout/Header";
+import theme from "./assets/theme/theme";
 import Loading from "./components/Loading";
+import { Suspense } from "react";
 import RootContextProvider from "./context/RootContext";
 
 const App = () => {

@@ -1,8 +1,8 @@
 import {
   RecentItemsContainer,
   RecentItemsHeader,
-} from "../assets/styledComponents/components/RecentItems.styled";
-import Items from "../json/items.json";
+} from "../assets/styles/components/RecentItems.styled";
+import Items from "../data/json/items.json";
 import ItemCard from "./ItemCard";
 
 const RecentItems = () => {

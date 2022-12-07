@@ -11,10 +11,10 @@ import StyledInput, {
   InnerInput,
   InputLeftImage,
   InputRightImage,
-} from "../assets/styledComponents/layout/Inputs.styled";
-import PrimaryButton from "../assets/styledComponents/base/Button.styled";
+} from "../assets/styles/layout/Inputs.styled";
+import PrimaryButton from "../assets/styles/base/Button.styled";
 
-type InputProps = {
+interface IInputProps {
   image: string;
   otherImage?: string; // optional argument - for the password and location inputs
   type: string;
@@ -22,7 +22,7 @@ type InputProps = {
   isSearchInput?: boolean; // will render the search button if prop is true
   width?: number;
   height?: number;
-};
+}
 
 export const Input = ({
   image,
@@ -32,7 +32,7 @@ export const Input = ({
   isSearchInput,
   width = 500,
   height = 70,
-}: InputProps) => {
+}: IInputProps) => {
   const [passwordType, setPasswordType] = useState<string>("password");
   const [location, setLocation] = useState<number[]>([]);
 

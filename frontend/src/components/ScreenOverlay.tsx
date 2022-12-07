@@ -1,26 +1,26 @@
-import StyledScreenOverlay from "../assets/styledComponents/components/ScreenOverlay.styled";
+import { MouseEventHandler } from "react";
+import StyledScreenOverlay from "../assets/styles/components/ScreenOverlay.styled";
 
-type OverlayProps = {
-  goBack: Function;
-  styleMode: string;
-  children?: React.ReactNode;
-};
+interface IOverlayProps {
+  goBack?: Function;
+  styleMode?: string;
+  handleClick?: MouseEventHandler<HTMLDivElement>;
+  isMenuOpen?: boolean;
+  isProductDetailsOpen?: boolean;
+}
 const ScreenOverlay = ({
-  goBack = () => {},
-  styleMode,
-  children,
-}: OverlayProps) => {
+  styleMode = "darken",
+  handleClick,
+  isMenuOpen,
+  isProductDetailsOpen,
+}: IOverlayProps) => {
   return (
-    <div>
-      <StyledScreenOverlay
-        role="presentation" // solving 'jsx-a11y/no-static-element-interactions' (eslint)
-        className={`${styleMode}`}
-        onClick={() => {
-          if (goBack) goBack();
-        }}
-      />
-      {children}
-    </div>
+    <StyledScreenOverlay
+      className={`${styleMode}`}
+      onClick={handleClick}
+      isMenuOpen={isMenuOpen}
+      isProductDetailsOpen={isProductDetailsOpen}
+    ></StyledScreenOverlay>
   );
 };
 

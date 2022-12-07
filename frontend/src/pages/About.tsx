@@ -10,6 +10,7 @@ import StyledAbout, {
 } from "../assets/styledComponents/pages/AboutUs.styled";
 import { Text } from "../types";
 
+
 const About = () => {
   return (
     <StyledAbout className="fade-in">

@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import MainLogo from "../assets/images/MainLogo.png";
+import MainLogo from "../../assets/images/MainLogo.png";
 import LogoContainer, {
   LogoHeader,
   LogoImage,
-} from "../assets/styledComponents/components/Logo.styled";
+} from "../../assets/styles/components/Logo.styled";
 
 const Logo = () => {
   const navigate = useNavigate();

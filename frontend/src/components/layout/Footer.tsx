@@ -2,7 +2,7 @@ import FooterContainer, {
   Copyrights,
   FooterHR,
   FooterText,
-} from "../assets/styledComponents/layout/Footer.styled";
+} from "../../assets/styles/layout/Footer.styled";
 import Logo from "./Logo";
 
 const Footer = () => {
