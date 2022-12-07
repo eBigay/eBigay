@@ -20,7 +20,7 @@ export const useModal = () => {
     },
   });
 
-  const handleModal = (content: IItem) => {
+  const handleModal = (content?: IItem) => {
     setModal(!modal);
     if (content) {
       setModalContent(content);

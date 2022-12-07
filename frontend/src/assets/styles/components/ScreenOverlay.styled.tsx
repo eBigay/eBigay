@@ -21,8 +21,8 @@ const StyledScreenOverlay = styled.div<IScreenOverlayContainerProps>`
   z-index: 25;
   transition: ${(props) =>
     props.isProductDetailsOpen
-      ? "opacity 0.2s ease-in-out"
-      : "pacity 0.5s ease-in-out"};
+      ? "opacity 0.15s ease-in-out"
+      : "opacity 0.5s ease-in-out"};
 
   &.darken {
     background-color: rgba(0, 0, 0, 0.64);

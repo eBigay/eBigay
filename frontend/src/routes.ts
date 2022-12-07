@@ -12,7 +12,6 @@ const Login = lazy(async () => {
   return import("./pages/Login");
 });
 import Search from "./pages/Search";
-import ProductDetails from "./components/ProductDetails";
 import { NotFound } from "./pages/NotFound";
 
 const routes = [
@@ -20,11 +19,6 @@ const routes = [
     path: "/",
     element: Home,
     key: "Home",
-    nested: {
-      path: "product/:id",
-      element: ProductDetails,
-      key: "product",
-    },
   },
   {
     path: "/about",

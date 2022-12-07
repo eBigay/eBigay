@@ -4,32 +4,13 @@ import { IItem } from "../interfaces/IItem.interface";
 
 export type RootContextType = {
   modal: boolean;
-  handleModal: any;
-  modalContent: IItem | boolean;
+  handleModal: (content?: IItem) => void;
+  modalContent: IItem;
 };
 
-const initialState: RootContextType = {
-  modal: false,
-  handleModal: () => {},
-  modalContent: {
-    _id: "",
-    qty: 0,
-    itemName: "",
-    mainImg: "",
-    category: "",
-    location: "",
-    createdAt: 0,
-    description: "",
-    imgs: [],
-    createdBy: {
-      _id: "",
-      fullname: "",
-      imgUrl: "",
-    },
-  },
-};
-
-export const rootContext = createContext<RootContextType>(initialState);
+export const rootContext = createContext<RootContextType>(
+  {} as RootContextType
+);
 const RootContextProvider = ({
   children,
 }: React.PropsWithChildren<Record<string, unknown>>) => {

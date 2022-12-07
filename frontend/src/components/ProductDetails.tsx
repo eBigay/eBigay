@@ -3,7 +3,6 @@ import {
   PopUp,
 } from "../assets/styles/components/ProductDetails.styled";
 import ScreenOverlay from "./ScreenOverlay";
-import { useState } from "react";
 import {
   ProductDetailsContainer,
   ProductDetailsSection,
