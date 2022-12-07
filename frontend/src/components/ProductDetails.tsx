@@ -1,9 +1,8 @@
+import { Avatar } from "@mui/material";
+import { useContext } from "react";
 import {
   CreatedByName,
   PopUp,
-} from "../assets/styles/components/ProductDetails.styled";
-import ScreenOverlay from "./ScreenOverlay";
-import {
   ProductDetailsContainer,
   ProductDetailsSection,
   MainIMg,
@@ -12,10 +11,10 @@ import {
   ImgsWrapper,
   SecondaryImg,
 } from "../assets/styles/components/ProductDetails.styled";
+import ScreenOverlay from "./ScreenOverlay";
+
 import PrimaryButton from "../assets/styles/base/Button.styled";
-import { Avatar } from "@mui/material";
 import { rootContext } from "../context/RootContext";
-import { useContext } from "react";
 
 const ProductDetails = () => {
   const { modal, handleModal, modalContent } = useContext(rootContext);

@@ -7,9 +7,8 @@ import StyledAbout, {
   AboutUsText,
   BackImage,
   BackLink,
-} from "../assets/styledComponents/pages/AboutUs.styled";
-import { Text } from "../types";
-
+} from "../assets/styles/pages/AboutUs.styled";
+import Text from "../types";
 
 const About = () => {
   return (

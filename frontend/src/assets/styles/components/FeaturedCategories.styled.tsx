@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { respondTo } from "../../theme/responsive";
+import RespondTo from "../../theme/responsive";
 
 const FeaturedContainer = styled.div`
   padding: 0 5rem;
@@ -8,7 +8,7 @@ const FeaturedContainer = styled.div`
   margin-top: 72px;
   margin-bottom: 100px;
   gap: 27px;
-  ${respondTo.mobileBreakpoint`
+  ${RespondTo.mobileBreakpoint`
    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
    padding: 0 2rem
   `}

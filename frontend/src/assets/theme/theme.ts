@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
-const MuiTheme = createTheme({
+export const MuiTheme = createTheme({
   palette: {
     button: {
       primary: "linear-gradient(85.17deg, #fbb527 0%, #fcdd6a 100%)",
@@ -11,7 +11,7 @@ const MuiTheme = createTheme({
     },
     background: {
       default: "#F5F5F5;",
-      paper: "#ebecf0", //footer
+      paper: "#ebecf0", // footer
     },
     border: {
       primary: "rgba(144, 135, 170, 0.5)",

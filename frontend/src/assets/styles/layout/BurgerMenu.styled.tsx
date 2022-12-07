@@ -1,5 +1,5 @@
-import styled, { css } from "styled-components";
-import { respondTo } from "../../theme/responsive";
+import styled from "styled-components";
+import RespondTo from "../../theme/responsive";
 
 interface IStyledBurgerMenuProps {
   isMenuOpen: boolean;
@@ -7,7 +7,7 @@ interface IStyledBurgerMenuProps {
 
 const StyledBurgerMenu = styled.button<IStyledBurgerMenuProps>`
   display: none;
-  ${respondTo.tabletBreakpoint`
+  ${RespondTo.tabletBreakpoint`
     display: flex;
     flex-direction: column;
     justify-content: space-around;

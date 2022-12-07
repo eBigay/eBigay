@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { StyledHeader } from "../../assets/styles/layout/Header.styled";
 import Logo from "./Logo";
-import { BurgerMenu } from "./BurgerMenu";
+import BurgerMenu from "./BurgerMenu";
 import Nav from "./Nav";
 
 const Header = () => {
