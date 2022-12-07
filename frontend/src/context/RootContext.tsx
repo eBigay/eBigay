@@ -1,28 +1,48 @@
 import React, { createContext, useState, useMemo } from "react";
-import { useModal } from "../hooks/useModal";
-import { IItem } from "../interfaces/IItem.interface";
 
 export type RootContextType = {
-  modal: boolean;
-  handleModal: (content?: IItem) => void;
-  modalContent: IItem;
+  notificationOpen: boolean;
+  setNotificationOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  notificationContent: { title: string; message: string | string[] };
+  setNotificationContent: React.Dispatch<
+    React.SetStateAction<{
+      title: string;
+      message: string | string[];
+    }>
+  >;
 };
 
-export const rootContext = createContext<RootContextType>(
-  {} as RootContextType
-);
+const initialState: RootContextType = {
+  notificationOpen: false,
+  setNotificationOpen: () => {},
+  notificationContent: { title: "", message: "" },
+  setNotificationContent: () => {},
+};
+
+export const rootContext = createContext<RootContextType>(initialState);
 const RootContextProvider = ({
   children,
 }: React.PropsWithChildren<Record<string, unknown>>) => {
-  const { modal, handleModal, modalContent } = useModal();
+  const [notificationOpen, setNotificationOpen] = useState<boolean>(false);
+  const [notificationContent, setNotificationContent] = useState<{
+    title: string;
+    message: string | string[];
+  }>({ title: "", message: "" });
 
   const providerValue = useMemo(
     () => ({
-      modal,
-      handleModal,
-      modalContent,
+      notificationOpen,
+      setNotificationOpen,
+      notificationContent,
+      setNotificationContent,
     }),
-    [modal, handleModal, modalContent]
+    [
+      notificationOpen,
+      setNotificationOpen,
+      notificationContent,
+      setNotificationContent,
+    ]
+
   );
   return (
     <rootContext.Provider value={providerValue}>
