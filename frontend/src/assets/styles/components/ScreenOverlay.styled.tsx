@@ -1,3 +1,4 @@
+import { Opacity } from "@mui/icons-material";
 import styled from "styled-components";
 
 interface IScreenOverlayContainerProps {
@@ -18,7 +19,10 @@ const StyledScreenOverlay = styled.div<IScreenOverlayContainerProps>`
   top: 0;
   left: 0;
   z-index: 25;
-  transition: opacity 0.5s ease-in-out;
+  transition: ${(props) =>
+    props.isProductDetailsOpen
+      ? "opacity 0.2s ease-in-out"
+      : "pacity 0.5s ease-in-out"};
 
   &.darken {
     background-color: rgba(0, 0, 0, 0.64);

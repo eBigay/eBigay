@@ -2,11 +2,8 @@ import {
   CreatedByName,
   PopUp,
 } from "../assets/styles/components/ProductDetails.styled";
-import { useNavigate } from "react-router-dom";
 import ScreenOverlay from "./ScreenOverlay";
 import { useState } from "react";
-import { useContext } from "react";
-import { ItemContext } from "../context/itemContext";
 import {
   ProductDetailsContainer,
   ProductDetailsSection,
@@ -18,21 +15,16 @@ import {
 } from "../assets/styles/components/ProductDetails.styled";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import { Avatar } from "@mui/material";
+import { rootContext } from "../context/RootContext";
+import { useContext } from "react";
 
 const ProductDetails = () => {
-  const [isProductDetailsOpen, setIsProductDetailsOpen] =
-    useState<boolean>(true);
+  const { modal, handleModal, modalContent } = useContext(rootContext);
 
-  const navigate = useNavigate();
-
-  const { dispatch, itemState } = useContext(ItemContext);
-
-  const { description, mainImg, _id, itemName, createdBy, imgs } = itemState;
+  const { description, mainImg, itemName, createdBy, imgs } = modalContent;
 
   const toggleProductDetailsOpen = () => {
-    setIsProductDetailsOpen((isProductDetailsOpen) => !isProductDetailsOpen);
-    dispatch({ type: "RESET_ITEM" });
-    navigate("/");
+    handleModal();
   };
 
   return (
@@ -40,9 +32,9 @@ const ProductDetails = () => {
       <ScreenOverlay
         styleMode="darken"
         handleClick={toggleProductDetailsOpen}
-        isProductDetailsOpen={isProductDetailsOpen}
+        isProductDetailsOpen={modal}
       />
-      <PopUp>
+      <PopUp isProductDetailsOpen={modal}>
         <ProductDetailsContainer>
           <MainIMg src={mainImg} alt={itemName} />
           <ProductDetailsSection>
@@ -57,7 +49,9 @@ const ProductDetails = () => {
             </PrimaryButton>
             <ImgsWrapper>
               {imgs &&
-                imgs.slice(0, 3).map((img) => <SecondaryImg src={img} />)}
+                imgs
+                  .slice(0, 3)
+                  .map((img) => <SecondaryImg key={img} src={img} />)}
             </ImgsWrapper>
           </ProductDetailsSection>
         </ProductDetailsContainer>

@@ -1,6 +1,12 @@
 import styled from "styled-components";
 
-export const PopUp = styled.div`
+interface isProductDetailsOpen {
+  isProductDetailsOpen?: boolean;
+}
+
+export const PopUp = styled.div<isProductDetailsOpen>`
+  display: ${({ isProductDetailsOpen }) =>
+    isProductDetailsOpen ? "flex" : "none"};
   background-color: #f4f5f7;
   border-radius: 20px;
   position: fixed;

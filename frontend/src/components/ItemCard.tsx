@@ -19,7 +19,7 @@ import ItemCardContainer, {
   LocationName,
 } from "../assets/styles/components/ItemCard.styled";
 import Location from "../assets/svgs/Location.svg";
-import { ItemContext } from "../context/itemContext";
+import { rootContext } from "../context/RootContext";
 import { IItem } from "../interfaces/IItem.interface";
 
 interface IItemCard {
@@ -27,13 +27,10 @@ interface IItemCard {
 }
 
 const ItemCard = ({ item }: IItemCard) => {
-  const navigate = useNavigate();
-
-  const { dispatch } = useContext(ItemContext);
+  const { handleModal } = useContext(rootContext);
 
   const handleOpenProductDetails = () => {
-    dispatch({ type: "SET_ITEM", payload: item });
-    navigate(`/product/${item._id}`);
+    handleModal(item);
   };
 
   return (
