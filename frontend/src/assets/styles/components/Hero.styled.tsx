@@ -1,10 +1,17 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { respondTo } from "../../theme/responsive";
 
 const HeroContainer = styled.div`
   display: flex;
   padding-left: 80px;
   padding-right: 36px;
   margin-top: 151px;
+  ${respondTo.laptopBreakpoint`
+  padding: 0 5rem;
+  `}
+  ${respondTo.mobileBreakpoint`
+   padding: 0 2rem
+  `}
 `;
 
 export const HeroContent = styled.div`
@@ -13,6 +20,10 @@ export const HeroContent = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 38px;
+  ${respondTo.laptopBreakpoint`
+  text-align:center;
+  align-items:center;
+  `}
 `;
 
 export const HeroHeader = styled.h2`
@@ -23,7 +34,7 @@ export const HeroHeader = styled.h2`
 `;
 
 export const HeroSubHeader = styled.h3`
-  width: 480px;
+  max-width: 480px;
   font-size: ${({ theme }) => theme.fontSizes.fsXL};
   font-weight: 400;
   color: ${({ theme }) => theme.colors.clr3};
@@ -33,6 +44,9 @@ export const HeroSubHeader = styled.h3`
 export const HeroImage = styled.img`
   min-width: 450px;
   max-height: 526px;
+  ${respondTo.laptopBreakpoint`
+    display: none; 
+  `}
 `;
 
 export default HeroContainer;

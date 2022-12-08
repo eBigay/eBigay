@@ -16,7 +16,7 @@ export const FooterText = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.fsL};
   font-weight: 400;
   text-align: center;
-  width: 50rem;
+  max-width: 50rem;
 `;
 
 export const FooterHR = styled.div`

@@ -24,20 +24,21 @@ export const ItemInfo = styled.div`
   justify-content: center;
   transition: all 0.5s ease;
   cursor: pointer;
-  > * {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: ${({ theme }) => theme.colors.clr4};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 10px;
-    transition: all 0.5s ease;
-    &:hover {
-      background: ${({ theme }) => theme.colors.clr1};
-      transform: scale(1.1);
-    }
+`;
+
+export const Icon = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.colors.clr4};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+  transition: all 0.5s ease;
+  &:hover {
+    background: ${({ theme }) => theme.colors.clr1};
+    transform: scale(1.1);
   }
 `;
 

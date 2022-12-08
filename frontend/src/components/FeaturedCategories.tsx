@@ -1,5 +1,5 @@
-import categoriesDemo from "../data";
-import FeaturedContainer from "../assets/styledComponents/components/FeaturedCategories.styled";
+import categoriesDemo from "../data/data";
+import FeaturedContainer from "../assets/styles/components/FeaturedCategories.styled";
 import FeaturedCategory from "./FeaturedCategory";
 
 const FeaturedCategories = () => {
