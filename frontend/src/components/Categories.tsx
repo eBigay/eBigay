@@ -4,13 +4,13 @@ import {
 } from "../assets/styles/components/Categories.styled";
 import Category from "./Category";
 
-interface CategoryProps {
+interface CategoriesProps {
   id: number;
   category: string;
   url: string;
 }
 
-const Categories = ({ categories }: { categories: CategoryProps[] }) => (
+const Categories = ({ categories }: { categories: CategoriesProps[] }) => (
   <CategoriesContainer>
     <CategoriesHeader>Categories</CategoriesHeader>
     {categories.map((category) => (

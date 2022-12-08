@@ -47,6 +47,7 @@ const theme = {
     clr6: "#ebecf0", // list-color
     clr7: "#172b4d",
     clr8: "#b04632",
+    clr9: "#fbc846",
     footer: "rgba(253, 241, 225, 0.4)",
   },
   fontSizes: {

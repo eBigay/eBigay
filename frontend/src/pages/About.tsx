@@ -8,7 +8,7 @@ import StyledAbout, {
   BackImage,
   BackLink,
 } from "../assets/styles/pages/AboutUs.styled";
-import Text from "../types";
+import Text from "../data/enums";
 
 const About = () => {
   return (

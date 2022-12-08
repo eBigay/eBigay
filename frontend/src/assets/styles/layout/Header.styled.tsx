@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import RespondTo from "../../theme/responsive";
+import RespondTo, { MinWidth } from "../../theme/responsive";
 
 interface IStyledLinksProps {
   isMenuOpen: boolean;
@@ -24,6 +24,9 @@ export const StyledHeader = styled.div`
   `}
   ${RespondTo.mobileBreakpoint`
    padding: 0 2rem
+  `}
+    ${MinWidth.wideBreakpoint`
+  padding: 0 10rem;
   `}
 `;
 

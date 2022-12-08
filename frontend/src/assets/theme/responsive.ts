@@ -18,3 +18,14 @@ const RespondTo = keys.reduce((accumulator, label) => {
 }, {} as Record<keyof typeof theme.breakpoints, Function>);
 
 export default RespondTo;
+
+export const MinWidth = keys.reduce((accumulator, label) => {
+  accumulator[label] = (...args: CssParams) => {
+    return css`
+      @media (width > ${theme.breakpoints[label]}) {
+        ${css(...args)};
+      }
+    `;
+  };
+  return accumulator;
+}, {} as Record<keyof typeof theme.breakpoints, Function>);

@@ -39,7 +39,7 @@ const ProductDetails = () => {
             <h1>{itemName}</h1>
             <CreatedByContainer>
               <Avatar src={createdBy.imgUrl} />
-              <CreatedByName>{createdBy.fullname}</CreatedByName>
+              <CreatedByName>{createdBy.fullName}</CreatedByName>
             </CreatedByContainer>
             <DetailsDescription>{description}</DetailsDescription>
             <PrimaryButton width="70%" height="70px" fontSize="l">

@@ -5,7 +5,7 @@ import {
   NotFoundTitle,
   NotFoundImg,
 } from "../assets/styles/components/NotFound.styled";
-import ErrorImg from "../assets/images/NotFound.png";
+import ErrorImg from "../assets/images/NotFound2.png";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 
 const NotFound = () => {

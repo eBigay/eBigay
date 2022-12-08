@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import RespondTo from "../../theme/responsive";
+import RespondTo, { MinWidth } from "../../theme/responsive";
 
 const FeaturedContainer = styled.div`
   padding: 0 5rem;
@@ -11,6 +11,9 @@ const FeaturedContainer = styled.div`
   ${RespondTo.mobileBreakpoint`
    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
    padding: 0 2rem
+  `}
+  ${MinWidth.wideBreakpoint`
+  padding: 0 10rem;
   `}
 `;
 

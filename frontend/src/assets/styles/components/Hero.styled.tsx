@@ -1,11 +1,14 @@
 import styled from "styled-components";
-import RespondTo from "../../theme/responsive";
+import RespondTo, { MinWidth } from "../../theme/responsive";
 
 const HeroContainer = styled.div`
   display: flex;
   padding-left: 80px;
   padding-right: 36px;
   margin-top: 151px;
+  ${MinWidth.wideBreakpoint`
+  padding: 0 10rem;
+  `}
   ${RespondTo.laptopBreakpoint`
   padding: 0 5rem;
   `}

@@ -15,7 +15,7 @@ const useModal = () => {
     imgs: [],
     createdBy: {
       _id: "",
-      fullname: "",
+      fullName: "",
       imgUrl: "",
     },
   });

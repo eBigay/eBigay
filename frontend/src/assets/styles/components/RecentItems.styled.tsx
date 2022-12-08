@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import RespondTo from "../../theme/responsive";
+import RespondTo, { MinWidth } from "../../theme/responsive";
 
 export const RecentItemsHeader = styled.h2`
   padding: 0 5rem;
@@ -35,5 +35,8 @@ export const RecentItemsContainer = styled.div`
   ${RespondTo.mobileBreakpoint`
    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
    padding: 0 2rem;
+  `}
+  ${MinWidth.wideBreakpoint`
+  padding: 0 10rem;
   `}
 `;

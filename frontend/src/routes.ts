@@ -4,17 +4,17 @@ import NotFound from "./pages/NotFound";
 
 const Home = lazy(async () => {
   /* eslint-disable-next-line */
-  await new Promise((resolve) => setTimeout(resolve, 1200));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   return import("./pages/Home");
 });
 const About = lazy(async () => {
   /* eslint-disable-next-line */
-  await new Promise((resolve) => setTimeout(resolve, 1200));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   return import("./pages/About");
 });
 const Login = lazy(async () => {
   /* eslint-disable-next-line */
-  await new Promise((resolve) => setTimeout(resolve, 1200));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   return import("./pages/Login");
 });
 

@@ -20,11 +20,7 @@ import Location from "../assets/svgs/Location.svg";
 import { rootContext } from "../context/RootContext";
 import { IItem } from "../interfaces/IItem.interface";
 
-interface IItemCard {
-  item: IItem;
-}
-
-const ItemCard = ({ item }: IItemCard) => {
+const ItemCard = ({ item }: { item: IItem }) => {
   const { setNotificationOpen, setNotificationContent } =
     useContext(rootContext);
   return (

@@ -20,7 +20,7 @@ const INITIAL_STATE: IItem = {
   imgs: [],
   createdBy: {
     _id: "",
-    fullname: "",
+    fullName: "",
     imgUrl: "",
   },
 };
