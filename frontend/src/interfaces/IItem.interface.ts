@@ -9,7 +9,7 @@ export interface IItem {
   createdAt: number;
   createdBy: {
     _id: string;
-    fullname: string;
+    fullName: string;
     imgUrl: string;
   };
   description: string;

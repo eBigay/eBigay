@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-interface isProductDetailsOpen {
+interface IsProductDetailsOpen {
   isProductDetailsOpen?: boolean;
 }
 
-export const PopUp = styled.div<isProductDetailsOpen>`
+export const PopUp = styled.div<IsProductDetailsOpen>`
   display: ${({ isProductDetailsOpen }) =>
     isProductDetailsOpen ? "flex" : "none"};
   background-color: #f4f5f7;

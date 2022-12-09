@@ -1,33 +1,10 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import { rootContext } from "../context/RootContext";
 
 interface ItemModalProps {
   isOpen: boolean;
-  setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
-
-const ItemModal = () => {
-  const {
-    notificationContent,
-    setNotificationContent,
-    notificationOpen,
-    setNotificationOpen,
-  } = useContext(rootContext);
-  return (
-    <>
-      <ModalWrapper isOpen={notificationOpen} setIsOpen={setNotificationOpen}>
-        <p style={{ fontSize: "30px" }}>{notificationContent.title}</p>
-        <BigPic />
-      </ModalWrapper>
-      {notificationOpen && (
-        <BackDrop onClick={() => setNotificationOpen(false)} />
-      )}
-    </>
-  );
-};
-
-export default ItemModal;
 
 const BackDrop = styled.div.attrs({ className: "backdrop" })`
   width: 100vw;
@@ -63,3 +40,21 @@ const BigPic = styled.div.attrs({ className: "picture" })`
   background-color: red;
   border-radius: 30px;
 `;
+
+const ItemModal = () => {
+  const { notificationContent, notificationOpen, setNotificationOpen } =
+    useContext(rootContext);
+  return (
+    <>
+      <ModalWrapper isOpen={notificationOpen}>
+        <p style={{ fontSize: "30px" }}>{notificationContent.title}</p>
+        <BigPic />
+      </ModalWrapper>
+      {notificationOpen && (
+        <BackDrop onClick={() => setNotificationOpen(false)} />
+      )}
+    </>
+  );
+};
+
+export default ItemModal;

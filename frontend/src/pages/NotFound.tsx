@@ -1,14 +1,14 @@
+import { useNavigate } from "react-router";
 import {
   NotFoundContainer,
   NotFoundContent,
   NotFoundTitle,
   NotFoundImg,
 } from "../assets/styles/components/NotFound.styled";
-import ErrorImg from "../assets/images/NotFound.png";
+import ErrorImg from "../assets/images/NotFound2.png";
 import PrimaryButton from "../assets/styles/base/Button.styled";
-import { useNavigate } from "react-router";
 
-export const NotFound = () => {
+const NotFound = () => {
   const navigate = useNavigate();
   return (
     <NotFoundContainer>
@@ -27,3 +27,5 @@ export const NotFound = () => {
     </NotFoundContainer>
   );
 };
+
+export default NotFound;

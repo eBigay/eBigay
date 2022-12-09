@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { IItem } from "../interfaces/IItem.interface";
 
-export const useModal = () => {
+const useModal = () => {
   const [modal, setModal] = useState<boolean>(false);
   const [modalContent, setModalContent] = useState<IItem>({
     _id: "",
@@ -15,7 +15,7 @@ export const useModal = () => {
     imgs: [],
     createdBy: {
       _id: "",
-      fullname: "",
+      fullName: "",
       imgUrl: "",
     },
   });
@@ -29,3 +29,5 @@ export const useModal = () => {
 
   return { modal, handleModal, modalContent };
 };
+
+export default useModal;

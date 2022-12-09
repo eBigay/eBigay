@@ -1,4 +1,4 @@
-import { FC, Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 import StyledBurgerMenu from "../../assets/styles/layout/BurgerMenu.styled";
 
 interface IBurgerMenuProps {
@@ -6,7 +6,7 @@ interface IBurgerMenuProps {
   setIsMenuOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export const BurgerMenu = ({ isMenuOpen, setIsMenuOpen }: IBurgerMenuProps) => {
+const BurgerMenu = ({ isMenuOpen, setIsMenuOpen }: IBurgerMenuProps) => {
   return (
     <StyledBurgerMenu
       isMenuOpen={isMenuOpen}
@@ -18,3 +18,5 @@ export const BurgerMenu = ({ isMenuOpen, setIsMenuOpen }: IBurgerMenuProps) => {
     </StyledBurgerMenu>
   );
 };
+
+export default BurgerMenu;

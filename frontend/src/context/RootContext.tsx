@@ -42,7 +42,6 @@ const RootContextProvider = ({
       notificationContent,
       setNotificationContent,
     ]
-
   );
   return (
     <rootContext.Provider value={providerValue}>

@@ -5,12 +5,12 @@ import {
   StyledCategory,
 } from "../assets/styles/components/Categories.styled";
 
-interface ICategoryProps {
+interface CategoryLinkProps {
   category: string;
   url: string;
 }
 
-const Category = ({ category, url }: ICategoryProps) => {
+const Category = ({ category, url }: CategoryLinkProps) => {
   const navigate = useNavigate();
   return (
     <StyledCategory onClick={() => navigate(url)}>

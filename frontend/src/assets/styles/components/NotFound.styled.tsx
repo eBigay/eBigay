@@ -14,8 +14,12 @@ export const NotFoundContent = styled.div`
 `;
 
 export const NotFoundTitle = styled.h2`
-  color: ${(props) => props.theme.colors.clr3};
+  background: ${({ theme }) => theme.colors.clr1};
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   font-size: 4rem;
+  margin-top: 6rem;
 `;
 
 export const NotFoundImg = styled.img`
@@ -23,4 +27,5 @@ export const NotFoundImg = styled.img`
   width: 20rem;
   max-width: 100%;
   max-height: 100%;
+  margin: 1rem 0;
 `;

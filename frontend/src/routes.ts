@@ -1,18 +1,22 @@
 import { lazy } from "react";
+import Search from "./pages/Search";
+import NotFound from "./pages/NotFound";
+
 const Home = lazy(async () => {
-  await new Promise((resolve) => setTimeout(resolve, 1200));
+  /* eslint-disable-next-line */
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   return import("./pages/Home");
 });
 const About = lazy(async () => {
-  await new Promise((resolve) => setTimeout(resolve, 1200));
+  /* eslint-disable-next-line */
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   return import("./pages/About");
 });
 const Login = lazy(async () => {
-  await new Promise((resolve) => setTimeout(resolve, 1200));
+  /* eslint-disable-next-line */
+  await new Promise((resolve) => setTimeout(resolve, 1000));
   return import("./pages/Login");
 });
-import Search from "./pages/Search";
-import { NotFound } from "./pages/NotFound";
 
 const routes = [
   {

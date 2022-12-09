@@ -2,7 +2,6 @@ import { MouseEventHandler } from "react";
 import StyledScreenOverlay from "../assets/styles/components/ScreenOverlay.styled";
 
 interface IOverlayProps {
-  goBack?: Function;
   styleMode?: string;
   handleClick?: MouseEventHandler<HTMLDivElement>;
   isMenuOpen?: boolean;
@@ -20,7 +19,7 @@ const ScreenOverlay = ({
       onClick={handleClick}
       isMenuOpen={isMenuOpen}
       isProductDetailsOpen={isProductDetailsOpen}
-    ></StyledScreenOverlay>
+    />
   );
 };
 

@@ -1,4 +1,3 @@
-import React from "react";
 import HeroImg from "../assets/images/HeroImg.png";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import HeroContainer, {
@@ -7,6 +6,7 @@ import HeroContainer, {
   HeroImage,
   HeroSubHeader,
 } from "../assets/styles/components/Hero.styled";
+
 const Hero = () => {
   return (
     <HeroContainer>
