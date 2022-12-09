@@ -15,12 +15,15 @@ import {
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import { Avatar } from "@mui/material";
 import { rootContext } from "../context/RootContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { useOverflow } from "../hooks/useOverflow";
 
 const ProductDetails = () => {
   const { modal, handleModal, modalContent } = useContext(rootContext);
 
   const { description, mainImg, itemName, createdBy, imgs } = modalContent;
+
+  useOverflow(modal, [modal]);
 
   const toggleProductDetailsOpen = () => {
     handleModal();
