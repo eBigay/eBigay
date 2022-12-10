@@ -26,7 +26,7 @@ export const ItemInfo = styled.div`
   cursor: pointer;
 `;
 
-export const Icon = styled.div`
+export const Icon = styled.div.attrs({ className: "icon" })`
   width: 40px;
   height: 40px;
   border-radius: 50%;
