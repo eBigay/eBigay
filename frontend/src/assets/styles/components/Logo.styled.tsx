@@ -1,7 +1,13 @@
 import styled from "styled-components";
 
-const LogoContainer = styled.div`
-  cursor: pointer;
+interface LogoContainerProps {
+  noNavigate?: boolean;
+}
+
+const LogoContainer = styled.div.attrs({
+  className: "logo",
+})<LogoContainerProps>`
+  cursor: ${({ noNavigate }) => (noNavigate ? "default" : "pointer")};
   gap: 10px;
   display: flex;
   align-items: center;

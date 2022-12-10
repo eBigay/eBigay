@@ -17,6 +17,11 @@ const Login = lazy(async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return import("./pages/Login");
 });
+const SignUp = lazy(async () => {
+  /* eslint-disable-next-line */
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return import("./pages/SignUp");
+});
 
 const routes = [
   {
@@ -33,6 +38,11 @@ const routes = [
     path: "/login",
     element: Login,
     key: "Login",
+  },
+  {
+    path: "/SignUp",
+    element: SignUp,
+    key: "SignUp",
   },
   {
     path: "/search",
