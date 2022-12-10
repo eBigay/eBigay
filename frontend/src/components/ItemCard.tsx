@@ -21,9 +21,9 @@ import Location from "../assets/svgs/Location.svg";
 import { rootContext } from "../context/RootContext";
 import { IItem } from "../interfaces/IItem.interface";
 
-type IItemCard = {
+interface IItemCard {
   item: IItem;
-};
+}
 
 const ItemCard = ({ item }: IItemCard) => {
   const { handleModal } = useContext(rootContext);
