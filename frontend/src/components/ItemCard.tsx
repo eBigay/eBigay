@@ -15,6 +15,7 @@ import ItemCardContainer, {
   ItemName,
   LocationImage,
   LocationName,
+  Icon,
 } from "../assets/styles/components/ItemCard.styled";
 import Location from "../assets/svgs/Location.svg";
 import { rootContext } from "../context/RootContext";
@@ -29,19 +30,25 @@ const ItemCard = ({ item }: { item: IItem }) => {
         <ItemImage src={item.mainImg} alt={item.itemName} />
         <ItemInfo>
           <div>
-            <SearchOutlined
-              onClick={() => {
-                setNotificationContent({ title: item.itemName, message: "" });
-                setNotificationOpen(true);
-              }}
-            />
-            {/* <Link to={`/product/${item._id}`} /> */}
+            <Icon>
+              <SearchOutlined
+                onClick={() => {
+                  setNotificationContent({ title: item.itemName, message: "" });
+                  setNotificationOpen(true);
+                }}
+              />
+              {/* <Link to={`/product/${item._id}`} /> */}
+            </Icon>
           </div>
           <div>
-            <MessageOutlined />
+            <Icon>
+              <MessageOutlined />
+            </Icon>
           </div>
           <div>
-            <FavoriteBorderOutlined />
+            <Icon>
+              <FavoriteBorderOutlined />
+            </Icon>
           </div>
         </ItemInfo>
       </ItemImageContainer>

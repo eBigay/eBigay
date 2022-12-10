@@ -10,7 +10,7 @@ const BackDrop = styled.div.attrs({ className: "backdrop" })`
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
-  z-index: 998;
+  z-index: 5;
   display: block;
   position: fixed;
   left: 0;
@@ -28,7 +28,7 @@ const ModalWrapper = styled.div.attrs({
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  z-index: 999;
+  z-index: 10;
   min-width: 1000px;
   min-height: 500px;
   border-radius: 30px;
