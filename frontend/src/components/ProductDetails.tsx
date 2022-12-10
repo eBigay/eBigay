@@ -10,6 +10,10 @@ import {
   CreatedByContainer,
   ImgsWrapper,
   SecondaryImg,
+  DetailsName,
+  CancelIcon,
+  CreatedByLocation,
+  CreatedByWrapper,
 } from "../assets/styles/components/ProductDetails.styled";
 import ScreenOverlay from "./ScreenOverlay";
 
@@ -20,7 +24,8 @@ import useOverflow from "../hooks/useOverflow";
 const ProductDetails = () => {
   const { modal, handleModal, modalContent } = useContext(rootContext);
 
-  const { description, mainImg, itemName, createdBy, imgs } = modalContent;
+  const { description, mainImg, itemName, createdBy, imgs, location } =
+    modalContent;
 
   useOverflow(modal, [modal]);
 
@@ -39,10 +44,13 @@ const ProductDetails = () => {
         <ProductDetailsContainer>
           <MainIMg src={mainImg} alt={itemName} />
           <ProductDetailsSection>
-            <h1>{itemName}</h1>
+            <DetailsName>{itemName}</DetailsName>
             <CreatedByContainer>
-              <Avatar src={createdBy.imgUrl} />
-              <CreatedByName>{createdBy.fullName}</CreatedByName>
+              <Avatar src={createdBy.imgUrl} sx={{ width: 60, height: 60 }} />
+              <CreatedByWrapper>
+                <CreatedByName>{createdBy.fullName}</CreatedByName>
+                <CreatedByLocation>{location}</CreatedByLocation>
+              </CreatedByWrapper>
             </CreatedByContainer>
             <DetailsDescription>{description}</DetailsDescription>
             <PrimaryButton width="70%" height="70px" fontSize="l">
@@ -56,6 +64,7 @@ const ProductDetails = () => {
             </ImgsWrapper>
           </ProductDetailsSection>
         </ProductDetailsContainer>
+        <CancelIcon onClick={toggleProductDetailsOpen} />
       </PopUp>
     </>
   );

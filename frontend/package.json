@@ -18,6 +18,7 @@
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.13",
     "@mui/styled-engine-sc": "^5.10.14",
+    "esbuild": "^0.16.4",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
     "eslint-config-prettier": "^8.5.0",
@@ -29,7 +30,9 @@
     "react-router": "^6.4.3",
     "react-router-dom": "^6.4.3",
     "react-transition-group": "^4.4.5",
+    "sass": "^1.56.2",
     "styled-components": "^5.3.6",
+    "swiper": "^8.4.5",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
