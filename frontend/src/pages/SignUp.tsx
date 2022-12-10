@@ -1,29 +1,30 @@
 import { useNavigate } from "react-router-dom";
-import { LoginInput } from "../components/Inputs";
-import LoginBackground from "../assets/svgs/LoginRegisterEmojis.svg";
 import LoginPage, {
   LoginImage,
   LogInSignUp,
   LogInSignUpBold,
   LogInSignUpParagraph,
 } from "../assets/styles/pages/LogIn.styled";
+import LoginBackground from "../assets/svgs/LoginRegisterEmojis2.svg";
+import { RegisterInput } from "../components/Inputs";
 
-const Login = () => {
+const SignUp = () => {
   const navigate = useNavigate();
   const onClick = () => {
-    navigate("/SignUp");
+    navigate("/Login");
     window.scroll({ top: 0, behavior: "smooth" });
   };
 
   return (
     <LoginPage>
       <LoginImage src={LoginBackground} alt="Background" />
-      <LoginInput />
+      <RegisterInput />
       <LogInSignUp>
-        <LogInSignUpParagraph>Don&apos;t have an account?</LogInSignUpParagraph>
-        <LogInSignUpBold onClick={onClick}>Sign Up</LogInSignUpBold>
+        <LogInSignUpParagraph>Already have an account?</LogInSignUpParagraph>
+        <LogInSignUpBold onClick={onClick}>Log in</LogInSignUpBold>
       </LogInSignUp>
     </LoginPage>
   );
 };
-export default Login;
+
+export default SignUp;

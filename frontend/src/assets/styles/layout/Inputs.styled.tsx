@@ -1,19 +1,23 @@
 import styled from "styled-components";
+import RespondTo from "../../theme/responsive";
 
-type Props = {
+interface InputProps {
   width: number;
   height: number;
-};
+}
 
-const StyledInput = styled.div<Props>`
+const StyledInput = styled.div<InputProps>`
   width: ${({ width }) => `${width}px`};
   height: ${({ height }) => `${height}px`};
   position: relative;
   border-radius: ${({ theme }) => theme.borders.borderRad3};
   border: 1px solid ${({ theme }) => theme.colors.clr3light};
-  margin: 1.5rem;
+  margin-bottom: 1.7rem;
   display: flex;
   align-items: center;
+  ${RespondTo.mobileBreakpoint`
+  width: 85%;
+  `}
 `;
 
 export const InnerInput = styled.input`

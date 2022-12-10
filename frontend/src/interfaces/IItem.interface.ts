@@ -3,13 +3,13 @@ export interface IItem {
   qty: number;
   itemName: string;
   mainImg: string;
-  imgs: string[];
+  imgs?: string[];
   category: string;
   location: any;
   createdAt: number;
   createdBy: {
     _id: string;
-    fullName: string;
+    fullName?: string;
     imgUrl: string;
   };
   description: string;
