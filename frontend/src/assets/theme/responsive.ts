@@ -16,5 +16,3 @@ export const respondTo = keys.reduce((accumulator, label) => {
   };
   return accumulator;
 }, {} as Record<keyof typeof theme.breakpoints, Function>);
-
-console.log(respondTo);

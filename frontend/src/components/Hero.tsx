@@ -1,4 +1,3 @@
-import React from "react";
 import HeroImg from "../assets/images/HeroImg.png";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import HeroContainer, {
