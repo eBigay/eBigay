@@ -6,6 +6,7 @@ import {
 import { useContext } from "react";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import ItemCardContainer, {
+  Icon,
   ItemCategory,
   ItemDetails,
   ItemImage,
@@ -15,7 +16,6 @@ import ItemCardContainer, {
   ItemName,
   LocationImage,
   LocationName,
-  Icon,
 } from "../assets/styles/components/ItemCard.styled";
 import Location from "../assets/svgs/Location.svg";
 import { rootContext } from "../context/RootContext";
@@ -26,11 +26,11 @@ interface IItemCard {
 }
 
 const ItemCard = ({ item }: IItemCard) => {
-  // const { handleModal } = useContext(rootContext);
+  const { handleModal } = useContext(rootContext);
 
-  // const handleOpenProductDetails = () => {
-  //   handleModal(item);
-  // };
+  const handleOpenProductDetails = () => {
+    handleModal(item);
+  };
 
   return (
     <ItemCardContainer>
@@ -38,9 +38,7 @@ const ItemCard = ({ item }: IItemCard) => {
         <ItemImage src={item.mainImg} alt={item.itemName} />
         <ItemInfo>
           <Icon>
-            <SearchOutlined
-            //  onClick={handleOpenProductDetails}
-            />
+            <SearchOutlined onClick={handleOpenProductDetails} />
           </Icon>
           <Icon>
             <MessageOutlined />

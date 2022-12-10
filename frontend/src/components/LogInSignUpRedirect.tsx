@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import LogInSignUp, {
   LogInSignUpParagraph,
-} from "../assets/styles/components/LogInSignUpRedirect.styled";
+} from "../assets/styles/pages/LogIn.styled";
 
 interface RedirectProps {
   page: "LogIn" | "SignUp";

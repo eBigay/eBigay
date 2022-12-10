@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Close } from "@mui/icons-material";
 
 interface IsProductDetailsOpen {
   isProductDetailsOpen?: boolean;
@@ -48,7 +49,12 @@ export const DetailsDescription = styled.p`
 
 export const CreatedByContainer = styled.div`
   display: flex;
-  gap: 14px;
+  gap: 15px;
+`;
+export const CreatedByWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 `;
 export const CreatedByName = styled.h3`
   font-size: ${({ theme }) => theme.fontSizes.l};
@@ -67,3 +73,28 @@ export const SecondaryImg = styled.img`
   border-radius: 20px;
   object-fit: cover;
 `;
+
+export const DetailsName = styled.h1`
+  font-weight: 600;
+  font-size: ${({ theme }) => theme.fontSizes.fsXXL};
+`;
+
+export const CancelIcon = styled(Close)`
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  transform: scale(1.5);
+  cursor: pointer;
+  &:hover {
+    color: ${({ theme }) => theme.colors.clr3};
+    transition: 0.4s ease;
+  }
+`;
+
+export const CreatedByLocation = styled.h3`
+  color: ${({ theme }) => theme.colors.clr3};
+  font-size: ${({ theme }) => theme.fontSizes.fsS};
+  font-weight: 400;
+`;
+
+export const LocationFlag = styled.img``;
