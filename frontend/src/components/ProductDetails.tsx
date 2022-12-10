@@ -29,6 +29,8 @@ const ProductDetails = () => {
 
   useOverflow(modal, [modal]);
 
+  useOverflow(modal, [modal]);
+
   const toggleProductDetailsOpen = () => {
     handleModal();
   };
