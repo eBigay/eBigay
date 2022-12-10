@@ -5,14 +5,21 @@ import LogoContainer, {
   LogoImage,
 } from "../../assets/styles/components/Logo.styled";
 
-const Logo = () => {
+interface LogoProps {
+  noNavigate?: boolean;
+}
+
+const Logo = ({ noNavigate }: LogoProps) => {
   const navigate = useNavigate();
   return (
     <LogoContainer
       onClick={() => {
-        navigate("/");
-        window.scroll({ top: 0, behavior: "smooth" });
+        if (!noNavigate) {
+          navigate("/");
+          window.scroll({ top: 0, behavior: "smooth" });
+        }
       }}
+      noNavigate={noNavigate}
     >
       <LogoImage src={MainLogo} alt="eBigay" />
       <LogoHeader>eBigay</LogoHeader>

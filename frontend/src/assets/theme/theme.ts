@@ -48,6 +48,7 @@ const theme = {
     clr7: "#172b4d",
     clr8: "#b04632",
     clr9: "#fbc846",
+    clr10: "#4066EA", // purple/blue - Forgot password
     footer: "rgba(253, 241, 225, 0.4)",
   },
   fontSizes: {
