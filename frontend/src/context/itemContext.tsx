@@ -4,6 +4,7 @@ import {
   createContext,
   useReducer,
   ReactNode,
+  useMemo,
 } from "react";
 
 import { IItem } from "../interfaces/IItem.interface";
@@ -61,13 +62,16 @@ export const ItemContextProvider = ({ children }: ItemProviderProps) => {
     localStorage.setItem("current-item", JSON.stringify(itemState));
   }, [itemState]);
 
+  const providerValue = useMemo(
+    () => ({
+      itemState,
+      dispatch,
+    }),
+    [itemState, dispatch]
+  );
+
   return (
-    <ItemContext.Provider
-      value={{
-        itemState,
-        dispatch,
-      }}
-    >
+    <ItemContext.Provider value={providerValue}>
       {children}
     </ItemContext.Provider>
   );

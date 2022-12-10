@@ -15,11 +15,14 @@ import ScreenOverlay from "./ScreenOverlay";
 
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import { rootContext } from "../context/RootContext";
+import useOverflow from "../hooks/useOverflow";
 
 const ProductDetails = () => {
   const { modal, handleModal, modalContent } = useContext(rootContext);
 
   const { description, mainImg, itemName, createdBy, imgs } = modalContent;
+
+  useOverflow(modal, [modal]);
 
   const toggleProductDetailsOpen = () => {
     handleModal();
