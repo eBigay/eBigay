@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Formik, useFormik, FormikProps } from "formik";
 import Profile from "../assets/svgs/Profile.svg";
 import Lock from "../assets/svgs/Lock.svg";
 import Hide from "../assets/svgs/Hide.svg";
@@ -25,6 +24,7 @@ import LoginInputContainer, {
   SignUpImageContainer,
   SignUpPlusImage,
 } from "../assets/styles/components/LoginInput.styled";
+import { useFormik, FormikProps } from "formik";
 
 interface IInputProps {
   image: string;
