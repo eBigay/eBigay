@@ -1,6 +1,12 @@
-import { Dispatch } from "react";
-import { useEffect } from "react";
-import { createContext, useReducer, ReactNode } from "react";
+import {
+  Dispatch,
+  useEffect,
+  createContext,
+  useReducer,
+  ReactNode,
+  useMemo,
+} from "react";
+
 import { IItem } from "../interfaces/IItem.interface";
 
 const INITIAL_STATE: IItem = {
@@ -15,7 +21,7 @@ const INITIAL_STATE: IItem = {
   imgs: [],
   createdBy: {
     _id: "",
-    fullname: "",
+    fullName: "",
     imgUrl: "",
   },
 };
@@ -56,13 +62,16 @@ export const ItemContextProvider = ({ children }: ItemProviderProps) => {
     localStorage.setItem("current-item", JSON.stringify(itemState));
   }, [itemState]);
 
+  const providerValue = useMemo(
+    () => ({
+      itemState,
+      dispatch,
+    }),
+    [itemState, dispatch]
+  );
+
   return (
-    <ItemContext.Provider
-      value={{
-        itemState,
-        dispatch,
-      }}
-    >
+    <ItemContext.Provider value={providerValue}>
       {children}
     </ItemContext.Provider>
   );

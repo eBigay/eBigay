@@ -1,12 +1,11 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Dispatch, SetStateAction, useCallback } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import {
   LinksContainer,
   StyledLink,
 } from "../../assets/styles/layout/Header.styled";
 import PrimaryButton from "../../assets/styles/base/Button.styled";
 import ScreenOverlay from "../ScreenOverlay";
-import { useEffect } from "react";
 
 interface INavBarProps {
   isMenuOpen: boolean;
@@ -23,7 +22,7 @@ const Nav = ({ isMenuOpen, setIsMenuOpen }: INavBarProps) => {
   const navigate = useNavigate();
 
   const toggleIsMenuOpen = () => {
-    setIsMenuOpen((isMenuOpen) => !isMenuOpen);
+    setIsMenuOpen(!isMenuOpen);
   };
 
   return (

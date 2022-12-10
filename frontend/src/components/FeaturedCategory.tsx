@@ -7,7 +7,7 @@ import FeaturedCategoryContainer, {
   FeaturedCategoryDesc,
 } from "../assets/styles/components/FeaturedCategory.styled";
 
-interface ICategoryProps {
+interface FeaturedCategoryProps {
   title: string;
   description: string;
   imageUrl: string;
@@ -19,7 +19,7 @@ const FeaturedCategory = ({
   description,
   imageUrl,
   navUrl,
-}: ICategoryProps) => {
+}: FeaturedCategoryProps) => {
   const navigate = useNavigate();
 
   return (

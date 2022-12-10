@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Prata&display=swap");
+
 * {
   box-sizing: border-box;
 }
@@ -31,9 +33,3 @@ p {
 img {
   max-width: 100%;
 }
-
-
-
-
-
-

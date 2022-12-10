@@ -1,15 +1,18 @@
-import styled, { css } from "styled-components";
-import { respondTo } from "../../theme/responsive";
+import styled from "styled-components";
+import RespondTo, { MinWidth } from "../../theme/responsive";
 
 const HeroContainer = styled.div`
   display: flex;
   padding-left: 80px;
   padding-right: 36px;
   margin-top: 151px;
-  ${respondTo.laptopBreakpoint`
+  ${MinWidth.wideBreakpoint`
+  padding: 0 10rem;
+  `}
+  ${RespondTo.laptopBreakpoint`
   padding: 0 5rem;
   `}
-  ${respondTo.mobileBreakpoint`
+  ${RespondTo.mobileBreakpoint`
    padding: 0 2rem
   `}
 `;
@@ -20,7 +23,7 @@ export const HeroContent = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 38px;
-  ${respondTo.laptopBreakpoint`
+  ${RespondTo.laptopBreakpoint`
   text-align:center;
   align-items:center;
   `}
@@ -44,7 +47,7 @@ export const HeroSubHeader = styled.h3`
 export const HeroImage = styled.img`
   min-width: 450px;
   max-height: 526px;
-  ${respondTo.laptopBreakpoint`
+  ${RespondTo.laptopBreakpoint`
     display: none; 
   `}
 `;

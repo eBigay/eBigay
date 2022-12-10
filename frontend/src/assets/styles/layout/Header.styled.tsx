@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
-import { respondTo } from "../../theme/responsive";
+import RespondTo, { MinWidth } from "../../theme/responsive";
 
 interface IStyledLinksProps {
   isMenuOpen: boolean;
@@ -19,11 +19,14 @@ export const StyledHeader = styled.div`
   min-height: 100px;
   background-color: #ffffff;
   box-shadow: 0 4px 6px rgba(186, 167, 167, 0.25);
-  ${respondTo.tabletBreakpoint`
+  ${RespondTo.tabletBreakpoint`
   align-items:center;
   `}
-  ${respondTo.mobileBreakpoint`
+  ${RespondTo.mobileBreakpoint`
    padding: 0 2rem
+  `}
+    ${MinWidth.wideBreakpoint`
+  padding: 0 10rem;
   `}
 `;
 
@@ -36,7 +39,7 @@ export const LinksContainer = styled.div<IStyledLinksProps>`
   font-family: Poppins;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.clr2};
-  ${respondTo.tabletBreakpoint`
+  ${RespondTo.tabletBreakpoint`
   position: fixed;
 		top: 0;
 		right: 0;
@@ -61,7 +64,7 @@ export const StyledLink = styled(NavLink)`
   position: relative;
   transition: 0.3s;
   z-index: 1;
-  ${respondTo.tabletBreakpoint`
+  ${RespondTo.tabletBreakpoint`
     height: 10%;
 
   `}

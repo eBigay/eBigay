@@ -1,7 +1,11 @@
 import styled from "styled-components";
+import { MinWidth } from "../../theme/responsive";
 
 const StyledAbout = styled.div`
   padding: 1rem 5rem;
+  ${MinWidth.wideBreakpoint`
+  padding: 0 10rem;
+  `}
 `;
 
 export const BackLink = styled.p`
@@ -17,12 +21,18 @@ export const BackLink = styled.p`
   font-size: 16px;
   line-height: 21px;
   color: rgba(0, 0, 0, 0.62);
+  ${MinWidth.wideBreakpoint`
+  left: 190px;
+  `}
 `;
 
 export const BackImage = styled.img`
   position: absolute;
   left: 80px;
   top: 166px;
+  ${MinWidth.wideBreakpoint`
+  left: 160px;
+  `}
 `;
 
 export const AboutUsHeader = styled.h1`
