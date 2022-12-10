@@ -21,35 +21,33 @@ import Location from "../assets/svgs/Location.svg";
 import { rootContext } from "../context/RootContext";
 import { IItem } from "../interfaces/IItem.interface";
 
-const ItemCard = ({ item }: { item: IItem }) => {
-  const { setNotificationOpen, setNotificationContent } =
-    useContext(rootContext);
+interface IItemCard {
+  item: IItem;
+}
+
+const ItemCard = ({ item }: IItemCard) => {
+  // const { handleModal } = useContext(rootContext);
+
+  // const handleOpenProductDetails = () => {
+  //   handleModal(item);
+  // };
+
   return (
     <ItemCardContainer>
       <ItemImageContainer>
         <ItemImage src={item.mainImg} alt={item.itemName} />
         <ItemInfo>
-          <div>
-            <Icon>
-              <SearchOutlined
-                onClick={() => {
-                  setNotificationContent({ title: item.itemName, message: "" });
-                  setNotificationOpen(true);
-                }}
-              />
-              {/* <Link to={`/product/${item._id}`} /> */}
-            </Icon>
-          </div>
-          <div>
-            <Icon>
-              <MessageOutlined />
-            </Icon>
-          </div>
-          <div>
-            <Icon>
-              <FavoriteBorderOutlined />
-            </Icon>
-          </div>
+          <Icon>
+            <SearchOutlined
+            //  onClick={handleOpenProductDetails}
+            />
+          </Icon>
+          <Icon>
+            <MessageOutlined />
+          </Icon>
+          <Icon>
+            <FavoriteBorderOutlined />
+          </Icon>
         </ItemInfo>
       </ItemImageContainer>
 
@@ -57,8 +55,8 @@ const ItemCard = ({ item }: { item: IItem }) => {
         <ItemName>{item.itemName}</ItemName>
         <ItemCategory>{item.category}</ItemCategory>
         <ItemLocation>
-          <LocationImage src={Location} alt="" />
-          <LocationName className="location-name">{item.location}</LocationName>
+          <LocationImage src={Location} alt="location" />
+          <LocationName>{item.location}</LocationName>
         </ItemLocation>
         <PrimaryButton width="194px" height="34px" fontSize="xs" type="button">
           Sign up for phone number

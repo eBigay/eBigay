@@ -3,9 +3,12 @@ import { StyledHeader } from "../../assets/styles/layout/Header.styled";
 import Logo from "./Logo";
 import BurgerMenu from "./BurgerMenu";
 import Nav from "./Nav";
+import useOverflow from "../../hooks/useOverflow";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
+  useOverflow(isMenuOpen, [isMenuOpen]);
 
   return (
     <StyledHeader>
