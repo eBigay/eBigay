@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import RespondTo from "../../theme/responsive";
 
 const LoginPage = styled.div.attrs({
   className: "LoginPage",
@@ -9,6 +10,10 @@ const LoginPage = styled.div.attrs({
   width: 100%;
   height: 100%;
   padding: 0;
+  ${RespondTo.tabletBreakpoint`
+  flex-direction: column;
+  height: 100vh;
+  `}
 `;
 
 export const LoginImage = styled.img.attrs({
@@ -17,6 +22,9 @@ export const LoginImage = styled.img.attrs({
   display: inline;
   width: 50%;
   object-fit: cover;
+  ${RespondTo.tabletBreakpoint`
+  width: 0;
+  `}
 `;
 
 export const LogInSignUp = styled.div.attrs({
@@ -32,6 +40,12 @@ export const LogInSignUp = styled.div.attrs({
   flex-direction: column;
   align-items: center;
   gap: 10px;
+  ${RespondTo.tabletBreakpoint`
+  position: relative;
+  left: 0;
+  margin: 5rem auto 0;
+  padding-bottom: 1rem;
+  `}
 `;
 export const LogInSignUpBold = styled.p.attrs({
   className: "LogInSignUpBold",

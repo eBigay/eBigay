@@ -1,10 +1,11 @@
 import styled from "styled-components";
+import RespondTo from "../../theme/responsive";
 
 interface LoginInputContainerProps {
   extraMargin?: boolean;
 }
 
-const LoginInputContainer = styled.div.attrs({
+const LoginInputContainer = styled.form.attrs({
   className: "LoginInputContainer",
 })<LoginInputContainerProps>`
   position: relative;
@@ -16,6 +17,15 @@ const LoginInputContainer = styled.div.attrs({
   margin: ${({ extraMargin }) =>
     extraMargin ? "15rem auto 0" : "10rem auto 0"};
   height: 100%;
+  ${RespondTo.tabletBreakpoint`
+  margin: 10rem auto 0;
+`}
+  ${RespondTo.mobileBreakpoint`
+  margin: 10rem auto 0;
+  button {
+    width: 85%;
+  }
+`}
 
   .logo {
     margin-bottom: 2rem;
@@ -47,7 +57,13 @@ export const MiddleFlex = styled.div.attrs({
   width: 500px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  text-decoration: none;
+  ${RespondTo.mobileBreakpoint`
+  width: 85%;
+  text-align: center;
+  font-size: ${(props: any) => props.theme.fontSizes.fsS}
+`}
 `;
 
 export const RememberMeContainer = styled.div.attrs({
@@ -77,6 +93,11 @@ export const PrivacyPolicy = styled.p.attrs({
     color: ${({ theme }) => theme.colors.clr10};
     text-decoration: none;
   }
+
+  ${RespondTo.tabletBreakpoint`
+  width: 85%;
+  text-align: center;
+`}
 `;
 
 export default LoginInputContainer;

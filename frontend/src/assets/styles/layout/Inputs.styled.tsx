@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import RespondTo from "../../theme/responsive";
 
 interface InputProps {
   width: number;
@@ -14,6 +15,9 @@ const StyledInput = styled.div<InputProps>`
   margin-bottom: 1.7rem;
   display: flex;
   align-items: center;
+  ${RespondTo.mobileBreakpoint`
+  width: 85%;
+  `}
 `;
 
 export const InnerInput = styled.input`
