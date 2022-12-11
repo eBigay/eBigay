@@ -15,6 +15,16 @@ const StyledInput = styled.div<InputProps>`
   margin-bottom: 1.7rem;
   display: flex;
   align-items: center;
+  transition: border 0.3s ease-in-out;
+
+  :focus-within {
+    border: 3px solid ${({ theme }) => theme.colors.clr9};
+  }
+
+  &.inputError {
+    border: 3px solid ${({ theme }) => theme.colors.clr11};
+  }
+
   ${RespondTo.mobileBreakpoint`
   width: 85%;
   `}
@@ -48,6 +58,16 @@ export const InputRightImage = styled.img`
   &:hover {
     filter: brightness(130%);
   }
+`;
+
+export const ErrorMessage = styled.p.attrs({ className: "errorMessage" })`
+  color: ${({ theme }) => theme.colors.clr11};
+  font-size: ${({ theme }) => theme.fontSizes.fsSm};
+  position: absolute;
+  bottom: -25px;
+  ${RespondTo.mobileBreakpoint`
+  bottom: -40%;
+`}
 `;
 
 export default StyledInput;

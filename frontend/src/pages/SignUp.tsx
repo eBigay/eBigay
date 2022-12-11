@@ -6,7 +6,7 @@ import LoginPage, {
   LogInSignUpParagraph,
 } from "../assets/styles/pages/LogIn.styled";
 import LoginBackground from "../assets/svgs/LoginRegisterEmojis2.svg";
-import { RegisterInput } from "../components/Inputs";
+import SignUpForm from "../components/SignUpForm";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const SignUp = () => {
   return (
     <LoginPage>
       <LoginImage src={LoginBackground} alt="Background" />
-      <RegisterInput />
+      <SignUpForm />
       <LogInSignUp>
         <LogInSignUpParagraph>Already have an account?</LogInSignUpParagraph>
         <LogInSignUpBold onClick={onClick}>Log in</LogInSignUpBold>

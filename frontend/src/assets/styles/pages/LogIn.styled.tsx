@@ -12,7 +12,7 @@ const LoginPage = styled.div.attrs({
   padding: 0;
   ${RespondTo.tabletBreakpoint`
   flex-direction: column;
-  height: 100vh;
+  height: 100%;
   `}
 `;
 

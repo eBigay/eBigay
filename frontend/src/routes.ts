@@ -2,9 +2,7 @@ import { lazy } from "react";
 import Search from "./pages/Search";
 import NotFound from "./pages/NotFound";
 
-const Home = lazy(async () => {
-  /* eslint-disable-next-line */
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+const Home = lazy(() => {
   return import("./pages/Home");
 });
 const About = lazy(async () => {

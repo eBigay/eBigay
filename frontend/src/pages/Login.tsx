@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { LoginInput } from "../components/Inputs";
+import LoginForm from "../components/LoginForm";
 import LoginBackground from "../assets/svgs/LoginRegisterEmojis.svg";
 import LoginPage, {
   LoginImage,
@@ -18,7 +18,7 @@ const Login = () => {
   return (
     <LoginPage>
       <LoginImage src={LoginBackground} alt="Background" />
-      <LoginInput />
+      <LoginForm />
       <LogInSignUp>
         <LogInSignUpParagraph>Don&apos;t have an account?</LogInSignUpParagraph>
         <LogInSignUpBold onClick={onClick}>Sign Up</LogInSignUpBold>
