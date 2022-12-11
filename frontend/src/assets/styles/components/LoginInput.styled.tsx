@@ -17,8 +17,22 @@ const LoginInputContainer = styled.form.attrs({
   margin: ${({ extraMargin }) =>
     extraMargin ? "15rem auto 0" : "10rem auto 0"};
   height: 100%;
+
+  ${RespondTo.narrowBreakpoint`
+      margin-bottom: 10rem;
+`}
+  ${RespondTo.laptopBreakpoint`
+      margin: 10rem auto 10rem;
+      padding: 0 1rem;
+        button {
+          width: 85%;
+        }
+`}
   ${RespondTo.tabletBreakpoint`
   margin: 10rem auto 0;
+  button {
+          width: 100%;
+        }
 `}
   ${RespondTo.mobileBreakpoint`
   margin: 10rem auto 0;
@@ -59,6 +73,9 @@ export const MiddleFlex = styled.div.attrs({
   justify-content: space-between;
   margin-bottom: 2.5rem;
   text-decoration: none;
+  ${RespondTo.laptopBreakpoint`
+  justify-content: space-around;
+`}
   ${RespondTo.mobileBreakpoint`
   width: 85%;
   text-align: center;
@@ -95,6 +112,10 @@ export const PrivacyPolicy = styled.p.attrs({
   }
 
   ${RespondTo.tabletBreakpoint`
+  width: 500px;
+  text-align: center;
+`}
+  ${RespondTo.mobileBreakpoint`
   width: 85%;
   text-align: center;
 `}

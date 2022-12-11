@@ -10,9 +10,14 @@ const LoginPage = styled.div.attrs({
   width: 100%;
   height: 100%;
   padding: 0;
-  ${RespondTo.tabletBreakpoint`
-  flex-direction: column;
+  ${RespondTo.laptopBreakpoint`
+  min-height: 100vh;
   height: 100%;
+  `}
+  ${RespondTo.tabletBreakpoint`
+  min-height: 100vh;
+  height: 100%;
+  flex-direction: column;
   `}
 `;
 
@@ -45,6 +50,10 @@ export const LogInSignUp = styled.div.attrs({
   left: 0;
   margin: 5rem auto 0;
   padding-bottom: 1rem;
+  width: 500px;
+  `}
+  ${RespondTo.mobileBreakpoint`
+  width: 85%;
   `}
 `;
 export const LogInSignUpBold = styled.p.attrs({

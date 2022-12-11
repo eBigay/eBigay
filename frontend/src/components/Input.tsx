@@ -1,12 +1,12 @@
 import { useState } from "react";
 import Search from "../assets/svgs/Search.svg";
 import StyledInput, {
-  ErrorMessage,
   InnerInput,
   InputLeftImage,
   InputRightImage,
 } from "../assets/styles/layout/Inputs.styled";
 import PrimaryButton from "../assets/styles/base/Button.styled";
+import { FadeInErrorMessage } from "../assets/styles/layout/FadeIn.styled";
 
 interface IInputProps {
   image: string;
@@ -83,7 +83,8 @@ export const Input = ({
           Search
         </PrimaryButton>
       )}
-      {touched && errors && <ErrorMessage>{errors}</ErrorMessage>}
+
+      {touched && errors && <FadeInErrorMessage>{errors}</FadeInErrorMessage>}
     </StyledInput>
   );
 };
