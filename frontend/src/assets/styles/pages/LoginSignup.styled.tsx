@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import RespondTo from "../../theme/responsive";
+import RespondTo, { MinWidth } from "../../theme/responsive";
 
-const LoginPage = styled.div.attrs({
-  className: "LoginPage",
+const LoginSignupPage = styled.div.attrs({
+  className: "LoginSignupPage",
 })`
   position: relative;
   display: flex;
@@ -10,9 +10,13 @@ const LoginPage = styled.div.attrs({
   width: 100%;
   height: 100%;
   padding: 0;
+  overflow: hidden;
+  min-height: 100vh;
   ${RespondTo.tabletBreakpoint`
   flex-direction: column;
-  height: 100vh;
+  `}
+  ${MinWidth.wideBreakpoint`
+  height: 1100px;
   `}
 `;
 
@@ -27,7 +31,7 @@ export const LoginImage = styled.img.attrs({
   `}
 `;
 
-export const LogInSignUp = styled.div.attrs({
+export const LoginSignupRedirect = styled.div.attrs({
   className: "LogInSignUpRedirect",
 })`
   position: absolute;
@@ -45,6 +49,10 @@ export const LogInSignUp = styled.div.attrs({
   left: 0;
   margin: 5rem auto 0;
   padding-bottom: 1rem;
+  width: 500px;
+  `}
+  ${RespondTo.mobileBreakpoint`
+  width: 85%;
   `}
 `;
 export const LogInSignUpBold = styled.p.attrs({
@@ -62,4 +70,4 @@ export const LogInSignUpParagraph = styled.p.attrs({
   color: ${({ theme }) => theme.colors.clr3};
 `;
 
-export default LoginPage;
+export default LoginSignupPage;

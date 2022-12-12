@@ -6,15 +6,14 @@ import HeroContainer, {
   HeroImage,
   HeroSubHeader,
 } from "../assets/styles/components/Hero.styled";
+import Text from "../data/enums";
 
 const Hero = () => {
   return (
     <HeroContainer>
       <HeroContent>
-        <HeroHeader>Join Positive Karma Movement Today</HeroHeader>
-        <HeroSubHeader>
-          Give away long forgotten item another chance to serve the humanity
-        </HeroSubHeader>
+        <HeroHeader>{Text.HeroHeader}</HeroHeader>
+        <HeroSubHeader>{Text.HeroSubHeader}</HeroSubHeader>
         <PrimaryButton width="161px" height="50px" fontSize="s">
           Explore more
         </PrimaryButton>
