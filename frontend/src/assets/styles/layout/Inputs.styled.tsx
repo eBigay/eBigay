@@ -29,7 +29,7 @@ const StyledInput = styled.div<InputProps>`
   }
 
   ${RespondTo.laptopBreakpoint`
-  width: 85%;
+  width: 90%;
 `}
   ${RespondTo.tabletBreakpoint`
   width: 100%;

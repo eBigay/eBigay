@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import RespondTo from "../../theme/responsive";
+import RespondTo, { MinWidth } from "../../theme/responsive";
 
 const LoginSignupPage = styled.div.attrs({
   className: "LoginSignupPage",
@@ -10,11 +10,13 @@ const LoginSignupPage = styled.div.attrs({
   width: 100%;
   height: 100%;
   padding: 0;
-  ${RespondTo.laptopBreakpoint`
+  overflow: hidden;
   min-height: 100vh;
-  `}
   ${RespondTo.tabletBreakpoint`
   flex-direction: column;
+  `}
+  ${MinWidth.wideBreakpoint`
+  height: 1100px;
   `}
 `;
 

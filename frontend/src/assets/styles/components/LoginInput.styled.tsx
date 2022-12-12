@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import RespondTo from "../../theme/responsive";
+import RespondTo, { MinWidth } from "../../theme/responsive";
 import FadeIn from "../layout/FadeIn.styled";
 
 interface LoginInputContainerProps {
@@ -17,29 +17,33 @@ const LoginInputContainer = styled.form.attrs({
   font-size: ${({ theme }) => theme.fontSizes.fsL};
   margin: ${({ LoginPage }) => (LoginPage ? "15rem auto 0" : "10rem auto 0")};
   height: 100%;
-
   .Password {
     margin-bottom: ${({ LoginPage }) => (LoginPage ? "1rem" : "1.7rem")};
   }
+  ${MinWidth.wideBreakpoint`
+  justify-content: flex-start;
+  `}
 
-  ${RespondTo.narrowBreakpoint`
-      margin-bottom: 10rem;
-`}
+  ${RespondTo.wideBreakpoint`
+margin: ${(props: any) =>
+    props.LoginPage ? "15rem auto 10rem" : "10rem auto 10rem"};
+  `}
+
   ${RespondTo.laptopBreakpoint`
-      margin: 10rem auto 10rem;
       padding: 0 1rem;
         button {
-          width: 85%;
+          width: 90%;
         }
 `}
   ${RespondTo.tabletBreakpoint`
-  margin: 10rem auto 0;
+    margin:  10rem auto 3rem;
+    margin: ${(props: any) =>
+      props.LoginPage ? "12rem auto 3rem" : "10rem auto 3rem"};
   button {
           width: 100%;
         }
 `}
   ${RespondTo.mobileBreakpoint`
-  margin: 10rem auto 0;
   button {
     width: 90%;
   }
@@ -92,9 +96,10 @@ export const MiddleFlex = styled.div.attrs({
   text-decoration: none;
   ${RespondTo.laptopBreakpoint`
   justify-content: space-around;
-  width: 450px;
-  font-size: 18px;
-`}
+  width: 420px;
+  font-size: ${(props: any) => props.theme.fontSizes.fsS};
+
+  `}
   ${RespondTo.mobileBreakpoint`
   width: 90%;
   text-align: center;
@@ -140,7 +145,7 @@ export const PrivacyPolicy = styled.p.attrs({
 
   ${RespondTo.laptopBreakpoint`
   font-size: ${(props: any) => props.theme.fontSizes.fsS};
-  width: 450px;
+  width: 420px;
   a {
     display: block;
   }
