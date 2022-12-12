@@ -6,7 +6,7 @@ import StyledInput, {
   InputRightImage,
 } from "../assets/styles/layout/Inputs.styled";
 import PrimaryButton from "../assets/styles/base/Button.styled";
-import { FadeInErrorMessage } from "../assets/styles/layout/FadeIn.styled";
+import { FadeInErrorMessage } from "../assets/styles/components/LoginInput.styled";
 
 interface IInputProps {
   image: string;
@@ -58,7 +58,11 @@ export const Input = ({
   };
 
   return (
-    <StyledInput width={width} height={height} className={className}>
+    <StyledInput
+      width={width}
+      height={height}
+      className={`${className} ${placeholder}`}
+    >
       <InputLeftImage src={image} alt="" />
       <InnerInput
         type={type === "password" ? passwordType : type}

@@ -35,7 +35,7 @@ const StyledInput = styled.div<InputProps>`
   width: 100%;
   `}
   ${RespondTo.mobileBreakpoint`
-  width: 85%;
+  width: 90%;
   `}
 `;
 
@@ -49,10 +49,12 @@ export const InnerInput = styled.input.attrs({ className: "InnerInput" })`
   border: none;
   background-color: transparent;
   transition: color 0.3s ease-in-out; // the actual color change is happening in "StyledInput" above
-
   &::placeholder {
     color: ${({ theme }) => theme.colors.clr3};
   }
+  ${RespondTo.mobileBreakpoint`
+  font-size: ${(props: any) => props.theme.fontSizes.fsS};
+  `}
 `;
 
 export const InputLeftImage = styled.img`

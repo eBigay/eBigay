@@ -37,7 +37,7 @@ const LoginForm = () => {
         errors,
         touched,
       }: any) => (
-        <LoginInputContainer extraMargin onSubmit={handleSubmit}>
+        <LoginInputContainer LoginPage onSubmit={handleSubmit}>
           <Logo noNavigate />
           <Input
             image={Profile}

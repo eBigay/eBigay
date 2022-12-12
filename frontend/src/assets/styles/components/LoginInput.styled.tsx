@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import RespondTo from "../../theme/responsive";
+import FadeIn from "../layout/FadeIn.styled";
 
 interface LoginInputContainerProps {
-  extraMargin?: boolean;
+  LoginPage?: boolean;
 }
 
 const LoginInputContainer = styled.form.attrs({
@@ -14,9 +15,12 @@ const LoginInputContainer = styled.form.attrs({
   justify-content: center;
   align-items: center;
   font-size: ${({ theme }) => theme.fontSizes.fsL};
-  margin: ${({ extraMargin }) =>
-    extraMargin ? "15rem auto 0" : "10rem auto 0"};
+  margin: ${({ LoginPage }) => (LoginPage ? "15rem auto 0" : "10rem auto 0")};
   height: 100%;
+
+  .Password {
+    margin-bottom: ${({ LoginPage }) => (LoginPage ? "1rem" : "1.7rem")};
+  }
 
   ${RespondTo.narrowBreakpoint`
       margin-bottom: 10rem;
@@ -37,7 +41,7 @@ const LoginInputContainer = styled.form.attrs({
   ${RespondTo.mobileBreakpoint`
   margin: 10rem auto 0;
   button {
-    width: 85%;
+    width: 90%;
   }
 `}
 
@@ -65,6 +69,19 @@ export const SignUpPlusImage = styled.img.attrs({ className: "SignUpImage" })`
   right: 0;
 `;
 
+export const FadeInErrorMessage = styled(FadeIn).attrs({
+  className: "FormError",
+})`
+  color: ${({ theme }) => theme.colors.clr11};
+  font-size: ${({ theme }) => theme.fontSizes.fsSm};
+  position: absolute;
+  bottom: -25px;
+  ${RespondTo.mobileBreakpoint`
+  bottom: -40%;
+      font-size: ${(props: any) => props.theme.fontSizes.fsXs};
+`}
+`;
+
 export const MiddleFlex = styled.div.attrs({
   className: "MiddleFlex",
 })`
@@ -75,11 +92,14 @@ export const MiddleFlex = styled.div.attrs({
   text-decoration: none;
   ${RespondTo.laptopBreakpoint`
   justify-content: space-around;
+  width: 450px;
+  font-size: 18px;
 `}
   ${RespondTo.mobileBreakpoint`
-  width: 85%;
+  width: 90%;
   text-align: center;
-  font-size: ${(props: any) => props.theme.fontSizes.fsS}
+  font-size: ${(props: any) => props.theme.fontSizes.fsSm};
+
 `}
 `;
 
@@ -97,11 +117,18 @@ export const RememberMeContainer = styled.div.attrs({
       accent-color: black;
     }
   }
+  ${RespondTo.mobileBreakpoint`
+  label {
+    display: flex;
+  }
+`}
 `;
 
 export const PrivacyPolicy = styled.p.attrs({
   className: "PrivacyPolicy",
 })`
+  width: 500px;
+  text-align: center;
   color: ${({ theme }) => theme.colors.clr3};
   font-size: ${({ theme }) => theme.fontSizes.fsS};
   margin-bottom: 12px;
@@ -111,13 +138,22 @@ export const PrivacyPolicy = styled.p.attrs({
     text-decoration: none;
   }
 
+  ${RespondTo.laptopBreakpoint`
+  font-size: ${(props: any) => props.theme.fontSizes.fsS};
+  width: 450px;
+  a {
+    display: block;
+  }
+
+`}
   ${RespondTo.tabletBreakpoint`
-  width: 500px;
   text-align: center;
 `}
   ${RespondTo.mobileBreakpoint`
   width: 85%;
   text-align: center;
+  font-size: ${(props: any) => props.theme.fontSizes.fsSm};
+
 `}
 `;
 
