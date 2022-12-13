@@ -34,6 +34,14 @@ export const HeroHeader = styled.h2`
   font-weight: 600;
   color: ${({ theme }) => theme.colors.clr2};
   line-height: 70px;
+  width: 510px;
+  ${RespondTo.laptopBreakpoint`
+  width: 100%;
+  `}
+  ${RespondTo.mobileBreakpoint`
+  font-size: 2.3rem;
+  line-height: 40px;
+  `}
 `;
 
 export const HeroSubHeader = styled.h3`
@@ -42,6 +50,10 @@ export const HeroSubHeader = styled.h3`
   font-weight: 400;
   color: ${({ theme }) => theme.colors.clr3};
   line-height: 40.13px;
+  ${RespondTo.mobileBreakpoint`
+  // font-size: 2.3rem;
+  line-height: 35px;
+  `}
 `;
 
 export const HeroImage = styled.img`
