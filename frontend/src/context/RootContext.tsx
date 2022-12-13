@@ -2,6 +2,23 @@ import React, { createContext, useMemo } from "react";
 import useModal from "../hooks/useModal";
 import { IItem } from "../interfaces/IItem.interface";
 
+const INITIAL_STATE: IItem = {
+  _id: "",
+  qty: 0,
+  itemName: "",
+  mainImg: "",
+  category: "",
+  location: "",
+  createdAt: 0,
+  description: "",
+  imgs: [],
+  createdBy: {
+    _id: "",
+    fullName: "",
+    imgUrl: "",
+  },
+};
+
 export type RootContextType = {
   modal: boolean;
   handleModal: (content?: IItem) => void;
@@ -14,7 +31,7 @@ export const rootContext = createContext<RootContextType>(
 const RootContextProvider = ({
   children,
 }: React.PropsWithChildren<Record<string, unknown>>) => {
-  const { modal, handleModal, modalContent } = useModal();
+  const { modal, handleModal, modalContent } = useModal(INITIAL_STATE);
 
   const providerValue = useMemo(
     () => ({
