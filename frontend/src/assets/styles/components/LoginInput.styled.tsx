@@ -35,7 +35,6 @@ margin: ${(props: any) =>
         }
 `}
   ${RespondTo.tabletBreakpoint`
-    margin:  10rem auto 3rem;
     margin: ${(props: any) =>
       props.LoginPage ? "12rem auto 3rem" : "10rem auto 3rem"};
   button {
@@ -43,6 +42,7 @@ margin: ${(props: any) =>
         }
 `}
   ${RespondTo.mobileBreakpoint`
+      width: 100%;
   button {
     width: 90%;
   }
@@ -121,20 +121,21 @@ export const RememberMeInput = styled.input.attrs({
     height: 18px;
     top: -3px;
     left: 0;
-    border: 2px solid #555555;
-    border-radius: 3px;
-    background-color: white;
+    border: 2px solid #555;
+    border-radius: 6px;
+    background-color: transparent;
     transition: all 0.2s ease;
   }
   &:checked:before {
-    border: 2px solid ${({ theme }) => theme.colors.clr9};
+    border: 2px solid ${({ theme }) => theme.colors.clr2};
+    background-color: black;
   }
   &:checked:after {
     content: "";
     display: block;
     width: 5px;
     height: 8px;
-    border: solid black;
+    border: solid white;
     border-width: 0 2px 2px 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
