@@ -8,7 +8,7 @@ import useOverflow from "../../hooks/useOverflow";
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
-  useOverflow(isMenuOpen, [isMenuOpen]);
+  useOverflow(isMenuOpen);
 
   return (
     <StyledHeader>

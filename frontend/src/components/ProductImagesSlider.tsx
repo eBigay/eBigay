@@ -1,48 +1,61 @@
-import { Swiper, SwiperSlide } from "swiper/react";
+import { SwiperSlide } from "swiper/react";
+import {
+  StyledSwiperMain,
+  StyledSwiperThumbs,
+} from "../assets/styles/components/ProductImagesSlider.styled";
+import {
+  MainIMg,
+  SecondaryImg,
+  ImgsWrapper,
+} from "../assets/styles/components/ProductDetails.styled";
 import { Navigation, Thumbs } from "swiper";
 import { useState } from "react";
 import { type Swiper as SwiperRef } from "swiper";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/thumbs";
 
 interface SliderProps {
-  images: string[];
+  imgs: string[];
 }
 
-const ProductImagesSlider = ({ images }: SliderProps) => {
+const ProductImagesSlider = ({ imgs }: SliderProps) => {
   const [activeThumb, setActiveThumb] = useState<SwiperRef>();
 
   return (
     <>
-      <Swiper
+      <StyledSwiperMain
+        slidesPerView={1}
         loop={true}
         spaceBetween={10}
         navigation={true}
         modules={[Navigation, Thumbs]}
         grabCursor={true}
-        thumbs={activeThumb ? { swiper: activeThumb } : {}}
-        className="product-images-slider"
+        thumbs={{
+          swiper: activeThumb && !activeThumb.destroyed ? activeThumb : null,
+        }}
       >
-        {images.map((item, index) => (
+        {imgs.map((item, index) => (
           <SwiperSlide key={index}>
-            <img src={item} alt="product images" />
+            <MainIMg src={item} alt="product images" />
           </SwiperSlide>
         ))}
-      </Swiper>
-      <Swiper
-        onSwiper={(swiper) => setActiveThumb(swiper)}
+      </StyledSwiperMain>
+      <StyledSwiperThumbs
+        onSwiper={setActiveThumb}
         loop={true}
         spaceBetween={10}
         slidesPerView={4}
         modules={[Navigation, Thumbs]}
-        className="product-images-slider-thumbs"
       >
-        {images.map((item, index) => (
+        {imgs.map((item, index) => (
           <SwiperSlide key={index}>
-            <div className="product-images-slider-thumbs-wrapper">
-              <img src={item} alt="product images" />
-            </div>
+            <ImgsWrapper>
+              <SecondaryImg src={item} alt="product images" />
+            </ImgsWrapper>
           </SwiperSlide>
         ))}
-      </Swiper>
+      </StyledSwiperThumbs>
     </>
   );
 };

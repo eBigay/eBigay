@@ -29,13 +29,13 @@ export const ProductDetailsContainer = styled.div`
 
 export const MainIMg = styled.img`
   height: 100%;
-  max-width: 50%;
+  width: 100%;
   object-fit: cover;
   border-radius: 20px;
 `;
 
 export const ProductDetailsSection = styled.div`
-  width: 100%;
+  max-width: 50%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -68,8 +68,8 @@ export const ImgsWrapper = styled.div`
 `;
 
 export const SecondaryImg = styled.img`
-  width: 25%;
-  height: 100%;
+  width: 100%;
+  height: 8rem;
   border-radius: 20px;
   object-fit: cover;
 `;
@@ -98,3 +98,7 @@ export const CreatedByLocation = styled.h3`
 `;
 
 export const LocationFlag = styled.img``;
+
+export const ImagesListWrapper = styled.div`
+  margin-top: auto;
+`;
