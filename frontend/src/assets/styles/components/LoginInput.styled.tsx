@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import RespondTo, { MinWidth } from "../../theme/responsive";
-import FadeIn from "../layout/FadeIn.styled";
 
 interface LoginInputContainerProps {
   LoginPage?: boolean;
@@ -36,7 +35,6 @@ margin: ${(props: any) =>
         }
 `}
   ${RespondTo.tabletBreakpoint`
-    margin:  10rem auto 3rem;
     margin: ${(props: any) =>
       props.LoginPage ? "12rem auto 3rem" : "10rem auto 3rem"};
   button {
@@ -44,6 +42,7 @@ margin: ${(props: any) =>
         }
 `}
   ${RespondTo.mobileBreakpoint`
+      width: 100%;
   button {
     width: 90%;
   }
@@ -51,11 +50,6 @@ margin: ${(props: any) =>
 
   .logo {
     margin-bottom: 2rem;
-  }
-
-  a {
-    font-weight: 500;
-    color: ${({ theme }) => theme.colors.clr10};
   }
 `;
 
@@ -73,60 +67,83 @@ export const SignUpPlusImage = styled.img.attrs({ className: "SignUpImage" })`
   right: 0;
 `;
 
-export const FadeInErrorMessage = styled(FadeIn).attrs({
-  className: "FormError",
-})`
-  color: ${({ theme }) => theme.colors.clr11};
-  font-size: ${({ theme }) => theme.fontSizes.fsSm};
-  position: absolute;
-  bottom: -25px;
-  ${RespondTo.mobileBreakpoint`
-  bottom: -40%;
-      font-size: ${(props: any) => props.theme.fontSizes.fsXs};
-`}
-`;
-
 export const MiddleFlex = styled.div.attrs({
   className: "MiddleFlex",
 })`
   width: 500px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-bottom: 2.5rem;
-  text-decoration: none;
+  a {
+    font-weight: 500;
+    color: ${({ theme }) => theme.colors.clr10};
+    text-decoration: none;
+    :hover {
+      text-decoration: underline;
+    }
+  }
   ${RespondTo.laptopBreakpoint`
   justify-content: space-around;
   width: 420px;
   font-size: ${(props: any) => props.theme.fontSizes.fsS};
-
   `}
   ${RespondTo.mobileBreakpoint`
   width: 90%;
   text-align: center;
   font-size: ${(props: any) => props.theme.fontSizes.fsSm};
-
 `}
 `;
 
-export const RememberMeContainer = styled.div.attrs({
-  className: "RememberMeContainer",
+export const RememberMeLabel = styled.label.attrs({
+  className: "RememberMeLabel",
 })`
   display: flex;
-  gap: 1rem;
-
-  input[type="checkbox"] {
-    width: 20px;
-    padding: 5px;
-
-    &:checked {
-      accent-color: black;
-    }
-  }
+  align-items: center;
+  gap: 2rem;
   ${RespondTo.mobileBreakpoint`
-  label {
     display: flex;
-  }
+    gap: 1.5rem;
 `}
+`;
+
+export const RememberMeInput = styled.input.attrs({
+  className: "RememberMeInput",
+})`
+  position: relative;
+  cursor: pointer;
+  width: 0px;
+  &:before {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    top: -3px;
+    left: 0;
+    border: 2px solid #555;
+    border-radius: 6px;
+    background-color: transparent;
+    transition: all 0.2s ease;
+  }
+  &:checked:before {
+    border: 2px solid ${({ theme }) => theme.colors.clr2};
+    background-color: black;
+  }
+  &:checked:after {
+    content: "";
+    display: block;
+    width: 5px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+    position: absolute;
+    top: 1px;
+    left: 8px;
+  }
 `;
 
 export const PrivacyPolicy = styled.p.attrs({
@@ -137,19 +154,19 @@ export const PrivacyPolicy = styled.p.attrs({
   color: ${({ theme }) => theme.colors.clr3};
   font-size: ${({ theme }) => theme.fontSizes.fsS};
   margin-bottom: 12px;
-
   a {
     color: ${({ theme }) => theme.colors.clr10};
     text-decoration: none;
+    :hover {
+      text-decoration: underline;
+    }
   }
-
   ${RespondTo.laptopBreakpoint`
   font-size: ${(props: any) => props.theme.fontSizes.fsS};
   width: 420px;
   a {
     display: block;
   }
-
 `}
   ${RespondTo.tabletBreakpoint`
   text-align: center;
@@ -158,7 +175,6 @@ export const PrivacyPolicy = styled.p.attrs({
   width: 85%;
   text-align: center;
   font-size: ${(props: any) => props.theme.fontSizes.fsSm};
-
 `}
 `;
 

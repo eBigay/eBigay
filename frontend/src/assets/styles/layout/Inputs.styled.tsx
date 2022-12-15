@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import RespondTo from "../../theme/responsive";
+import FadeIn from "./FadeIn.styled";
 
 interface InputProps {
   width: number;
@@ -52,6 +53,11 @@ export const InnerInput = styled.input.attrs({ className: "InnerInput" })`
   &::placeholder {
     color: ${({ theme }) => theme.colors.clr3};
   }
+  /* remove the blue background on auto-fill */
+  :-webkit-autofill {
+    background-clip: clip;
+    -webkit-background-clip: text;
+  }
   ${RespondTo.mobileBreakpoint`
   font-size: ${(props: any) => props.theme.fontSizes.fsS};
   `}
@@ -70,6 +76,19 @@ export const InputRightImage = styled.img`
   &:hover {
     filter: brightness(130%);
   }
+`;
+
+export const FadeInErrorMessage = styled(FadeIn).attrs({
+  className: "FormError",
+})`
+  color: ${({ theme }) => theme.colors.clr11};
+  font-size: ${({ theme }) => theme.fontSizes.fsSm};
+  position: absolute;
+  bottom: -25px;
+  ${RespondTo.mobileBreakpoint`
+  bottom: -31%;
+      font-size: ${(props: any) => props.theme.fontSizes.fsXs};
+`}
 `;
 
 export default StyledInput;

@@ -4,9 +4,9 @@ import StyledInput, {
   InnerInput,
   InputLeftImage,
   InputRightImage,
+  FadeInErrorMessage,
 } from "../assets/styles/layout/Inputs.styled";
 import PrimaryButton from "../assets/styles/base/Button.styled";
-import { FadeInErrorMessage } from "../assets/styles/components/LoginInput.styled";
 
 interface IInputProps {
   image: string;

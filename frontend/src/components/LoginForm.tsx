@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import LoginSchema from "../schemas/LoginSchema";
 import LoginInputContainer, {
   MiddleFlex,
-  RememberMeContainer,
+  RememberMeInput,
+  RememberMeLabel,
 } from "../assets/styles/components/LoginInput.styled";
 import Logo from "./layout/Logo";
 import { Input } from "./Input";
@@ -63,17 +64,15 @@ const LoginForm = () => {
             errors={errors.Password}
           />
           <MiddleFlex>
-            <RememberMeContainer>
-              <label htmlFor="checkbox">
-                <input
-                  type="checkbox"
-                  id="checkbox"
-                  checked={rememberMe}
-                  onChange={() => setRememberMe(!rememberMe)}
-                />{" "}
-                Remember me
-              </label>
-            </RememberMeContainer>
+            <RememberMeLabel htmlFor="checkbox">
+              <RememberMeInput
+                type="checkbox"
+                id="checkbox"
+                checked={rememberMe}
+                onChange={() => setRememberMe(!rememberMe)}
+              />{" "}
+              Remember me
+            </RememberMeLabel>
             <Link to="forgotPassword">Forgot password?</Link>
           </MiddleFlex>
           <PrimaryButton width="500px" height="70px" fontSize="l" type="submit">
