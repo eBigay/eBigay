@@ -55,7 +55,6 @@ const ProductDetails = () => {
       <PopUp isProductDetailsOpen={modal}>
         <ProductDetailsContainer>
           <StyledSwiperMain
-            onBeforeSlideChangeStart={setActiveThumb}
             slidesPerView={1}
             loop={true}
             spaceBetween={10}
@@ -70,7 +69,7 @@ const ProductDetails = () => {
             {imgs &&
               imgs.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <MainIMg src={item} alt="product images" />
+                  <MainIMg src={item} alt="product images" loading="lazy" />
                 </SwiperSlide>
               ))}
           </StyledSwiperMain>
@@ -99,7 +98,11 @@ const ProductDetails = () => {
                   imgs.map((item, index) => (
                     <SwiperSlide key={index}>
                       <ImgsWrapper>
-                        <SecondaryImg src={item} alt="product images" />
+                        <SecondaryImg
+                          src={item}
+                          alt="product images"
+                          loading="lazy"
+                        />
                       </ImgsWrapper>
                     </SwiperSlide>
                   ))}

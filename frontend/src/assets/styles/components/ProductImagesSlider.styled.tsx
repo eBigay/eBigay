@@ -26,10 +26,15 @@ export const StyledSwiperThumbs = styled(Swiper)`
   margin-top: auto;
   .swiper-slide {
     cursor: pointer;
+    img {
+      opacity: 0.5;
+    }
 
     &-thumb-active {
-      border-radius: 20px;
-      border: 2px solid ${({ theme }) => theme.colors.clr3};
+      img {
+        transition: 0.3s ease;
+        opacity: 1;
+      }
     }
   }
 `;
