@@ -1,4 +1,5 @@
 import { Avatar } from "@mui/material";
+import _ from "lodash";
 import { useContext, useState } from "react";
 import ScreenOverlay from "./ScreenOverlay";
 import PrimaryButton from "../assets/styles/base/Button.styled";
@@ -36,7 +37,7 @@ const ProductDetails = () => {
 
   const { modal, handleModal, modalContent } = useContext(rootContext);
 
-  const { description, mainImg, itemName, createdBy, imgs, location } =
+  const { description, mainImg, itemName, createdBy, imgs, location, _id } =
     modalContent;
 
   useOverflow(modal);
@@ -67,8 +68,8 @@ const ProductDetails = () => {
             }}
           >
             {imgs &&
-              imgs.map((item, index) => (
-                <SwiperSlide key={index}>
+              imgs.map((item) => (
+                <SwiperSlide key={_.uniqueId()}>
                   <MainIMg src={item} alt="product images" loading="lazy" />
                 </SwiperSlide>
               ))}
@@ -95,8 +96,8 @@ const ProductDetails = () => {
                 modules={[Navigation, Thumbs]}
               >
                 {imgs &&
-                  imgs.map((item, index) => (
-                    <SwiperSlide key={index}>
+                  imgs.map((item) => (
+                    <SwiperSlide key={_.uniqueId()}>
                       <ImgsWrapper>
                         <SecondaryImg
                           src={item}

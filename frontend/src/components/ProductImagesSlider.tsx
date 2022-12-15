@@ -1,3 +1,4 @@
+import _ from "lodash";
 import { SwiperSlide } from "swiper/react";
 import {
   StyledSwiperMain,
@@ -16,10 +17,10 @@ import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
 interface SliderProps {
-  imgs: string[];
+  images: string[];
 }
 
-const ProductImagesSlider = ({ imgs }: SliderProps) => {
+const ProductImagesSlider = ({ images }: SliderProps) => {
   const [activeThumb, setActiveThumb] = useState<SwiperRef>();
 
   return (
@@ -35,8 +36,8 @@ const ProductImagesSlider = ({ imgs }: SliderProps) => {
           swiper: activeThumb && !activeThumb.destroyed ? activeThumb : null,
         }}
       >
-        {imgs.map((item, index) => (
-          <SwiperSlide key={index}>
+        {images.map((item) => (
+          <SwiperSlide key={_.uniqueId()}>
             <MainIMg src={item} alt="product images" />
           </SwiperSlide>
         ))}
@@ -47,12 +48,13 @@ const ProductImagesSlider = ({ imgs }: SliderProps) => {
         spaceBetween={10}
         slidesPerView={4}
         modules={[Navigation, Thumbs]}
+        className="product-images-slider-thumbs"
       >
-        {imgs.map((item, index) => (
-          <SwiperSlide key={index}>
-            <ImgsWrapper>
+        {images.map((item) => (
+          <SwiperSlide key={_.uniqueId()}>
+            <div className="product-images-slider-thumbs-wrapper">
               <SecondaryImg src={item} alt="product images" />
-            </ImgsWrapper>
+            </div>
           </SwiperSlide>
         ))}
       </StyledSwiperThumbs>
