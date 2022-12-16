@@ -1,33 +1,14 @@
 import { useState } from "react";
-import { IItem } from "../interfaces/IItem.interface";
 
-const useModal = () => {
+const useModal = <T>(initialContent: T) => {
   const [modal, setModal] = useState<boolean>(false);
-  const [modalContent, setModalContent] = useState<IItem>({
-    _id: "",
-    qty: 0,
-    itemName: "",
-    mainImg: "",
-    category: "",
-    location: "",
-    createdAt: 0,
-    description: "",
-    imgs: [],
-    createdBy: {
-      _id: "",
-      fullName: "",
-      imgUrl: "",
-    },
-  });
-
-  const handleModal = (content?: IItem) => {
+  const [modalContent, setModalContent] = useState<T>(initialContent);
+  const handleModal = (content?: T) => {
     setModal(!modal);
     if (content) {
       setModalContent(content);
     }
   };
-
   return { modal, handleModal, modalContent };
 };
-
 export default useModal;
