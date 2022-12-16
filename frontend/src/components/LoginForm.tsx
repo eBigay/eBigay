@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Formik } from "formik";
+import { Formik, FormikValues } from "formik";
 import { Link } from "react-router-dom";
 import LoginSchema from "../schemas/LoginSchema";
 import LoginInputContainer, {
@@ -23,6 +23,7 @@ const LoginForm = () => {
   }
 
   const initialValues: LoginValues = { Username: "", Password: "" };
+
   return (
     <Formik
       initialValues={initialValues}
@@ -30,38 +31,15 @@ const LoginForm = () => {
       onSubmit={(values) => alert(JSON.stringify(values))}
       validationSchema={LoginSchema}
     >
-      {({
-        values,
-        handleChange,
-        handleBlur,
-        handleSubmit,
-        errors,
-        touched,
-      }: any) => (
+      {({ handleSubmit }: FormikValues) => (
         <LoginInputContainer LoginPage onSubmit={handleSubmit}>
           <Logo noNavigate />
-          <Input
-            image={Profile}
-            type="text"
-            placeholder="Username"
-            value={values.Username}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            touched={touched.Username}
-            className={errors.Username && touched.Username ? "inputError" : ""}
-            errors={errors.Username}
-          />
+          <Input image={Profile} type="text" placeholder="Username" />
           <Input
             image={Lock}
             type="password"
             otherImage={Hide}
             placeholder="Password"
-            value={values.Password}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            touched={touched.Password}
-            className={errors.Password && touched.Password ? "inputError" : ""}
-            errors={errors.Password}
           />
           <MiddleFlex>
             <RememberMeLabel htmlFor="checkbox">

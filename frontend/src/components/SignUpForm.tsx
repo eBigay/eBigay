@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Formik } from "formik";
+import { Formik, FormikValues } from "formik";
 import LoginInputContainer, {
   PrivacyPolicy,
   SignUpImageContainer,
@@ -43,78 +43,27 @@ const SignUpInput = () => {
       onSubmit={(values) => alert(JSON.stringify(values))}
       validationSchema={SignUpSchema}
     >
-      {({
-        values,
-        handleChange,
-        handleBlur,
-        handleSubmit,
-        errors,
-        touched,
-      }: any) => (
+      {({ handleSubmit }: FormikValues) => (
         <LoginInputContainer onSubmit={handleSubmit}>
           <Logo noNavigate />
           <SignUpImageContainer>
             <img src={SignUpProfile} alt="new profile" />
             <SignUpPlusImage src={SignUpPlus} alt="new profile" />
           </SignUpImageContainer>
-          <Input
-            image={Profile}
-            type="text"
-            placeholder="Username"
-            value={values.Username}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            touched={touched.Username}
-            className={errors.Username && touched.Username ? "inputError" : ""}
-            errors={errors.Username}
-          />
-          <Input
-            image={Message}
-            type="email"
-            placeholder="Email"
-            value={values.Email}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            touched={touched.Email}
-            className={errors.Email && touched.Email ? "inputError" : ""}
-            errors={errors.Email}
-          />
+          <Input image={Profile} type="text" placeholder="Username" />
+          <Input image={Message} type="email" placeholder="Email" />
           <Input
             image={Lock}
             otherImage={Hide}
             type="password"
             placeholder="Password"
-            value={values.Password}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            touched={touched.Password}
-            className={errors.Password && touched.Password ? "inputError" : ""}
-            errors={errors.Password}
           />
-          <Input
-            image={Calling}
-            type="tel"
-            placeholder="Phone Number"
-            value={values.PhoneNumber}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            touched={touched.PhoneNumber}
-            className={
-              errors.PhoneNumber && touched.PhoneNumber ? "inputError" : ""
-            }
-            errors={errors.PhoneNumber}
-          />
+          <Input image={Calling} type="tel" placeholder="Phone Number" />
           <Input
             image={Location}
             otherImage={Discovery}
             type="text"
             placeholder="Location"
-            value={values.Location}
-            onChange={handleChange}
-            onBlur={handleBlur}
-            touched={touched.Location}
-            className={errors.Location && touched.Location ? "inputError" : ""}
-            errors={errors.Location}
           />
           <PrivacyPolicy>
             By signing up you agree to our{" "}
