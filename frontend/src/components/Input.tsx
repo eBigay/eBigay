@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useFormikContext, FormikValues } from "formik";
+import { get } from "lodash";
 import Search from "../assets/svgs/Search.svg";
 import StyledInput, {
   InnerInput,
@@ -13,12 +15,6 @@ interface IInputProps {
   otherImage?: string; // optional argument - for the password and location inputs
   type: string;
   placeholder: string;
-  value?: string;
-  onChange?: any;
-  onBlur?: any;
-  touched?: boolean;
-  className?: "inputError" | "";
-  errors?: any;
   isSearchInput?: boolean; // will render the search button if prop is true
   width?: number;
   height?: number;
@@ -28,12 +24,6 @@ export const Input = ({
   image,
   otherImage,
   type,
-  value,
-  onChange,
-  onBlur,
-  touched,
-  className,
-  errors,
   placeholder,
   isSearchInput,
   width = 500,
@@ -57,21 +47,27 @@ export const Input = ({
     }
   };
 
+  const { values, errors, touched, handleChange, handleBlur } =
+    useFormikContext<FormikValues>();
+  const inputErrors = get(errors, placeholder);
+  const inputTouched = get(touched, placeholder);
   return (
     <StyledInput
       width={width}
       height={height}
-      className={`${className} ${placeholder}`}
+      className={inputErrors && inputTouched ? "inputError" : ""}
     >
       <InputLeftImage src={image} alt="" />
       <InnerInput
         type={type === "password" ? passwordType : type}
         placeholder={placeholder}
         value={
-          location[0] ? `lat: ${location[0]}, long: ${location[1]}` : value
+          location[0]
+            ? `lat: ${location[0]}, long: ${location[1]}`
+            : get(values, placeholder)
         }
-        onChange={onChange}
-        onBlur={onBlur}
+        onChange={handleChange}
+        onBlur={handleBlur}
         name={placeholder === "Phone Number" ? "PhoneNumber" : placeholder}
       />
       {otherImage && (
@@ -87,8 +83,11 @@ export const Input = ({
           Search
         </PrimaryButton>
       )}
-
-      {touched && errors && <FadeInErrorMessage>{errors}</FadeInErrorMessage>}
+      {inputTouched && inputErrors && (
+        <FadeInErrorMessage>
+          {JSON.stringify(inputErrors).slice(1, -1)}
+        </FadeInErrorMessage>
+      )}
     </StyledInput>
   );
 };
