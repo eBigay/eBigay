@@ -4,10 +4,11 @@ import { Swiper } from "swiper/react";
 export const StyledSwiperMain = styled(Swiper)`
   position: relative;
   height: 100%;
-  max-width: 50%;
   .swiper-slide {
+    margin: 0;
     overflow: hidden;
     position: relative;
+    padding-bottom: 1rem;
   }
 
   .swiper-button-prev {

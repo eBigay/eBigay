@@ -27,7 +27,7 @@ const Search = () => {
             padding: "20px",
           }}
         >
-          <ProductImagesSlider imgs={images} />
+          <ProductImagesSlider images={images} />
         </div>
       </div>
     </>
