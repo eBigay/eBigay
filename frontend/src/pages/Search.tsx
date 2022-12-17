@@ -1,4 +1,3 @@
-import Loading from "../components/Loading";
 import ProductImagesSlider from "../components/ProductImagesSlider";
 
 const Search = () => {
@@ -11,26 +10,24 @@ const Search = () => {
     "https://www.figma.com/file/145Qhm9vRmkeIrR3X57X6H/image/8a8ba5be890d26fce29f32cc00e1ac484832c177?fuid=1170447139434082766",
   ];
   return (
-    <>
+    <div
+      style={{
+        height: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <div
         style={{
-          height: "100vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+          width: "500px",
+          backgroundColor: "#fff",
+          padding: "20px",
         }}
       >
-        <div
-          style={{
-            width: "500px",
-            backgroundColor: "#fff",
-            padding: "20px",
-          }}
-        >
-          <ProductImagesSlider imgs={images} />
-        </div>
+        <ProductImagesSlider images={images} />
       </div>
-    </>
+    </div>
   );
 };
 
