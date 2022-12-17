@@ -44,7 +44,7 @@ jobs:
             - ~/.npm
       - run:
           name: Run ESLint
-          command: npm run lint
+          command: cd ./frontend && npm run lint
 
 
 # Invoke jobs via workflows
