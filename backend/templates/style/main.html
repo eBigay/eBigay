@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    {% block titel %} {% endblock %}
+    {% include 'style/navbar.html' %}
+    <style>
+        body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background: #7abecc !important;
+		}
+    </style>
+</head>
+<body>
+    {% block content %}
+    
+    {% endblock %}
+</body>
+</html>
