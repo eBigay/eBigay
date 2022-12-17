@@ -1,13 +1,12 @@
 import { Avatar } from "@mui/material";
 import _ from "lodash";
 import { useContext, useState } from "react";
+import { SwiperSlide } from "swiper/react";
+import { Navigation, Thumbs, type Swiper as SwiperRef } from "swiper";
 import ScreenOverlay from "./ScreenOverlay";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import { rootContext } from "../context/RootContext";
 import useOverflow from "../hooks/useOverflow";
-import { SwiperSlide } from "swiper/react";
-import { Navigation, Thumbs } from "swiper";
-import { type Swiper as SwiperRef } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
@@ -37,8 +36,7 @@ const ProductDetails = () => {
 
   const { modal, handleModal, modalContent } = useContext(rootContext);
 
-  const { description, mainImg, itemName, createdBy, imgs, location, _id } =
-    modalContent;
+  const { description, itemName, createdBy, imgs, location } = modalContent;
 
   useOverflow(modal);
 
@@ -59,11 +57,11 @@ const ProductDetails = () => {
         <ProductDetailsContainer>
           <StyledSwiperMain
             slidesPerView={1}
-            loop={true}
+            loop
             spaceBetween={10}
-            navigation={true}
+            navigation
             modules={[Navigation, Thumbs]}
-            grabCursor={true}
+            grabCursor
             thumbs={{
               swiper:
                 activeThumb && !activeThumb.destroyed ? activeThumb : null,
@@ -92,7 +90,7 @@ const ProductDetails = () => {
             <ImagesListWrapper>
               <StyledSwiperThumbs
                 onSwiper={setActiveThumb}
-                loop={true}
+                loop
                 spaceBetween={10}
                 slidesPerView={3}
                 modules={[Navigation, Thumbs]}

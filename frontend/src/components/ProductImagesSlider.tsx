@@ -1,5 +1,7 @@
+import { useState } from "react";
 import _ from "lodash";
 import { SwiperSlide } from "swiper/react";
+import { Navigation, Thumbs, type Swiper as SwiperRef } from "swiper";
 import {
   StyledSwiperMain,
   StyledSwiperThumbs,
@@ -7,11 +9,7 @@ import {
 import {
   MainIMg,
   SecondaryImg,
-  ImgsWrapper,
 } from "../assets/styles/components/ProductDetails.styled";
-import { Navigation, Thumbs } from "swiper";
-import { useState } from "react";
-import { type Swiper as SwiperRef } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
@@ -27,11 +25,11 @@ const ProductImagesSlider = ({ images }: SliderProps) => {
     <>
       <StyledSwiperMain
         slidesPerView={1}
-        loop={true}
+        loop
         spaceBetween={10}
-        navigation={true}
+        navigation
         modules={[Navigation, Thumbs]}
-        grabCursor={true}
+        grabCursor
         thumbs={{
           swiper: activeThumb && !activeThumb.destroyed ? activeThumb : null,
         }}
@@ -44,7 +42,7 @@ const ProductImagesSlider = ({ images }: SliderProps) => {
       </StyledSwiperMain>
       <StyledSwiperThumbs
         onSwiper={setActiveThumb}
-        loop={true}
+        loop
         spaceBetween={10}
         slidesPerView={4}
         modules={[Navigation, Thumbs]}
