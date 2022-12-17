@@ -8,7 +8,6 @@ export const StyledSwiperMain = styled(Swiper)`
     margin: 0;
     overflow: hidden;
     position: relative;
-    padding-bottom: 1rem;
   }
 
   .swiper-button-prev {

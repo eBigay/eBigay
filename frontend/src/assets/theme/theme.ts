@@ -49,6 +49,7 @@ const theme = {
     clr8: "#b04632",
     clr9: "#fbc846",
     clr10: "#4066EA", // purple/blue - Forgot password
+    clr11: "#fc8181", // pink-ish red - form validation
     footer: "rgba(253, 241, 225, 0.4)",
   },
   fontSizes: {

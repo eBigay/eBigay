@@ -2,9 +2,7 @@ import { lazy } from "react";
 import Search from "./pages/Search";
 import NotFound from "./pages/NotFound";
 
-const Home = lazy(async () => {
-  /* eslint-disable-next-line */
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+const Home = lazy(() => {
   return import("./pages/Home");
 });
 const About = lazy(async () => {
@@ -12,15 +10,10 @@ const About = lazy(async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return import("./pages/About");
 });
-const Login = lazy(async () => {
+const LoginSignup = lazy(async () => {
   /* eslint-disable-next-line */
   await new Promise((resolve) => setTimeout(resolve, 1000));
-  return import("./pages/Login");
-});
-const SignUp = lazy(async () => {
-  /* eslint-disable-next-line */
-  await new Promise((resolve) => setTimeout(resolve, 1000));
-  return import("./pages/SignUp");
+  return import("./pages/LoginSignup");
 });
 
 const routes = [
@@ -36,12 +29,14 @@ const routes = [
   },
   {
     path: "/login",
-    element: Login,
+    element: LoginSignup,
+    props: { type: "login" },
     key: "Login",
   },
   {
     path: "/SignUp",
-    element: SignUp,
+    element: LoginSignup,
+    props: { type: "signup" },
     key: "SignUp",
   },
   {

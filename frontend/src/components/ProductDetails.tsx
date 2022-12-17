@@ -1,13 +1,12 @@
 import { Avatar } from "@mui/material";
 import _ from "lodash";
 import { useContext, useState } from "react";
+import { SwiperSlide } from "swiper/react";
+import { Navigation, Thumbs, type Swiper as SwiperRef } from "swiper";
 import ScreenOverlay from "./ScreenOverlay";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import { rootContext } from "../context/RootContext";
 import useOverflow from "../hooks/useOverflow";
-import { SwiperSlide } from "swiper/react";
-import { Navigation, Thumbs } from "swiper";
-import { type Swiper as SwiperRef } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
@@ -31,9 +30,10 @@ import {
   StyledSwiperMain,
   StyledSwiperThumbs,
 } from "../assets/styles/components/ProductImagesSlider.styled";
-import ProductImagesSlider from "./ProductImagesSlider";
 
 const ProductDetails = () => {
+  const [activeThumb, setActiveThumb] = useState<SwiperRef>();
+
   const { modal, handleModal, modalContent } = useContext(rootContext);
 
   const { description, mainImg, itemName, createdBy, imgs, location, _id } =
@@ -54,7 +54,25 @@ const ProductDetails = () => {
       />
       <PopUp isProductDetailsOpen={modal}>
         <ProductDetailsContainer>
-          {imgs && <ProductImagesSlider images={imgs} />}
+          <StyledSwiperMain
+            slidesPerView={1}
+            loop
+            spaceBetween={10}
+            navigation
+            modules={[Navigation, Thumbs]}
+            grabCursor
+            thumbs={{
+              swiper:
+                activeThumb && !activeThumb.destroyed ? activeThumb : null,
+            }}
+          >
+            {imgs &&
+              imgs.map((item) => (
+                <SwiperSlide key={_.uniqueId()}>
+                  <MainIMg src={item} alt="product images" loading="lazy" />
+                </SwiperSlide>
+              ))}
+          </StyledSwiperMain>
           <ProductDetailsSection>
             <DetailsName>{itemName}</DetailsName>
             <CreatedByContainer>
@@ -68,7 +86,28 @@ const ProductDetails = () => {
             <PrimaryButton width="70%" height="70px" fontSize="l">
               Log in to comment
             </PrimaryButton>
-            <ImagesListWrapper></ImagesListWrapper>
+            <ImagesListWrapper>
+              <StyledSwiperThumbs
+                onSwiper={setActiveThumb}
+                loop
+                spaceBetween={10}
+                slidesPerView={3}
+                modules={[Navigation, Thumbs]}
+              >
+                {imgs &&
+                  imgs.map((item) => (
+                    <SwiperSlide key={_.uniqueId()}>
+                      <ImgsWrapper>
+                        <SecondaryImg
+                          src={item}
+                          alt="product images"
+                          loading="lazy"
+                        />
+                      </ImgsWrapper>
+                    </SwiperSlide>
+                  ))}
+              </StyledSwiperThumbs>
+            </ImagesListWrapper>
           </ProductDetailsSection>
         </ProductDetailsContainer>
         <CancelIcon onClick={toggleProductDetailsOpen} />
