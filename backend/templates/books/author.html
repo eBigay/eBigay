@@ -1,0 +1,15 @@
+{% extends 'style/main.html' %}
+{% block titel %}
+    <title>Authors</title>
+{% endblock %}
+{% block content %}
+    <br><h1 style="margin: 10px">Authors</h1>
+    {% for a in author %}
+        <div class="card" style="width: 200px; float: left; margin: 10px">
+            <div class="card-body">
+                <h5 class="card-title">{{ a.author }}</h5>
+                <a href="{% url 'novels' a.pk %}" class="btn btn-primary">Show books</a>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}
