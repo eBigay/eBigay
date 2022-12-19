@@ -10,7 +10,7 @@ import {
 import { IItem } from "../interfaces/IItem.interface";
 
 const INITIAL_STATE: IItem = {
-  _id: "",
+  id: "",
   qty: 0,
   itemName: "",
   mainImg: "",
@@ -20,7 +20,7 @@ const INITIAL_STATE: IItem = {
   description: "",
   imgs: [],
   createdBy: {
-    _id: "",
+    id: "",
     fullName: "",
     imgUrl: "",
   },

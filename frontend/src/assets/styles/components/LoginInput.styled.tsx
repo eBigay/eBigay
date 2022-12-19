@@ -119,7 +119,7 @@ export const RememberMeInput = styled.input.attrs({
     position: absolute;
     width: 18px;
     height: 18px;
-    top: -3px;
+    top: -4px;
     left: 0;
     border: 2px solid #555;
     border-radius: 6px;
@@ -137,9 +137,9 @@ export const RememberMeInput = styled.input.attrs({
     height: 8px;
     border: solid white;
     border-width: 0 2px 2px 0;
-    -webkit-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    transform: rotate(45deg);
+    -webkit-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    transform: rotate(40deg);
     position: absolute;
     top: 1px;
     left: 8px;

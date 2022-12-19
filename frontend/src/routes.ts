@@ -6,12 +6,10 @@ const Home = lazy(() => {
   return import("./pages/Home");
 });
 const About = lazy(async () => {
-  /* eslint-disable-next-line */
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return import("./pages/About");
 });
 const LoginSignup = lazy(async () => {
-  /* eslint-disable-next-line */
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return import("./pages/LoginSignup");
 });

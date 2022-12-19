@@ -1,41 +1,75 @@
-import Axios from "axios";
+import axios, { AxiosResponse } from "axios";
+
+enum StatusCode {
+  Unauthorized = 401,
+  Forbidden = 403,
+  TooManyRequests = 429,
+  InternalServerError = 500,
+}
 
 const BASE_URL =
-  process.env.NODE_ENV === "production" ? "/api/" : "//localhost:3030/api/";
+  process.env.NODE_ENV === "production" ? "/api/" : "//localhost:4000/";
 
-const axios = Axios.create({
+const axiosInstance = axios.create({
   withCredentials: true,
 });
 
-export const httpService = {
-  get(endpoint, data) {
+interface HttpService {
+  get<T>(endpoint: string, data?: object): Promise<T>;
+  post<T>(endpoint: string, data: object): Promise<T>;
+  put<T>(endpoint: string, data: object): Promise<T>;
+  delete<T>(endpoint: string, data?: object): Promise<T>;
+}
+
+const httpService: HttpService = {
+  async get(endpoint, data) {
     return ajax(endpoint, "GET", data);
   },
-  post(endpoint, data) {
+  async post(endpoint, data) {
     return ajax(endpoint, "POST", data);
   },
-  put(endpoint, data) {
+  async put(endpoint, data) {
     return ajax(endpoint, "PUT", data);
   },
-  delete(endpoint, data) {
+  async delete(endpoint, data) {
     return ajax(endpoint, "DELETE", data);
   },
 };
 
-const ajax = async (endpoint, method = "GET", data = null) => {
+async function ajax<T>(
+  endpoint: string,
+  method: "GET" | "POST" | "PUT" | "DELETE" = "GET",
+  data: object | null = null
+): Promise<T> {
   try {
-    const res = await axios({
+    const res: AxiosResponse<T> = await axiosInstance({
       url: `${BASE_URL}${endpoint}`,
       method,
       data,
       params: method === "GET" ? data : null,
     });
     return res.data;
-  } catch (err) {
-    if (err.response && err.response.status === 401) {
-      sessionStorage.clear();
-      window.location.assign("/");
+  } catch (err: any) {
+    switch (err.response && err.response.status) {
+      case StatusCode.InternalServerError: {
+        // Handle InternalServerError
+        break;
+      }
+      case StatusCode.Forbidden: {
+        // Handle Forbidden
+        break;
+      }
+      case StatusCode.Unauthorized: {
+        // Handle Unauthorized
+        break;
+      }
+      case StatusCode.TooManyRequests: {
+        // Handle TooManyRequests
+        break;
+      }
     }
     throw err;
   }
-};
+}
+
+export { httpService };

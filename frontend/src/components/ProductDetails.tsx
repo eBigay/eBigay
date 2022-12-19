@@ -36,7 +36,7 @@ const ProductDetails = () => {
 
   const { modal, handleModal, modalContent } = useContext(rootContext);
 
-  const { description, mainImg, itemName, createdBy, imgs, location, _id } =
+  const { description, mainImg, itemName, createdBy, imgs, location, id } =
     modalContent;
 
   useOverflow(modal);

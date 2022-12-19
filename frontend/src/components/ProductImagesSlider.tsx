@@ -1,11 +1,10 @@
+import { useState } from "react";
 import _ from "lodash";
 import { SwiperSlide } from "swiper/react";
 import { Navigation, Thumbs, type Swiper as SwiperRef } from "swiper";
-import { useState } from "react";
 import {
   MainIMg,
   SecondaryImg,
-  ImgsWrapper,
 } from "../assets/styles/components/ProductDetails.styled";
 import {
   StyledSwiperMain,

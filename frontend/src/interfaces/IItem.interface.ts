@@ -1,5 +1,5 @@
 export interface IItem {
-  _id: string;
+  id?: string;
   qty: number;
   itemName: string;
   mainImg: string;
@@ -8,7 +8,7 @@ export interface IItem {
   location: any;
   createdAt: number;
   createdBy: {
-    _id: string;
+    id?: string;
     fullName?: string;
     imgUrl: string;
   };

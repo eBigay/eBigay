@@ -26,6 +26,11 @@ export const RecentItemsHeader = styled.h2`
   }
 `;
 
+export const FetchErrorMessage = styled.p`
+  font-size: ${({ theme }) => theme.fontSizes.fsL};
+  text-align: center;
+`;
+
 export const RecentItemsContainer = styled.div`
   padding: 0 5rem;
   display: grid;
