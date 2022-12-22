@@ -14,12 +14,11 @@ interface INavBarProps {
 
 const Nav = ({ isMenuOpen, setIsMenuOpen }: INavBarProps) => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
-
-  const navigate = useNavigate();
 
   const toggleIsMenuOpen = () => {
     setIsMenuOpen(!isMenuOpen);

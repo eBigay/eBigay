@@ -13,9 +13,14 @@ import Profile from "../assets/svgs/Profile.svg";
 import Lock from "../assets/svgs/Lock.svg";
 import Hide from "../assets/svgs/Hide.svg";
 import PrimaryButton from "../assets/styles/base/Button.styled";
+import useAuth from "../hooks/useAuth";
 
 const LoginForm = () => {
   const [rememberMe, setRememberMe] = useState<boolean>(false);
+
+  const { login } = useAuth();
+
+  const { mutate: loginUser, isError, isLoading } = login;
 
   interface LoginValues {
     Username: string;
@@ -27,12 +32,17 @@ const LoginForm = () => {
   return (
     <Formik
       initialValues={initialValues}
-      /* eslint-disable-next-line */
-      onSubmit={(values) => alert(JSON.stringify(values))}
+      onSubmit={(credentials) => {
+        const values = {
+          email: credentials.Username,
+          password: credentials.Password,
+        };
+        loginUser(values);
+      }}
       validationSchema={LoginSchema}
     >
       {({ handleSubmit }: FormikValues) => (
-        <LoginInputContainer LoginPage onSubmit={handleSubmit}>
+        <LoginInputContainer onSubmit={handleSubmit}>
           <Logo noNavigate />
           <Input image={Profile} type="text" placeholder="Username" />
           <Input

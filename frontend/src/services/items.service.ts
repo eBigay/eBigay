@@ -1,8 +1,8 @@
 import { httpService } from "./http.service";
 import { IItem } from "../interfaces/IItem.interface";
 
-const query = async (): Promise<IItem[]> => {
-  return await httpService.get<IItem[]>("items");
+const query = async (page?: string): Promise<IItem[]> => {
+  return await httpService.get<IItem[]>(`items?page=${page}`);
 };
 
 const getById = async (item: IItem): Promise<IItem> => {

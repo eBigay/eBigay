@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios, { AxiosResponse, AxiosRequestConfig } from "axios";
 
 enum StatusCode {
   Unauthorized = 401,
@@ -10,9 +10,23 @@ enum StatusCode {
 const BASE_URL =
   process.env.NODE_ENV === "production" ? "/api/" : "//localhost:4000/";
 
-const axiosInstance = axios.create({
+const httpClient = axios.create({
   withCredentials: true,
 });
+
+const injectToken = (config: AxiosRequestConfig): AxiosRequestConfig => {
+  try {
+    const user = localStorage.getItem("user");
+    if (user != null) {
+      const { access_token } = JSON.parse(user);
+      config.headers = config.headers ?? {};
+      config.headers.Authorization = `Bearer ${access_token}`;
+    }
+    return config;
+  } catch (err) {
+    throw err;
+  }
+};
 
 interface HttpService {
   get<T>(endpoint: string, data?: object): Promise<T>;
@@ -42,12 +56,17 @@ async function ajax<T>(
   data: object | null = null
 ): Promise<T> {
   try {
-    const res: AxiosResponse<T> = await axiosInstance({
+    // Call injectToken to add the authorization header to the request config
+    const config = injectToken({
       url: `${BASE_URL}${endpoint}`,
       method,
       data,
       params: method === "GET" ? data : null,
     });
+
+    // Make the request using the modified request config
+    const res: AxiosResponse<T> = await httpClient(config);
+
     return res.data;
   } catch (err: any) {
     switch (err.response && err.response.status) {

@@ -23,9 +23,10 @@ import { IItem } from "../interfaces/IItem.interface";
 
 interface IItemCard {
   item: IItem;
+  removeItem: any;
 }
 
-const ItemCard = ({ item }: IItemCard) => {
+const ItemCard = ({ item, removeItem }: IItemCard) => {
   const { handleModal } = useContext(rootContext);
 
   const handleOpenProductDetails = () => {
@@ -58,6 +59,15 @@ const ItemCard = ({ item }: IItemCard) => {
         </ItemLocation>
         <PrimaryButton width="194px" height="34px" fontSize="xs" type="button">
           Sign up for phone number
+        </PrimaryButton>
+        <PrimaryButton
+          width="30px"
+          height="34px"
+          fontSize="xs"
+          type="button"
+          onClick={() => removeItem(item.id)}
+        >
+          removeItem
         </PrimaryButton>
       </ItemDetails>
     </ItemCardContainer>

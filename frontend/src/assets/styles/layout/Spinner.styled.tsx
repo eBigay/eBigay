@@ -23,6 +23,9 @@ const rotateAnimation = keyframes`
 export const SpinnerContainer = styled.div<SpinnerProps>`
   width: ${(props) => props.width};
   height: ${(props) => props.height};
+  svg {
+    width: 100px;
+  }
 `;
 
 export const Spinner = styled.circle`

@@ -12,19 +12,23 @@ import PrimaryButton from "../assets/styles/base/Button.styled";
 import { useItems } from "../hooks/useItems";
 
 const RecentItems = () => {
-  const { queryAllItems, add } = useItems();
-
-  const { isLoading, data, isError, error }: UseQueryResult<IItem[], any> =
-    queryAllItems();
+  const { queryAllItems, add, remove } = useItems();
 
   const {
-    mutate: addItem,
-    isError: isAddError,
-    isLoading: isAddLoading,
-    data: addedItem,
-  } = add;
+    isLoading,
+    data: items,
+    isError,
+    error,
+    refetch,
+  }: UseQueryResult<IItem[], any> = queryAllItems();
 
-  console.log(addedItem);
+  const { mutate: addItem, isError: isAddError, isLoading: isAddLoading } = add;
+
+  const {
+    mutate: removeItem,
+    isError: isRemoveError,
+    isLoading: isRemoveLoading,
+  } = remove;
 
   const handleAddItem = () => {
     const item = {
@@ -69,8 +73,8 @@ const RecentItems = () => {
         Add item tester
       </PrimaryButton>
       <RecentItemsContainer>
-        {data?.map((item: IItem) => (
-          <ItemCard key={item.id} item={item} />
+        {items?.map((item: IItem) => (
+          <ItemCard removeItem={removeItem} key={item.id} item={item} />
         ))}
       </RecentItemsContainer>
     </>
