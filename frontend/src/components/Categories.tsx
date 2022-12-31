@@ -4,20 +4,24 @@ import {
 } from "../assets/styles/components/Categories.styled";
 import Category from "./Category";
 
-interface CategoriesProps {
+interface CategoryProps {
   id: number;
   category: string;
-  url: string;
 }
 
-const Categories = ({ categories }: { categories: CategoriesProps[] }) => (
+interface CategoriesProps {
+  categories: CategoryProps[];
+  onSetFilter: (field: string, value: string) => void;
+}
+
+const Categories = ({ categories, onSetFilter }: CategoriesProps) => (
   <CategoriesContainer>
     <CategoriesHeader>Categories</CategoriesHeader>
     {categories.map((category) => (
       <Category
         key={category.id}
+        onSetFilter={onSetFilter}
         category={category.category}
-        url={category.url}
       />
     ))}
   </CategoriesContainer>

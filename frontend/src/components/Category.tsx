@@ -1,4 +1,3 @@
-import { Link, useNavigate } from "react-router-dom";
 import ArrowRight from "../assets/svgs/ArrowRight.svg";
 import {
   CategoryLink,
@@ -7,16 +6,15 @@ import {
 
 interface CategoryLinkProps {
   category: string;
-  url: string;
+  onSetFilter: (field: string, value: string) => void;
 }
 
-const Category = ({ category, url }: CategoryLinkProps) => {
-  const navigate = useNavigate();
+const Category = ({ category, onSetFilter }: CategoryLinkProps) => {
   return (
-    <StyledCategory onClick={() => navigate(url)}>
-      <CategoryLink>
-        <Link to={url}>{category}</Link>
-      </CategoryLink>
+    <StyledCategory
+      onClick={() => onSetFilter("category", category.toLocaleLowerCase())}
+    >
+      <CategoryLink>{category}</CategoryLink>
       <img src={ArrowRight} alt="Right Arrow" />
     </StyledCategory>
   );

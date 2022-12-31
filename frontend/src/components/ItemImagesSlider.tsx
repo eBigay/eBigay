@@ -5,11 +5,11 @@ import { Navigation, Thumbs, type Swiper as SwiperRef } from "swiper";
 import {
   MainIMg,
   SecondaryImg,
-} from "../assets/styles/components/ProductDetails.styled";
+} from "../assets/styles/components/ItemDetails.styled";
 import {
   StyledSwiperMain,
   StyledSwiperThumbs,
-} from "../assets/styles/components/ProductImagesSlider.styled";
+} from "../assets/styles/components/ItemImagesSlider.styled";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
@@ -18,7 +18,7 @@ interface SliderProps {
   images: string[];
 }
 
-const ProductImagesSlider = ({ images }: SliderProps) => {
+const ItemImagesSlider = ({ images }: SliderProps) => {
   const [activeThumb, setActiveThumb] = useState<SwiperRef>();
 
   return (
@@ -65,4 +65,4 @@ const ProductImagesSlider = ({ images }: SliderProps) => {
   );
 };
 
-export default ProductImagesSlider;
+export default ItemImagesSlider;

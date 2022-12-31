@@ -1,13 +1,18 @@
 import { IUser } from "../interfaces/IUser.inerface";
 import { httpService } from "./http.service";
 
+const saveLocalUser = (user: IUser): IUser => {
+  localStorage.setItem("user", JSON.stringify(user));
+  return user;
+};
+
 const login = async (credentials: {
   email: string;
   password: string;
 }): Promise<IUser | undefined> => {
   try {
     const user = await httpService.post<IUser>("auth/login", credentials);
-    if (user) return _saveLocalUser(user);
+    if (user) return saveLocalUser(user);
   } catch (err) {
     throw err;
   }
@@ -16,7 +21,7 @@ const login = async (credentials: {
 const signup = async (userInfo: IUser): Promise<IUser> => {
   try {
     const user = await httpService.post<IUser>("auth/signup", userInfo);
-    return _saveLocalUser(user);
+    return saveLocalUser(user);
   } catch (err) {
     throw err;
   }
@@ -38,14 +43,9 @@ const updateUser = async (user: IUser): Promise<void> => {
   }
 };
 
-const _saveLocalUser = (user: IUser): IUser => {
-  localStorage.setItem("user", JSON.stringify(user));
-  return user;
-};
-
 const getUsers = async (): Promise<IUser[]> => {
   try {
-    return await httpService.get(`user`);
+    return await httpService.get("user");
   } catch (err) {
     throw err;
   }
@@ -53,7 +53,7 @@ const getUsers = async (): Promise<IUser[]> => {
 
 const getById = async (userId: string): Promise<IUser> => {
   try {
-    return httpService.get(`user/${userId}`);
+    return await httpService.get(`user/${userId}`);
   } catch (err) {
     throw err;
   }

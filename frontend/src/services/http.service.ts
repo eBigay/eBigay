@@ -35,21 +35,6 @@ interface HttpService {
   delete<T>(endpoint: string, data?: object): Promise<T>;
 }
 
-const httpService: HttpService = {
-  async get(endpoint, data) {
-    return ajax(endpoint, "GET", data);
-  },
-  async post(endpoint, data) {
-    return ajax(endpoint, "POST", data);
-  },
-  async put(endpoint, data) {
-    return ajax(endpoint, "PUT", data);
-  },
-  async delete(endpoint, data) {
-    return ajax(endpoint, "DELETE", data);
-  },
-};
-
 async function ajax<T>(
   endpoint: string,
   method: "GET" | "POST" | "PUT" | "DELETE" = "GET",
@@ -66,7 +51,6 @@ async function ajax<T>(
 
     // Make the request using the modified request config
     const res: AxiosResponse<T> = await httpClient(config);
-
     return res.data;
   } catch (err: any) {
     switch (err.response && err.response.status) {
@@ -90,5 +74,19 @@ async function ajax<T>(
     throw err;
   }
 }
+const httpService: HttpService = {
+  async get(endpoint, data) {
+    return ajax(endpoint, "GET", data);
+  },
+  async post(endpoint, data) {
+    return ajax(endpoint, "POST", data);
+  },
+  async put(endpoint, data) {
+    return ajax(endpoint, "PUT", data);
+  },
+  async delete(endpoint, data) {
+    return ajax(endpoint, "DELETE", data);
+  },
+};
 
 export { httpService };

@@ -15,7 +15,7 @@ const App = () => {
         <ThemeProvider theme={theme}>
           <BrowserRouter>
             <Header />
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<Loading pos="center" />}>
               <Routes>
                 {routes.map((route) => (
                   <Route

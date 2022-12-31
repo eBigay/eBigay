@@ -1,15 +1,36 @@
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import {
+  useInfiniteQuery,
+  useMutation,
+  useQuery,
+  useQueryClient,
+} from "react-query";
 import { itemsService } from "../services/items.service";
 import { IItem } from "../interfaces/IItem.interface";
+import { IFilterBy } from "../interfaces/IFilterBy.interface";
 
 export function useItems() {
   const queryClient = useQueryClient();
 
-  const fetchItems = () => {
-    return itemsService.query();
+  const fetchItems = (filterBy: IFilterBy, pageParam: number) => {
+    return itemsService.query(filterBy, pageParam);
   };
 
-  const queryAllItems = () => useQuery("items", fetchItems);
+  const useQueryAllItems = (filterBy: IFilterBy) =>
+    useQuery(["items", filterBy], () => fetchItems(filterBy, filterBy.page), {
+      keepPreviousData: true,
+    });
+
+  const useInfiniteQueryAllItems = (filterBy: IFilterBy) =>
+    useInfiniteQuery(
+      ["items", filterBy],
+      ({ pageParam = 1 }) => fetchItems(filterBy, pageParam),
+      {
+        getNextPageParam: (lastPage, allPages) => {
+          const nextPage = allPages?.length + 1;
+          return lastPage?.length !== 0 ? nextPage : undefined;
+        },
+      }
+    );
 
   const addItem = (item: IItem) => {
     return itemsService.create(item);
@@ -51,7 +72,8 @@ export function useItems() {
   });
 
   return {
-    queryAllItems,
+    useQueryAllItems,
+    useInfiniteQueryAllItems,
     add,
     update,
     remove,

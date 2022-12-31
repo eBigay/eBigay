@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import FeaturedCategoryContainer, {
   FeaturedCategoryImage,

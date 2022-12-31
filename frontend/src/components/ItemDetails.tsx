@@ -1,20 +1,23 @@
+import { useContext, useState } from "react";
 import { Avatar } from "@mui/material";
 import _ from "lodash";
-import { useContext, useState } from "react";
+import { formatDistance } from "date-fns";
 import { SwiperSlide } from "swiper/react";
 import { Navigation, Thumbs, type Swiper as SwiperRef } from "swiper";
 import ScreenOverlay from "./ScreenOverlay";
-import PrimaryButton from "../assets/styles/base/Button.styled";
 import { rootContext } from "../context/RootContext";
+
 import useOverflow from "../hooks/useOverflow";
+
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+
 import {
   CreatedByName,
   PopUp,
-  ProductDetailsContainer,
-  ProductDetailsSection,
+  ItemDetailsContainer,
+  ItemDetailsSection,
   MainIMg,
   DetailsDescription,
   CreatedByContainer,
@@ -25,23 +28,29 @@ import {
   CreatedByLocation,
   CreatedByWrapper,
   ImagesListWrapper,
-} from "../assets/styles/components/ProductDetails.styled";
+  CreatedByTime,
+} from "../assets/styles/components/ItemDetails.styled";
 import {
   StyledSwiperMain,
   StyledSwiperThumbs,
-} from "../assets/styles/components/ProductImagesSlider.styled";
+} from "../assets/styles/components/ItemImagesSlider.styled";
+import PrimaryButton from "../assets/styles/base/Button.styled";
 
-const ProductDetails = () => {
+const ItemDetails = () => {
   const [activeThumb, setActiveThumb] = useState<SwiperRef>();
 
   const { modal, handleModal, modalContent } = useContext(rootContext);
 
-  const { description, mainImg, itemName, createdBy, imgs, location, id } =
+  const { description, itemName, createdBy, imgs, location, createdAt } =
     modalContent;
+
+  const relativeTimeString = formatDistance(createdAt, new Date(), {
+    addSuffix: true,
+  });
 
   useOverflow(modal);
 
-  const toggleProductDetailsOpen = () => {
+  const toggleItemDetailsOpen = () => {
     handleModal();
   };
 
@@ -49,11 +58,11 @@ const ProductDetails = () => {
     <>
       <ScreenOverlay
         styleMode="darken"
-        handleClick={toggleProductDetailsOpen}
-        isProductDetailsOpen={modal}
+        handleClick={toggleItemDetailsOpen}
+        isItemDetailsOpen={modal}
       />
-      <PopUp isProductDetailsOpen={modal}>
-        <ProductDetailsContainer>
+      <PopUp isItemDetailsOpen={modal}>
+        <ItemDetailsContainer>
           <StyledSwiperMain
             slidesPerView={1}
             loop
@@ -69,17 +78,18 @@ const ProductDetails = () => {
             {imgs &&
               imgs.map((item) => (
                 <SwiperSlide key={_.uniqueId()}>
-                  <MainIMg src={item} alt="product images" loading="lazy" />
+                  <MainIMg src={item} alt="item images" loading="lazy" />
                 </SwiperSlide>
               ))}
           </StyledSwiperMain>
-          <ProductDetailsSection>
+          <ItemDetailsSection>
             <DetailsName>{itemName}</DetailsName>
             <CreatedByContainer>
               <Avatar src={createdBy.imgUrl} sx={{ width: 60, height: 60 }} />
               <CreatedByWrapper>
                 <CreatedByName>{createdBy.fullName}</CreatedByName>
                 <CreatedByLocation>{location}</CreatedByLocation>
+                <CreatedByTime>{relativeTimeString}</CreatedByTime>
               </CreatedByWrapper>
             </CreatedByContainer>
             <DetailsDescription>{description}</DetailsDescription>
@@ -100,7 +110,7 @@ const ProductDetails = () => {
                       <ImgsWrapper>
                         <SecondaryImg
                           src={item}
-                          alt="product images"
+                          alt="item images"
                           loading="lazy"
                         />
                       </ImgsWrapper>
@@ -108,12 +118,12 @@ const ProductDetails = () => {
                   ))}
               </StyledSwiperThumbs>
             </ImagesListWrapper>
-          </ProductDetailsSection>
-        </ProductDetailsContainer>
-        <CancelIcon onClick={toggleProductDetailsOpen} />
+          </ItemDetailsSection>
+        </ItemDetailsContainer>
+        <CancelIcon onClick={toggleItemDetailsOpen} />
       </PopUp>
     </>
   );
 };
 
-export default ProductDetails;
+export default ItemDetails;

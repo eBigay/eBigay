@@ -20,7 +20,7 @@ const LoginForm = () => {
 
   const { login } = useAuth();
 
-  const { mutate: loginUser, isError, isLoading } = login;
+  const { mutate: loginUser } = login;
 
   interface LoginValues {
     Username: string;

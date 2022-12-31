@@ -1,9 +1,11 @@
 import { lazy } from "react";
-import Search from "./pages/Search";
 import NotFound from "./pages/NotFound";
 
 const Home = lazy(() => {
   return import("./pages/Home");
+});
+const Search = lazy(() => {
+  return import("./pages/Search");
 });
 const About = lazy(async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));

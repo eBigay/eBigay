@@ -5,20 +5,23 @@ interface IOverlayProps {
   styleMode?: string;
   handleClick?: MouseEventHandler<HTMLDivElement>;
   isMenuOpen?: boolean;
-  isProductDetailsOpen?: boolean;
+  isLeftContainerOpen?: boolean;
+  isItemDetailsOpen?: boolean;
 }
 const ScreenOverlay = ({
   styleMode = "darken",
   handleClick,
   isMenuOpen,
-  isProductDetailsOpen,
+  isItemDetailsOpen,
+  isLeftContainerOpen,
 }: IOverlayProps) => {
   return (
     <StyledScreenOverlay
-      className={`${styleMode}`}
       onClick={handleClick}
       isMenuOpen={isMenuOpen}
-      isProductDetailsOpen={isProductDetailsOpen}
+      isItemDetailsOpen={isItemDetailsOpen}
+      isLeftContainerOpen={isLeftContainerOpen}
+      styleMode={styleMode}
     />
   );
 };

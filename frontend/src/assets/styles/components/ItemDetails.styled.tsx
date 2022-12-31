@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import { Close } from "@mui/icons-material";
 
-interface IsProductDetailsOpen {
-  isProductDetailsOpen?: boolean;
+interface IsItemDetailsOpen {
+  isItemDetailsOpen?: boolean;
 }
 
-export const PopUp = styled.div<IsProductDetailsOpen>`
-  display: ${({ isProductDetailsOpen }) =>
-    isProductDetailsOpen ? "flex" : "none"};
+export const PopUp = styled.div<IsItemDetailsOpen>`
+  display: ${({ isItemDetailsOpen }) => (isItemDetailsOpen ? "flex" : "none")};
   background-color: #f4f5f7;
   border-radius: 20px;
   position: fixed;
@@ -19,7 +18,7 @@ export const PopUp = styled.div<IsProductDetailsOpen>`
   z-index: 100;
 `;
 
-export const ProductDetailsContainer = styled.div`
+export const ItemDetailsContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -34,7 +33,7 @@ export const MainIMg = styled.img`
   border-radius: 20px;
 `;
 
-export const ProductDetailsSection = styled.div`
+export const ItemDetailsSection = styled.div`
   max-width: 50%;
   height: 100%;
   display: flex;
@@ -95,6 +94,11 @@ export const CreatedByLocation = styled.h3`
   color: ${({ theme }) => theme.colors.clr3};
   font-size: ${({ theme }) => theme.fontSizes.fsS};
   font-weight: 400;
+`;
+export const CreatedByTime = styled.h3`
+  color: ${({ theme }) => theme.colors.clr3};
+  font-size: ${({ theme }) => theme.fontSizes.fsXs};
+  font-weight: 600;
 `;
 
 export const LocationFlag = styled.img``;

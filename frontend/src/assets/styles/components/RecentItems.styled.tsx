@@ -34,11 +34,11 @@ export const FetchErrorMessage = styled.p`
 export const RecentItemsContainer = styled.div`
   padding: 0 5rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-template-rows: auto;
   gap: 50px 27px;
   ${RespondTo.mobileBreakpoint`
-   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
    padding: 0 2rem;
   `}
   ${MinWidth.wideBreakpoint`

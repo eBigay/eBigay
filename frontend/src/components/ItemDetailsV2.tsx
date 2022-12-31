@@ -1,5 +1,4 @@
 import { Avatar } from "@mui/material";
-import _ from "lodash";
 import { useContext, useState } from "react";
 import { SwiperSlide } from "swiper/react";
 import { Navigation, Thumbs, type Swiper as SwiperRef } from "swiper";
@@ -13,8 +12,8 @@ import "swiper/css/thumbs";
 import {
   CreatedByName,
   PopUp,
-  ProductDetailsContainer,
-  ProductDetailsSection,
+  ItemDetailsContainer,
+  ItemDetailsSection,
   MainIMg,
   DetailsDescription,
   CreatedByContainer,
@@ -25,14 +24,14 @@ import {
   CreatedByLocation,
   CreatedByWrapper,
   ImagesListWrapper,
-} from "../assets/styles/components/ProductDetails.styled";
+} from "../assets/styles/components/ItemDetails.styled";
 import {
   StyledSwiperMain,
   StyledSwiperThumbs,
-} from "../assets/styles/components/ProductImagesSlider.styled";
-import ProductImagesSlider from "./ProductImagesSlider";
+} from "../assets/styles/components/ItemImagesSlider.styled";
+import ItemImagesSlider from "./ItemImagesSlider";
 
-const ProductDetails = () => {
+const ItemDetails = () => {
   const { modal, handleModal, modalContent } = useContext(rootContext);
 
   const { description, mainImg, itemName, createdBy, imgs, location, id } =
@@ -40,7 +39,7 @@ const ProductDetails = () => {
 
   useOverflow(modal, [modal]);
 
-  const toggleProductDetailsOpen = () => {
+  const toggleItemDetailsOpen = () => {
     handleModal();
   };
 
@@ -48,13 +47,13 @@ const ProductDetails = () => {
     <>
       <ScreenOverlay
         styleMode="darken"
-        handleClick={toggleProductDetailsOpen}
-        isProductDetailsOpen={modal}
+        handleClick={toggleItemDetailsOpen}
+        isItemDetailsOpen={modal}
       />
-      <PopUp isProductDetailsOpen={modal}>
-        <ProductDetailsContainer>
-          {imgs && <ProductImagesSlider images={imgs} />}
-          <ProductDetailsSection>
+      <PopUp isItemDetailsOpen={modal}>
+        <ItemDetailsContainer>
+          {imgs && <ItemImagesSlider images={imgs} />}
+          <ItemDetailsSection>
             <DetailsName>{itemName}</DetailsName>
             <CreatedByContainer>
               <Avatar src={createdBy.imgUrl} sx={{ width: 60, height: 60 }} />
@@ -68,12 +67,12 @@ const ProductDetails = () => {
               Log in to comment
             </PrimaryButton>
             <ImagesListWrapper />
-          </ProductDetailsSection>
-        </ProductDetailsContainer>
-        <CancelIcon onClick={toggleProductDetailsOpen} />
+          </ItemDetailsSection>
+        </ItemDetailsContainer>
+        <CancelIcon onClick={toggleItemDetailsOpen} />
       </PopUp>
     </>
   );
 };
 
-export default ProductDetails;
+export default ItemDetails;

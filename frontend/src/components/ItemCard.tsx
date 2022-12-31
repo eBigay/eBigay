@@ -3,6 +3,7 @@ import {
   SearchOutlined,
   FavoriteBorderOutlined,
 } from "@mui/icons-material";
+import { formatDistance } from "date-fns";
 import { useContext } from "react";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import ItemCardContainer, {
@@ -17,21 +18,25 @@ import ItemCardContainer, {
   LocationImage,
   LocationName,
 } from "../assets/styles/components/ItemCard.styled";
+import { CreatedByTime } from "../assets/styles/components/ItemDetails.styled";
 import Location from "../assets/svgs/Location.svg";
 import { rootContext } from "../context/RootContext";
 import { IItem } from "../interfaces/IItem.interface";
 
 interface IItemCard {
   item: IItem;
-  removeItem: any;
 }
 
-const ItemCard = ({ item, removeItem }: IItemCard) => {
+const ItemCard = ({ item }: IItemCard) => {
   const { handleModal } = useContext(rootContext);
 
   const handleOpenProductDetails = () => {
     handleModal(item);
   };
+
+  const relativeTimeString = formatDistance(item.createdAt, new Date(), {
+    addSuffix: true,
+  });
 
   return (
     <ItemCardContainer>
@@ -53,21 +58,13 @@ const ItemCard = ({ item, removeItem }: IItemCard) => {
       <ItemDetails>
         <ItemName>{item.itemName}</ItemName>
         <ItemCategory>{item.category}</ItemCategory>
+        <CreatedByTime>{relativeTimeString}</CreatedByTime>
         <ItemLocation>
           <LocationImage src={Location} alt="location" />
           <LocationName>{item.location}</LocationName>
         </ItemLocation>
         <PrimaryButton width="194px" height="34px" fontSize="xs" type="button">
           Sign up for phone number
-        </PrimaryButton>
-        <PrimaryButton
-          width="30px"
-          height="34px"
-          fontSize="xs"
-          type="button"
-          onClick={() => removeItem(item.id)}
-        >
-          removeItem
         </PrimaryButton>
       </ItemDetails>
     </ItemCardContainer>

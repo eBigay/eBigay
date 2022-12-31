@@ -14,7 +14,7 @@ const useAuth = () => {
 
   const signup = useMutation(signupUser, {
     onSuccess: (user) => {
-      dispatch({ type: "LOGIN", payload: user });
+      dispatch({ type: "LOGIN", payload: { user } });
     },
   });
 
@@ -24,7 +24,7 @@ const useAuth = () => {
 
   const login = useMutation(loginUser, {
     onSuccess: (user) => {
-      dispatch({ type: "LOGIN", payload: user });
+      dispatch({ type: "LOGIN", payload: { user } });
       navigate("/");
     },
   });

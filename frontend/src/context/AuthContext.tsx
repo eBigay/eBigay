@@ -4,14 +4,9 @@ import {
   createContext,
   useReducer,
   ReactNode,
-  useMemo,
 } from "react";
 
 import { IUserState } from "../interfaces/IUser.inerface";
-
-const INITIAL_STATE: IUserState = {
-  user: null,
-};
 
 type AuthContextProps = {
   state: IUserState;
@@ -29,7 +24,7 @@ const authReducer = (state: IUserState, action: UserAction) => {
     case "LOGIN":
       return action.payload;
     case "LOGOUT":
-      return INITIAL_STATE;
+      return { user: null };
     default:
       return state;
   }
@@ -40,25 +35,19 @@ type AuthProviderProps = {
 };
 
 export const AuthContextProvider = ({ children }: AuthProviderProps) => {
-  const [state, dispatch] = useReducer(authReducer, INITIAL_STATE, () => {
-    const currItem = localStorage.getItem("user");
-    return currItem ? JSON.parse(currItem) : INITIAL_STATE;
+  const [state, dispatch] = useReducer(authReducer, {
+    user: null,
   });
 
   useEffect(() => {
-    localStorage.setItem("user", JSON.stringify(state));
-  }, [state]);
-
-  const providerValue = useMemo(
-    () => ({
-      state,
-      dispatch,
-    }),
-    [state, dispatch]
-  );
+    const user = JSON.parse(`${localStorage.getItem("user")}`);
+    if (user) {
+      dispatch({ type: "LOGIN", payload: { user } });
+    }
+  }, []);
 
   return (
-    <AuthContext.Provider value={providerValue}>
+    <AuthContext.Provider value={{ state, dispatch }}>
       {children}
     </AuthContext.Provider>
   );
