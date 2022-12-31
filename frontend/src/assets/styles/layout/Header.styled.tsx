@@ -10,6 +10,7 @@ interface IStyledLinksProps {
 export const StyledHeader = styled.div`
   padding: 0 5rem;
   display: flex;
+  justify-content: space-between;
   position: fixed;
   top: 0;
   right: 0;
@@ -113,6 +114,11 @@ export const StyledSearch = styled(Search)`
     align-self: center;
     margin: 0 1rem 0 auto;
   }
+  ${MinWidth.tabletBreakpoint`
+  &&{
+    display: none;
+  }
+  `}
 `;
 
 export const MenuContainer = styled.div`
