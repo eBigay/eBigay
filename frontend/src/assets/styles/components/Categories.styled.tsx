@@ -1,11 +1,17 @@
 import styled from "styled-components";
+import RespondTo, { MinWidth } from "../../theme/responsive";
 
 export const CategoriesContainer = styled.div`
   width: 300px;
   border: 1px solid ${({ theme }) => theme.colors.clr3light};
   border-radius: 10px;
   padding: 2rem 0;
-  margin: 1rem;
+  margin: 0;
+  ${RespondTo.laptopBreakpoint`
+   padding:0;
+   width: 100%;
+   border: unset;
+  `}
 `;
 
 export const CategoriesHeader = styled.h1`

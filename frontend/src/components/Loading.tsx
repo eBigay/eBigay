@@ -1,17 +1,16 @@
-import LoadingContainer from "../assets/styles/base/Loading.styled";
-import {
+import LoadingContainer, {
   Spinner,
   SpinnerContainer,
-} from "../assets/styles/layout/Spinner.styled";
+} from "../assets/styles/base/Loading.styled";
 
 type InputProps = {
-  width?: string;
-  height?: string;
+  size?: string;
+  pos?: string;
 };
 
-const Loading = ({ width = "100px", height = "100px" }: InputProps) => (
-  <LoadingContainer>
-    <SpinnerContainer width={width} height={height}>
+const Loading = ({ size, pos }: InputProps) => (
+  <LoadingContainer pos={pos}>
+    <SpinnerContainer size={size}>
       <svg>
         <Spinner cx="50" cy="50" r="45" />
       </svg>

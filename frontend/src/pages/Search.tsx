@@ -1,33 +1,142 @@
-import ProductImagesSlider from "../components/ProductImagesSlider";
+import { RefObject, useCallback, useEffect, useRef, useState } from "react";
+import { debounce } from "lodash";
+import { useSearchParams } from "react-router-dom";
+
+import { UseInfiniteQueryResult } from "react-query";
+import { useItems } from "../hooks/useItems";
+
+import { IItem } from "../interfaces/IItem.interface";
+import { IFilterBy } from "../interfaces/IFilterBy.interface";
+
+import fakeCategories from "../data/FakeCategories";
+
+import { ListContainer } from "../assets/styles/layout/ItemList.styled";
+import StyledSearchContainer, {
+  StyledNoSearch,
+} from "../assets/styles/pages/Search.styled";
+import { TopContainer } from "../components/layout/TopContainer";
+import PrimaryButton from "../assets/styles/base/Button.styled";
+import { FetchErrorMessage } from "../assets/styles/components/RecentItems.styled";
+
+import Categories from "../components/Categories";
+import { LeftContainer } from "../components/layout/LeftContainer";
+import ItemDetails from "../components/ItemDetails";
+import ScreenOverlay from "../components/ScreenOverlay";
+import useOverflow from "../hooks/useOverflow";
+import ItemCard from "../components/ItemCard";
+import Loading from "../components/Loading";
+import useIntersectionObserver from "../hooks/useIntersctionObserver";
 
 const Search = () => {
-  const images = [
-    "https://d3m9l0v76dty0.cloudfront.net/system/photos/9206831/original/537c13befd9d19d5ba3d31ee9c47ebe0.jpg",
-    "https://s3-alpha-sig.figma.com/img/4ca8/2ca4/3204ca1e782a96f9e282861dfbc025b8?Expires=1670803200&Signature=hSlTqPIWCAFWwYsgnamrBjqK-gAxAidW2KQLy3vBOBxgBSBboKlzy6-4c8NYHQRBlqWycIhePYdI-DIkqxR-F6pbQBpptN18RD-aa2NMIaIqosH5uOpDfE0qsQUiv4IZ4uvCq3XoMFS7CSGMKq8sCkTiBe8iK8hvSFZdrJlOleettcQtg9E7r70XetHJfdUrFkTfGCvSxo36Wuxd4INxSPHRvks6P3mqHjHpenLRtTrh2-ZJnyTfqhutI~LXMH-jlEaDRyXX5WJthCXVmjqTPoAGJORQez1A3xvlAAKlFmSnwjw5PTJIPWdAetIUvXSeHP3XvczGJefvxJZ4PTpZJA__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA",
-    "https://www.figma.com/file/145Qhm9vRmkeIrR3X57X6H/image/a407942d9cfd5fce3b16372dc96bf25633a61772?fuid=1170447139434082766",
-    "https://www.figma.com/file/145Qhm9vRmkeIrR3X57X6H/image/a407942d9cfd5fce3b16372dc96bf25633a61772?fuid=1170447139434082766",
-    "https://www.figma.com/file/145Qhm9vRmkeIrR3X57X6H/image/a407942d9cfd5fce3b16372dc96bf25633a61772?fuid=1170447139434082766",
-    "https://www.figma.com/file/145Qhm9vRmkeIrR3X57X6H/image/8a8ba5be890d26fce29f32cc00e1ac484832c177?fuid=1170447139434082766",
-  ];
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const [filterBy, setFilterBy] = useState<IFilterBy>({
+    queryText: searchParams.get("q") || "",
+    category: searchParams.get("category") || "",
+    page: 0,
+    sortBy: "createdAt",
+    sortOrder: "desc",
+    limit: 6,
+  });
+  const [isLeftContainerOpen, setIsLeftContainerOpen] =
+    useState<boolean>(false);
+  const [showLoader, setShowLoader] = useState(false);
+
+  const observerElem: RefObject<any> = useRef(null);
+
+  const { useInfiniteQueryAllItems } = useItems();
+
+  const {
+    data,
+    isSuccess,
+    hasNextPage,
+    fetchNextPage,
+    isFetchingNextPage,
+    isLoading,
+    isError,
+    error,
+  }: UseInfiniteQueryResult<IItem[], any> = useInfiniteQueryAllItems(filterBy);
+
+  useEffect(() => {
+    setShowLoader(true);
+    const timeoutId = setTimeout(() => {
+      setShowLoader(false);
+    }, 900);
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  const debouncedFetchNextPage = debounce(fetchNextPage, 500);
+
+  useIntersectionObserver({
+    target: observerElem,
+    onIntersect: debouncedFetchNextPage,
+    enabled: hasNextPage,
+    dependencies: [showLoader, isLoading, isFetchingNextPage],
+  });
+
+  const onSetFilter = useCallback(
+    (property: string, value: any) => {
+      const newFilter = { ...filterBy, [property]: value };
+      console.log(newFilter);
+      if (property === "category") {
+        setIsLeftContainerOpen(false);
+        newFilter.queryText = "";
+      }
+
+      const queryParams = {
+        category: newFilter.category,
+      };
+      setSearchParams(queryParams);
+      setFilterBy(newFilter);
+    },
+    [filterBy]
+  );
+
+  const toggleLeftContainer = () => {
+    setIsLeftContainerOpen((isLeftContainerOpen) => !isLeftContainerOpen);
+  };
+
+  useOverflow(isLeftContainerOpen);
+
+  if (isLoading || showLoader) return <Loading pos="center" />;
+  if (isError) return <FetchErrorMessage>{error}</FetchErrorMessage>;
   return (
-    <div
-      style={{
-        height: "100vh",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <div
-        style={{
-          width: "500px",
-          backgroundColor: "#fff",
-          padding: "20px",
-        }}
-      >
-        <ProductImagesSlider images={images} />
+    <>
+      <TopContainer>
+        <PrimaryButton
+          fontSize="m"
+          width="fit-content"
+          height="50x"
+          onClick={toggleLeftContainer}
+        >
+          Filter By
+        </PrimaryButton>
+      </TopContainer>
+      <StyledSearchContainer>
+        <LeftContainer isLeftContainerOpen={isLeftContainerOpen}>
+          <Categories categories={fakeCategories} onSetFilter={onSetFilter} />
+        </LeftContainer>
+        <ListContainer>
+          {isSuccess &&
+            data.pages.map((page) =>
+              page.map((item) => <ItemCard key={item.id} item={item} />)
+            )}
+        </ListContainer>
+      </StyledSearchContainer>
+      <div ref={observerElem}>
+        {!isFetchingNextPage && !hasNextPage ? (
+          <StyledNoSearch>No search left...</StyledNoSearch>
+        ) : (
+          <Loading size="small" />
+        )}
       </div>
-    </div>
+      <ItemDetails />
+      <ScreenOverlay
+        styleMode="darken"
+        handleClick={toggleLeftContainer}
+        isLeftContainerOpen={isLeftContainerOpen}
+      />
+    </>
   );
 };
 

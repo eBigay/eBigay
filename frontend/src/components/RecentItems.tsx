@@ -1,33 +1,42 @@
+import { useState } from "react";
+
 import { UseQueryResult } from "react-query";
-import { AxiosResponse } from "axios";
-import ItemCard from "./ItemCard";
-import Loading from "./Loading";
-import useFetchItems from "../hooks/useFetchItems";
+import { useItems } from "../hooks/useItems";
+import { RecentItemsHeader } from "../assets/styles/components/RecentItems.styled";
+
 import { IItem } from "../interfaces/IItem.interface";
-import {
-  FetchErrorMessage,
-  RecentItemsContainer,
-  RecentItemsHeader,
-} from "../assets/styles/components/RecentItems.styled";
+import { IFilterBy } from "../interfaces/IFilterBy.interface";
+
+import ItemList from "./ItemList";
 
 const RecentItems = () => {
+  const { useQueryAllItems } = useItems();
+
+  const [filterBy, setFilterBy] = useState<IFilterBy>({
+    queryText: "",
+    category: "",
+    page: 0,
+    sortBy: "createdAt",
+    sortOrder: "desc",
+    limit: 8,
+  });
+
   const {
     isLoading,
-    data,
+    data: items,
     isError,
     error,
-  }: UseQueryResult<AxiosResponse, any> = useFetchItems();
+  }: UseQueryResult<IItem[], any> = useQueryAllItems(filterBy);
 
   return (
     <>
-      <RecentItemsHeader>Recently added</RecentItemsHeader>
-      {isLoading && <Loading />}
-      {isError && <FetchErrorMessage>{error.message}</FetchErrorMessage>}
-      <RecentItemsContainer>
-        {data?.data.map((item: IItem) => (
-          <ItemCard key={item._id} item={item} />
-        ))}
-      </RecentItemsContainer>
+      <RecentItemsHeader>Recently Added</RecentItemsHeader>
+      <ItemList
+        isLoading={isLoading}
+        isError={isError}
+        error={error}
+        items={items ?? []}
+      />
     </>
   );
 };

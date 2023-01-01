@@ -18,15 +18,19 @@ import SignUpProfile from "../assets/svgs/SignUpProfile.svg";
 import SignUpPlus from "../assets/svgs/SignUpPlus.svg";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import SignUpSchema from "../schemas/SignUpSchema";
+import useAuth from "../hooks/useAuth";
 
+interface SignUpValues {
+  Username: string;
+  Email: string;
+  Password: string;
+  PhoneNumber: string;
+  Location: string;
+}
 const SignUpInput = () => {
-  interface SignUpValues {
-    Username: string;
-    Email: string;
-    Password: string;
-    PhoneNumber: string;
-    Location: string;
-  }
+  const { signup } = useAuth();
+
+  const { mutate: signUpUser } = signup;
 
   const initialValues: SignUpValues = {
     Username: "",
@@ -45,7 +49,7 @@ const SignUpInput = () => {
     >
       {({ handleSubmit }: FormikValues) => (
         <LoginInputContainer onSubmit={handleSubmit}>
-          <Logo noNavigate />
+          <Logo />
           <SignUpImageContainer>
             <img src={SignUpProfile} alt="new profile" />
             <SignUpPlusImage src={SignUpPlus} alt="new profile" />

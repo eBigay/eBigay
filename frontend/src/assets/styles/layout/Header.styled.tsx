@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { Menu, Search } from "@mui/icons-material";
 import RespondTo, { MinWidth } from "../../theme/responsive";
 
 interface IStyledLinksProps {
@@ -23,6 +24,7 @@ export const StyledHeader = styled.div`
   align-items:center;
   `}
   ${RespondTo.mobileBreakpoint`
+    min-height: 83px;
    width: 100%;
    padding: 0 2rem
   `}
@@ -91,5 +93,58 @@ export const StyledLink = styled(NavLink)`
   &:not(.active):hover::before {
     opacity: 1;
     background: lightgray;
+  }
+`;
+
+export const StyledMenu = styled(Menu)`
+  && {
+    cursor: pointer;
+    color: #fbb527;
+    font-size: 2rem;
+    ${MinWidth.tabletBreakpoint`
+    display: none;
+  `}
+  }
+`;
+export const StyledSearch = styled(Search)`
+  && {
+    cursor: pointer;
+    color: #fbb527;
+    font-size: 2rem;
+    align-self: center;
+    margin: 0 1rem 0 auto;
+  }
+  ${MinWidth.tabletBreakpoint`
+  &&{
+    display: none;
+  }
+  `}
+`;
+
+export const MenuContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+`;
+
+export const StyledCancelButton = styled.button<IStyledLinksProps>`
+  position: absolute;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  top: 0;
+  right: 100%;
+  margin: 1.6rem;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  transform: ${(props: any) => (props.isMenuOpen ? "scale(1)" : "scale(0)")};
+  transition: transform 100ms cubic-bezier(0, 0, 0.38, 0.9) 450ms;
+  background-color: #fff;
+  opacity: ${(props: any) => (props.isMenuOpen ? 1 : 0)};
+  &:hover {
+    background-color: #d9d9d9;
   }
 `;

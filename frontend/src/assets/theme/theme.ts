@@ -69,7 +69,7 @@ const theme = {
   },
   breakpoints: {
     mobileBreakpoint: "600px",
-    tabletBreakpoint: "800px",
+    tabletBreakpoint: "1000px",
     laptopBreakpoint: "1200px",
     narrowBreakpoint: "1480px",
     wideBreakpoint: "1600px",

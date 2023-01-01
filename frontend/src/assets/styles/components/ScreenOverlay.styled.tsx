@@ -2,16 +2,24 @@ import styled from "styled-components";
 
 interface IScreenOverlayContainerProps {
   isMenuOpen?: boolean;
-  isProductDetailsOpen?: boolean;
+  isItemDetailsOpen?: boolean;
+  isLeftContainerOpen?: boolean;
+  styleMode?: string;
 }
 
 const StyledScreenOverlay = styled.div<IScreenOverlayContainerProps>`
   pointer-events: ${(props) =>
-    props.isMenuOpen || props.isProductDetailsOpen ? "unset" : "none"};
+    props.isMenuOpen || props.isItemDetailsOpen || props.isLeftContainerOpen
+      ? "unset"
+      : "none"};
   cursor: ${(props) =>
-    props.isMenuOpen || props.isProductDetailsOpen ? "pointer" : "unset"};
+    props.isMenuOpen || props.isItemDetailsOpen || props.isLeftContainerOpen
+      ? "pointer"
+      : "unset"};
   opacity: ${(props) =>
-    props.isMenuOpen || props.isProductDetailsOpen ? "100" : "0"};
+    props.isMenuOpen || props.isItemDetailsOpen || props.isLeftContainerOpen
+      ? "100"
+      : "0"};
   height: 100%;
   width: 100%;
   position: fixed;
@@ -19,16 +27,12 @@ const StyledScreenOverlay = styled.div<IScreenOverlayContainerProps>`
   left: 0;
   z-index: 25;
   transition: ${(props) =>
-    props.isProductDetailsOpen
+    props.isItemDetailsOpen
       ? "opacity 0.15s ease-in-out"
       : "opacity 0.5s ease-in-out"};
 
-  &.darken {
-    background-color: rgba(0, 0, 0, 0.64);
-  }
-  &.heavy-dark {
-    background-color: rgba(0, 0, 0, 0.84);
-  }
+  background-color: ${(props) =>
+    props.styleMode === "darken" ? "rgba(0, 0, 0, 0.6)" : "rgba(0, 0, 0, 0.3)"};
 `;
 
 export default StyledScreenOverlay;
