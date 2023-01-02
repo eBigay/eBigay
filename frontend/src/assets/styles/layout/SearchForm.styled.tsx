@@ -11,7 +11,7 @@ interface ISearchButtonProps {
 
 export const StyledContainer = styled.div<IStyledSearch>`
   align-self: center;
-  flex: 0.5;
+  flex: 0.75;
 
   ${RespondTo.tabletBreakpoint`
 display: ${({ isSearchBarOpen }: IStyledSearch) => !isSearchBarOpen && "none"};

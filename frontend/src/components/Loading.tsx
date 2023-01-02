@@ -6,10 +6,11 @@ import LoadingContainer, {
 type InputProps = {
   size?: string;
   pos?: string;
+  className?: string;
 };
 
-const Loading = ({ size, pos }: InputProps) => (
-  <LoadingContainer pos={pos}>
+const Loading = ({ className, size, pos }: InputProps) => (
+  <LoadingContainer pos={pos} className={className}>
     <SpinnerContainer size={size}>
       <svg>
         <Spinner cx="50" cy="50" r="45" />

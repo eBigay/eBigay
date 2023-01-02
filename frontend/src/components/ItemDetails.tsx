@@ -3,7 +3,7 @@ import { Avatar } from "@mui/material";
 import _ from "lodash";
 import { formatDistance } from "date-fns";
 import { SwiperSlide } from "swiper/react";
-import { Navigation, Thumbs, type Swiper as SwiperRef } from "swiper";
+import { Navigation, Thumbs, Lazy, type Swiper as SwiperRef } from "swiper";
 import ScreenOverlay from "./ScreenOverlay";
 import { rootContext } from "../context/RootContext";
 
@@ -35,11 +35,17 @@ import {
   StyledSwiperThumbs,
 } from "../assets/styles/components/ItemImagesSlider.styled";
 import PrimaryButton from "../assets/styles/base/Button.styled";
+import useAuthContext from "../hooks/useAuthContext";
+import Loading from "./Loading";
 
 const ItemDetails = () => {
   const [activeThumb, setActiveThumb] = useState<SwiperRef>();
 
   const { modal, handleModal, modalContent } = useContext(rootContext);
+
+  const {
+    state: { user },
+  } = useAuthContext();
 
   const { description, itemName, createdBy, imgs, location, createdAt } =
     modalContent;
@@ -68,7 +74,8 @@ const ItemDetails = () => {
             loop
             spaceBetween={10}
             navigation
-            modules={[Navigation, Thumbs]}
+            lazy
+            modules={[Navigation, Thumbs, Lazy]}
             grabCursor
             thumbs={{
               swiper:
@@ -78,7 +85,12 @@ const ItemDetails = () => {
             {imgs &&
               imgs.map((item) => (
                 <SwiperSlide key={_.uniqueId()}>
-                  <MainIMg src={item} alt="item images" loading="lazy" />
+                  <MainIMg
+                    data-src={item}
+                    alt="item images"
+                    className="swiper-lazy"
+                  />
+                  <Loading className="swiper-lazy-preloader" />
                 </SwiperSlide>
               ))}
           </StyledSwiperMain>
@@ -93,25 +105,35 @@ const ItemDetails = () => {
               </CreatedByWrapper>
             </CreatedByContainer>
             <DetailsDescription>{description}</DetailsDescription>
-            <PrimaryButton width="70%" height="70px" fontSize="l">
-              Log in to comment
-            </PrimaryButton>
+            {user ? (
+              <div>0548922123</div>
+            ) : (
+              <PrimaryButton width="70%" height="70px" fontSize="l">
+                Log in to details
+              </PrimaryButton>
+            )}
             <ImagesListWrapper>
               <StyledSwiperThumbs
                 onSwiper={setActiveThumb}
                 loop
+                lazy
                 spaceBetween={10}
                 slidesPerView={3}
-                modules={[Navigation, Thumbs]}
+                modules={[Navigation, Thumbs, Lazy]}
               >
                 {imgs &&
                   imgs.map((item) => (
                     <SwiperSlide key={_.uniqueId()}>
                       <ImgsWrapper>
                         <SecondaryImg
-                          src={item}
+                          data-src={item}
                           alt="item images"
                           loading="lazy"
+                          className="swiper-lazy"
+                        />
+                        <Loading
+                          size="x-small"
+                          className="swiper-lazy-preloader"
                         />
                       </ImgsWrapper>
                     </SwiperSlide>

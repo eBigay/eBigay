@@ -23,7 +23,10 @@ const rotateAnimation = keyframes`
 `;
 
 export const SpinnerContainer = styled.div<SpinnerProps>`
-  transform: scale(${(props) => (props.size === "small" ? 0.6 : 0.8)});
+  transform: scale(
+    ${(props) =>
+      props.size === "small" ? 0.6 : props.size === "x-small" ? 0.35 : 0.8}
+  );
   svg {
     width: 100px;
   }
