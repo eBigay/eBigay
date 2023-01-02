@@ -5,7 +5,7 @@ export const CategoriesContainer = styled.div`
   width: 300px;
   border: 1px solid ${({ theme }) => theme.colors.clr3light};
   border-radius: 10px;
-  padding: 2rem 0;
+  padding: 2rem 0 0;
   margin: 0;
   ${RespondTo.laptopBreakpoint`
    padding:0;
@@ -31,6 +31,12 @@ export const StyledCategory = styled.div`
   &:hover {
     background-color: ${({ theme }) => theme.colors.clr6};
   }
+
+  ${MinWidth.laptopBreakpoint`
+  :last-child {
+    border-radius: 0 0 10px 10px;
+  }  
+  `}
 `;
 export const CategoryLink = styled.div`
   a {

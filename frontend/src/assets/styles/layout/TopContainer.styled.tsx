@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import RespondTo, { MinWidth } from "../../theme/responsive";
+import { MinWidth } from "../../theme/responsive";
 
 export const StyledTopContainer = styled.div`
   display: flex;

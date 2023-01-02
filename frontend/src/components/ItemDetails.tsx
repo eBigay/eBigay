@@ -4,7 +4,7 @@ import _ from "lodash";
 import { formatDistance } from "date-fns";
 import { SwiperSlide } from "swiper/react";
 import { Navigation, Thumbs, type Swiper as SwiperRef } from "swiper";
-import ScreenOverlay from "./ScreenOverlay";
+import ScreenOverlay from "./layout/ScreenOverlay";
 import { rootContext } from "../context/RootContext";
 
 import useOverflow from "../hooks/useOverflow";

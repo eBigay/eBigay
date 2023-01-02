@@ -1,4 +1,5 @@
 import { useEffect, RefObject } from "react";
+
 export default function useIntersectionObserver({
   enabled = true,
   onIntersect,
