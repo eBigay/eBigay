@@ -26,6 +26,7 @@ export const StyledCategory = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 0.7rem 1.5rem;
+  font-weight: 500;
   transition: all 0.3s ease;
   cursor: pointer;
   &:hover {

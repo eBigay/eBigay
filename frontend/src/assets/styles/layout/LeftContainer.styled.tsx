@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import RespondTo, { MinWidth } from "../../theme/responsive";
+import RespondTo from "../../theme/responsive";
 
 interface IStyledLeftContainer {
   isLeftContainerOpen: boolean;
@@ -26,9 +26,5 @@ export const StyledLeftContainer = styled.div<IStyledLeftContainer>`
   `}
   ${RespondTo.mobileBreakpoint`
     width: 70%;
-    `}
-    ${MinWidth.laptopBreakpoint`
-    padding-left: 5rem;
-    padding-right: 27px;
     `}
 `;

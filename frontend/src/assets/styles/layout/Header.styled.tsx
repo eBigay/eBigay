@@ -29,7 +29,7 @@ export const StyledHeader = styled.div`
    padding: 0 2rem
   `}
     ${MinWidth.wideBreakpoint`
-  padding: 0 10rem;
+  padding: 0 15rem;
   `}
 `;
 

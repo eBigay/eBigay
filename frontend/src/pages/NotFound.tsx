@@ -19,9 +19,9 @@ const NotFound = () => {
           width="8rem"
           height="3rem"
           fontSize="l"
-          onClick={() => navigate("/")}
+          onClick={() => navigate(-1)}
         >
-          Go Home
+          Go Back
         </PrimaryButton>
       </NotFoundContent>
     </NotFoundContainer>

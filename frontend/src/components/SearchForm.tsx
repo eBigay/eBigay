@@ -6,6 +6,7 @@ import React, {
   useState,
 } from "react";
 import { useNavigate } from "react-router";
+import PrimaryButton from "../assets/styles/base/Button.styled";
 import {
   StyledButton,
   StyledClearIcon,
@@ -47,7 +48,7 @@ const SearchForm = ({
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     navigate(`/search?q=${query}`);
-    // window.location.reload();
+    window.location.reload();
   };
 
   const toggleSearchBarOpen = () => {
@@ -65,9 +66,19 @@ const SearchForm = ({
             type="text"
             onChange={handleChange}
             value={query}
-            placeholder="Search for anything"
+            placeholder="Search here..."
             ref={inputSearchRef}
           />
+          <PrimaryButton
+            width="115px"
+            height="50px"
+            fontSize="xs"
+            borderRadius="10px"
+            disabled={!query}
+            type="submit"
+          >
+            Search
+          </PrimaryButton>
         </StyledForm>
         <StyledButton onClick={toggleSearchBarOpen}>
           <StyledClearIcon />

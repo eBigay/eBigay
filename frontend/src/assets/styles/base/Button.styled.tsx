@@ -4,12 +4,18 @@ type ButtonProps = {
   width: string;
   height: string;
   fontSize: string;
+  borderRadius?: string;
+  disabled?: boolean;
 };
 
-const PrimaryButton = styled.button<ButtonProps>`
+const PrimaryButton = styled.button.attrs({
+  className: "PrimaryButton",
+})<ButtonProps>`
   background: ${({ theme }) => theme.colors.clr1};
+  opacity: ${(props) => (props.disabled ? 0.5 : 1)};
   color: ${({ theme }) => theme.colors.clr2};
-  border-radius: ${({ theme }) => theme.borders.borderRad1};
+  border-radius: ${(props) =>
+    props.borderRadius || props.theme.borders.borderRad1};
   font-family: Poppins;
   font-weight: 500;
   transition: 0.3s ease;
