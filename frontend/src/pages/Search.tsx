@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 
 import { UseInfiniteQueryResult } from "react-query";
 import { useItems } from "../hooks/useItems";
+import useIntersectionObserver from "../hooks/useIntersctionObserver";
 
 import { IItem } from "../interfaces/IItem.interface";
 import { IFilterBy } from "../interfaces/IFilterBy.interface";
@@ -21,11 +22,10 @@ import { FetchErrorMessage } from "../assets/styles/components/RecentItems.style
 import Categories from "../components/Categories";
 import { LeftContainer } from "../components/layout/LeftContainer";
 import ItemDetails from "../components/ItemDetails";
-import ScreenOverlay from "../components/ScreenOverlay";
+import ScreenOverlay from "../components/layout/ScreenOverlay";
 import useOverflow from "../hooks/useOverflow";
 import ItemCard from "../components/ItemCard";
 import Loading from "../components/Loading";
-import useIntersectionObserver from "../hooks/useIntersctionObserver";
 
 const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -125,7 +125,7 @@ const Search = () => {
       </StyledSearchContainer>
       <div ref={observerElem}>
         {!isFetchingNextPage && !hasNextPage ? (
-          <StyledNoSearch>No search left...</StyledNoSearch>
+          <StyledNoSearch>No Results Left...</StyledNoSearch>
         ) : (
           <Loading size="small" />
         )}

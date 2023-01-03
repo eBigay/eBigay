@@ -18,7 +18,6 @@ import SignUpProfile from "../assets/svgs/SignUpProfile.svg";
 import SignUpPlus from "../assets/svgs/SignUpPlus.svg";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import SignUpSchema from "../schemas/SignUpSchema";
-import useAuth from "../hooks/useAuth";
 
 interface SignUpValues {
   Username: string;
@@ -28,10 +27,6 @@ interface SignUpValues {
   Location: string;
 }
 const SignUpInput = () => {
-  const { signup } = useAuth();
-
-  const { mutate: signUpUser } = signup;
-
   const initialValues: SignUpValues = {
     Username: "",
     Email: "",

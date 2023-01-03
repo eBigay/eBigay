@@ -89,4 +89,4 @@ const httpService: HttpService = {
   },
 };
 
-export { httpService };
+export default httpService;

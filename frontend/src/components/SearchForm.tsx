@@ -47,7 +47,7 @@ const SearchForm = ({
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     navigate(`/search?q=${query}`);
-    window.location.reload();
+    // window.location.reload();
   };
 
   const toggleSearchBarOpen = () => {
