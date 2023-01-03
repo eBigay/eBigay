@@ -1,21 +1,18 @@
 import { useState } from "react";
 import { useFormikContext, FormikValues } from "formik";
 import { get } from "lodash";
-import Search from "../assets/svgs/Search.svg";
 import StyledInput, {
   InnerInput,
   InputLeftImage,
   InputRightImage,
   FadeInErrorMessage,
 } from "../assets/styles/layout/Inputs.styled";
-import PrimaryButton from "../assets/styles/base/Button.styled";
 
 interface IInputProps {
   image: string;
   otherImage?: string; // optional argument - for the password and location inputs
   type: string;
   placeholder: string;
-  isSearchInput?: boolean; // will render the search button if prop is true
   width?: number;
   height?: number;
 }
@@ -25,7 +22,6 @@ export const Input = ({
   otherImage,
   type,
   placeholder,
-  isSearchInput,
   width = 500,
   height = 70,
 }: IInputProps) => {
@@ -80,11 +76,6 @@ export const Input = ({
           role="presentation" // solving 'jsx-a11y/no-static-element-interactions' (eslint)
         />
       )}
-      {isSearchInput && (
-        <PrimaryButton height="100%" width="125px" fontSize="s">
-          Search
-        </PrimaryButton>
-      )}
       {inputTouched && inputErrors && (
         <FadeInErrorMessage>
           {JSON.stringify(inputErrors).slice(1, -1)}
@@ -93,14 +84,3 @@ export const Input = ({
     </StyledInput>
   );
 };
-
-export const SearchInput = () => (
-  <Input
-    image={Search}
-    type="text"
-    placeholder="Search Here..."
-    isSearchInput
-    width={527}
-    height={50}
-  />
-);

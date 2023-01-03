@@ -103,7 +103,7 @@ export const StyledClearIcon = styled(Clear)`
 
 export const StyledSearch = styled(Search)<ISearchButtonProps>`
   && {
-    cursor: pointer;
+    cursor: ${({ isdisabled }) => (isdisabled ? "default" : "pointer")};
     opacity: ${({ isdisabled }) => !isdisabled && 0.5};
     font-size: 2rem;
     color: #fbb527;

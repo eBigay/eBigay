@@ -24,7 +24,7 @@ export const StyledSearchHeader = styled.h1.attrs({
 
   ${RespondTo.mobileBreakpoint`
   margin-top: 2rem;
-  font-size:  ${(props: any) => props.theme.fontSizes.fsXL};
+  font-size:  ${({ theme }: any) => theme.fontSizes.fsXL};
 line-height: 30px;
   `}
 `;
@@ -39,7 +39,7 @@ export const StyledSearchSubHeader = styled.h1.attrs({
   ${RespondTo.mobileBreakpoint`
   width: 90%;
   margin: 0 auto;
-  font-size:  ${(props: any) => props.theme.fontSizes.fsL};
+  font-size:  ${({ theme }: any) => theme.fontSizes.fsL};
   line-height: 30px;
   `}
 `;
@@ -53,7 +53,7 @@ export const LeonhardCulmann = styled.h1.attrs({
   color: ${({ theme }) => theme.colors.clr3};
   margin: 1rem 0 2rem;
   ${RespondTo.mobileBreakpoint`
-  font-size:  ${(props: any) => props.theme.fontSizes.fsM};
+  font-size:  ${({ theme }: any) => theme.fontSizes.fsM};
   line-height: 30px;
   `}
 `;

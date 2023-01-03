@@ -23,7 +23,7 @@ const rotateAnimation = keyframes`
 `;
 
 export const SpinnerContainer = styled.div<SpinnerProps>`
-  transform: scale(${(props) => (props.size === "small" ? 0.6 : 0.8)});
+  transform: scale(${({ size }) => (size === "small" ? 0.6 : 0.8)});
   svg {
     width: 100px;
   }
@@ -43,7 +43,7 @@ export const Spinner = styled.circle`
 
 const LoadingContainer = styled.div<LoadingProps>`
   width: 100%;
-  height: ${(props) => (props.pos === "center" ? "100vh" : "unset")};
+  height: ${({ pos }) => (pos === "center" ? "100vh" : "unset")};
   display: flex;
   justify-content: center;
   align-items: center;

@@ -96,7 +96,7 @@ export const AboutUsText = styled.p`
   ${RespondTo.mobileBreakpoint`
   line-height: 160%;
   margin: 3.5rem auto 2rem;
-  font-size: ${(props: any) => props.theme.fontSizes.fsM};
+  font-size: ${({ theme }: any) => theme.fontSizes.fsM};
 `}
 `;
 

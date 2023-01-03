@@ -118,7 +118,7 @@ const Search = () => {
       </TopContainer>
       <StyledSearchHeader>{Text.SearchPageHeader}</StyledSearchHeader>
       <StyledSearchSubHeader>{Text.SearchPageSubHeader}</StyledSearchSubHeader>
-      <LeonhardCulmann>Leonhard Culmann's</LeonhardCulmann>
+      <LeonhardCulmann>Leonhard Culmann&apos;s</LeonhardCulmann>
       <StyledSearchContainer>
         <LeftContainer isLeftContainerOpen={isLeftContainerOpen}>
           <Categories

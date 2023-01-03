@@ -15,7 +15,7 @@ export const RecentItemsHeader = styled.h2.attrs({
   margin-bottom: 48px;
   ${RespondTo.mobileBreakpoint`
    padding: 0 2rem;
-   font-size: ${(props: any) => props.theme.fontSizes.fsXL}
+   font-size: ${({ theme }: any) => theme.fontSizes.fsXL}
   `}
   ${MinWidth.wideBreakpoint`
   padding: 0 15rem;
