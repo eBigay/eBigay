@@ -5,6 +5,7 @@ import {
 } from "@mui/icons-material";
 import { formatDistance } from "date-fns";
 import { useContext } from "react";
+import { useNavigate } from "react-router";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import ItemCardContainer, {
   Icon,
@@ -38,6 +39,8 @@ const ItemCard = ({ item }: IItemCard) => {
     addSuffix: true,
   });
 
+  const navigate = useNavigate();
+
   return (
     <ItemCardContainer>
       <ItemImageContainer>
@@ -63,7 +66,16 @@ const ItemCard = ({ item }: IItemCard) => {
           <LocationImage src={Location} alt="location" />
           <LocationName>{item.location}</LocationName>
         </ItemLocation>
-        <PrimaryButton width="194px" height="34px" fontSize="xs" type="button">
+        <PrimaryButton
+          width="194px"
+          height="34px"
+          fontSize="xs"
+          type="button"
+          onClick={() => {
+            navigate("/SignUp");
+            window.scroll({ top: 0, behavior: "smooth" });
+          }}
+        >
           Sign up for phone number
         </PrimaryButton>
       </ItemDetails>

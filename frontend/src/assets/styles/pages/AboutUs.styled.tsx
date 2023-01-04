@@ -4,7 +4,7 @@ import RespondTo, { MinWidth } from "../../theme/responsive";
 const StyledAbout = styled.div`
   padding: 1rem 5rem;
   ${MinWidth.wideBreakpoint`
-  padding: 0 10rem;
+  padding: 0 15rem;
   `}
   ${RespondTo.mobileBreakpoint`
   padding: 0 1.2rem;
@@ -25,7 +25,8 @@ export const BackLink = styled.p`
   line-height: 21px;
   color: rgba(0, 0, 0, 0.62);
   ${MinWidth.wideBreakpoint`
-  left: 190px;
+  left: 275px;
+  font-size: 18px;
   `}
   ${RespondTo.mobileBreakpoint`
     left: 45px;
@@ -38,7 +39,7 @@ export const BackImage = styled.img`
   left: 80px;
   top: 166px;
   ${MinWidth.wideBreakpoint`
-  left: 160px;
+  left: 240px;
   `}
   ${RespondTo.mobileBreakpoint`
     left: 20px;
@@ -71,13 +72,14 @@ export const AboutUsImage = styled.img`
   `}
   ${RespondTo.mobileBreakpoint`
   width: 100vw;
-  height: 20vh;
+  height: 25vh;
   object-fit: cover;
   position: absolute;
   left: 0;
   top: 70px;
   opacity: 0.3;
   z-index: -5;
+  margin: 0 auto 2rem ;
 `}
 `;
 
@@ -94,7 +96,7 @@ export const AboutUsText = styled.p`
   ${RespondTo.mobileBreakpoint`
   line-height: 160%;
   margin: 3.5rem auto 2rem;
-  font-size: ${(props: any) => props.theme.fontSizes.fsM};
+  font-size: ${({ theme }: any) => theme.fontSizes.fsM};
 `}
 `;
 

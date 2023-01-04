@@ -4,33 +4,39 @@ type ButtonProps = {
   width: string;
   height: string;
   fontSize: string;
+  borderRadius?: string;
+  disabled?: boolean;
 };
 
-const PrimaryButton = styled.button<ButtonProps>`
+const PrimaryButton = styled.button.attrs({
+  className: "PrimaryButton",
+})<ButtonProps>`
   background: ${({ theme }) => theme.colors.clr1};
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
   color: ${({ theme }) => theme.colors.clr2};
-  border-radius: ${({ theme }) => theme.borders.borderRad1};
+  border-radius: ${({ borderRadius, theme }) =>
+    borderRadius || theme.borders.borderRad1};
   font-family: Poppins;
   font-weight: 500;
   transition: 0.3s ease;
   max-width: 100%;
-  width: ${(props) => (props.width ? props.width : "auto")};
-  height: ${(props) => (props.height ? props.height : "auto")};
-  font-size: ${(props) =>
-    props.fontSize === "xs" /* eslint-disable-line */
-      ? props.theme.fontSizes.fsXs
-      : props.fontSize === "s" /* eslint-disable-line */
-      ? props.theme.fontSizes.fsS
-      : props.fontSize === "m"
-      ? props.theme.fontSizes.fsM
-      : props.theme.fontSizes.fsL};
+  width: ${({ width }) => width || "auto"};
+  height: ${({ height }) => height || "auto"};
+  font-size: ${({ theme, fontSize }) =>
+    fontSize === "xs" /* eslint-disable-line */
+      ? theme.fontSizes.fsXs
+      : fontSize === "s" /* eslint-disable-line */
+      ? theme.fontSizes.fsS
+      : fontSize === "m"
+      ? theme.fontSizes.fsM
+      : theme.fontSizes.fsL};
   font-weight: 500;
   outline: none;
   border: none;
-  cursor: pointer;
+  cursor: ${({ disabled }) => (disabled ? "default" : "pointer")};
 
   &:hover {
-    filter: brightness(110%);
+    filter: ${({ disabled }) => !disabled && "brightness(110%)"};
   }
 `;
 

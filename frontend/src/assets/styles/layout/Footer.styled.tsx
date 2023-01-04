@@ -22,7 +22,7 @@ export const FooterText = styled.div`
   text-align: center;
   max-width: 50rem;
   ${RespondTo.mobileBreakpoint`
-  font-size: ${(props: any) => props.theme.fontSizes.fsM};
+  font-size: ${({ theme }: any) => theme.fontSizes.fsM};
   `}
 `;
 
@@ -35,7 +35,7 @@ export const Copyrights = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.fsS};
   color: ${({ theme }) => theme.colors.clr3};
   ${RespondTo.mobileBreakpoint`
-  font-size: ${(props: any) => props.theme.fontSizes.fsSm};
+  font-size: ${({ theme }: any) => theme.fontSizes.fsSm};
   `}
 `;
 

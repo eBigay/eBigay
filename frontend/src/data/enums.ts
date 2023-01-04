@@ -4,6 +4,8 @@ enum Text {
   CopyRights = "© All rights reserved 2022",
   HeroHeader = "Join Positive Karma Movement Today",
   HeroSubHeader = "Give away long forgotten item another chance to serve the humanity",
+  SearchPageHeader = "Join the positive karma movement and give away long forgotten items another chance to serve the humanity",
+  SearchPageSubHeader = "“One man's trash is another man's treasure”",
 }
 
 export default Text;

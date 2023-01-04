@@ -59,7 +59,7 @@ export const InnerInput = styled.input.attrs({ className: "InnerInput" })`
     -webkit-background-clip: text;
   }
   ${RespondTo.mobileBreakpoint`
-  font-size: ${(props: any) => props.theme.fontSizes.fsS};
+  font-size: ${({ theme }: any) => theme.fontSizes.fsS};
   `}
 `;
 
@@ -87,7 +87,7 @@ export const FadeInErrorMessage = styled(FadeIn).attrs({
   bottom: -25px;
   ${RespondTo.mobileBreakpoint`
   bottom: -31%;
-      font-size: ${(props: any) => props.theme.fontSizes.fsXs};
+      font-size: ${({ theme }: any) => theme.fontSizes.fsXs};
 `}
 `;
 

@@ -24,8 +24,8 @@ const LoginInputContainer = styled.form.attrs({
   `}
 
   ${RespondTo.wideBreakpoint`
-margin: ${(props: any) =>
-    props.LoginPage ? "15rem auto 10rem" : "10rem auto 10rem"};
+margin: ${({ LoginPage }: any) =>
+    LoginPage ? "15rem auto 10rem" : "10rem auto 10rem"};
   `}
 
   ${RespondTo.laptopBreakpoint`
@@ -35,8 +35,8 @@ margin: ${(props: any) =>
         }
 `}
   ${RespondTo.tabletBreakpoint`
-    margin: ${(props: any) =>
-      props.LoginPage ? "12rem auto 3rem" : "10rem auto 3rem"};
+    margin: ${({ LoginPage }: any) =>
+      LoginPage ? "12rem auto 3rem" : "10rem auto 3rem"};
   button {
           width: 100%;
         }
@@ -86,12 +86,12 @@ export const MiddleFlex = styled.div.attrs({
   ${RespondTo.laptopBreakpoint`
   justify-content: space-around;
   width: 420px;
-  font-size: ${(props: any) => props.theme.fontSizes.fsS};
+  font-size: ${({ theme }: any) => theme.fontSizes.fsS};
   `}
   ${RespondTo.mobileBreakpoint`
   width: 90%;
   text-align: center;
-  font-size: ${(props: any) => props.theme.fontSizes.fsSm};
+  font-size: ${({ theme }: any) => theme.fontSizes.fsSm};
 `}
 `;
 
@@ -162,7 +162,7 @@ export const PrivacyPolicy = styled.p.attrs({
     }
   }
   ${RespondTo.laptopBreakpoint`
-  font-size: ${(props: any) => props.theme.fontSizes.fsS};
+  font-size: ${({ theme }: any) => theme.fontSizes.fsS};
   width: 420px;
   a {
     display: block;
@@ -174,7 +174,7 @@ export const PrivacyPolicy = styled.p.attrs({
   ${RespondTo.mobileBreakpoint`
   width: 85%;
   text-align: center;
-  font-size: ${(props: any) => props.theme.fontSizes.fsSm};
+  font-size: ${({ theme }: any) => theme.fontSizes.fsSm};
 `}
 `;
 
