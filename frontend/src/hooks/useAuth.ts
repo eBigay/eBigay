@@ -16,6 +16,7 @@ const useAuth = () => {
     onSuccess: (user) => {
       dispatch({ type: "LOGIN", payload: { user } });
     },
+    onError: (error) => console.log(error),
   });
 
   const loginUser = (credentials: { email: string; password: string }) => {
@@ -27,6 +28,7 @@ const useAuth = () => {
       dispatch({ type: "LOGIN", payload: { user } });
       navigate("/");
     },
+    onError: (error) => console.log(error),
   });
 
   const logoutUser = () => {

@@ -1,11 +1,5 @@
-import React, {
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { useNavigate } from "react-router";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import {
   StyledButton,
@@ -32,6 +26,7 @@ const SearchForm = ({
   const [query, setQuery] = useState<string>("");
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     if (inputSearchRef.current) {
@@ -47,6 +42,10 @@ const SearchForm = ({
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!location.pathname.includes("search")) {
+      navigate(`/search?q=${query}`);
+      return;
+    }
     navigate(`/search?q=${query}`);
     window.location.reload();
   };

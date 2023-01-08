@@ -101,9 +101,6 @@ const Search = () => {
   };
 
   useOverflow(isLeftContainerOpen);
-
-  if (isLoading || showLoader) return <Loading pos="center" />;
-  if (isError) return <FetchErrorMessage>{error}</FetchErrorMessage>;
   return (
     <>
       <TopContainer>
@@ -131,6 +128,8 @@ const Search = () => {
             data.pages.map((page) =>
               page.map((item) => <ItemCard key={item.id} item={item} />)
             )}
+          {(isLoading || showLoader) && <Loading pos="center" />}
+          {isError && <FetchErrorMessage>{error}</FetchErrorMessage>}
         </ListContainer>
       </StyledSearchContainer>
       <div ref={observerElem}>

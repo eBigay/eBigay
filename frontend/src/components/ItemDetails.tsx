@@ -4,6 +4,7 @@ import _ from "lodash";
 import { formatDistance } from "date-fns";
 import { SwiperSlide } from "swiper/react";
 import { Navigation, Thumbs, type Swiper as SwiperRef } from "swiper";
+import { useNavigate } from "react-router";
 import ScreenOverlay from "./layout/ScreenOverlay";
 import { rootContext } from "../context/RootContext";
 
@@ -54,6 +55,8 @@ const ItemDetails = () => {
     handleModal();
   };
 
+  const navigate = useNavigate();
+
   return (
     <>
       <ScreenOverlay
@@ -93,7 +96,15 @@ const ItemDetails = () => {
               </CreatedByWrapper>
             </CreatedByContainer>
             <DetailsDescription>{description}</DetailsDescription>
-            <PrimaryButton width="70%" height="70px" fontSize="l">
+            <PrimaryButton
+              width="70%"
+              height="70px"
+              fontSize="l"
+              onClick={() => {
+                navigate("/login");
+                toggleItemDetailsOpen();
+              }}
+            >
               Log in to comment
             </PrimaryButton>
             <ImagesListWrapper>
