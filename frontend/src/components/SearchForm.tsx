@@ -5,7 +5,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import {
   StyledButton,
   StyledClearIcon,
@@ -30,6 +30,7 @@ const SearchForm = ({
 
   const [query, setQuery] = useState<string>("");
 
+  const loaction = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -46,8 +47,7 @@ const SearchForm = ({
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    navigate(`/search?q=${query}`);
-    window.location.reload();
+    window.location.href = `/search?q=${query}`;
   };
 
   const toggleSearchBarOpen = () => {

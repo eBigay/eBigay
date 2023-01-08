@@ -49,7 +49,7 @@ export const StyledInput = styled.input`
   background-color: transparent;
 
   ${MinWidth.tabletBreakpoint`
-  height: 3.5rem
+  height: 3.0rem
 
   `}
 `;

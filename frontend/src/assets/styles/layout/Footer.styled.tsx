@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import RespondTo from "../../theme/responsive";
 
-const FooterContainer = styled.div`
+const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: center;
