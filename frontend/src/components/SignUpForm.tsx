@@ -1,24 +1,26 @@
+import { useState, useEffect, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import { Formik, FormikValues } from "formik";
+import { Input } from "./Input";
+import Loading from "./Loading";
+import Logo from "./layout/Logo";
+import SignUpSchema from "../schemas/SignUpSchema";
+import FormInputsData from "../data/FormInputsData";
+import useUploadImage from "../hooks/useUploadImage";
 import LoginInputContainer, {
+  ImageInput,
+  UserImageName,
   PrivacyPolicy,
   SignUpImageContainer,
   SignUpPlusImage,
 } from "../assets/styles/components/LoginInput.styled";
-import { Input } from "./Input";
-import Logo from "./layout/Logo";
-import Profile from "../assets/svgs/Profile.svg";
-import Lock from "../assets/svgs/Lock.svg";
-import Hide from "../assets/svgs/Hide.svg";
-import Message from "../assets/svgs/Message.svg";
-import Calling from "../assets/svgs/Calling.svg";
-import Location from "../assets/svgs/Location.svg";
-import Discovery from "../assets/svgs/Discovery.svg";
+import PrimaryButton from "../assets/styles/base/Button.styled";
+import {
+  FormLoadingContainer,
+  FormLoadingLabel,
+} from "../assets/styles/pages/LoginSignup.styled";
 import SignUpProfile from "../assets/svgs/SignUpProfile.svg";
 import SignUpPlus from "../assets/svgs/SignUpPlus.svg";
-import PrimaryButton from "../assets/styles/base/Button.styled";
-import SignUpSchema from "../schemas/SignUpSchema";
-
 interface SignUpValues {
   Username: string;
   Email: string;
@@ -35,42 +37,96 @@ const SignUpInput = () => {
     Location: "",
   };
 
+  const [userImage, setUserImage] = useState<File>();
+
+  const imageName = () => {
+    if (!userImage) return "";
+    return userImage.name.length > 25
+      ? `${userImage.name.slice(0, 25)}...`
+      : userImage.name;
+  };
+
+  const {
+    data,
+    isFetching: isUploading,
+    isSuccess,
+    isError,
+    error,
+    refetch,
+  } = useUploadImage(userImage!);
+
+  useEffect(() => {
+    if (typeof userImage !== "undefined") {
+      refetch();
+    }
+  }, [userImage]);
+
   return (
     <Formik
       initialValues={initialValues}
       /* eslint-disable-next-line */
-      onSubmit={(values) => alert(JSON.stringify(values))}
+      onSubmit={async (values) => {
+        const ImageUrl = isSuccess && data.data.url;
+        const valuesToSubmit = { ...values, ImageUrl };
+        alert(JSON.stringify(valuesToSubmit));
+      }}
       validationSchema={SignUpSchema}
     >
       {({ handleSubmit }: FormikValues) => (
         <LoginInputContainer onSubmit={handleSubmit}>
-          <Logo />
-          <SignUpImageContainer>
-            <img src={SignUpProfile} alt="new profile" />
-            <SignUpPlusImage src={SignUpPlus} alt="new profile" />
-          </SignUpImageContainer>
-          <Input image={Profile} type="text" placeholder="Username" />
-          <Input image={Message} type="email" placeholder="Email" />
-          <Input
-            image={Lock}
-            otherImage={Hide}
-            type="password"
-            placeholder="Password"
-          />
-          <Input image={Calling} type="tel" placeholder="Phone Number" />
-          <Input
-            image={Location}
-            otherImage={Discovery}
-            type="text"
-            placeholder="Location"
-          />
-          <PrivacyPolicy>
-            By signing up you agree to our{" "}
-            <Link to="privacyPolicy">Privacy Policy</Link>
-          </PrivacyPolicy>
-          <PrimaryButton width="500px" height="70px" fontSize="l" type="submit">
-            Sign up
-          </PrimaryButton>
+          <>
+            <Logo noNavigate />
+            <SignUpImageContainer>
+              <ImageInput
+                type="file"
+                name="userImage"
+                accept=".jpg,.jpeg,.png"
+                required
+                onInvalid={(event: ChangeEvent<HTMLInputElement>) =>
+                  event.target.setCustomValidity("Select profile image")
+                }
+                onInput={(event: ChangeEvent<HTMLInputElement>) =>
+                  event.target.setCustomValidity("")
+                }
+                onChange={(event: ChangeEvent<HTMLInputElement>) => {
+                  if (event.target.files) {
+                    setUserImage(event.target.files[0]);
+                  }
+                }}
+              />
+              <img src={SignUpProfile} alt="new profile" />
+              <SignUpPlusImage src={SignUpPlus} alt="new profile" />
+            </SignUpImageContainer>
+            <UserImageName>{imageName()}</UserImageName>
+            {FormInputsData.map((input) => (
+              <Input
+                key={input.placeholder}
+                image={input.image}
+                otherImage={input.otherImage}
+                type={input.type}
+                placeholder={input.placeholder}
+              />
+            ))}
+            <PrivacyPolicy>
+              By signing up you agree to our{" "}
+              <Link to="privacyPolicy">Privacy Policy</Link>
+            </PrivacyPolicy>
+            <PrimaryButton
+              width="500px"
+              height="70px"
+              fontSize="l"
+              type="submit"
+            >
+              Sign up
+            </PrimaryButton>
+            {isUploading && (
+              <FormLoadingContainer>
+                <Loading size="small" absolutePos />
+                <FormLoadingLabel>Uploading image</FormLoadingLabel>
+              </FormLoadingContainer>
+            )}
+            {isError && error instanceof Error && <h2>{error.message}</h2>}
+          </>
         </LoginInputContainer>
       )}
     </Formik>

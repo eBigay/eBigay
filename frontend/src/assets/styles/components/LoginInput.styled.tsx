@@ -53,12 +53,37 @@ margin: ${({ LoginPage }: any) =>
   }
 `;
 
+export const ImageInput = styled.input.attrs({ className: "imageInput" })`
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 0px;
+  z-index: 2;
+  opacity: 0;
+`;
+
+export const UserImageName = styled.h3.attrs({
+  className: "UserImageName",
+})`
+  position: absolute;
+  top: 177px;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  font-size: ${({ theme }) => theme.fontSizes.fsM};
+  color: ${({ theme }) => theme.colors.clr9};
+  ${RespondTo.mobileBreakpoint`
+  font-size: ${({ theme }: any) => theme.fontSizes.fsS};
+  top: 180px;
+  `}
+`;
+
 export const SignUpImageContainer = styled.div.attrs({
   className: "SignUpImageContainer",
 })`
   width: max-content;
   position: relative;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 `;
 
 export const SignUpPlusImage = styled.img.attrs({ className: "SignUpImage" })`

@@ -6,10 +6,11 @@ import LoadingContainer, {
 type InputProps = {
   size?: string;
   pos?: string;
+  absolutePos?: boolean;
 };
 
-const Loading = ({ size, pos }: InputProps) => (
-  <LoadingContainer pos={pos}>
+const Loading = ({ size, pos, absolutePos }: InputProps) => (
+  <LoadingContainer pos={pos} absolutePos={absolutePos}>
     <SpinnerContainer size={size}>
       <svg>
         <Spinner cx="50" cy="50" r="45" />
