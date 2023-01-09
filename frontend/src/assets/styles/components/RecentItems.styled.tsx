@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import RespondTo, { MinWidth } from "../../theme/responsive";
 
-export const RecentItemsHeader = styled.h2`
+export const RecentItemsHeader = styled.h2.attrs({
+  className: "RecentItemsHeader",
+})`
   padding: 0 5rem;
   font-weight: 600;
   font-size: 1.85rem;
@@ -12,7 +14,11 @@ export const RecentItemsHeader = styled.h2`
   gap: 27px;
   margin-bottom: 48px;
   ${RespondTo.mobileBreakpoint`
-   padding: 0 2rem
+   padding: 0 2rem;
+   font-size: ${({ theme }: any) => theme.fontSizes.fsXL}
+  `}
+  ${MinWidth.wideBreakpoint`
+  padding: 0 15rem;
   `}
 
   &::before,
@@ -42,6 +48,6 @@ export const RecentItemsContainer = styled.div`
    padding: 0 2rem;
   `}
   ${MinWidth.wideBreakpoint`
-  padding: 0 10rem;
+  padding: 0 15rem;
   `}
 `;

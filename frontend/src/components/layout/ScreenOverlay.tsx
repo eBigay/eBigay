@@ -1,5 +1,5 @@
 import { MouseEventHandler } from "react";
-import StyledScreenOverlay from "../assets/styles/components/ScreenOverlay.styled";
+import StyledScreenOverlay from "../../assets/styles/layout/ScreenOverlay.styled";
 
 interface IOverlayProps {
   styleMode?: string;

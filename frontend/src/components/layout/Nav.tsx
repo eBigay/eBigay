@@ -7,7 +7,7 @@ import {
   StyledLink,
 } from "../../assets/styles/layout/Header.styled";
 import PrimaryButton from "../../assets/styles/base/Button.styled";
-import ScreenOverlay from "../ScreenOverlay";
+import ScreenOverlay from "./ScreenOverlay";
 import SearchForm from "../SearchForm";
 import useAuthContext from "../../hooks/useAuthContext";
 import useAuth from "../../hooks/useAuth";

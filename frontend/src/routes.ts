@@ -2,6 +2,7 @@ import { lazy } from "react";
 import NotFound from "./pages/NotFound";
 
 const Home = lazy(() => {
+  // eslint-disable-next-line
   return import("./pages/Home");
 });
 const Search = lazy(() => {
@@ -42,12 +43,12 @@ const routes = [
   {
     path: "/search",
     element: Search,
-    key: "Login",
+    key: "Search",
   },
   {
     path: "*",
     element: NotFound,
-    key: "notFound",
+    key: "NotFound",
   },
 ];
 

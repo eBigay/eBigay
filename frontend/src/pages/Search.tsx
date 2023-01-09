@@ -4,28 +4,32 @@ import { useSearchParams } from "react-router-dom";
 
 import { UseInfiniteQueryResult } from "react-query";
 import { useItems } from "../hooks/useItems";
+import useOverflow from "../hooks/useOverflow";
+import useIntersectionObserver from "../hooks/useIntersctionObserver";
 
 import { IItem } from "../interfaces/IItem.interface";
 import { IFilterBy } from "../interfaces/IFilterBy.interface";
 
-import fakeCategories from "../data/FakeCategories";
+import CategoriesToFilter from "../data/CategoriesToFilter";
 
 import { ListContainer } from "../assets/styles/layout/ItemList.styled";
 import StyledSearchContainer, {
+  LeonhardCulmann,
   StyledNoSearch,
+  StyledSearchHeader,
+  StyledSearchSubHeader,
 } from "../assets/styles/pages/Search.styled";
-import { TopContainer } from "../components/layout/TopContainer";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import { FetchErrorMessage } from "../assets/styles/components/RecentItems.styled";
 
 import Categories from "../components/Categories";
-import { LeftContainer } from "../components/layout/LeftContainer";
 import ItemDetails from "../components/ItemDetails";
-import ScreenOverlay from "../components/ScreenOverlay";
-import useOverflow from "../hooks/useOverflow";
+import ScreenOverlay from "../components/layout/ScreenOverlay";
 import ItemCard from "../components/ItemCard";
 import Loading from "../components/Loading";
-import useIntersectionObserver from "../hooks/useIntersctionObserver";
+import { TopContainer } from "../components/layout/TopContainer";
+import { LeftContainer } from "../components/layout/LeftContainer";
+import Text from "../data/enums";
 
 const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -104,17 +108,23 @@ const Search = () => {
     <>
       <TopContainer>
         <PrimaryButton
-          fontSize="m"
+          fontSize="s"
           width="fit-content"
-          height="50x"
+          height="50px"
           onClick={toggleLeftContainer}
         >
           Filter By
         </PrimaryButton>
       </TopContainer>
+      <StyledSearchHeader>{Text.SearchPageHeader}</StyledSearchHeader>
+      <StyledSearchSubHeader>{Text.SearchPageSubHeader}</StyledSearchSubHeader>
+      <LeonhardCulmann>Leonhard Culmann&apos;s</LeonhardCulmann>
       <StyledSearchContainer>
         <LeftContainer isLeftContainerOpen={isLeftContainerOpen}>
-          <Categories categories={fakeCategories} onSetFilter={onSetFilter} />
+          <Categories
+            categories={CategoriesToFilter}
+            onSetFilter={onSetFilter}
+          />
         </LeftContainer>
         <ListContainer>
           {isSuccess &&
@@ -125,7 +135,7 @@ const Search = () => {
       </StyledSearchContainer>
       <div ref={observerElem}>
         {!isFetchingNextPage && !hasNextPage ? (
-          <StyledNoSearch>No search left...</StyledNoSearch>
+          <StyledNoSearch>No Results Left...</StyledNoSearch>
         ) : (
           <Loading size="small" />
         )}

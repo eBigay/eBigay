@@ -30,7 +30,7 @@ const SearchForm = ({
 
   const [query, setQuery] = useState<string>("");
 
-  const loaction = useLocation();
+  const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {

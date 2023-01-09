@@ -7,7 +7,7 @@ const HeroContainer = styled.div`
   padding-right: 36px;
   margin-top: 151px;
   ${MinWidth.wideBreakpoint`
-  padding: 0 10rem;
+  padding: 0 15rem;
   `}
   ${RespondTo.laptopBreakpoint`
   padding: 0 5rem;

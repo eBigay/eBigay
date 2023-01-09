@@ -1,4 +1,4 @@
-import { httpService } from "./http.service";
+import httpService from "./http.service";
 import { IItem } from "../interfaces/IItem.interface";
 import { IFilterBy } from "../interfaces/IFilterBy.interface";
 
