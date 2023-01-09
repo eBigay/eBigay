@@ -27,7 +27,8 @@ function verifyToken(token){
 
 // Check if the user exists in database
 function isAuthenticated({email, password}){
-  return userdb.users.find(user => user.email === email && user.password === password);
+  const user = userdb.users.find(user => user.email === email && user.password === password)
+  return user ? user : false
 }
 
 
@@ -89,14 +90,22 @@ server.post('/auth/login', (req, res) => {
   }
   const access_token = createToken({email, password})
   console.log("Access Token:" + access_token);
+  console.log(isAuthenticated)
   res.status(200).json({
     email,
     access_token
   })
 })
 
-server.use(/^(?!\/auth).*$/,  (req, res, next) => {
+
+server.use((req, res, next) => {
+  if (req.method === 'GET' && (req.path === '/items' || req.path === '/auth')) {
+    next();
+    return;
+  }
   if (req.headers.authorization === undefined || req.headers.authorization.split(' ')[0] !== 'Bearer') {
+    next()
+
     const status = 401
     const message = 'Error in authorization format'
     res.status(status).json({status, message})
@@ -117,8 +126,8 @@ server.use(/^(?!\/auth).*$/,  (req, res, next) => {
     const status = 401
     const message = 'Error access_token is revoked'
     res.status(status).json({status, message})
-  }
-})
+  }});
+
 
 server.use(router)
 
