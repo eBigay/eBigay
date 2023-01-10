@@ -16,7 +16,7 @@ const LoginSignupPage = styled.div.attrs({
   flex-direction: column;
   `}
   ${MinWidth.wideBreakpoint`
-  height: 1100px;
+  height: 1150px;
   `}
 `;
 
@@ -68,6 +68,34 @@ export const LogInSignUpParagraph = styled.p.attrs({
   className: "LogInSignUpParagraph",
 })`
   color: ${({ theme }) => theme.colors.clr3};
+`;
+
+export const FormLoadingContainer = styled.div.attrs({
+  className: "FormLoadingContainer",
+})`
+  position: relative;
+  ${MinWidth.laptopBreakpoint`
+  padding-bottom:4rem;
+  `};
+`;
+
+export const FormLoadingLabel = styled.p.attrs({
+  className: "FormLoadingLabel",
+})`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  width: max-content;
+  color: ${({ theme }) => theme.colors.clr1};
+  font-size: ${({ theme }) => theme.fontSizes.fsM};
+  font-weight: 500;
+  ${RespondTo.laptopBreakpoint`
+  transform: translate(-50%, -10%);
+`}
+  ${RespondTo.tabletBreakpoint`
+  transform: translate(-50%, 50%);
+`}
 `;
 
 export default LoginSignupPage;
