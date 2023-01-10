@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite --host",
     "serve": "json-server --watch db.json --id id --port  4000",
-    "start": "concurrently \"npm run serve\" \"npm run dev",
+    "demo-backend": "cd ../demo-backend && npm run start-auth",
+    "start": "concurrently \"npm run serve\" \"npm run dev\" \"npm run demo-backend",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "prettier": "prettier --check .",
