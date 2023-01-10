@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   StyledHeader,
   StyledMenu,
@@ -13,6 +13,10 @@ const Header = () => {
   const [isSearchBarOpen, setIsSearchBarOpen] = useState<boolean>(false);
 
   useOverflow(isMenuOpen);
+
+  useEffect(() => {
+    console.log(isSearchBarOpen);
+  }, [isSearchBarOpen]);
 
   return (
     <StyledHeader>

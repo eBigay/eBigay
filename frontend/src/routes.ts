@@ -2,22 +2,22 @@ import { lazy } from "react";
 import NotFound from "./pages/NotFound";
 
 const Home = lazy(() => {
-  // eslint-disable-next-line
   return import("./pages/Home");
 });
 const Search = lazy(() => {
-  // eslint-disable-next-line
   return import("./pages/Search");
 });
 const About = lazy(async () => {
-  // eslint-disable-next-line
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return import("./pages/About");
 });
 const LoginSignup = lazy(async () => {
-  // eslint-disable-next-line
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return import("./pages/LoginSignup");
+});
+const Profile = lazy(async () => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return import("./pages/Profile");
 });
 
 const routes = [
@@ -47,6 +47,11 @@ const routes = [
     path: "/search",
     element: Search,
     key: "Search",
+  },
+  {
+    path: "/profile",
+    element: Profile,
+    key: "Profile",
   },
   {
     path: "*",

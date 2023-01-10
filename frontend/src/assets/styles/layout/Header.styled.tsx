@@ -7,7 +7,7 @@ interface IStyledLinksProps {
   isMenuOpen: boolean;
 }
 
-export const StyledHeader = styled.div`
+export const StyledHeader = styled.header`
   padding: 0 5rem;
   display: flex;
   justify-content: space-between;
@@ -17,14 +17,14 @@ export const StyledHeader = styled.div`
   left: 0;
   z-index: 25;
   overflow: hidden;
-  min-height: 100px;
+  min-height: 5rem;
   background-color: #ffffff;
   box-shadow: 0 4px 6px rgba(186, 167, 167, 0.25);
   ${RespondTo.tabletBreakpoint`
   align-items:center;
   `}
   ${RespondTo.mobileBreakpoint`
-    min-height: 83px;
+    min-height: 4.75rem;
    width: 100%;
    padding: 0 2rem
   `}
@@ -33,7 +33,7 @@ export const StyledHeader = styled.div`
   `}
 `;
 
-export const LinksContainer = styled.div<IStyledLinksProps>`
+export const LinksContainer = styled.nav<IStyledLinksProps>`
   display: flex;
   align-items: center;
   position: relative;

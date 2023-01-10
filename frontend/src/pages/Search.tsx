@@ -4,6 +4,7 @@ import { useSearchParams } from "react-router-dom";
 
 import { UseInfiniteQueryResult } from "react-query";
 import { useItems } from "../hooks/useItems";
+import useOverflow from "../hooks/useOverflow";
 import useIntersectionObserver from "../hooks/useIntersctionObserver";
 
 import { IItem } from "../interfaces/IItem.interface";
@@ -18,17 +19,16 @@ import StyledSearchContainer, {
   StyledSearchHeader,
   StyledSearchSubHeader,
 } from "../assets/styles/pages/Search.styled";
-import { TopContainer } from "../components/layout/TopContainer";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import { FetchErrorMessage } from "../assets/styles/components/RecentItems.styled";
 
 import Categories from "../components/Categories";
-import { LeftContainer } from "../components/layout/LeftContainer";
 import ItemDetails from "../components/ItemDetails";
 import ScreenOverlay from "../components/layout/ScreenOverlay";
-import useOverflow from "../hooks/useOverflow";
 import ItemCard from "../components/ItemCard";
 import Loading from "../components/Loading";
+import { TopContainer } from "../components/layout/TopContainer";
+import { LeftContainer } from "../components/layout/LeftContainer";
 import Text from "../data/enums";
 
 const Search = () => {

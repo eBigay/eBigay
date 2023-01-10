@@ -3,7 +3,9 @@
     {
       "id": 1,
       "email": "koren3210@gmail.com",
-      "password": "01523841Aa"
+      "password": "01523841Aa",
+      "fullName": "Koren Turgeman",
+      "imgUrl": "https://files.slack.com/files-pri/T0492U49325-F04G5UPKA1M/img_2255.jpg"
     }
   ]
 }
