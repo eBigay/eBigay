@@ -1,4 +1,4 @@
-import { IUser } from "../interfaces/IUser.inerface";
+import { IUser } from "../interfaces/IUser.interface";
 import httpService from "./http.service";
 
 const saveLocalUser = (user: IUser): IUser => {

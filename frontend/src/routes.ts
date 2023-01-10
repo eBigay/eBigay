@@ -2,7 +2,6 @@ import { lazy } from "react";
 import NotFound from "./pages/NotFound";
 
 const Home = lazy(() => {
-  // eslint-disable-next-line
   return import("./pages/Home");
 });
 const Search = lazy(() => {
@@ -15,6 +14,10 @@ const About = lazy(async () => {
 const LoginSignup = lazy(async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return import("./pages/LoginSignup");
+});
+const Profile = lazy(async () => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return import("./pages/Profile");
 });
 
 const routes = [
@@ -44,6 +47,11 @@ const routes = [
     path: "/search",
     element: Search,
     key: "Search",
+  },
+  {
+    path: "/profile",
+    element: Profile,
+    key: "Profile",
   },
   {
     path: "*",

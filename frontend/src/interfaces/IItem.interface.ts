@@ -1,3 +1,5 @@
+import { IUser } from "./IUser.interface";
+
 export interface IItem {
   id?: string;
   qty: number;
@@ -7,10 +9,6 @@ export interface IItem {
   category: string;
   location: any;
   createdAt: number;
-  createdBy: {
-    id?: string;
-    fullName?: string;
-    imgUrl: string;
-  };
   description: string;
+  createdBy: IUser;
 }

@@ -1,6 +1,6 @@
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router";
-import { IUser } from "../interfaces/IUser.inerface";
+import { IUser } from "../interfaces/IUser.interface";
 import { userService } from "../services/user.service";
 import useAuthContext from "./useAuthContext";
 

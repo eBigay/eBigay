@@ -99,7 +99,7 @@ const ItemDetails = () => {
             <CreatedByContainer>
               <Avatar src={createdBy.imgUrl} sx={{ width: 60, height: 60 }} />
               <CreatedByWrapper>
-                <CreatedByName>{createdBy.fullName}</CreatedByName>
+                <CreatedByName>{createdBy.name}</CreatedByName>
                 <CreatedByLocation>{location}</CreatedByLocation>
                 <CreatedByTime>{relativeTimeString}</CreatedByTime>
               </CreatedByWrapper>

@@ -13,6 +13,7 @@ export const StyledLeftContainer = styled.aside<IStyledLeftContainer>`
   height: 100vh;
   ${RespondTo.laptopBreakpoint`
     position: fixed;
+    overflow-y:auto;
     top: 0;
     left: 0;
     padding-top: 3rem;

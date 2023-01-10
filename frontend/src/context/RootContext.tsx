@@ -14,8 +14,10 @@ const INITIAL_STATE: IItem = {
   imgs: [],
   createdBy: {
     id: "",
-    fullName: "",
+    email: "",
+    name: "",
     imgUrl: "",
+    isAdmin: false,
   },
 };
 

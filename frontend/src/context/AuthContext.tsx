@@ -6,7 +6,7 @@ import {
   ReactNode,
 } from "react";
 
-import { IUserState } from "../interfaces/IUser.inerface";
+import { IUserState } from "../interfaces/IUser.interface";
 
 type AuthContextProps = {
   state: IUserState;
