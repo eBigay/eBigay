@@ -26,7 +26,6 @@ const getById = async (item: IItem): Promise<IItem> => {
 };
 
 const create = async (item: IItem): Promise<IItem> => {
-  console.log(item);
   return httpService.post<IItem>("items", item);
 };
 
@@ -38,10 +37,12 @@ const remove = async (id: string) => {
   await httpService.delete(`items/${id}`);
 };
 
-export const itemsService = {
+const itemsService = {
   query,
   getById,
   create,
   update,
   remove,
 };
+
+export default itemsService;

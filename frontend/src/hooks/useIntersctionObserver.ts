@@ -1,4 +1,15 @@
 import { useEffect, RefObject } from "react";
+
+interface IntersectionObserver {
+  enabled?: boolean;
+  onIntersect: () => void;
+  root?: RefObject<Element>;
+  dependencies: boolean[];
+  rootMargin?: string;
+  target: RefObject<Element>;
+  threshold?: number;
+}
+
 export default function useIntersectionObserver({
   enabled = true,
   onIntersect,
@@ -7,15 +18,7 @@ export default function useIntersectionObserver({
   rootMargin = "0px",
   target,
   threshold = 0.1,
-}: {
-  enabled?: boolean;
-  onIntersect: () => void;
-  root?: RefObject<Element>;
-  dependencies: boolean[];
-  rootMargin?: string;
-  target: RefObject<Element>;
-  threshold?: number;
-}): void {
+}: IntersectionObserver): void {
   useEffect(() => {
     if (!enabled) {
       return;
@@ -34,8 +37,5 @@ export default function useIntersectionObserver({
       return;
     }
     observer.observe(el);
-    return () => {
-      observer.unobserve(el);
-    };
   }, [enabled, ...dependencies, target.current]);
 }

@@ -8,7 +8,7 @@ import LoginInputContainer, {
   RememberMeLabel,
 } from "../assets/styles/components/LoginInput.styled";
 import Logo from "./layout/Logo";
-import { Input } from "./Input";
+import Input from "./Input";
 import Profile from "../assets/svgs/Profile.svg";
 import Lock from "../assets/svgs/Lock.svg";
 import Hide from "../assets/svgs/Hide.svg";
