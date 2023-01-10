@@ -12,7 +12,10 @@ interface CategoryLinkProps {
 const Category = ({ category, onSetFilter }: CategoryLinkProps) => {
   return (
     <StyledCategory
-      onClick={() => onSetFilter("category", category.toLocaleLowerCase())}
+      onClick={() => {
+        onSetFilter("category", category.toLocaleLowerCase());
+        window.scroll({ top: 0, behavior: "smooth" });
+      }}
     >
       <CategoryLink>{category}</CategoryLink>
       <img src={ArrowRight} alt="Right Arrow" />

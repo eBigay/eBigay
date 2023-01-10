@@ -33,7 +33,10 @@ const FeaturedCategory = ({
           width="115px"
           height="34"
           fontSize="xs"
-          onClick={() => navigate(navUrl)}
+          onClick={() => {
+            navigate(navUrl);
+            window.scroll({ top: 0, behavior: "smooth" });
+          }}
         >
           Explore More
         </PrimaryButton>

@@ -19,11 +19,10 @@ export const StyledLeftContainer = styled.aside<IStyledLeftContainer>`
     padding-top: 3rem;
     width: 40%;
     z-index: 50;
-    background-color: ${(props: any) => props.theme.colors.clr4};
-    transform: translate(${(props: any) =>
-      props.isLeftContainerOpen ? "0" : "-100%"});
-      transition: transform 0.5s ease-in-out;
-
+    background-color: ${({ theme }: any) => theme.colors.clr4};
+    transform: translate(${({ isLeftContainerOpen }: IStyledLeftContainer) =>
+      isLeftContainerOpen ? "0" : "-100%"});
+    transition: transform 0.5s ease-in-out;
   `}
   ${RespondTo.mobileBreakpoint`
     width: 70%;
