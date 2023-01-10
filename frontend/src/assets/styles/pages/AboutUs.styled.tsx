@@ -11,6 +11,12 @@ const StyledAbout = styled.div`
   `}
 `;
 
+export const BackLinkContainer = styled.div.attrs({
+  className: "BackLinkContainer",
+})`
+  cursor: pointer;
+`;
+
 export const BackLink = styled.p`
   display: inline;
   position: absolute;

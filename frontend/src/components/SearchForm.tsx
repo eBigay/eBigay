@@ -5,7 +5,8 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
+import PrimaryButton from "../assets/styles/base/Button.styled";
 import {
   StyledButton,
   StyledClearIcon,
@@ -16,44 +17,35 @@ import {
   StyledSearchButton,
   StyledSearch,
 } from "../assets/styles/layout/SearchForm.styled";
-
 interface ISearchFormProps {
   isSearchBarOpen: boolean;
   setIsSearchBarOpen: Dispatch<SetStateAction<boolean>>;
 }
-
 const SearchForm = ({
   isSearchBarOpen,
   setIsSearchBarOpen,
 }: ISearchFormProps) => {
   const inputSearchRef = useRef<HTMLInputElement>(null);
-
   const [query, setQuery] = useState<string>("");
-
-  const location = useLocation();
   const navigate = useNavigate();
-
   useEffect(() => {
     if (inputSearchRef.current) {
       inputSearchRef.current.focus();
     }
   }, []);
-
   const handleChange = ({
     target: { value },
   }: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(value);
   };
-
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    window.location.href = `/search?q=${query}`;
+    navigate(`/search?q=${query}`);
+    window.location.reload();
   };
-
   const toggleSearchBarOpen = () => {
     setIsSearchBarOpen(!isSearchBarOpen);
   };
-
   return (
     <StyledContainer isSearchBarOpen={isSearchBarOpen}>
       <StyledFormContainer>
@@ -65,9 +57,19 @@ const SearchForm = ({
             type="text"
             onChange={handleChange}
             value={query}
-            placeholder="Search for anything"
+            placeholder="Search here..."
             ref={inputSearchRef}
           />
+          <PrimaryButton
+            width="115px"
+            height="50px"
+            fontSize="xs"
+            borderRadius="10px"
+            disabled={!query}
+            type="submit"
+          >
+            Search
+          </PrimaryButton>
         </StyledForm>
         <StyledButton onClick={toggleSearchBarOpen}>
           <StyledClearIcon />
@@ -76,5 +78,4 @@ const SearchForm = ({
     </StyledContainer>
   );
 };
-
 export default SearchForm;

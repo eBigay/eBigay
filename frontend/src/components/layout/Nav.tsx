@@ -81,8 +81,22 @@ const Nav = ({
         setIsSearchBarOpen={setIsSearchBarOpen}
       />
       <LinksContainer isMenuOpen={isMenuOpen}>
-        <StyledLink to="/">Home</StyledLink>
-        <StyledLink to="/about">About Us</StyledLink>
+        <StyledLink
+          to="/"
+          onClick={() => {
+            window.scroll({ top: 0, behavior: "smooth" });
+          }}
+        >
+          Home
+        </StyledLink>
+        <StyledLink
+          to="/about"
+          onClick={() => {
+            window.scroll({ top: 0, behavior: "smooth" });
+          }}
+        >
+          About Us
+        </StyledLink>
         {user ? (
           <Tooltip title="Account settings">
             <IconButton
@@ -101,7 +115,10 @@ const Nav = ({
             width="172px"
             height="50px"
             fontSize="s"
-            onClick={() => navigate("/login")}
+            onClick={() => {
+              navigate("/login");
+              window.scroll({ top: 0, behavior: "smooth" });
+            }}
           >
             Log in/Sign up
           </PrimaryButton>
