@@ -1,18 +1,16 @@
 import { Clear, Search } from "@mui/icons-material";
 import styled from "styled-components";
 import RespondTo, { MinWidth } from "../../theme/responsive";
-
 interface IStyledSearch {
   isSearchBarOpen?: boolean;
 }
 interface ISearchButtonProps {
   isdisabled: string;
 }
-
 export const StyledContainer = styled.div<IStyledSearch>`
   align-self: center;
-  flex: 0.75;
-
+  flex: 0.7;
+​
   ${RespondTo.tabletBreakpoint`
 display: ${({ isSearchBarOpen }: IStyledSearch) => !isSearchBarOpen && "none"};
 position: fixed;
@@ -23,8 +21,11 @@ height: 100%;
 z-index: 1000;
 background-color: ${({ theme }: any) => theme.colors.clr4};
   `}
-`;
 
+  ${MinWidth.wideBreakpoint`
+flex: 0.5;
+`}
+`;
 export const StyledFormContainer = styled.div`
   display: flex;
   padding: 0.4rem 5.6rem 0.4rem 0.4rem;
@@ -34,11 +35,9 @@ export const StyledFormContainer = styled.div`
   background-color: #f5f5f5;
   padding:0;
   border: 1px solid ${({ theme }: any) => theme.colors.clr3light};
-  border-radius: 50px;
-
+  border-radius: 10px;
   `}
 `;
-
 export const StyledInput = styled.input`
   flex: 1;
   border: 0;
@@ -47,20 +46,25 @@ export const StyledInput = styled.input`
   font-family: Poppins;
   font-size: ${({ theme }) => theme.fontSizes.fsS};
   background-color: transparent;
-
+​
   ${MinWidth.tabletBreakpoint`
-  height: 3.0rem
-
+  height: 3.5rem
   `}
 `;
-
-export const StyledForm = styled.form`
+export const StyledForm = styled.form.attrs({ className: "StyledForm" })`
   display: flex;
   align-items: center;
-  height: 100%;
+  height: 50px;
   margin: 0;
+  &:nth-child(1) {
+    width: 100%;
+  }
+  ​ .PrimaryButton {
+    ${RespondTo.tabletBreakpoint`
+  display: none;
+  `}
+  }
 `;
-
 export const StyledButton = styled.button`
   border: none;
   background-color: transparent;
@@ -71,7 +75,7 @@ export const StyledButton = styled.button`
   position: relative;
   position: absolute;
   right: 0.4rem;
-  top: 1.6rem;
+  top: 1.3rem;
   ${MinWidth.tabletBreakpoint`
   display:none;
 `}
@@ -82,20 +86,19 @@ export const StyledSearchButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0 0.3rem 0 1rem;
 `;
-
 export const StyledClearIcon = styled(Clear)`
   cursor: pointer;
   color: #fbb527;
 `;
-
 export const StyledSearch = styled(Search)<ISearchButtonProps>`
   && {
-    cursor: pointer;
+    cursor: ${({ isdisabled }) => (isdisabled ? "default" : "pointer")};
     opacity: ${({ isdisabled }) => !isdisabled && 0.5};
     font-size: 2rem;
     color: #fbb527;
     align-self: center;
-    margin: 0 1rem 0 auto;
+    margin: 0;
   }
 `;

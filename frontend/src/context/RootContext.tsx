@@ -1,4 +1,4 @@
-import React, { createContext, useMemo } from "react";
+import { createContext, useMemo } from "react";
 import useModal from "../hooks/useModal";
 import { IItem } from "../interfaces/IItem.interface";
 
