@@ -1,6 +1,7 @@
 import { Clear, Search } from "@mui/icons-material";
 import styled from "styled-components";
 import RespondTo, { MinWidth } from "../../theme/responsive";
+
 interface IStyledSearch {
   isSearchBarOpen?: boolean;
 }
@@ -10,7 +11,7 @@ interface ISearchButtonProps {
 export const StyledContainer = styled.div<IStyledSearch>`
   align-self: center;
   flex: 0.7;
-​
+
   ${RespondTo.tabletBreakpoint`
 display: ${({ isSearchBarOpen }: IStyledSearch) => !isSearchBarOpen && "none"};
 position: fixed;
@@ -46,7 +47,7 @@ export const StyledInput = styled.input`
   font-family: Poppins;
   font-size: ${({ theme }) => theme.fontSizes.fsS};
   background-color: transparent;
-​
+
   ${MinWidth.tabletBreakpoint`
   height: 3.5rem
   `}
@@ -59,7 +60,7 @@ export const StyledForm = styled.form.attrs({ className: "StyledForm" })`
   &:nth-child(1) {
     width: 100%;
   }
-  ​ .PrimaryButton {
+  .PrimaryButton {
     ${RespondTo.tabletBreakpoint`
   display: none;
   `}

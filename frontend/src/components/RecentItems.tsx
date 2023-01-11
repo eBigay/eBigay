@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import { UseQueryResult } from "react-query";
-import { useItems } from "../hooks/useItems";
+import useItems from "../hooks/useItems";
 import { RecentItemsHeader } from "../assets/styles/components/RecentItems.styled";
 
 import { IItem } from "../interfaces/IItem.interface";
@@ -12,6 +12,7 @@ import ItemList from "./ItemList";
 const RecentItems = () => {
   const { useQueryAllItems } = useItems();
 
+  /* eslint-disable-next-line */
   const [filterBy, setFilterBy] = useState<IFilterBy>({
     queryText: "",
     category: "",

@@ -6,6 +6,13 @@
       "password": "01523841Aa",
       "fullName": "Koren Turgeman",
       "imgUrl": "https://files.slack.com/files-pri/T0492U49325-F04G5UPKA1M/img_2255.jpg"
+    },
+    {
+      "id": 2,
+      "email": "yanivwein22@gmail.com",
+      "password": "123123Aa",
+      "fullName": "Yaniv Weinshtein",
+      "imgUrl": "http://res.cloudinary.com/di8d3r9vo/image/upload/v1673376503/cgvzxkojutne5zp5juxo.png"
     }
   ]
 }

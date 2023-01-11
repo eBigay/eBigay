@@ -15,6 +15,8 @@ const uploadFile = (file: File) => {
   });
 };
 
-export const cloudinaryService = {
+const cloudinaryService = {
   uploadFile,
 };
+
+export default cloudinaryService;

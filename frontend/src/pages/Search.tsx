@@ -3,7 +3,7 @@ import { debounce } from "lodash";
 import { useSearchParams } from "react-router-dom";
 
 import { UseInfiniteQueryResult } from "react-query";
-import { useItems } from "../hooks/useItems";
+import useItems from "../hooks/useItems";
 import useOverflow from "../hooks/useOverflow";
 import useIntersectionObserver from "../hooks/useIntersctionObserver";
 
@@ -12,7 +12,7 @@ import { IFilterBy } from "../interfaces/IFilterBy.interface";
 
 import CategoriesToFilter from "../data/CategoriesToFilter";
 
-import { ListContainer } from "../assets/styles/layout/ItemList.styled";
+import ListContainer from "../assets/styles/layout/ItemList.styled";
 import StyledSearchContainer, {
   LeonhardCulmann,
   StyledNoSearch,
@@ -27,8 +27,8 @@ import ItemDetails from "../components/ItemDetails";
 import ScreenOverlay from "../components/layout/ScreenOverlay";
 import ItemCard from "../components/ItemCard";
 import Loading from "../components/Loading";
-import { TopContainer } from "../components/layout/TopContainer";
-import { LeftContainer } from "../components/layout/LeftContainer";
+import TopContainer from "../components/layout/TopContainer";
+import LeftContainer from "../components/layout/LeftContainer";
 import Text from "../data/enums";
 
 const Search = () => {
@@ -81,23 +81,21 @@ const Search = () => {
   const onSetFilter = useCallback(
     (property: string, value: any) => {
       const newFilter = { ...filterBy, [property]: value };
-      console.log(newFilter);
       if (property === "category") {
         setIsLeftContainerOpen(false);
         newFilter.queryText = "";
       }
-
       const queryParams = {
         category: newFilter.category,
       };
       setSearchParams(queryParams);
       setFilterBy(newFilter);
     },
-    [filterBy]
+    [filterBy, setSearchParams]
   );
 
   const toggleLeftContainer = () => {
-    setIsLeftContainerOpen((isLeftContainerOpen) => !isLeftContainerOpen);
+    setIsLeftContainerOpen((LeftContainerOpenState) => !LeftContainerOpenState);
   };
 
   useOverflow(isLeftContainerOpen);

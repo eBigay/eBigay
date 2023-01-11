@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import { IItem } from "../interfaces/IItem.interface";
-import { itemsService } from "../services/items.service";
+import itemsService from "../services/items.service";
 
 const fetchItems = () => {
   return itemsService.query();

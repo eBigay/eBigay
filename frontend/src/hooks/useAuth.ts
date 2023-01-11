@@ -1,7 +1,7 @@
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router";
 import { IUser } from "../interfaces/IUser.interface";
-import { userService } from "../services/user.service";
+import userService from "../services/user.service";
 import useAuthContext from "./useAuthContext";
 
 const useAuth = () => {
@@ -16,7 +16,7 @@ const useAuth = () => {
     onSuccess: (user) => {
       dispatch({ type: "LOGIN", payload: { user } });
     },
-    onError: (error) => console.log(error),
+    onError: (error) => console.log(error) /* eslint-disable-line */,
   });
 
   const loginUser = (credentials: { email: string; password: string }) => {
@@ -28,7 +28,7 @@ const useAuth = () => {
       dispatch({ type: "LOGIN", payload: { user } });
       navigate("/");
     },
-    onError: (error) => console.log(error),
+    onError: (error) => console.log(error) /* eslint-disable-line */,
   });
 
   const logoutUser = () => {

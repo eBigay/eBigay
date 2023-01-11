@@ -5,11 +5,7 @@ export const CategoriesContainer = styled.div`
   width: 300px;
   border: 1px solid ${({ theme }) => theme.colors.clr3light};
   border-radius: 10px;
-<<<<<<< HEAD
-  padding: 2rem 0;
-=======
   padding: 2rem 0 0;
->>>>>>> 6b54f960bc2de1d89bdad5d54e89471edcf8dcba
   margin: 0;
   ${RespondTo.laptopBreakpoint`
    padding:0;

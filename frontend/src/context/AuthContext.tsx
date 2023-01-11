@@ -4,6 +4,7 @@ import {
   createContext,
   useReducer,
   ReactNode,
+  useMemo,
 } from "react";
 
 import { IUserState } from "../interfaces/IUser.interface";
@@ -46,9 +47,7 @@ export const AuthContextProvider = ({ children }: AuthProviderProps) => {
     }
   }, []);
 
-  return (
-    <AuthContext.Provider value={{ state, dispatch }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  const value = useMemo(() => ({ state, dispatch }), [state]);
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

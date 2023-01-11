@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import RespondTo, { MinWidth } from "../../theme/responsive";
 
 const ProfileContainer = styled.div`
   margin-top: 5rem;

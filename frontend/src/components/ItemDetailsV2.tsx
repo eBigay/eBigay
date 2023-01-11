@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import { Avatar } from "@mui/material";
 import { useContext, useState } from "react";
 import { SwiperSlide } from "swiper/react";

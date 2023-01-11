@@ -9,7 +9,7 @@ import StyledInput, {
 } from "../assets/styles/layout/Inputs.styled";
 import IInputProps from "../interfaces/IInputProps";
 
-export const Input = ({
+const Input = ({
   image,
   otherImage,
   type,
@@ -76,3 +76,5 @@ export const Input = ({
     </StyledInput>
   );
 };
+
+export default Input;

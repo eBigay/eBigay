@@ -9,6 +9,7 @@ const saveLocalUser = (user: IUser): IUser => {
 const login = async (credentials: {
   email: string;
   password: string;
+  /* eslint-disable-next-line */
 }): Promise<IUser | undefined> => {
   try {
     const user = await httpService.post<IUser>("auth/login", credentials);
@@ -59,7 +60,7 @@ const getById = async (userId: string): Promise<IUser> => {
   }
 };
 
-export const userService = {
+const userService = {
   login,
   logout,
   signup,
@@ -67,3 +68,5 @@ export const userService = {
   getUsers,
   getById,
 };
+
+export default userService;

@@ -5,7 +5,7 @@ interface IStyledLeftContainer {
   isLeftContainerOpen: boolean;
 }
 
-export const StyledLeftContainer = styled.aside<IStyledLeftContainer>`
+const StyledLeftContainer = styled.aside<IStyledLeftContainer>`
   display: flex;
   position: sticky;
   flex-direction: column;
@@ -32,3 +32,5 @@ export const StyledLeftContainer = styled.aside<IStyledLeftContainer>`
     padding-right: 27px;
     `}
 `;
+
+export default StyledLeftContainer;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import RespondTo, { MinWidth } from "../../theme/responsive";
 
-export const ListContainer = styled.div.attrs({ className: "listContainer" })`
+const ListContainer = styled.div.attrs({ className: "listContainer" })`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-template-rows: auto;
@@ -21,3 +21,5 @@ export const ListContainer = styled.div.attrs({ className: "listContainer" })`
   padding: 0 15rem;
   `}
 `;
+
+export default ListContainer;

@@ -1,11 +1,5 @@
-import React, {
-  Dispatch,
-  SetStateAction,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { useNavigate } from "react-router";
+import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { useLocation, useNavigate } from "react-router";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import {
   StyledButton,
@@ -17,35 +11,49 @@ import {
   StyledSearchButton,
   StyledSearch,
 } from "../assets/styles/layout/SearchForm.styled";
+
 interface ISearchFormProps {
   isSearchBarOpen: boolean;
   setIsSearchBarOpen: Dispatch<SetStateAction<boolean>>;
 }
+
 const SearchForm = ({
   isSearchBarOpen,
   setIsSearchBarOpen,
 }: ISearchFormProps) => {
   const inputSearchRef = useRef<HTMLInputElement>(null);
+
   const [query, setQuery] = useState<string>("");
+
   const navigate = useNavigate();
+  const location = useLocation();
+
   useEffect(() => {
     if (inputSearchRef.current) {
       inputSearchRef.current.focus();
     }
   }, []);
+
   const handleChange = ({
     target: { value },
   }: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(value);
   };
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    if (!location.pathname.includes("search")) {
+      navigate(`/search?q=${query}`);
+      return;
+    }
     navigate(`/search?q=${query}`);
     window.location.reload();
   };
+
   const toggleSearchBarOpen = () => {
     setIsSearchBarOpen(!isSearchBarOpen);
   };
+
   return (
     <StyledContainer isSearchBarOpen={isSearchBarOpen}>
       <StyledFormContainer>
@@ -78,4 +86,5 @@ const SearchForm = ({
     </StyledContainer>
   );
 };
+
 export default SearchForm;

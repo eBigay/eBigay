@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { cloudinaryService } from "../services/cloudinary.service";
+import cloudinaryService from "../services/cloudinary.service";
 
 const useUploadImage = (file: File) => {
   const { uploadFile } = cloudinaryService;
@@ -11,6 +11,7 @@ const useUploadImage = (file: File) => {
         // workaround to prevent type error - error is type of "unknown"
         return JSON.stringify(error.message);
       }
+      return "";
     },
   });
 };
