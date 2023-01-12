@@ -4,7 +4,6 @@ import {
   FavoriteBorderOutlined,
 } from "@mui/icons-material";
 import { formatDistance } from "date-fns";
-import { useContext } from "react";
 import { useNavigate } from "react-router";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import ItemCardContainer, {
@@ -21,8 +20,8 @@ import ItemCardContainer, {
 } from "../assets/styles/components/ItemCard.styled";
 import { CreatedByTime } from "../assets/styles/components/ItemDetails.styled";
 import Location from "../assets/svgs/Location.svg";
-import useModalContext from "../hooks/useModalContext";
 import { IItem } from "../interfaces/IItem.interface";
+import useModalContext from "../hooks/useModalContext";
 
 interface IItemCard {
   item: IItem;

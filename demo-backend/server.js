@@ -82,17 +82,17 @@ server.post('/auth/login', (req, res) => {
   console.log("login endpoint called; request body:");
   console.log(req.body);
   const {email, password} = req.body;
-  if (isAuthenticated({email, password}) === false) {
+  const currUser = isAuthenticated({email, password})
+  if (!currUser) {
     const status = 401
     const message = 'Incorrect email or password'
     res.status(status).json({status, message})
     return
   }
   const access_token = createToken({email, password})
-  console.log("Access Token:" + access_token);
-  console.log(isAuthenticated)
+  delete currUser.password
   res.status(200).json({
-    email,
+    ...currUser,
     access_token
   })
 })

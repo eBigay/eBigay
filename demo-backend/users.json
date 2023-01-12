@@ -4,8 +4,9 @@
       "id": 1,
       "email": "koren3210@gmail.com",
       "password": "01523841Aa",
-      "fullName": "Koren Turgeman",
-      "imgUrl": "https://files.slack.com/files-pri/T0492U49325-F04G5UPKA1M/img_2255.jpg"
+      "name": "Koren Turgeman",
+      "imgUrl": "https://ca.slack-edge.com/T021743D5T8-U0276DVNY2F-f2361f5e4429-512",
+      "isAdmin": true
     }
   ]
 }

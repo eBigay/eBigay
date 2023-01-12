@@ -43,7 +43,6 @@ const SignUpInput = () => {
   return (
     <Formik
       initialValues={initialValues}
-      /* eslint-disable-next-line */
       onSubmit={(values) => alert(JSON.stringify(values))}
       validationSchema={SignUpSchema}
     >
