@@ -1,6 +1,9 @@
 import styled from "styled-components";
+import { FadeInAndUp } from "../layout/FadeIn.styled";
 
-const ItemCardContainer = styled.div`
+const ItemCardContainer = styled(FadeInAndUp).attrs({
+  className: "ItemCardContainer",
+})`
   display: flex;
   flex-direction: column;
 `;

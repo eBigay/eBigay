@@ -19,7 +19,11 @@ const useAuth = () => {
     onError: (error) => console.log(error) /* eslint-disable-line */,
   });
 
-  const loginUser = (credentials: { email: string; password: string }) => {
+  const loginUser = (credentials: {
+    email: string;
+    password: string;
+    rememberMe: boolean;
+  }) => {
     return userService.login(credentials);
   };
 

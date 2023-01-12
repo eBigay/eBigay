@@ -13,10 +13,12 @@ server.use(jsonServer.defaults());
 
 const SECRET_KEY = '123456789'
 
-const expiresIn = '1h'
+const expiresInDefault = '1h'
+const expiresInLong = '7d'
 
 // Create a token from a payload 
-function createToken(payload) {
+function createToken(payload, rememberMe) {
+  const expiresIn = rememberMe ? expiresInLong : expiresInDefault
   return jwt.sign(payload, SECRET_KEY, { expiresIn })
 }
 
@@ -30,7 +32,6 @@ function isAuthenticated({ email, password }) {
   const user = userdb.users.find(user => user.email === email && user.password === password)
   return user ? user : false
 }
-
 
 // Register New User
 server.post('/auth/register', (req, res) => {
@@ -61,7 +62,7 @@ server.post('/auth/register', (req, res) => {
 
     //Add new user
     data.users.push({ id: last_item_id + 1, email: email, password: password }); //add some data
-    var writeData = fs.writeFile("./users.json", JSON.stringify(data), (err, result) => {  // WRITE
+    fs.writeFile("./users.json", JSON.stringify(data), (err, result) => {  // WRITE
       if (err) {
         const status = 401
         const message = err
@@ -81,22 +82,18 @@ server.post('/auth/register', (req, res) => {
 server.post('/auth/login', (req, res) => {
   console.log("login endpoint called; request body:");
   console.log(req.body);
-  const { email, password } = req.body;
+  const { email, password, rememberMe } = req.body;
   if (isAuthenticated({ email, password }) === false) {
     const status = 401
     const message = 'Incorrect email or password'
     res.status(status).json({ status, message })
     return
   }
-  const ACCESS_TOKEN = createToken({ email, password })
+  const ACCESS_TOKEN = createToken({ email, password }, rememberMe)
   console.log("Access Token:" + ACCESS_TOKEN);
-  console.log(isAuthenticated)
-  res.status(200).json({
-    email,
-    ACCESS_TOKEN
-  })
+  const user = (isAuthenticated({ email, password }))
+  res.status(200).json({ ...user, ACCESS_TOKEN })
 })
-
 
 server.use((req, res, next) => {
   if (req.method === 'GET' && (req.path === '/items' || req.path === '/auth')) {

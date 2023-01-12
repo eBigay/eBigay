@@ -52,7 +52,7 @@ export const LinksContainer = styled.nav<IStyledLinksProps>`
 		padding-top: 6.9rem;
 		flex-direction: column;
 		background-color: ${({ theme }: any) => theme.colors.clr4};
-		transform: ${({ isMenuOpen }: any) =>
+		transform: ${({ isMenuOpen }: IStyledLinksProps) =>
       isMenuOpen ? "translateX(0%)" : "translateX(100%)"};
 		transition: 0.5s ease-in-out;
   `}
@@ -140,10 +140,11 @@ export const StyledCancelButton = styled.button<IStyledLinksProps>`
   width: 2.8rem;
   height: 2.8rem;
   border-radius: 50%;
-  transform: ${({ isMenuOpen }: any) => (isMenuOpen ? "scale(1)" : "scale(0)")};
+  transform: ${({ isMenuOpen }: IStyledLinksProps) =>
+    isMenuOpen ? "scale(1)" : "scale(0)"};
   transition: transform 100ms cubic-bezier(0, 0, 0.38, 0.9) 450ms;
   background-color: #fff;
-  opacity: ${({ isMenuOpen }: any) => (isMenuOpen ? 1 : 0)};
+  opacity: ${({ isMenuOpen }: IStyledLinksProps) => (isMenuOpen ? 1 : 0)};
   &:hover {
     background-color: #d9d9d9;
   }

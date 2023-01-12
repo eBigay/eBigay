@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import RespondTo, { MinWidth } from "../../theme/responsive";
 
-export const CategoriesContainer = styled.div`
+export const CategoriesContainer = styled.div.attrs({
+  className: "CategoriesContainer",
+})`
   width: 300px;
   border: 1px solid ${({ theme }) => theme.colors.clr3light};
   border-radius: 10px;
   padding: 2rem 0 0;
   margin: 0;
   ${RespondTo.laptopBreakpoint`
-   padding:0;
+   padding: 5rem 0 0;
    width: 100%;
    border: unset;
   `}

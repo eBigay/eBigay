@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import RespondTo, { MinWidth } from "../../theme/responsive";
+import FadeIn from "../layout/FadeIn.styled";
 
-const LoginSignupPage = styled.div.attrs({
+const LoginSignupPage = styled(FadeIn).attrs({
   className: "LoginSignupPage",
 })`
   position: relative;

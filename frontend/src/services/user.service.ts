@@ -9,6 +9,7 @@ const saveLocalUser = (user: IUser): IUser => {
 const login = async (credentials: {
   email: string;
   password: string;
+  rememberMe: boolean;
   /* eslint-disable-next-line */
 }): Promise<IUser | undefined> => {
   try {
