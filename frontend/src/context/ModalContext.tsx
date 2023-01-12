@@ -27,10 +27,10 @@ export type RootContextType = {
   modalContent: IItem;
 };
 
-export const rootContext = createContext<RootContextType>(
+export const modalContext = createContext<RootContextType>(
   {} as RootContextType
 );
-const RootContextProvider = ({
+const ModalContextProvider = ({
   children,
 }: React.PropsWithChildren<Record<string, unknown>>) => {
   const { modal, handleModal, modalContent } = useModal(INITIAL_STATE);
@@ -44,10 +44,10 @@ const RootContextProvider = ({
     [modal, handleModal, modalContent]
   );
   return (
-    <rootContext.Provider value={providerValue}>
+    <modalContext.Provider value={providerValue}>
       {children}
-    </rootContext.Provider>
+    </modalContext.Provider>
   );
 };
 
-export default RootContextProvider;
+export default ModalContextProvider;

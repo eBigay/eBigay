@@ -16,4 +16,6 @@ export const StyledWelcome = styled.div`
   color: white;
 `;
 
+export const styledFrom = styled.form``;
+
 export default ProfileContainer;

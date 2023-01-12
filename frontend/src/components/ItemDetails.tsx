@@ -1,11 +1,10 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Avatar } from "@mui/material";
 import _ from "lodash";
 import { formatDistance } from "date-fns";
 import { SwiperSlide } from "swiper/react";
 import { Navigation, Thumbs, Lazy, type Swiper as SwiperRef } from "swiper";
 import ScreenOverlay from "./layout/ScreenOverlay";
-import { rootContext } from "../context/RootContext";
 
 import useOverflow from "../hooks/useOverflow";
 
@@ -37,11 +36,12 @@ import {
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import useAuthContext from "../hooks/useAuthContext";
 import Loading from "./Loading";
+import useModalContext from "../hooks/useModalContext";
 
 const ItemDetails = () => {
   const [activeThumb, setActiveThumb] = useState<SwiperRef>();
 
-  const { modal, handleModal, modalContent } = useContext(rootContext);
+  const { modal, handleModal, modalContent } = useModalContext();
 
   const {
     state: { user },

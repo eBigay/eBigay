@@ -21,7 +21,7 @@ import ItemCardContainer, {
 } from "../assets/styles/components/ItemCard.styled";
 import { CreatedByTime } from "../assets/styles/components/ItemDetails.styled";
 import Location from "../assets/svgs/Location.svg";
-import { rootContext } from "../context/RootContext";
+import useModalContext from "../hooks/useModalContext";
 import { IItem } from "../interfaces/IItem.interface";
 
 interface IItemCard {
@@ -29,7 +29,7 @@ interface IItemCard {
 }
 
 const ItemCard = ({ item }: IItemCard) => {
-  const { handleModal } = useContext(rootContext);
+  const { handleModal } = useModalContext();
 
   const handleOpenProductDetails = () => {
     handleModal(item);

@@ -24,6 +24,7 @@ import {
 import PrimaryButton from "../../assets/styles/base/Button.styled";
 import ScreenOverlay from "./ScreenOverlay";
 import SearchForm from "../SearchForm";
+
 import useAuthContext from "../../hooks/useAuthContext";
 import useAuth from "../../hooks/useAuth";
 
@@ -149,7 +150,7 @@ const Nav = ({
             <Avatar /> My account
           </MenuItem>
           <Divider />
-          <MenuItem>
+          <MenuItem onClick={() => navigate("/addnew")}>
             <ListItemIcon>
               <VolunteerActivism fontSize="small" />
             </ListItemIcon>

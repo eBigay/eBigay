@@ -4,7 +4,6 @@ import { SwiperSlide } from "swiper/react";
 import { Navigation, Thumbs, type Swiper as SwiperRef } from "swiper";
 import ScreenOverlay from "./layout/ScreenOverlay";
 import PrimaryButton from "../assets/styles/base/Button.styled";
-import { rootContext } from "../context/RootContext";
 import useOverflow from "../hooks/useOverflow";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -30,9 +29,10 @@ import {
   StyledSwiperThumbs,
 } from "../assets/styles/components/ItemImagesSlider.styled";
 import ItemImagesSlider from "./ItemImagesSlider";
+import useModalContext from "../hooks/useModalContext";
 
 const ItemDetails = () => {
-  const { modal, handleModal, modalContent } = useContext(rootContext);
+  const { modal, handleModal, modalContent } = useModalContext();
 
   const { description, mainImg, itemName, createdBy, imgs, location, id } =
     modalContent;
