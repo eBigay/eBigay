@@ -14,10 +14,10 @@ export interface IUserState {
 }
 
 export interface IUserRegister {
-  ImageUrl: string | undefined;
-  Username: string;
-  Email: string;
-  Password: string;
-  PhoneNumber: string;
-  Location: string;
+  imageUrl: string | undefined;
+  username: string;
+  email: string;
+  password: string;
+  phoneNumber: string;
+  location: string;
 }

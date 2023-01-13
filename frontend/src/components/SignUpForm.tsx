@@ -25,22 +25,22 @@ import SignUpPlus from "../assets/svgs/SignUpPlus.svg";
 import { IUserRegister } from "../interfaces/IUser.interface";
 
 interface SignUpValues {
-  Username: string;
-  Email: string;
-  Password: string;
-  PhoneNumber: string;
-  Location: string;
+  username: string;
+  email: string;
+  password: string;
+  phoneNumber: string;
+  location: string;
 }
 const SignUpInput = () => {
   const { signup } = useAuth();
   const { mutate: signupUser } = signup;
 
   const initialValues: SignUpValues = {
-    Username: "",
-    Email: "",
-    Password: "",
-    PhoneNumber: "",
-    Location: "",
+    username: "",
+    email: "",
+    password: "",
+    phoneNumber: "",
+    location: "",
   };
 
   const [userImage, setUserImage] = useState<File>();
@@ -72,8 +72,8 @@ const SignUpInput = () => {
       initialValues={initialValues}
       /* eslint-disable-next-line */
       onSubmit={(values) => {
-        const ImageUrl: string | undefined = isSuccess && data.data.url;
-        const valuesToSubmit: IUserRegister = { ...values, ImageUrl };
+        const imageUrl: string | undefined = isSuccess && data.data.url;
+        const valuesToSubmit: IUserRegister = { ...values, imageUrl };
         signupUser(valuesToSubmit);
       }}
       validationSchema={SignUpSchema}
@@ -111,6 +111,7 @@ const SignUpInput = () => {
                 otherImage={input.otherImage}
                 type={input.type}
                 placeholder={input.placeholder}
+                valueName={input.valueName}
               />
             ))}
             <PrivacyPolicy>
