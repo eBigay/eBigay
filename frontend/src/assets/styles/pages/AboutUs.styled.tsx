@@ -40,17 +40,22 @@ export const BackLink = styled.p`
   `}
 `;
 
-export const BackImage = styled.img`
+interface BackButtonProps {
+  hover: boolean;
+}
+
+export const BackImage = styled.img<BackButtonProps>`
   position: absolute;
-  left: 80px;
+  left: ${({ hover }) => (hover ? "70px" : "80px")};
   top: 166px;
+  transition: 0.2s ease;
   ${MinWidth.wideBreakpoint`
-  left: 240px;
-  `}
+  left: ${({ hover }: BackButtonProps) => (hover ? "230px" : "240px")};
+  `};
   ${RespondTo.mobileBreakpoint`
-    left: 20px;
+    left: ${({ hover }: BackButtonProps) => (hover ? "15px" : "20px")};
     top: 150px;
-  `}
+  `};
 `;
 
 export const AboutUsHeader = styled.h1`

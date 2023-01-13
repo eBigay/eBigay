@@ -1,7 +1,7 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import { Formik, FormikValues } from "formik";
-// import useAuth from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import Input from "./Input";
 import Loading from "./Loading";
 import Logo from "./layout/Logo";
@@ -22,23 +22,25 @@ import {
 } from "../assets/styles/pages/LoginSignup.styled";
 import SignUpProfile from "../assets/svgs/SignUpProfile.svg";
 import SignUpPlus from "../assets/svgs/SignUpPlus.svg";
+import { IUserRegister } from "../interfaces/IUser.interface";
 
 interface SignUpValues {
-  Username: string;
-  Email: string;
-  Password: string;
-  PhoneNumber: string;
-  Location: string;
+  username: string;
+  email: string;
+  password: string;
+  phoneNumber: string;
+  location: string;
 }
 const SignUpInput = () => {
-  // const { signup } = useAuth();
+  const { signup } = useAuth();
+  const { mutate: signupUser } = signup;
 
   const initialValues: SignUpValues = {
-    Username: "",
-    Email: "",
-    Password: "",
-    PhoneNumber: "",
-    Location: "",
+    username: "",
+    email: "",
+    password: "",
+    phoneNumber: "",
+    location: "",
   };
 
   const [userImage, setUserImage] = useState<File>();
@@ -70,9 +72,9 @@ const SignUpInput = () => {
       initialValues={initialValues}
       /* eslint-disable-next-line */
       onSubmit={(values) => {
-        const ImageUrl = isSuccess && data.data.url;
-        const valuesToSubmit = { ...values, ImageUrl };
-        alert(JSON.stringify(valuesToSubmit)); /* eslint-disable-line */
+        const imageUrl: string | undefined = isSuccess && data.data.url;
+        const valuesToSubmit: IUserRegister = { ...values, imageUrl };
+        signupUser(valuesToSubmit);
       }}
       validationSchema={SignUpSchema}
     >
@@ -109,6 +111,7 @@ const SignUpInput = () => {
                 otherImage={input.otherImage}
                 type={input.type}
                 placeholder={input.placeholder}
+                valueName={input.valueName}
               />
             ))}
             <PrivacyPolicy>

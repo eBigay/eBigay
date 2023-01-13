@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import FadeIn from "../layout/FadeIn.styled";
 
-export const NotFoundContainer = styled.section`
+export const NotFoundContainer = styled(FadeIn)`
   height: 90vh;
   display: flex;
   align-items: center;

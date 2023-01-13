@@ -1,4 +1,4 @@
-import { IUser } from "../interfaces/IUser.interface";
+import { IUser, IUserRegister } from "../interfaces/IUser.interface";
 import httpService from "./http.service";
 
 const saveLocalUser = (user: IUser): IUser => {
@@ -9,6 +9,7 @@ const saveLocalUser = (user: IUser): IUser => {
 const login = async (credentials: {
   email: string;
   password: string;
+  rememberMe: boolean;
   /* eslint-disable-next-line */
 }): Promise<IUser | undefined> => {
   try {
@@ -19,7 +20,7 @@ const login = async (credentials: {
   }
 };
 
-const signup = async (userInfo: IUser): Promise<IUser> => {
+const signup = async (userInfo: IUserRegister): Promise<IUser> => {
   try {
     const user = await httpService.post<IUser>("auth/signup", userInfo);
     return saveLocalUser(user);

@@ -23,6 +23,7 @@ import { CreatedByTime } from "../assets/styles/components/ItemDetails.styled";
 import Location from "../assets/svgs/Location.svg";
 import { rootContext } from "../context/RootContext";
 import { IItem } from "../interfaces/IItem.interface";
+import { AuthContext } from "../context/AuthContext";
 
 interface IItemCard {
   item: IItem;
@@ -30,6 +31,9 @@ interface IItemCard {
 
 const ItemCard = ({ item }: IItemCard) => {
   const { handleModal } = useContext(rootContext);
+  const {
+    state: { user },
+  } = useContext(AuthContext);
 
   const handleOpenProductDetails = () => {
     handleModal(item);
@@ -66,18 +70,20 @@ const ItemCard = ({ item }: IItemCard) => {
           <LocationImage src={Location} alt="location" />
           <LocationName>{item.location}</LocationName>
         </ItemLocation>
-        <PrimaryButton
-          width="194px"
-          height="34px"
-          fontSize="xs"
-          type="button"
-          onClick={() => {
-            navigate("/SignUp");
-            window.scroll({ top: 0, behavior: "smooth" });
-          }}
-        >
-          Sign up for phone number
-        </PrimaryButton>
+        {!user && (
+          <PrimaryButton
+            width="194px"
+            height="34px"
+            fontSize="xs"
+            type="button"
+            onClick={() => {
+              navigate("/SignUp");
+              window.scroll({ top: 0, behavior: "smooth" });
+            }}
+          >
+            Sign up for phone number
+          </PrimaryButton>
+        )}
       </ItemDetails>
     </ItemCardContainer>
   );

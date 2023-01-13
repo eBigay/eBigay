@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Formik, FormikValues } from "formik";
 import { Link } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 import LoginSchema from "../schemas/LoginSchema";
 import LoginInputContainer, {
   MiddleFlex,
@@ -9,11 +10,11 @@ import LoginInputContainer, {
 } from "../assets/styles/components/LoginInput.styled";
 import Logo from "./layout/Logo";
 import Input from "./Input";
-import Profile from "../assets/svgs/Profile.svg";
 import Lock from "../assets/svgs/Lock.svg";
 import Hide from "../assets/svgs/Hide.svg";
+import Message from "../assets/svgs/Message.svg";
+
 import PrimaryButton from "../assets/styles/base/Button.styled";
-import useAuth from "../hooks/useAuth";
 
 const LoginForm = () => {
   const [rememberMe, setRememberMe] = useState<boolean>(false);
@@ -23,19 +24,23 @@ const LoginForm = () => {
   const { mutate: loginUser } = login;
 
   interface LoginValues {
-    Username: string;
-    Password: string;
+    email: string;
+    password: string;
   }
 
-  const initialValues: LoginValues = { Username: "", Password: "" };
+  const initialValues: LoginValues = {
+    email: "",
+    password: "",
+  };
 
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={(credentials) => {
         const values = {
-          email: credentials.Username,
-          password: credentials.Password,
+          email: credentials.email,
+          password: credentials.password,
+          rememberMe,
         };
         loginUser(values);
       }}
@@ -44,12 +49,18 @@ const LoginForm = () => {
       {({ handleSubmit }: FormikValues) => (
         <LoginInputContainer onSubmit={handleSubmit}>
           <Logo noNavigate />
-          <Input image={Profile} type="text" placeholder="Username" />
+          <Input
+            image={Message}
+            type="email"
+            placeholder="Email"
+            valueName="email"
+          />
           <Input
             image={Lock}
             type="password"
             otherImage={Hide}
             placeholder="Password"
+            valueName="password"
           />
           <MiddleFlex>
             <RememberMeLabel htmlFor="checkbox">

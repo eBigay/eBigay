@@ -12,3 +12,12 @@ export interface IUserRespone {
 export interface IUserState {
   user: IUser | null;
 }
+
+export interface IUserRegister {
+  imageUrl: string | undefined;
+  username: string;
+  email: string;
+  password: string;
+  phoneNumber: string;
+  location: string;
+}

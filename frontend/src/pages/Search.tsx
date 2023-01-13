@@ -30,6 +30,7 @@ import Loading from "../components/Loading";
 import TopContainer from "../components/layout/TopContainer";
 import LeftContainer from "../components/layout/LeftContainer";
 import Text from "../data/enums";
+import FadeIn from "../assets/styles/layout/FadeIn.styled";
 
 const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -100,7 +101,7 @@ const Search = () => {
 
   useOverflow(isLeftContainerOpen);
   return (
-    <>
+    <FadeIn>
       <TopContainer>
         <PrimaryButton
           fontSize="s"
@@ -143,7 +144,7 @@ const Search = () => {
         handleClick={toggleLeftContainer}
         isLeftContainerOpen={isLeftContainerOpen}
       />
-    </>
+    </FadeIn>
   );
 };
 
