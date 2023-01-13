@@ -34,12 +34,12 @@ function isAuthenticated({ email, password }) {
 }
 
 // Register New User
-server.post('/auth/register', (req, res) => {
+server.post('/auth/signup', (req, res) => {
   console.log("register endpoint called; request body:");
   console.log(req.body);
-  const { email, password } = req.body;
+  const { Email, Password, Username, PhoneNumber, Location, ImageUrl } = req.body;
 
-  if (isAuthenticated({ email, password }) === true) {
+  if (isAuthenticated({ Email, Password }) === true) {
     const status = 401;
     const message = 'Email and Password already exist';
     res.status(status).json({ status, message });
@@ -61,7 +61,9 @@ server.post('/auth/register', (req, res) => {
     var last_item_id = data.users[data.users.length - 1].id;
 
     //Add new user
-    data.users.push({ id: last_item_id + 1, email: email, password: password }); //add some data
+    data.users.push({
+      id: last_item_id + 1, email: Email, password: Password, username: Username, phoneNumber: PhoneNumber, location: Location, imageUrl: ImageUrl
+    }); // add some data
     fs.writeFile("./users.json", JSON.stringify(data), (err, result) => {  // WRITE
       if (err) {
         const status = 401
@@ -73,9 +75,10 @@ server.post('/auth/register', (req, res) => {
   });
 
   // Create token for new user
-  const ACCESS_TOKEN = createToken({ email, password })
+  const ACCESS_TOKEN = createToken({ Email, Password })
   console.log("Access Token:" + ACCESS_TOKEN);
-  res.status(200).json({ email, id, ACCESS_TOKEN })
+  const returnValues = { ACCESS_TOKEN, Email, Password, Username, PhoneNumber, Location, ImageUrl }
+  res.status(200).json(returnValues)
 })
 
 // Login to one of the users from ./users.json
@@ -102,7 +105,6 @@ server.use((req, res, next) => {
   }
   if (req.headers.authorization === undefined || req.headers.authorization.split(' ')[0] !== 'Bearer') {
     next()
-
     const status = 401
     const message = 'Error in authorization format'
     res.status(status).json({ status, message })
@@ -111,7 +113,6 @@ server.use((req, res, next) => {
   try {
     let verifyTokenResult;
     verifyTokenResult = verifyToken(req.headers.authorization.split(' ')[1]);
-
     if (verifyTokenResult instanceof Error) {
       const status = 401
       const message = 'Access token not provided'

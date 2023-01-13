@@ -1,7 +1,7 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import { Formik, FormikValues } from "formik";
-// import useAuth from "../hooks/useAuth";
+import useAuth from "../hooks/useAuth";
 import Input from "./Input";
 import Loading from "./Loading";
 import Logo from "./layout/Logo";
@@ -22,6 +22,7 @@ import {
 } from "../assets/styles/pages/LoginSignup.styled";
 import SignUpProfile from "../assets/svgs/SignUpProfile.svg";
 import SignUpPlus from "../assets/svgs/SignUpPlus.svg";
+import { IUserRegister } from "../interfaces/IUser.interface";
 
 interface SignUpValues {
   Username: string;
@@ -31,7 +32,8 @@ interface SignUpValues {
   Location: string;
 }
 const SignUpInput = () => {
-  // const { signup } = useAuth();
+  const { signup } = useAuth();
+  const { mutate: signupUser } = signup;
 
   const initialValues: SignUpValues = {
     Username: "",
@@ -70,9 +72,9 @@ const SignUpInput = () => {
       initialValues={initialValues}
       /* eslint-disable-next-line */
       onSubmit={(values) => {
-        const ImageUrl = isSuccess && data.data.url;
-        const valuesToSubmit = { ...values, ImageUrl };
-        alert(JSON.stringify(valuesToSubmit)); /* eslint-disable-line */
+        const ImageUrl: string | undefined = isSuccess && data.data.url;
+        const valuesToSubmit: IUserRegister = { ...values, ImageUrl };
+        signupUser(valuesToSubmit);
       }}
       validationSchema={SignUpSchema}
     >
