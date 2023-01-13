@@ -7,17 +7,9 @@ import StyledInput, {
   InputRightImage,
   FadeInErrorMessage,
 } from "../assets/styles/layout/Inputs.styled";
+import IInputProps from "../interfaces/IInputProps";
 
-interface IInputProps {
-  image: string;
-  otherImage?: string; // optional argument - for the password and location inputs
-  type: string;
-  placeholder: string;
-  width?: number;
-  height?: number;
-}
-
-export const Input = ({
+const Input = ({
   image,
   otherImage,
   type,
@@ -56,18 +48,20 @@ export const Input = ({
       className={inputErrors && inputTouched ? "inputError" : ""}
     >
       <InputLeftImage src={image} alt="" />
-      <InnerInput
-        type={type === "password" ? passwordType : type}
-        placeholder={placeholder}
-        value={
-          location[0]
-            ? `lat: ${location[0]}, long: ${location[1]}`
-            : get(values, inputPlaceholder)
-        }
-        onChange={handleChange}
-        onBlur={handleBlur}
-        name={inputPlaceholder}
-      />
+      {
+        <InnerInput
+          type={type === "password" ? passwordType : type}
+          placeholder={placeholder}
+          value={
+            location[0]
+              ? `lat: ${location[0]}, long: ${location[1]}`
+              : get(values, inputPlaceholder)
+          }
+          onChange={handleChange}
+          onBlur={handleBlur}
+          name={inputPlaceholder}
+        />
+      }
       {otherImage && (
         <InputRightImage
           alt=""
@@ -84,3 +78,5 @@ export const Input = ({
     </StyledInput>
   );
 };
+
+export default Input;

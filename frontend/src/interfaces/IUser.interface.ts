@@ -5,6 +5,7 @@ export interface IUser {
   isAdmin: boolean;
   accessToken?: string;
   imgUrl?: string;
+  phoneNumber: string;
 }
 export interface IUserRespone {
   user: IUser;

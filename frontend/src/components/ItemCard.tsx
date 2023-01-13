@@ -22,6 +22,7 @@ import { CreatedByTime } from "../assets/styles/components/ItemDetails.styled";
 import Location from "../assets/svgs/Location.svg";
 import { IItem } from "../interfaces/IItem.interface";
 import useModalContext from "../hooks/useModalContext";
+import React from "react";
 
 interface IItemCard {
   item: IItem;
@@ -39,6 +40,8 @@ const ItemCard = ({ item }: IItemCard) => {
   });
 
   const navigate = useNavigate();
+
+  console.log(item.id);
 
   return (
     <ItemCardContainer>
@@ -82,4 +85,4 @@ const ItemCard = ({ item }: IItemCard) => {
   );
 };
 
-export default ItemCard;
+export default React.memo(ItemCard);

@@ -1,12 +1,12 @@
 import { ReactNode } from "react";
-import { StyledLeftContainer } from "../../assets/styles/layout/LeftContainer.styled";
+import StyledLeftContainer from "../../assets/styles/layout/LeftContainer.styled";
 
 interface ILeftContainerProps {
   children: ReactNode;
   isLeftContainerOpen: boolean;
 }
 
-export const LeftContainer = ({
+const LeftContainer = ({
   children,
   isLeftContainerOpen,
 }: ILeftContainerProps) => {
@@ -16,3 +16,5 @@ export const LeftContainer = ({
     </StyledLeftContainer>
   );
 };
+
+export default LeftContainer;

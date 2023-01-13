@@ -8,7 +8,6 @@ interface IStyledSearch {
 interface ISearchButtonProps {
   isdisabled: string;
 }
-
 export const StyledContainer = styled.div<IStyledSearch>`
   align-self: center;
   flex: 0.75;
@@ -24,7 +23,6 @@ z-index: 1000;
 background-color: ${({ theme }: any) => theme.colors.clr4};
   `}
 `;
-
 export const StyledFormContainer = styled.div`
   display: flex;
   padding: 0.4rem 5.6rem 0.4rem 0.4rem;
@@ -38,7 +36,6 @@ export const StyledFormContainer = styled.div`
 
   `}
 `;
-
 export const StyledInput = styled.input`
   flex: 1;
   border: 0;
@@ -60,7 +57,6 @@ export const StyledForm = styled.form`
   height: 100%;
   margin: 0;
 `;
-
 export const StyledButton = styled.button`
   border: none;
   background-color: transparent;
@@ -83,12 +79,10 @@ export const StyledSearchButton = styled.button`
   align-items: center;
   justify-content: center;
 `;
-
 export const StyledClearIcon = styled(Clear)`
   cursor: pointer;
   color: #fbb527;
 `;
-
 export const StyledSearch = styled(Search)<ISearchButtonProps>`
   && {
     cursor: pointer;

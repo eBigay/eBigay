@@ -3,7 +3,7 @@ import { debounce } from "lodash";
 import { useSearchParams } from "react-router-dom";
 
 import { UseInfiniteQueryResult } from "react-query";
-import { useItems } from "../hooks/useItems";
+import useItems from "../hooks/useItems";
 import useOverflow from "../hooks/useOverflow";
 import useIntersectionObserver from "../hooks/useIntersctionObserver";
 
@@ -12,7 +12,7 @@ import { IFilterBy } from "../interfaces/IFilterBy.interface";
 
 import CategoriesToFilter from "../data/CategoriesToFilter";
 
-import { ListContainer } from "../assets/styles/layout/ItemList.styled";
+import ListContainer from "../assets/styles/layout/ItemList.styled";
 import StyledSearchContainer, {
   LeonhardCulmann,
   StyledNoSearch,
@@ -27,8 +27,8 @@ import ItemDetails from "../components/ItemDetails";
 import ScreenOverlay from "../components/layout/ScreenOverlay";
 import ItemCard from "../components/ItemCard";
 import Loading from "../components/Loading";
-import { TopContainer } from "../components/layout/TopContainer";
-import { LeftContainer } from "../components/layout/LeftContainer";
+import TopContainer from "../components/layout/TopContainer";
+import LeftContainer from "../components/layout/LeftContainer";
 import Text from "../data/enums";
 
 const Search = () => {
@@ -47,6 +47,9 @@ const Search = () => {
   const [showLoader, setShowLoader] = useState(false);
 
   const observerElem: RefObject<any> = useRef(null);
+
+  const [pages, setPages] = useState([]);
+  const [currentPage, setCurrentPage] = useState(0);
 
   const { useInfiniteQueryAllItems } = useItems();
 
@@ -74,36 +77,35 @@ const Search = () => {
   useIntersectionObserver({
     target: observerElem,
     onIntersect: debouncedFetchNextPage,
-    enabled: hasNextPage,
+    enabled: hasNextPage && !isFetchingNextPage,
     dependencies: [showLoader, isLoading, isFetchingNextPage],
   });
 
   const onSetFilter = useCallback(
     (property: string, value: any) => {
       const newFilter = { ...filterBy, [property]: value };
-      console.log(newFilter);
       if (property === "category") {
         setIsLeftContainerOpen(false);
         newFilter.queryText = "";
       }
-
       const queryParams = {
         category: newFilter.category,
       };
       setSearchParams(queryParams);
       setFilterBy(newFilter);
     },
-    [filterBy]
+    [filterBy, setSearchParams]
   );
 
   const toggleLeftContainer = () => {
-    setIsLeftContainerOpen((isLeftContainerOpen) => !isLeftContainerOpen);
+    setIsLeftContainerOpen((LeftContainerOpenState) => !LeftContainerOpenState);
   };
 
-  useOverflow(isLeftContainerOpen);
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
-  if (isLoading || showLoader) return <Loading pos="center" />;
-  if (isError) return <FetchErrorMessage>{error}</FetchErrorMessage>;
+  useOverflow(isLeftContainerOpen);
   return (
     <>
       <TopContainer>
@@ -131,6 +133,8 @@ const Search = () => {
             data.pages.map((page) =>
               page.map((item) => <ItemCard key={item.id} item={item} />)
             )}
+          {(isLoading || showLoader) && <Loading pos="center" />}
+          {isError && <FetchErrorMessage>{error}</FetchErrorMessage>}
         </ListContainer>
       </StyledSearchContainer>
       <div ref={observerElem}>

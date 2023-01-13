@@ -5,8 +5,23 @@
       "email": "koren3210@gmail.com",
       "password": "01523841Aa",
       "name": "Koren Turgeman",
+      "phoneNumber": "054234322",
       "imgUrl": "https://ca.slack-edge.com/T021743D5T8-U0276DVNY2F-f2361f5e4429-512",
       "isAdmin": true
+    },
+    {
+      "id": 2,
+      "email": "yanivwein22@gmail.com",
+      "password": "123123Aa",
+      "name": "Yaniv Weinshtein",
+      "imgUrl": "http://res.cloudinary.com/di8d3r9vo/image/upload/v1673376503/cgvzxkojutne5zp5juxo.png"
+    },
+    {
+      "id": "668b1c18-0de2-4f8c-bea9-941f9180110d",
+      "name": "koko",
+      "email": "koreb3210@0101.com",
+      "imgUrl": "http://res.cloudinary.com/di8d3r9vo/image/upload/v1673518572/xsskhwtbm9psqkkrw2fu.png",
+      "isAdmin": false
     }
   ]
 }

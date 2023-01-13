@@ -18,9 +18,9 @@ const injectToken = (config: AxiosRequestConfig): AxiosRequestConfig => {
   try {
     const user = localStorage.getItem("user");
     if (user != null) {
-      const { access_token } = JSON.parse(user);
-      config.headers = config.headers ?? {};
-      config.headers.Authorization = `Bearer ${access_token}`;
+      const { ACCESS_TOKEN } = JSON.parse(user);
+      config.headers = config.headers ?? {}; /* eslint-disable-line */
+      config.headers.Authorization = `Bearer ${ACCESS_TOKEN}`; /* eslint-disable-line */
     }
     return config;
   } catch (err) {
@@ -70,6 +70,8 @@ async function ajax<T>(
         // Handle TooManyRequests
         break;
       }
+      default:
+        break;
     }
     throw err;
   }

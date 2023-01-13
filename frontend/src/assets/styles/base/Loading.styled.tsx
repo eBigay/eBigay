@@ -1,10 +1,12 @@
 import styled, { keyframes } from "styled-components";
+import RespondTo from "../../theme/responsive";
 
 type SpinnerProps = {
   size?: string;
 };
 type LoadingProps = {
   pos?: string;
+  absolutePos?: boolean;
 };
 
 const rotateAnimation = keyframes`
@@ -22,14 +24,16 @@ const rotateAnimation = keyframes`
   }
 `;
 
-export const SpinnerContainer = styled.div<SpinnerProps>`
+export const SpinnerContainer = styled.div.attrs({
+  className: "SpinnerContainer",
+})<SpinnerProps>`
   transform: scale(${({ size }) => (size === "small" ? 0.6 : 0.8)});
   svg {
     width: 100px;
   }
 `;
 
-export const Spinner = styled.circle`
+export const Spinner = styled.circle.attrs({ className: "Spinner" })`
   fill: transparent;
   stroke: #fbb527;
   stroke-width: 8px;
@@ -48,6 +52,14 @@ const LoadingContainer = styled.div<LoadingProps>`
   justify-content: center;
   align-items: center;
   margin-top: 3rem;
+  position: ${({ absolutePos }) => (absolutePos ? "absolute" : "relative")};
+  top: ${({ absolutePos }) => absolutePos && "-35px"};
+  ${RespondTo.laptopBreakpoint`
+  top: ${({ absolutePos }: any) => absolutePos && "-55px"};
+`}
+  ${RespondTo.tabletBreakpoint`
+  top: ${({ absolutePos }: any) => absolutePos && "-30px"};
+`}
 `;
 
 export default LoadingContainer;

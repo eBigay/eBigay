@@ -4,11 +4,11 @@ import {
   useQuery,
   useQueryClient,
 } from "react-query";
-import { itemsService } from "../services/items.service";
+import itemsService from "../services/items.service";
 import { IItem } from "../interfaces/IItem.interface";
 import { IFilterBy } from "../interfaces/IFilterBy.interface";
 
-export function useItems() {
+function useItems() {
   const queryClient = useQueryClient();
 
   const fetchItems = (filterBy: IFilterBy, pageParam: number) => {
@@ -25,8 +25,9 @@ export function useItems() {
       ["items", filterBy],
       ({ pageParam = 1 }) => fetchItems(filterBy, pageParam),
       {
+        keepPreviousData: true,
         getNextPageParam: (lastPage, allPages) => {
-          const nextPage = allPages?.length + 1;
+          const nextPage = allPages?.length + 1; /* eslint-disable-line */
           return lastPage?.length !== 0 ? nextPage : undefined;
         },
       }
@@ -79,3 +80,5 @@ export function useItems() {
     remove,
   };
 }
+
+export default useItems;

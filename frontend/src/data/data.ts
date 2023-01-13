@@ -9,28 +9,28 @@ const categoriesDemo = [
     img: womenCategory,
     title: "Women",
     description: "Clothes, Shoes, Bags, Jewelry, Accessories",
-    navUrl: "women",
+    navUrl: "/search?category=women+clothes",
   },
   {
     id: 2,
     img: menCategory,
     title: "Man",
     description: "Clothes, Shoes, Bags, Jewelry, Accessories",
-    navUrl: "man",
+    navUrl: "/search?category=men+clothes",
   },
   {
     id: 3,
     img: fornitureCategory,
     title: "Furniture",
     description: "Clothes, Shoes, Bags, Jewelry, Accessories",
-    navUrl: "furniture",
+    navUrl: "/search?category=furniture",
   },
   {
     id: 4,
     img: variousItemsCategory,
     title: "Various items",
     description: "Clothes, Shoes, Bags, Jewelry, Accessories",
-    navUrl: "various",
+    navUrl: "/search?category=various+items",
   },
 ];
 

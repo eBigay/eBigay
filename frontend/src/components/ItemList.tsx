@@ -1,5 +1,5 @@
 import { FetchErrorMessage } from "../assets/styles/components/RecentItems.styled";
-import { ListContainer } from "../assets/styles/layout/ItemList.styled";
+import ListContainer from "../assets/styles/layout/ItemList.styled";
 import { IItem } from "../interfaces/IItem.interface";
 import ItemCard from "./ItemCard";
 import Loading from "./Loading";

@@ -5,7 +5,6 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { useLocation, useNavigate } from "react-router";
 import {
   StyledButton,
   StyledClearIcon,
@@ -29,9 +28,6 @@ const SearchForm = ({
   const inputSearchRef = useRef<HTMLInputElement>(null);
 
   const [query, setQuery] = useState<string>("");
-
-  const location = useLocation();
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (inputSearchRef.current) {

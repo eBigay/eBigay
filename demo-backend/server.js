@@ -26,7 +26,7 @@ function verifyToken(token){
 }
 
 // Check if the user exists in database
-function isAuthenticated({email, password}){
+function isAuthenticated({ email, password }) {
   const user = userdb.users.find(user => user.email === email && user.password === password)
   return user ? user : false
 }
@@ -36,6 +36,7 @@ function isAuthenticated({email, password}){
 server.post('/auth/register', (req, res) => {
   console.log("register endpoint called; request body:");
   console.log(req.body);
+  const currUser = req.body
   const { email, password} = req.body;
 
   if(isAuthenticated({email, password}) === true) {
@@ -57,24 +58,26 @@ fs.readFile("./users.json", (err, data) => {
     var data = JSON.parse(data.toString());
 
     // Get the id of last user
-    var last_item_id = data.users[data.users.length-1].id;
 
     //Add new user
-    data.users.push({id: last_item_id + 1, email: email, password: password}); //add some data
-    var writeData = fs.writeFile("./users.json", JSON.stringify(data), (err, result) => {  // WRITE
-        if (err) {
-          const status = 401
-          const message = err
-          res.status(status).json({status, message})
-          return
-        }
+    data.users.push(currUser); //add some data
+
+    delete currUser.password
+
+     fs.writeFile("./users.json", JSON.stringify(data), (err, result) => {  // WRITE
+      if (err) {
+        const status = 401
+        const message = err
+        res.status(status).json({ status, message })
+        return
+      }
     });
 });
 
-// Create token for new user
-  const access_token = createToken({email, password})
-  console.log("Access Token:" + access_token);
-  res.status(200).json({email, id, access_token})
+  // Create token for new user
+  const ACCESS_TOKEN = createToken({ email, password })
+  console.log("Access Token:" + ACCESS_TOKEN);
+  res.status(200).json({ ...currUser, ACCESS_TOKEN })
 })
 
 // Login to one of the users from ./users.json
@@ -89,11 +92,13 @@ server.post('/auth/login', (req, res) => {
     res.status(status).json({status, message})
     return
   }
-  const access_token = createToken({email, password})
   delete currUser.password
+  const ACCESS_TOKEN = createToken({ email, password })
+  console.log("Access Token:" + ACCESS_TOKEN);
+  console.log(isAuthenticated)
   res.status(200).json({
     ...currUser,
-    access_token
+    ACCESS_TOKEN
   })
 })
 
@@ -125,8 +130,9 @@ server.use((req, res, next) => {
   } catch (err) {
     const status = 401
     const message = 'Error access_token is revoked'
-    res.status(status).json({status, message})
-  }});
+    res.status(status).json({ status, message })
+  }
+});
 
 
 server.use(router)

@@ -1,4 +1,4 @@
-import React, { createContext, useMemo } from "react";
+import { createContext, useMemo } from "react";
 import useModal from "../hooks/useModal";
 import { IItem } from "../interfaces/IItem.interface";
 
@@ -14,6 +14,7 @@ const INITIAL_STATE: IItem = {
   imgs: [],
   createdBy: {
     id: "",
+    phoneNumber: "0",
     email: "",
     name: "",
     imgUrl: "",
@@ -21,14 +22,14 @@ const INITIAL_STATE: IItem = {
   },
 };
 
-export type RootContextType = {
+export type ModalContextType = {
   modal: boolean;
   handleModal: (content?: IItem) => void;
   modalContent: IItem;
 };
 
-export const modalContext = createContext<RootContextType>(
-  {} as RootContextType
+export const modalContext = createContext<ModalContextType>(
+  {} as ModalContextType
 );
 const ModalContextProvider = ({
   children,
