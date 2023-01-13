@@ -24,22 +24,23 @@ const LoginForm = () => {
   const { mutate: loginUser } = login;
 
   interface LoginValues {
-    Email: string;
-    Password: string;
+    email: string;
+    password: string;
   }
 
   const initialValues: LoginValues = {
-    Email: "",
-    Password: "",
-  };
+    email: string;
+    password: string;
+  }
+
 
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={(credentials) => {
         const values = {
-          email: credentials.Email,
-          password: credentials.Password,
+          email: credentials.email,
+          password: credentials.password,
           rememberMe,
         };
         loginUser(values);
@@ -51,10 +52,17 @@ const LoginForm = () => {
           <Logo noNavigate />
           <Input image={Message} type="email" placeholder="Email" />
           <Input
+            image={Message}
+            type="email"
+            placeholder="Email"
+            valueName="email"
+          />
+          <Input
             image={Lock}
             type="password"
             otherImage={Hide}
             placeholder="Password"
+            valueName="password"
           />
           <MiddleFlex>
             <RememberMeLabel htmlFor="checkbox">
