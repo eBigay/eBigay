@@ -1,3 +1,4 @@
+import { memo } from "react";
 import {
   MessageOutlined,
   SearchOutlined,
@@ -89,4 +90,4 @@ const ItemCard = ({ item }: IItemCard) => {
   );
 };
 
-export default ItemCard;
+export default memo(ItemCard);

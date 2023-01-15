@@ -101,20 +101,24 @@ const Search = () => {
 
   useOverflow(isLeftContainerOpen);
   return (
-    <FadeIn>
-      <TopContainer>
-        <PrimaryButton
-          fontSize="s"
-          width="fit-content"
-          height="50px"
-          onClick={toggleLeftContainer}
-        >
-          Filter By
-        </PrimaryButton>
-      </TopContainer>
-      <StyledSearchHeader>{Text.SearchPageHeader}</StyledSearchHeader>
-      <StyledSearchSubHeader>{Text.SearchPageSubHeader}</StyledSearchSubHeader>
-      <LeonhardCulmann>Leonhard Culmann&apos;s</LeonhardCulmann>
+    <>
+      <FadeIn>
+        <TopContainer>
+          <PrimaryButton
+            fontSize="s"
+            width="fit-content"
+            height="50px"
+            onClick={toggleLeftContainer}
+          >
+            Filter By
+          </PrimaryButton>
+        </TopContainer>
+        <StyledSearchHeader>{Text.SearchPageHeader}</StyledSearchHeader>
+        <StyledSearchSubHeader>
+          {Text.SearchPageSubHeader}
+        </StyledSearchSubHeader>
+        <LeonhardCulmann>Leonhard Culmann&apos;s</LeonhardCulmann>
+      </FadeIn>
       <StyledSearchContainer>
         <LeftContainer isLeftContainerOpen={isLeftContainerOpen}>
           <Categories
@@ -144,7 +148,7 @@ const Search = () => {
         handleClick={toggleLeftContainer}
         isLeftContainerOpen={isLeftContainerOpen}
       />
-    </FadeIn>
+    </>
   );
 };
 

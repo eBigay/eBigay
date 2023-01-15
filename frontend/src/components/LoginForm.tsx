@@ -29,10 +29,9 @@ const LoginForm = () => {
   }
 
   const initialValues: LoginValues = {
-    email: string;
-    password: string;
-  }
-
+    email: "",
+    password: "",
+  };
 
   return (
     <Formik
@@ -50,7 +49,6 @@ const LoginForm = () => {
       {({ handleSubmit }: FormikValues) => (
         <LoginInputContainer onSubmit={handleSubmit}>
           <Logo noNavigate />
-          <Input image={Message} type="email" placeholder="Email" />
           <Input
             image={Message}
             type="email"
