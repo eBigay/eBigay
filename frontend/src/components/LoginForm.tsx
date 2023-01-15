@@ -4,9 +4,11 @@ import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import LoginSchema from "../schemas/LoginSchema";
 import LoginInputContainer, {
+  ErrorMessageContainer,
   MiddleFlex,
   RememberMeInput,
   RememberMeLabel,
+  ErrorMessage,
 } from "../assets/styles/components/LoginInput.styled";
 import Logo from "./layout/Logo";
 import Input from "./Input";
@@ -15,14 +17,14 @@ import Hide from "../assets/svgs/Hide.svg";
 import Message from "../assets/svgs/Message.svg";
 
 import PrimaryButton from "../assets/styles/base/Button.styled";
+import FadeIn from "../assets/styles/layout/FadeIn.styled";
 
 const LoginForm = () => {
   const [rememberMe, setRememberMe] = useState<boolean>(false);
 
   const { login } = useAuth();
 
-  const { mutate: loginUser } = login;
-
+  const { mutate: loginUser, isError, error } = login;
   interface LoginValues {
     email: string;
     password: string;
@@ -77,6 +79,14 @@ const LoginForm = () => {
           <PrimaryButton width="500px" height="70px" fontSize="l" type="submit">
             Log in
           </PrimaryButton>
+          <ErrorMessageContainer>
+            {isError && (
+              <FadeIn>
+                {/* @ts-ignore */}
+                <ErrorMessage>{error.response.data.message}</ErrorMessage>
+              </FadeIn>
+            )}
+          </ErrorMessageContainer>
         </LoginInputContainer>
       )}
     </Formik>

@@ -45,7 +45,6 @@ const ItemCard = ({ item }: IItemCard) => {
   });
 
   const navigate = useNavigate();
-
   return (
     <ItemCardContainer>
       <ItemImageContainer>

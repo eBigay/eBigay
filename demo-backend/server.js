@@ -27,9 +27,14 @@ function verifyToken(token) {
   return jwt.verify(token, SECRET_KEY, (err, decode) => decode !== undefined ? decode : err)
 }
 
+// Check if both email and password are correct
+function isAuthenticated({ user, password }) {
+  return user.password === password
+}
+
 // Check if the user exists in database
-function isAuthenticated({ email, password }) {
-  const user = userdb.users.find(user => user.email === email && user.password === password)
+function isEmailExist(email) {
+  const user = userdb.users.find(user => user.email === email)
   return user ? user : false
 }
 
@@ -38,10 +43,9 @@ server.post('/auth/signup', (req, res) => {
   console.log("register endpoint called; request body:");
   console.log(req.body);
   const { email, password, username, phoneNumber, location, imgUrl } = req.body;
-
-  if (isAuthenticated({ email, password }) === true) {
+  if (isEmailExist(email)) {
     const status = 401;
-    const message = 'Email and Password already exist';
+    const message = 'Email already exist';
     res.status(status).json({ status, message });
     return
   }
@@ -86,15 +90,21 @@ server.post('/auth/login', (req, res) => {
   console.log("login endpoint called; request body:");
   console.log(req.body);
   const { email, password, rememberMe } = req.body;
-  if (isAuthenticated({ email, password }) === false) {
+  const user = isEmailExist(email)
+  if (!user) {
     const status = 401
-    const message = 'Incorrect email or password'
+    const message = 'Email is not registered'
+    res.status(status).json({ status, message })
+    return
+  }
+  if (!isAuthenticated({ user, password })) {
+    const status = 401
+    const message = 'Incorrect Password'
     res.status(status).json({ status, message })
     return
   }
   const ACCESS_TOKEN = createToken({ email, password }, rememberMe)
   console.log("Access Token:" + ACCESS_TOKEN);
-  const user = (isAuthenticated({ email, password }))
   res.status(200).json({ ...user, ACCESS_TOKEN })
 })
 

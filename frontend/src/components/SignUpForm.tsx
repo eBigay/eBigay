@@ -14,6 +14,8 @@ import LoginInputContainer, {
   PrivacyPolicy,
   SignUpImageContainer,
   SignUpPlusImage,
+  ErrorMessage,
+  ErrorMessageContainer,
 } from "../assets/styles/components/LoginInput.styled";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import {
@@ -23,6 +25,7 @@ import {
 import SignUpProfile from "../assets/svgs/SignUpProfile.svg";
 import SignUpPlus from "../assets/svgs/SignUpPlus.svg";
 import { IUserRegister } from "../interfaces/IUser.interface";
+import FadeIn from "../assets/styles/layout/FadeIn.styled";
 
 interface SignUpValues {
   username: string;
@@ -33,7 +36,7 @@ interface SignUpValues {
 }
 const SignUpInput = () => {
   const { signup } = useAuth();
-  const { mutate: signupUser } = signup;
+  const { mutate: signupUser, isError, error } = signup;
 
   const initialValues: SignUpValues = {
     username: "",
@@ -56,8 +59,8 @@ const SignUpInput = () => {
     data,
     isFetching: isUploading,
     isSuccess,
-    isError,
-    error,
+    isError: isUploadError,
+    error: uploadError,
     refetch,
   } = useUploadImage(userImage!);
 
@@ -123,6 +126,7 @@ const SignUpInput = () => {
               height="70px"
               fontSize="l"
               type="submit"
+              disabled={isUploading}
             >
               Sign up
             </PrimaryButton>
@@ -132,7 +136,17 @@ const SignUpInput = () => {
                 <FormLoadingLabel>Uploading image</FormLoadingLabel>
               </FormLoadingContainer>
             )}
-            {isError && error instanceof Error && <h2>{error.message}</h2>}
+            {isUploadError && uploadError instanceof Error && (
+              <h2>{uploadError.message}</h2>
+            )}
+            <ErrorMessageContainer>
+              {isError && (
+                <FadeIn>
+                  {/* @ts-ignore */}
+                  <ErrorMessage>{error.response.data.message}</ErrorMessage>
+                </FadeIn>
+              )}
+            </ErrorMessageContainer>
           </>
         </LoginInputContainer>
       )}
