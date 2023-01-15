@@ -11,17 +11,10 @@
       "id": 2,
       "email": "yanivwein22@gmail.com",
       "password": "123123Aa",
-      "fullName": "Yaniv Weinshtein",
-      "imgUrl": "https://res.cloudinary.com/di8d3r9vo/image/upload/v1673521008/neleytd4qo8y1vsnooo1.png"
-    },
-    {
-      "id": 3,
-      "email": "test@test.test",
-      "password": "123ASDasd",
-      "username": "testtest",
-      "phoneNumber": "1231231231",
-      "location": "123",
-      "imageUrl": "http://res.cloudinary.com/di8d3r9vo/image/upload/v1673608188/rgd3rc4uoy3ftzuuwtab.png"
+      "username": "yanivwein",
+      "phoneNumber": "1231231232",
+      "location": "lat: 32.911234, long: 35.28984533",
+      "imgUrl": "http://res.cloudinary.com/di8d3r9vo/image/upload/v1673787486/a8bntdb1gukgd4bed523.png"
     }
   ]
 }

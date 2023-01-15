@@ -72,8 +72,8 @@ const SignUpInput = () => {
       initialValues={initialValues}
       /* eslint-disable-next-line */
       onSubmit={(values) => {
-        const imageUrl: string | undefined = isSuccess && data.data.url;
-        const valuesToSubmit: IUserRegister = { ...values, imageUrl };
+        const imgUrl: string | undefined = isSuccess && data.data.url;
+        const valuesToSubmit: IUserRegister = { ...values, imgUrl };
         signupUser(valuesToSubmit);
       }}
       validationSchema={SignUpSchema}

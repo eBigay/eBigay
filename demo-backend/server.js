@@ -37,7 +37,7 @@ function isAuthenticated({ email, password }) {
 server.post('/auth/signup', (req, res) => {
   console.log("register endpoint called; request body:");
   console.log(req.body);
-  const { email, password, username, phoneNumber, location, imageUrl } = req.body;
+  const { email, password, username, phoneNumber, location, imgUrl } = req.body;
 
   if (isAuthenticated({ email, password }) === true) {
     const status = 401;
@@ -62,7 +62,7 @@ server.post('/auth/signup', (req, res) => {
 
     //Add new user
     data.users.push({
-      id: last_item_id + 1, email, password, username, phoneNumber, location, imageUrl
+      id: last_item_id + 1, email, password, username, phoneNumber, location, imgUrl
     }); // add some data
     fs.writeFile("./users.json", JSON.stringify(data), (err, result) => {  // WRITE
       if (err) {
@@ -77,7 +77,7 @@ server.post('/auth/signup', (req, res) => {
   // Create token for new user
   const ACCESS_TOKEN = createToken({ email, password })
   console.log("Access Token:" + ACCESS_TOKEN);
-  const returnValues = { ACCESS_TOKEN, email, password, username, phoneNumber, location, imageUrl }
+  const returnValues = { ACCESS_TOKEN, email, password, username, phoneNumber, location, imgUrl }
   res.status(200).json(returnValues)
 })
 
