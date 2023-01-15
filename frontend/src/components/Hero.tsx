@@ -20,7 +20,10 @@ const Hero = () => {
           width="161px"
           height="50px"
           fontSize="s"
-          onClick={() => navigate("/search")}
+          onClick={() => {
+            navigate("/search");
+            window.scroll({ top: 0, behavior: "smooth" });
+          }}
         >
           Explore More
         </PrimaryButton>

@@ -118,6 +118,7 @@ const ItemDetails = () => {
                 onClick={() => {
                   navigate("/login");
                   toggleItemDetailsOpen();
+                  window.scroll({ top: 0, behavior: "smooth" });
                 }}
               >
                 Log in to details

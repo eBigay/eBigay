@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Formik, FormikValues } from "formik";
 import useAuth from "../hooks/useAuth";
 import Input from "./Input";
-import Loading from "./Loading";
 import Logo from "./layout/Logo";
 import SignUpSchema from "../schemas/SignUpSchema";
 import FormInputsData from "../data/FormInputsData";
@@ -19,6 +18,7 @@ import LoginInputContainer, {
 } from "../assets/styles/components/LoginInput.styled";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import {
+  FormLoading,
   FormLoadingContainer,
   FormLoadingLabel,
 } from "../assets/styles/pages/LoginSignup.styled";
@@ -130,12 +130,14 @@ const SignUpInput = () => {
             >
               Sign up
             </PrimaryButton>
-            {isUploading && (
-              <FormLoadingContainer>
-                <Loading size="small" absolutePos />
-                <FormLoadingLabel>Uploading image</FormLoadingLabel>
-              </FormLoadingContainer>
-            )}
+            <FormLoadingContainer>
+              {isUploading && (
+                <>
+                  <FormLoading size="small" absolutePos />
+                  <FormLoadingLabel>Uploading image</FormLoadingLabel>
+                </>
+              )}
+            </FormLoadingContainer>
             {isUploadError && uploadError instanceof Error && (
               <h2>{uploadError.message}</h2>
             )}

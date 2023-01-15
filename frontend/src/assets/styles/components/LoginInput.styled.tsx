@@ -219,6 +219,9 @@ export const ErrorMessage = styled.h3.attrs({
   left: 50%;
   transform: translate(-50%, -60%);
   width: max-content;
+  ${RespondTo.laptopBreakpoint`
+  font-size: ${({ theme }: any) => theme.fontSizes.fsL};
+`}
 `;
 
 export default LoginInputContainer;
