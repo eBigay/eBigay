@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Formik, FormikValues } from "formik";
 import useAuth from "../hooks/useAuth";
 import Input from "./Input";
-import Loading from "./Loading";
 import Logo from "./layout/Logo";
 import SignUpSchema from "../schemas/SignUpSchema";
 import FormInputsData from "../data/FormInputsData";
@@ -14,15 +13,19 @@ import LoginInputContainer, {
   PrivacyPolicy,
   SignUpImageContainer,
   SignUpPlusImage,
+  ErrorMessage,
+  ErrorMessageContainer,
 } from "../assets/styles/components/LoginInput.styled";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import {
+  FormLoading,
   FormLoadingContainer,
   FormLoadingLabel,
 } from "../assets/styles/pages/LoginSignup.styled";
 import SignUpProfile from "../assets/svgs/SignUpProfile.svg";
 import SignUpPlus from "../assets/svgs/SignUpPlus.svg";
 import { IUserRegister } from "../interfaces/IUser.interface";
+import FadeIn from "../assets/styles/layout/FadeIn.styled";
 
 interface SignUpValues {
   username: string;
@@ -33,7 +36,7 @@ interface SignUpValues {
 }
 const SignUpInput = () => {
   const { signup } = useAuth();
-  const { mutate: signupUser } = signup;
+  const { mutate: signupUser, isError, error } = signup;
 
   const initialValues: SignUpValues = {
     username: "",
@@ -56,8 +59,8 @@ const SignUpInput = () => {
     data,
     isFetching: isUploading,
     isSuccess,
-    isError,
-    error,
+    isError: isUploadError,
+    error: uploadError,
     refetch,
   } = useUploadImage(userImage!);
 
@@ -72,8 +75,8 @@ const SignUpInput = () => {
       initialValues={initialValues}
       /* eslint-disable-next-line */
       onSubmit={(values) => {
-        const imageUrl: string | undefined = isSuccess && data.data.url;
-        const valuesToSubmit: IUserRegister = { ...values, imageUrl };
+        const imgUrl: string | undefined = isSuccess && data.data.url;
+        const valuesToSubmit: IUserRegister = { ...values, imgUrl };
         signupUser(valuesToSubmit);
       }}
       validationSchema={SignUpSchema}
@@ -123,16 +126,29 @@ const SignUpInput = () => {
               height="70px"
               fontSize="l"
               type="submit"
+              disabled={isUploading}
             >
               Sign up
             </PrimaryButton>
-            {isUploading && (
-              <FormLoadingContainer>
-                <Loading size="small" absolutePos />
-                <FormLoadingLabel>Uploading image</FormLoadingLabel>
-              </FormLoadingContainer>
+            <FormLoadingContainer>
+              {isUploading && (
+                <>
+                  <FormLoading size="small" absolutePos />
+                  <FormLoadingLabel>Uploading image</FormLoadingLabel>
+                </>
+              )}
+            </FormLoadingContainer>
+            {isUploadError && uploadError instanceof Error && (
+              <h2>{uploadError.message}</h2>
             )}
-            {isError && error instanceof Error && <h2>{error.message}</h2>}
+            <ErrorMessageContainer>
+              {isError && (
+                <FadeIn>
+                  {/* @ts-ignore */}
+                  <ErrorMessage>{error.response.data.message}</ErrorMessage>
+                </FadeIn>
+              )}
+            </ErrorMessageContainer>
           </>
         </LoginInputContainer>
       )}

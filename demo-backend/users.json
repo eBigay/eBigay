@@ -5,23 +5,16 @@
       "email": "koren3210@gmail.com",
       "password": "01523841Aa",
       "fullName": "Koren Turgeman",
-      "imgUrl": "https://files.slack.com/files-pri/T0492U49325-F04G5UPKA1M/img_2255.jpg"
+      "imgUrl": "https://res.cloudinary.com/di8d3r9vo/image/upload/v1673516733/zcexhfu1skdpbneagqrw.png"
     },
     {
       "id": 2,
       "email": "yanivwein22@gmail.com",
       "password": "123123Aa",
-      "fullName": "Yaniv Weinshtein",
-      "imgUrl": "https://res.cloudinary.com/di8d3r9vo/image/upload/v1673521008/neleytd4qo8y1vsnooo1.png"
-    },
-    {
-      "id": 3,
-      "email": "test@test.test",
-      "password": "123ASDasd",
-      "username": "testtest",
-      "phoneNumber": "1231231231",
-      "location": "123",
-      "imageUrl": "http://res.cloudinary.com/di8d3r9vo/image/upload/v1673608188/rgd3rc4uoy3ftzuuwtab.png"
+      "username": "yanivwein",
+      "phoneNumber": "1231231232",
+      "location": "lat: 32.911234, long: 35.28984533",
+      "imgUrl": "https://res.cloudinary.com/di8d3r9vo/image/upload/v1673799595/anci0eftm8xuyb16zu5v.png"
     }
   ]
 }

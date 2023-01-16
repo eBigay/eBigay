@@ -7,10 +7,7 @@ const useUploadImage = (file: File) => {
   return useQuery("uploadUserImage", () => uploadFile(file), {
     enabled: false, // disable unnecessary fetching on component mount - using 'refetch' to activate
     onError: (error) => {
-      if (error instanceof Error) {
-        // workaround to prevent type error - error is type of "unknown"
-        return JSON.stringify(error.message);
-      }
+      if (error instanceof Error) return JSON.stringify(error.message);
       return "";
     },
   });

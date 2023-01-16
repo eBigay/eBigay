@@ -14,7 +14,7 @@ export interface IUserState {
 }
 
 export interface IUserRegister {
-  imageUrl: string | undefined;
+  imgUrl: string | undefined;
   username: string;
   email: string;
   password: string;

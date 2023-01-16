@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
 import { Avatar } from "@mui/material";
 import ProfileContainer, {
   StyledWelcome,
@@ -8,6 +10,13 @@ const Profile = () => {
   const {
     state: { user },
   } = useAuthContext();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) navigate("/");
+  }, [user]);
+
   return (
     <ProfileContainer>
       <StyledWelcome>

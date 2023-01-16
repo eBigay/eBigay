@@ -203,4 +203,25 @@ export const PrivacyPolicy = styled.p.attrs({
 `}
 `;
 
+export const ErrorMessageContainer = styled.div.attrs({
+  className: "ErrorMessageContainer",
+})`
+  position: relative;
+  height: 5rem;
+`;
+export const ErrorMessage = styled.h3.attrs({
+  className: "ErrorMessage",
+})`
+  color: ${({ theme }) => theme.colors.clr3};
+  font-size: ${({ theme }) => theme.fontSizes.fsXl};
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  width: max-content;
+  ${RespondTo.laptopBreakpoint`
+  font-size: ${({ theme }: any) => theme.fontSizes.fsL};
+`}
+`;
+
 export default LoginInputContainer;

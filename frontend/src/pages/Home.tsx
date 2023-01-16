@@ -7,13 +7,15 @@ import FadeIn from "../assets/styles/layout/FadeIn.styled";
 
 const Home = () => {
   return (
-    <FadeIn>
+    <>
       <ItemDetails />
-      <Hero />
-      <FeaturedCategories />
-      <RecentItems />
-      <Footer />
-    </FadeIn>
+      <FadeIn>
+        <Hero />
+        <FeaturedCategories />
+        <RecentItems />
+        <Footer />
+      </FadeIn>
+    </>
   );
 };
 

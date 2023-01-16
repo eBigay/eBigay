@@ -1,3 +1,4 @@
+require('dotenv').config();
 const fs = require('fs')
 const bodyParser = require('body-parser')
 const jsonServer = require('json-server')
@@ -11,7 +12,7 @@ server.use(bodyParser.urlencoded({ extended: true }))
 server.use(bodyParser.json())
 server.use(jsonServer.defaults());
 
-const SECRET_KEY = '123456789'
+const SECRET_KEY = process.env.SECRET_KEY
 
 const expiresInDefault = '1h'
 const expiresInLong = '7d'
@@ -28,20 +29,24 @@ function verifyToken(token) {
 }
 
 // Check if the user exists in database
-function isAuthenticated({ email, password }) {
-  const user = userdb.users.find(user => user.email === email && user.password === password)
-  return user ? user : false
+function isEmailExist(email) {
+  const user = userdb.users.find(user => user.email === email)
+  return user || false
+}
+
+// Check if the given password matches the user's password
+function isAuthenticated({ user, password }) {
+  return user.password === password
 }
 
 // Register New User
 server.post('/auth/signup', (req, res) => {
   console.log("register endpoint called; request body:");
   console.log(req.body);
-  const { email, password, username, phoneNumber, location, imageUrl } = req.body;
-
-  if (isAuthenticated({ email, password }) === true) {
+  const { email, password, username, phoneNumber, location, imgUrl } = req.body;
+  if (isEmailExist(email)) {
     const status = 401;
-    const message = 'Email and Password already exist';
+    const message = 'Email already exist';
     res.status(status).json({ status, message });
     return
   }
@@ -62,7 +67,7 @@ server.post('/auth/signup', (req, res) => {
 
     //Add new user
     data.users.push({
-      id: last_item_id + 1, email, password, username, phoneNumber, location, imageUrl
+      id: last_item_id + 1, email, password, username, phoneNumber, location, imgUrl
     }); // add some data
     fs.writeFile("./users.json", JSON.stringify(data), (err, result) => {  // WRITE
       if (err) {
@@ -77,7 +82,7 @@ server.post('/auth/signup', (req, res) => {
   // Create token for new user
   const ACCESS_TOKEN = createToken({ email, password })
   console.log("Access Token:" + ACCESS_TOKEN);
-  const returnValues = { ACCESS_TOKEN, email, password, username, phoneNumber, location, imageUrl }
+  const returnValues = { ACCESS_TOKEN, email, password, username, phoneNumber, location, imgUrl }
   res.status(200).json(returnValues)
 })
 
@@ -86,15 +91,21 @@ server.post('/auth/login', (req, res) => {
   console.log("login endpoint called; request body:");
   console.log(req.body);
   const { email, password, rememberMe } = req.body;
-  if (isAuthenticated({ email, password }) === false) {
+  const user = isEmailExist(email)
+  if (!user) {
     const status = 401
-    const message = 'Incorrect email or password'
+    const message = 'Email is not registered'
+    res.status(status).json({ status, message })
+    return
+  }
+  if (!isAuthenticated({ user, password })) {
+    const status = 401
+    const message = 'Incorrect Password'
     res.status(status).json({ status, message })
     return
   }
   const ACCESS_TOKEN = createToken({ email, password }, rememberMe)
   console.log("Access Token:" + ACCESS_TOKEN);
-  const user = (isAuthenticated({ email, password }))
   res.status(200).json({ ...user, ACCESS_TOKEN })
 })
 

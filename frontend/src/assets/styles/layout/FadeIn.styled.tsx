@@ -27,7 +27,7 @@ const FadeIn = styled.div`
 `;
 
 export const FadeInAndUp = styled.div`
-  animation: ${fadeInAndUpAnimation} 0.4s ease both;
+  animation: ${fadeInAndUpAnimation} 0.3s 0.1s ease both;
 `;
 
 export default FadeIn;
