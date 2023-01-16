@@ -1,3 +1,4 @@
+require('dotenv').config();
 const fs = require('fs')
 const bodyParser = require('body-parser')
 const jsonServer = require('json-server')
@@ -11,7 +12,7 @@ server.use(bodyParser.urlencoded({ extended: true }))
 server.use(bodyParser.json())
 server.use(jsonServer.defaults());
 
-const SECRET_KEY = '123456789'
+const SECRET_KEY = process.env.SECRET_KEY
 
 const expiresInDefault = '1h'
 const expiresInLong = '7d'
@@ -27,15 +28,15 @@ function verifyToken(token) {
   return jwt.verify(token, SECRET_KEY, (err, decode) => decode !== undefined ? decode : err)
 }
 
-// Check if both email and password are correct
-function isAuthenticated({ user, password }) {
-  return user.password === password
-}
-
 // Check if the user exists in database
 function isEmailExist(email) {
   const user = userdb.users.find(user => user.email === email)
-  return user ? user : false
+  return user || false
+}
+
+// Check if the given password matches the user's password
+function isAuthenticated({ user, password }) {
+  return user.password === password
 }
 
 // Register New User

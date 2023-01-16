@@ -121,7 +121,7 @@ const ItemDetails = () => {
                   window.scroll({ top: 0, behavior: "smooth" });
                 }}
               >
-                Log in to details
+                Log in for details
               </PrimaryButton>
             )}
             <ImagesListWrapper>
