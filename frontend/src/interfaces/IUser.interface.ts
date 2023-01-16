@@ -9,6 +9,7 @@ export interface IUser {
 export interface IUserRespone {
   user: IUser;
 }
+
 export interface IUserState {
   user: IUser | null;
 }
