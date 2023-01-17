@@ -41,7 +41,9 @@ function verifyToken(token: string) {
 
 // Check if the user exists in database
 function isEmailExist(email: string): IUser | false {
-  const user = userdb.users.find((user: IUser) => user.email === email);
+  const user = userdb.users.find(
+    (user: IUser) => user.email.toLowerCase() === email.toLowerCase()
+  );
   return user || false;
 }
 

@@ -132,7 +132,7 @@ const Search = () => {
               page.map((item) => <ItemCard key={item.id} item={item} />)
             )}
           {(isLoading || showLoader) && <Loading pos="center" />}
-          {isError && <FetchErrorMessage>{error}</FetchErrorMessage>}
+          {isError && <FetchErrorMessage>{error.message}</FetchErrorMessage>}
         </ListContainer>
       </StyledSearchContainer>
       <div ref={observerElem}>

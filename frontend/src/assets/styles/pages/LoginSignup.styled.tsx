@@ -81,14 +81,21 @@ export const FormLoadingContainer = styled.div.attrs({
   padding-bottom:4rem;
   `};
 `;
+interface FormLoadingProps {
+  signupPage?: boolean;
+}
 
 export const FormLoading = styled(Loading).attrs({
   className: "FormLoading",
-})`
+})<FormLoadingProps>`
   position: absolute;
   top: 0;
   ${MinWidth.wideBreakpoint`
   top:-40px;
+  `};
+  ${RespondTo.laptopBreakpoint`
+  top:-40px;
+  top: ${({ signupPage }: FormLoadingProps) => (signupPage ? "-20px" : "-40px")}
   `};
 `;
 
@@ -96,9 +103,9 @@ export const FormLoadingLabel = styled.p.attrs({
   className: "FormLoadingLabel",
 })`
   position: absolute;
-  top: 50%;
+  top: 0%;
   left: 50%;
-  transform: translate(-50%, -70%);
+  transform: translate(-50%, 60%);
   width: max-content;
   color: ${({ theme }) => theme.colors.clr1};
   font-size: ${({ theme }) => theme.fontSizes.fsM};
