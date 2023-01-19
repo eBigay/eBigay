@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import { Avatar } from "@mui/material";
 import _ from "lodash";
 import { formatDistance } from "date-fns";
@@ -7,6 +7,7 @@ import { Navigation, Thumbs, Lazy, type Swiper as SwiperRef } from "swiper";
 import { useNavigate } from "react-router";
 import ScreenOverlay from "./layout/ScreenOverlay";
 import { rootContext } from "../context/RootContext";
+import Calling from "../assets/svgs/Calling.svg";
 
 import useOverflow from "../hooks/useOverflow";
 
@@ -30,6 +31,9 @@ import {
   CreatedByWrapper,
   ImagesListWrapper,
   CreatedByTime,
+  PhoneNumberContainer,
+  PhoneImage,
+  PhoneNumber,
 } from "../assets/styles/components/ItemDetails.styled";
 import {
   StyledSwiperMain,
@@ -41,6 +45,8 @@ import Loading from "./Loading";
 
 const ItemDetails = () => {
   const [activeThumb, setActiveThumb] = useState<SwiperRef>();
+
+  const modalTop = useRef<HTMLInputElement>(null);
 
   const { modal, handleModal, modalContent } = useContext(rootContext);
 
@@ -61,7 +67,16 @@ const ItemDetails = () => {
     handleModal();
   };
 
+  // making sure the modal is showing from top when appearing
+  useEffect(() => {
+    if (modalTop.current) modalTop.current.scrollIntoView({ block: "center" });
+  }, [modal]);
+
   const navigate = useNavigate();
+
+  // temp fix
+  const imagePlaceholder =
+    "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=";
 
   return (
     <>
@@ -86,19 +101,24 @@ const ItemDetails = () => {
             }}
           >
             {imgs &&
-              imgs.map((item) => (
+              imgs.map(() => (
                 <SwiperSlide key={_.uniqueId()}>
                   <MainIMg
-                    data-src={item}
+                    data-src={imagePlaceholder}
                     alt="item images"
                     className="swiper-lazy"
                   />
-                  <Loading className="swiper-lazy-preloader" />
+                  <Loading
+                    className="swiper-lazy-preloader"
+                    size="small"
+                    height="100%"
+                    marginTop="0"
+                  />
                 </SwiperSlide>
               ))}
           </StyledSwiperMain>
           <ItemDetailsSection>
-            <DetailsName>{itemName}</DetailsName>
+            <DetailsName ref={modalTop}>{itemName}</DetailsName>
             <CreatedByContainer>
               <Avatar src={createdBy.imgUrl} sx={{ width: 60, height: 60 }} />
               <CreatedByWrapper>
@@ -109,7 +129,10 @@ const ItemDetails = () => {
             </CreatedByContainer>
             <DetailsDescription>{description}</DetailsDescription>
             {user ? (
-              <div>0548922123</div>
+              <PhoneNumberContainer>
+                <PhoneImage src={Calling} alt="phone" />
+                <PhoneNumber href="tel:0548922123">0548922123</PhoneNumber>
+              </PhoneNumberContainer>
             ) : (
               <PrimaryButton
                 width="70%"
@@ -134,17 +157,17 @@ const ItemDetails = () => {
                 modules={[Navigation, Thumbs, Lazy]}
               >
                 {imgs &&
-                  imgs.map((item) => (
+                  imgs.map(() => (
                     <SwiperSlide key={_.uniqueId()}>
                       <ImgsWrapper>
                         <SecondaryImg
-                          data-src={item}
+                          data-src={imagePlaceholder}
                           alt="item images"
                           loading="lazy"
                           className="swiper-lazy"
                         />
                         <Loading
-                          size="x-small"
+                          size="small"
                           className="swiper-lazy-preloader"
                         />
                       </ImgsWrapper>

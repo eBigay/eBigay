@@ -113,6 +113,10 @@ export const MiddleFlex = styled.div.attrs({
   width: 420px;
   font-size: ${({ theme }: any) => theme.fontSizes.fsS};
   `}
+  ${RespondTo.tabletBreakpoint`
+  justify-content: space-between;
+  `}
+
   ${RespondTo.mobileBreakpoint`
   width: 90%;
   text-align: center;
