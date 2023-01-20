@@ -128,6 +128,7 @@ const Search = () => {
         </LeftContainer>
         <ListContainer>
           {isSuccess &&
+            data.pages &&
             data.pages.map((page) =>
               page.map((item) => <ItemCard key={item.id} item={item} />)
             )}

@@ -18,6 +18,7 @@ function useItems() {
   const useQueryAllItems = (filterBy: IFilterBy) =>
     useQuery(["items", filterBy], () => fetchItems(filterBy, filterBy.page), {
       keepPreviousData: true,
+      onError: (error) => console.log(error) /* eslint-disable-line */,
     });
 
   const useInfiniteQueryAllItems = (filterBy: IFilterBy) =>

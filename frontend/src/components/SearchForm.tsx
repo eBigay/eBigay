@@ -48,9 +48,9 @@ const SearchForm = ({
     useQueryAllItems(debouncedFilter);
 
   const queryTextResults =
-    results === undefined || results.length < 1
+    !results || results.length < 1 || !Array.isArray(results)
       ? []
-      : [...new Set(results?.map((result) => result.itemName))];
+      : results.map((result) => result.itemName);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -91,9 +91,9 @@ const SearchForm = ({
             disablePortal
             autoComplete
             autoHighlight
-            openOnFocus={false}
-            id="combo-box-demo"
-            options={queryTextResults}
+            freeSolo // allows to search when the options array is empty
+            id="autocomplete"
+            options={[...new Set(queryTextResults)]}
             renderInput={(params) => (
               <TextField
                 {...params}
