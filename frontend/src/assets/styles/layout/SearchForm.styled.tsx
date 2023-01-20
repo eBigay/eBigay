@@ -1,5 +1,6 @@
 import { Clear, Search } from "@mui/icons-material";
 import styled from "styled-components";
+import { Autocomplete } from "@mui/material";
 import RespondTo, { MinWidth } from "../../theme/responsive";
 
 interface IStyledSearch {
@@ -29,7 +30,7 @@ flex: 0.5;
 `;
 export const StyledFormContainer = styled.div`
   display: flex;
-  padding: 0.4rem 5.6rem 0.4rem 0.4rem;
+  padding: 0.4rem 3rem 0.4rem 0.4rem;
   max-width: none;
   border-bottom: 1px solid ${({ theme }) => theme.colors.clr3light};
   ${MinWidth.tabletBreakpoint`
@@ -39,7 +40,9 @@ export const StyledFormContainer = styled.div`
   border-radius: 10px;
   `}
 `;
-export const StyledInput = styled.input`
+export const StyledAutocomplete = styled(Autocomplete).attrs({
+  className: "StyledAutocomplete",
+})`
   flex: 1;
   border: 0;
   height: 4rem;

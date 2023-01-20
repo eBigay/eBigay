@@ -16,7 +16,7 @@ export const StyledHeader = styled.header`
   right: 0;
   left: 0;
   z-index: 25;
-  overflow: hidden;
+  overflow: visible;
   min-height: 5rem;
   background-color: #ffffff;
   box-shadow: 0 4px 6px rgba(186, 167, 167, 0.25);
