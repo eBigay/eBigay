@@ -1,3 +1,4 @@
+import { memo } from "react";
 import {
   MessageOutlined,
   SearchOutlined,
@@ -22,7 +23,7 @@ import { CreatedByTime } from "../assets/styles/components/ItemDetails.styled";
 import Location from "../assets/svgs/Location.svg";
 import { IItem } from "../interfaces/IItem.interface";
 import useModalContext from "../hooks/useModalContext";
-import React from "react";
+import useAuthContext from "../hooks/useAuthContext";
 
 interface IItemCard {
   item: IItem;
@@ -30,6 +31,9 @@ interface IItemCard {
 
 const ItemCard = ({ item }: IItemCard) => {
   const { handleModal } = useModalContext();
+  const {
+    state: { user },
+  } = useAuthContext();
 
   const handleOpenProductDetails = () => {
     handleModal(item);
@@ -41,12 +45,10 @@ const ItemCard = ({ item }: IItemCard) => {
 
   const navigate = useNavigate();
 
-  console.log(item.id);
-
   return (
     <ItemCardContainer>
       <ItemImageContainer>
-        <ItemImage src={item.mainImg} alt={item.itemName} />
+        <ItemImage src={item.images[0]} alt={item.itemName} />
         <ItemInfo>
           <Icon>
             <SearchOutlined onClick={handleOpenProductDetails} />
@@ -68,21 +70,23 @@ const ItemCard = ({ item }: IItemCard) => {
           <LocationImage src={Location} alt="location" />
           <LocationName>{item.location}</LocationName>
         </ItemLocation>
-        <PrimaryButton
-          width="194px"
-          height="34px"
-          fontSize="xs"
-          type="button"
-          onClick={() => {
-            navigate("/SignUp");
-            window.scroll({ top: 0, behavior: "smooth" });
-          }}
-        >
-          Sign up for phone number
-        </PrimaryButton>
+        {!user && (
+          <PrimaryButton
+            width="194px"
+            height="34px"
+            fontSize="xs"
+            type="button"
+            onClick={() => {
+              navigate("/SignUp");
+              window.scroll({ top: 0, behavior: "smooth" });
+            }}
+          >
+            Sign up for phone number
+          </PrimaryButton>
+        )}
       </ItemDetails>
     </ItemCardContainer>
   );
 };
 
-export default React.memo(ItemCard);
+export default memo(ItemCard);

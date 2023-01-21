@@ -29,13 +29,14 @@ import ItemCard from "../components/ItemCard";
 import Loading from "../components/Loading";
 import TopContainer from "../components/layout/TopContainer";
 import LeftContainer from "../components/layout/LeftContainer";
+
 import Text from "../data/enums";
 
 const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [filterBy, setFilterBy] = useState<IFilterBy>({
-    queryText: searchParams.get("q") || "",
+    queryText: "",
     category: searchParams.get("category") || "",
     page: 0,
     sortBy: "createdAt",
@@ -47,9 +48,6 @@ const Search = () => {
   const [showLoader, setShowLoader] = useState(false);
 
   const observerElem: RefObject<any> = useRef(null);
-
-  const [pages, setPages] = useState([]);
-  const [currentPage, setCurrentPage] = useState(0);
 
   const { useInfiniteQueryAllItems } = useItems();
 
@@ -70,7 +68,11 @@ const Search = () => {
       setShowLoader(false);
     }, 900);
     return () => clearTimeout(timeoutId);
-  }, []);
+  }, [searchParams]);
+
+  useEffect(() => {
+    onSetFilter("queryText", searchParams.get("q") ?? "");
+  }, [searchParams]);
 
   const debouncedFetchNextPage = debounce(fetchNextPage, 500);
 
@@ -84,14 +86,15 @@ const Search = () => {
   const onSetFilter = useCallback(
     (property: string, value: any) => {
       const newFilter = { ...filterBy, [property]: value };
+      console.log(newFilter);
       if (property === "category") {
         setIsLeftContainerOpen(false);
         newFilter.queryText = "";
+        const queryParams = {
+          category: newFilter.category,
+        };
+        setSearchParams(queryParams);
       }
-      const queryParams = {
-        category: newFilter.category,
-      };
-      setSearchParams(queryParams);
       setFilterBy(newFilter);
     },
     [filterBy, setSearchParams]
@@ -101,11 +104,9 @@ const Search = () => {
     setIsLeftContainerOpen((LeftContainerOpenState) => !LeftContainerOpenState);
   };
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   useOverflow(isLeftContainerOpen);
+
+  if (showLoader) return <Loading pos="center" />;
   return (
     <>
       <TopContainer>
@@ -133,7 +134,7 @@ const Search = () => {
             data.pages.map((page) =>
               page.map((item) => <ItemCard key={item.id} item={item} />)
             )}
-          {(isLoading || showLoader) && <Loading pos="center" />}
+          {isLoading && <Loading pos="center" />}
           {isError && <FetchErrorMessage>{error}</FetchErrorMessage>}
         </ListContainer>
       </StyledSearchContainer>

@@ -5,6 +5,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { useNavigate } from "react-router";
 import {
   StyledButton,
   StyledClearIcon,
@@ -29,6 +30,8 @@ const SearchForm = ({
 
   const [query, setQuery] = useState<string>("");
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (inputSearchRef.current) {
       inputSearchRef.current.focus();
@@ -41,13 +44,15 @@ const SearchForm = ({
     setQuery(value);
   };
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    window.location.href = `/search?q=${query}`;
-  };
-
   const toggleSearchBarOpen = () => {
     setIsSearchBarOpen(!isSearchBarOpen);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    navigate(`/search/?q=${query}`);
+    toggleSearchBarOpen();
+    setQuery("");
   };
 
   return (

@@ -6,14 +6,15 @@ import StyledInput, {
   InputLeftImage,
   InputRightImage,
   FadeInErrorMessage,
-} from "../assets/styles/layout/Inputs.styled";
-import IInputProps from "../interfaces/IInputProps";
+} from "../../assets/styles/layout/Inputs.styled";
+import IInputProps from "../../interfaces/IInputProps";
 
 const Input = ({
   image,
   otherImage,
   type,
   placeholder,
+  valueName,
   width = 500,
   height = 70,
 }: IInputProps) => {
@@ -37,10 +38,8 @@ const Input = ({
 
   const { values, errors, touched, handleChange, handleBlur } =
     useFormikContext<FormikValues>();
-  const inputPlaceholder =
-    placeholder === "Phone Number" ? "PhoneNumber" : placeholder;
-  const inputErrors = get(errors, inputPlaceholder);
-  const inputTouched = get(touched, inputPlaceholder);
+  const inputErrors = get(errors, valueName!);
+  const inputTouched = get(touched, valueName!);
   return (
     <StyledInput
       width={width}
@@ -48,20 +47,18 @@ const Input = ({
       className={inputErrors && inputTouched ? "inputError" : ""}
     >
       <InputLeftImage src={image} alt="" />
-      {
-        <InnerInput
-          type={type === "password" ? passwordType : type}
-          placeholder={placeholder}
-          value={
-            location[0]
-              ? `lat: ${location[0]}, long: ${location[1]}`
-              : get(values, inputPlaceholder)
-          }
-          onChange={handleChange}
-          onBlur={handleBlur}
-          name={inputPlaceholder}
-        />
-      }
+      <InnerInput
+        type={type === "password" ? passwordType : type}
+        placeholder={placeholder}
+        value={
+          location[0]
+            ? `lat: ${location[0]}, long: ${location[1]}`
+            : get(values, valueName!)
+        }
+        onChange={handleChange}
+        onBlur={handleBlur}
+        name={valueName}
+      />
       {otherImage && (
         <InputRightImage
           alt=""

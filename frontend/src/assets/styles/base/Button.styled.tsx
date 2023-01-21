@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 type ButtonProps = {
-  width: string;
-  height: string;
-  fontSize: string;
+  width?: string;
+  height?: string;
+  fontSize?: string;
   borderRadius?: string;
   disabled?: boolean;
 };
@@ -20,8 +20,8 @@ const PrimaryButton = styled.button.attrs({
   font-weight: 500;
   transition: 0.3s ease;
   max-width: 100%;
-  width: ${({ width }) => width || "auto"};
-  height: ${({ height }) => height || "auto"};
+  width: ${({ width }) => width || "fit-content"};
+  height: ${({ height }) => height || "fit-content"};
   font-size: ${({ theme, fontSize }) =>
     fontSize === "xs" /* eslint-disable-line */
       ? theme.fontSizes.fsXs

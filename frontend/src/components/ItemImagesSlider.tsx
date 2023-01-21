@@ -1,8 +1,9 @@
 import { useState } from "react";
 import _ from "lodash";
 import { SwiperSlide } from "swiper/react";
-import { Navigation, Thumbs, type Swiper as SwiperRef } from "swiper";
+import { Lazy, Navigation, Thumbs, type Swiper as SwiperRef } from "swiper";
 import {
+  ImgsWrapper,
   MainIMg,
   SecondaryImg,
 } from "../assets/styles/components/ItemDetails.styled";
@@ -13,6 +14,7 @@ import {
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import Loading from "./Loading";
 
 interface SliderProps {
   images: string[];
@@ -25,7 +27,7 @@ const ItemImagesSlider = ({ images }: SliderProps) => {
     <div
       style={{
         width: "50%",
-        height: "80%",
+        height: "75%",
       }}
     >
       <StyledSwiperMain
@@ -33,33 +35,47 @@ const ItemImagesSlider = ({ images }: SliderProps) => {
         loop
         spaceBetween={10}
         navigation
-        modules={[Navigation, Thumbs]}
+        lazy
+        modules={[Navigation, Thumbs, Lazy]}
         grabCursor
         thumbs={{
           swiper: activeThumb && !activeThumb.destroyed ? activeThumb : null,
         }}
       >
-        {images.map((item) => (
-          <SwiperSlide key={_.uniqueId()}>
-            <MainIMg src={item} alt="product images" />
-          </SwiperSlide>
-        ))}
+        {images &&
+          images.map((image) => (
+            <SwiperSlide key={_.uniqueId()}>
+              <MainIMg data-src={image} className="swiper-lazy" alt="main" />
+
+              <Loading className="swiper-lazy-preloader" />
+            </SwiperSlide>
+          ))}
       </StyledSwiperMain>
       <StyledSwiperThumbs
         onSwiper={setActiveThumb}
         loop
+        lazy
         spaceBetween={10}
         slidesPerView={3}
-        modules={[Navigation, Thumbs]}
-        className="product-images-slider-thumbs"
+        modules={[Navigation, Thumbs, Lazy]}
       >
-        {images.map((item) => (
-          <SwiperSlide key={_.uniqueId()}>
-            <div className="product-images-slider-thumbs-wrapper">
-              <SecondaryImg src={item} alt="product images" />
-            </div>
-          </SwiperSlide>
-        ))}
+        {images &&
+          images.map((image) => (
+            <SwiperSlide key={_.uniqueId()}>
+              <ImgsWrapper>
+                <SecondaryImg
+                  data-src={image}
+                  loading="lazy"
+                  className="swiper-lazy"
+                />
+                <Loading
+                  pos="absolute"
+                  size="xsmall"
+                  className="swiper-lazy-preloader"
+                />
+              </ImgsWrapper>
+            </SwiperSlide>
+          ))}
       </StyledSwiperThumbs>
     </div>
   );

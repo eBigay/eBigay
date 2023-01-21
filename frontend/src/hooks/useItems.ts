@@ -8,6 +8,8 @@ import itemsService from "../services/items.service";
 import { IItem } from "../interfaces/IItem.interface";
 import { IFilterBy } from "../interfaces/IFilterBy.interface";
 
+import { toast } from "react-toastify";
+
 function useItems() {
   const queryClient = useQueryClient();
 
@@ -39,10 +41,32 @@ function useItems() {
 
   const add = useMutation(addItem, {
     onSuccess: (addedItem) => {
-      queryClient.setQueryData("items", (currentItems: any) => [
-        ...currentItems,
+      queryClient.setQueryData("items", (currentItems: IItem[] | undefined) => [
+        ...(currentItems || []),
         addedItem,
       ]);
+      toast.success("New Item Added!", {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    },
+    onError: (error: string) => {
+      toast.error(`${error}`, {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     },
   });
 

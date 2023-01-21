@@ -24,7 +24,7 @@ const LoginInputContainer = styled.form.attrs({
   `}
 
   ${RespondTo.wideBreakpoint`
-margin: ${({ LoginPage }: any) =>
+margin: ${({ LoginPage }: LoginInputContainerProps) =>
     LoginPage ? "15rem auto 10rem" : "10rem auto 10rem"};
   `}
 
@@ -35,7 +35,7 @@ margin: ${({ LoginPage }: any) =>
         }
 `}
   ${RespondTo.tabletBreakpoint`
-    margin: ${({ LoginPage }: any) =>
+    margin: ${({ LoginPage }: LoginInputContainerProps) =>
       LoginPage ? "12rem auto 3rem" : "10rem auto 3rem"};
   button {
           width: 100%;

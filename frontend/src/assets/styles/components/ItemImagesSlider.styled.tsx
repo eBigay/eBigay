@@ -4,6 +4,7 @@ import { Swiper } from "swiper/react";
 export const StyledSwiperMain = styled(Swiper)`
   position: relative;
   height: 100%;
+  margin-bottom: 0.7rem;
   .swiper-slide {
     margin: 0;
     overflow: hidden;

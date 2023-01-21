@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import RespondTo, { MinWidth } from "../../theme/responsive";
+import FadeIn from "../layout/FadeIn.styled";
 
-const ProfileContainer = styled.div`
+const ProfileContainer = styled(FadeIn)`
   margin-top: 5rem;
 `;
 
@@ -15,7 +15,5 @@ export const StyledWelcome = styled.div`
   height: 20vh;
   color: white;
 `;
-
-export const styledFrom = styled.form``;
 
 export default ProfileContainer;

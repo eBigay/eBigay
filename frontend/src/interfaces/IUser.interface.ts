@@ -1,10 +1,10 @@
 export interface IUser {
   id?: string;
   email: string;
-  name: string;
+  username: string;
   isAdmin: boolean;
-  accessToken?: string;
-  imgUrl?: string;
+  ACCESS_TOKEN?: string;
+  imageUrl?: string;
   phoneNumber: string;
 }
 export interface IUserRespone {
@@ -12,4 +12,13 @@ export interface IUserRespone {
 }
 export interface IUserState {
   user: IUser | null;
+}
+
+export interface IUserRegister {
+  imageUrl: string | undefined;
+  username: string;
+  email: string;
+  password: string;
+  phoneNumber: string;
+  location: string;
 }

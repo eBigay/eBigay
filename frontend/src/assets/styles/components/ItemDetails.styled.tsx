@@ -27,6 +27,8 @@ export const ItemDetailsContainer = styled.div`
 `;
 
 export const MainIMg = styled.img`
+  position: relative;
+
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -63,6 +65,8 @@ export const CreatedByName = styled.h3`
 export const ImgsWrapper = styled.div`
   display: flex;
   gap: 37px;
+  align-items: center;
+  justify-content: center;
   margin-top: auto;
 `;
 

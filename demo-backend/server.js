@@ -2,6 +2,8 @@ const fs = require('fs')
 const bodyParser = require('body-parser')
 const jsonServer = require('json-server')
 const jwt = require('jsonwebtoken')
+const uuid = require('uuid');
+
 
 const server = jsonServer.create()
 const router = jsonServer.router('./db.json')
@@ -13,11 +15,13 @@ server.use(jsonServer.defaults());
 
 const SECRET_KEY = '123456789'
 
-const expiresIn = '1h'
+const expiresInDefault = '2h'
+const expiresInLong = '7d'
 
 // Create a token from a payload 
-function createToken(payload){
-  return jwt.sign(payload, SECRET_KEY, {expiresIn})
+function createToken(payload, rememberMe) {
+  const expiresIn = rememberMe ? expiresInLong : expiresInDefault
+  return jwt.sign(payload, SECRET_KEY, { expiresIn })
 }
 
 // Verify the token 
@@ -31,9 +35,8 @@ function isAuthenticated({ email, password }) {
   return user ? user : false
 }
 
-
 // Register New User
-server.post('/auth/register', (req, res) => {
+server.post('/auth/signup', (req, res) => {
   console.log("register endpoint called; request body:");
   console.log(req.body);
   const currUser = req.body
@@ -58,6 +61,8 @@ fs.readFile("./users.json", (err, data) => {
     var data = JSON.parse(data.toString());
 
     // Get the id of last user
+
+    currUser.id = uuid.v4()
 
     //Add new user
     data.users.push(currUser); //add some data
@@ -86,6 +91,7 @@ server.post('/auth/login', (req, res) => {
   console.log(req.body);
   const {email, password} = req.body;
   const currUser = isAuthenticated({email, password})
+  console.log("user",currUser)
   if (!currUser) {
     const status = 401
     const message = 'Incorrect email or password'
@@ -95,13 +101,11 @@ server.post('/auth/login', (req, res) => {
   delete currUser.password
   const ACCESS_TOKEN = createToken({ email, password })
   console.log("Access Token:" + ACCESS_TOKEN);
-  console.log(isAuthenticated)
   res.status(200).json({
     ...currUser,
     ACCESS_TOKEN
   })
 })
-
 
 server.use((req, res, next) => {
   if (req.method === 'GET' && (req.path === '/items' || req.path === '/auth')) {
@@ -110,7 +114,6 @@ server.use((req, res, next) => {
   }
   if (req.headers.authorization === undefined || req.headers.authorization.split(' ')[0] !== 'Bearer') {
     next()
-
     const status = 401
     const message = 'Error in authorization format'
     res.status(status).json({status, message})

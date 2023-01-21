@@ -7,6 +7,7 @@ import theme from "./assets/theme/theme";
 import Loading from "./components/Loading";
 import ModalContextProvider from "./context/ModalContext";
 import { AuthContextProvider } from "./context/AuthContext";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
               </Routes>
             </Suspense>
           </BrowserRouter>
+          <ToastContainer />
         </ThemeProvider>
       </ModalContextProvider>
     </AuthContextProvider>

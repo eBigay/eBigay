@@ -2,12 +2,10 @@ import { useState, useEffect, ChangeEvent } from "react";
 import { Link } from "react-router-dom";
 import { Formik, FormikValues } from "formik";
 import useAuth from "../hooks/useAuth";
-import Input from "./Input";
-import Loading from "./Loading";
+import Input from "./layout/Input";
 import Logo from "./layout/Logo";
 import SignUpSchema from "../schemas/SignUpSchema";
 import FormInputsData from "../data/FormInputsData";
-import useUploadImage from "../hooks/useUploadImage";
 import LoginInputContainer, {
   ImageInput,
   UserImageName,
@@ -16,75 +14,56 @@ import LoginInputContainer, {
   SignUpPlusImage,
 } from "../assets/styles/components/LoginInput.styled";
 import PrimaryButton from "../assets/styles/base/Button.styled";
-import {
-  FormLoadingContainer,
-  FormLoadingLabel,
-} from "../assets/styles/pages/LoginSignup.styled";
 import SignUpPlus from "../assets/svgs/SignUpPlus.svg";
-import { v4 as uuidv4 } from "uuid";
+import { IUserRegister } from "../interfaces/IUser.interface";
 import { Avatar } from "@mui/material";
 
+// @ts-ignore
+import UploadWidget from "../components/UploadWidget";
+
 interface SignUpValues {
-  Username: string;
-  Email: string;
-  Password: string;
-  PhoneNumber: string;
-  Location?: string;
-  imgUrl: string;
+  username: string;
+  email: string;
+  password: string;
+  phoneNumber: string;
+  location: string;
 }
 const SignUpInput = () => {
+  const [imageUrl, updateImageUrl] = useState<string>();
+  const [error, updateError] = useState<any>();
+
   const { signup } = useAuth();
   const { mutate: signupUser } = signup;
 
-  const initialValues: SignUpValues = {
-    Username: "",
-    Email: "",
-    Password: "",
-    PhoneNumber: "",
-    Location: "",
-    imgUrl: "",
-  };
-
-  const [userImage, setUserImage] = useState<File>();
-
   const imageName = () => {
-    if (!userImage) return "";
-    return userImage.name.length > 25
-      ? `${userImage.name.slice(0, 25)}...`
-      : userImage.name;
+    if (!imageUrl) return "";
+    return imageUrl.length > 25 ? `${imageUrl.slice(0, 25)}...` : imageUrl;
   };
 
-  const {
-    data,
-    isFetching: isUploading,
-    isSuccess,
-    isError,
-    error,
-    refetch,
-  } = useUploadImage(userImage!);
-
-  useEffect(() => {
-    console.log(userImage);
-    if (typeof userImage !== "undefined") {
-      refetch();
+  function handleOnUpload(error: any, result: any, widget: any) {
+    if (error) {
+      updateError(error);
+      widget.close({
+        quiet: true,
+      });
+      return;
     }
-  }, [userImage, refetch]);
+    updateImageUrl(result?.info?.secure_url);
+  }
+
+  const initialValues: SignUpValues = {
+    username: "",
+    email: "",
+    password: "",
+    phoneNumber: "",
+    location: "",
+  };
 
   return (
     <Formik
       initialValues={initialValues}
-      /* eslint-disable-next-line */
       onSubmit={(values) => {
-        const ImageUrl = isSuccess && data.data.url;
-        const valuesToSubmit = {
-          id: uuidv4(),
-          name: values.Username,
-          email: values.Email,
-          password: values.Password,
-          phoneNumber: values.PhoneNumber,
-          imgUrl: ImageUrl,
-          isAdmin: false,
-        };
+        const valuesToSubmit: IUserRegister = { ...values, imageUrl };
         signupUser(valuesToSubmit);
       }}
       validationSchema={SignUpSchema}
@@ -94,25 +73,20 @@ const SignUpInput = () => {
           <>
             <Logo noNavigate />
             <SignUpImageContainer>
-              <ImageInput
-                type="file"
-                name="userImage"
-                accept=".jpg,.jpeg,.png"
-                required
-                onInvalid={(event: ChangeEvent<HTMLInputElement>) =>
-                  event.target.setCustomValidity("Select profile image")
-                }
-                onInput={(event: ChangeEvent<HTMLInputElement>) =>
-                  event.target.setCustomValidity("")
-                }
-                onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                  if (event.target.files) {
-                    setUserImage(event.target.files[0]);
+              <UploadWidget onUpload={handleOnUpload}>
+                {({ open }: any) => {
+                  function handleOnClick(e: any) {
+                    e.preventDefault();
+                    open();
                   }
+                  return (
+                    <div onClick={handleOnClick}>
+                      <Avatar src={imageUrl} sx={{ width: 120, height: 120 }} />
+                      <SignUpPlusImage src={SignUpPlus} alt="new profile" />
+                    </div>
+                  );
                 }}
-              />
-              <Avatar src={data?.data.url} sx={{ width: 120, height: 120 }} />
-              <SignUpPlusImage src={SignUpPlus} alt="new profile" />
+              </UploadWidget>
             </SignUpImageContainer>
             <UserImageName>{imageName()}</UserImageName>
             {FormInputsData.map((input) => (
@@ -122,6 +96,7 @@ const SignUpInput = () => {
                 otherImage={input.otherImage}
                 type={input.type}
                 placeholder={input.placeholder}
+                valueName={input.valueName}
               />
             ))}
             <PrivacyPolicy>
@@ -136,13 +111,7 @@ const SignUpInput = () => {
             >
               Sign up
             </PrimaryButton>
-            {isUploading && (
-              <FormLoadingContainer>
-                <Loading size="small" absolutePos />
-                <FormLoadingLabel>Uploading image</FormLoadingLabel>
-              </FormLoadingContainer>
-            )}
-            {isError && error instanceof Error && <h2>{error.message}</h2>}
+            {error && <h2>{error}</h2>}
           </>
         </LoginInputContainer>
       )}

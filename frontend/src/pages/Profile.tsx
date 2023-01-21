@@ -11,8 +11,8 @@ const Profile = () => {
   return (
     <ProfileContainer>
       <StyledWelcome>
-        <Avatar src={user?.imgUrl} sx={{ width: 90, height: 90 }} />
-        <h1>{user?.name}</h1>
+        <Avatar src={user?.imageUrl} sx={{ width: 90, height: 90 }} />
+        <h1>{user?.username}</h1>
       </StyledWelcome>
     </ProfileContainer>
   );
