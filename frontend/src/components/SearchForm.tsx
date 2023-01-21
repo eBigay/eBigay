@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import {
@@ -7,10 +7,10 @@ import {
   StyledContainer,
   StyledForm,
   StyledFormContainer,
-  StyledInput,
   StyledSearchButton,
   StyledSearch,
 } from "../assets/styles/layout/SearchForm.styled";
+import Autocomplete from "./Autocomplete";
 
 interface ISearchFormProps {
   isSearchBarOpen: boolean;
@@ -21,24 +21,10 @@ const SearchForm = ({
   isSearchBarOpen,
   setIsSearchBarOpen,
 }: ISearchFormProps) => {
-  const inputSearchRef = useRef<HTMLInputElement>(null);
-
   const [query, setQuery] = useState<string>("");
 
   const navigate = useNavigate();
   const location = useLocation();
-
-  useEffect(() => {
-    if (inputSearchRef.current) {
-      inputSearchRef.current.focus();
-    }
-  }, []);
-
-  const handleChange = ({
-    target: { value },
-  }: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(value);
-  };
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -61,13 +47,7 @@ const SearchForm = ({
           <StyledSearchButton disabled={!query} type="submit">
             <StyledSearch isdisabled={query} />
           </StyledSearchButton>
-          <StyledInput
-            type="text"
-            onChange={handleChange}
-            value={query}
-            placeholder="Search here..."
-            ref={inputSearchRef}
-          />
+          <Autocomplete query={query} setQuery={setQuery} />
           <PrimaryButton
             width="115px"
             height="50px"

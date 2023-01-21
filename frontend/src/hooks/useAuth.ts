@@ -14,8 +14,10 @@ const useAuth = () => {
 
   const signup = useMutation(signupUser, {
     onSuccess: (user) => {
-      dispatch({ type: "LOGIN", payload: { user } });
-      navigate("/");
+      setTimeout(() => {
+        dispatch({ type: "LOGIN", payload: { user } });
+        navigate("/");
+      }, 1100);
     },
     onError: (error) => console.log(error) /* eslint-disable-line */,
   });
@@ -30,8 +32,10 @@ const useAuth = () => {
 
   const login = useMutation(loginUser, {
     onSuccess: (user) => {
-      dispatch({ type: "LOGIN", payload: { user } });
-      navigate("/");
+      setTimeout(() => {
+        dispatch({ type: "LOGIN", payload: { user } });
+        navigate("/");
+      }, 1100);
     },
     onError: (error) => console.log(error) /* eslint-disable-line */,
   });

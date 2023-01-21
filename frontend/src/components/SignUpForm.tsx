@@ -4,6 +4,7 @@ import { Formik, FormikValues } from "formik";
 import useAuth from "../hooks/useAuth";
 import Input from "./Input";
 import Logo from "./layout/Logo";
+import { IUserRegister } from "../interfaces/IUser.interface";
 import SignUpSchema from "../schemas/SignUpSchema";
 import FormInputsData from "../data/FormInputsData";
 import useUploadImage from "../hooks/useUploadImage";
@@ -14,7 +15,6 @@ import LoginInputContainer, {
   SignUpImageContainer,
   SignUpPlusImage,
   ErrorMessage,
-  ErrorMessageContainer,
 } from "../assets/styles/components/LoginInput.styled";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import {
@@ -22,23 +22,15 @@ import {
   FormLoadingContainer,
   FormLoadingLabel,
 } from "../assets/styles/pages/LoginSignup.styled";
+import FadeIn from "../assets/styles/layout/FadeIn.styled";
 import SignUpProfile from "../assets/svgs/SignUpProfile.svg";
 import SignUpPlus from "../assets/svgs/SignUpPlus.svg";
-import { IUserRegister } from "../interfaces/IUser.interface";
-import FadeIn from "../assets/styles/layout/FadeIn.styled";
 
-interface SignUpValues {
-  username: string;
-  email: string;
-  password: string;
-  phoneNumber: string;
-  location: string;
-}
 const SignUpInput = () => {
   const { signup } = useAuth();
-  const { mutate: signupUser, isError, error } = signup;
+  const { mutate: signupUser, isError, error, isLoading, isSuccess } = signup;
 
-  const initialValues: SignUpValues = {
+  const initialValues: IUserRegister = {
     username: "",
     email: "",
     password: "",
@@ -58,7 +50,7 @@ const SignUpInput = () => {
   const {
     data,
     isFetching: isUploading,
-    isSuccess,
+    isSuccess: isUploadSuccess,
     isError: isUploadError,
     error: uploadError,
     refetch,
@@ -70,15 +62,28 @@ const SignUpInput = () => {
     }
   }, [userImage, refetch]);
 
+  const onImageInvalid = (event: ChangeEvent<HTMLInputElement>) =>
+    event.target.setCustomValidity("Select profile image");
+
+  const onImageInput = (event: ChangeEvent<HTMLInputElement>) =>
+    event.target.setCustomValidity("");
+
+  const onImageChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+      setUserImage(event.target.files[0]);
+    }
+  };
+
+  const submitForm = (values: IUserRegister) => {
+    const imgUrl: string | undefined = isUploadSuccess && data.data.url;
+    const valuesToSubmit: IUserRegister = { ...values, imgUrl };
+    signupUser(valuesToSubmit);
+  };
+
   return (
     <Formik
       initialValues={initialValues}
-      /* eslint-disable-next-line */
-      onSubmit={(values) => {
-        const imgUrl: string | undefined = isSuccess && data.data.url;
-        const valuesToSubmit: IUserRegister = { ...values, imgUrl };
-        signupUser(valuesToSubmit);
-      }}
+      onSubmit={submitForm}
       validationSchema={SignUpSchema}
     >
       {({ handleSubmit }: FormikValues) => (
@@ -91,17 +96,9 @@ const SignUpInput = () => {
                 name="userImage"
                 accept=".jpg,.jpeg,.png"
                 required
-                onInvalid={(event: ChangeEvent<HTMLInputElement>) =>
-                  event.target.setCustomValidity("Select profile image")
-                }
-                onInput={(event: ChangeEvent<HTMLInputElement>) =>
-                  event.target.setCustomValidity("")
-                }
-                onChange={(event: ChangeEvent<HTMLInputElement>) => {
-                  if (event.target.files) {
-                    setUserImage(event.target.files[0]);
-                  }
-                }}
+                onInvalid={onImageInvalid}
+                onInput={onImageInput}
+                onChange={onImageChange}
               />
               <img src={SignUpProfile} alt="new profile" />
               <SignUpPlusImage src={SignUpPlus} alt="new profile" />
@@ -133,22 +130,23 @@ const SignUpInput = () => {
             <FormLoadingContainer>
               {isUploading && (
                 <>
-                  <FormLoading size="small" absolutePos />
+                  <FormLoading size="small" absolutePos signupPage />
                   <FormLoadingLabel>Uploading image</FormLoadingLabel>
                 </>
               )}
-            </FormLoadingContainer>
-            {isUploadError && uploadError instanceof Error && (
-              <h2>{uploadError.message}</h2>
-            )}
-            <ErrorMessageContainer>
+              {(isLoading || isSuccess) && (
+                <FormLoading size="small" absolutePos signupPage />
+              )}
+              {isUploadError && uploadError instanceof Error && (
+                <h2>{uploadError.message}</h2>
+              )}
               {isError && (
                 <FadeIn>
                   {/* @ts-ignore */}
                   <ErrorMessage>{error.response.data.message}</ErrorMessage>
                 </FadeIn>
               )}
-            </ErrorMessageContainer>
+            </FormLoadingContainer>
           </>
         </LoginInputContainer>
       )}
