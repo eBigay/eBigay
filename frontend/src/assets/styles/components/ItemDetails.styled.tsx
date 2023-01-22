@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Close } from "@mui/icons-material";
+import RespondTo from "../../theme/responsive";
 
 interface IsItemDetailsOpen {
   isItemDetailsOpen?: boolean;
@@ -16,6 +17,12 @@ export const PopUp = styled.div<IsItemDetailsOpen>`
   height: 80vh;
   width: 80vw;
   z-index: 100;
+  ${RespondTo.mobileBreakpoint`
+    top: 50%;
+    height: 97vh;
+  width: 97vw;
+
+`}
 `;
 
 export const ItemDetailsContainer = styled.div`
@@ -24,6 +31,13 @@ export const ItemDetailsContainer = styled.div`
   display: flex;
   gap: 40px;
   padding: 70px 60px;
+  word-break: break-all;
+  ${RespondTo.mobileBreakpoint`
+ padding: 1rem;
+ flex-direction: column;
+ gap: 0.25rem;
+
+`}
 `;
 
 export const MainIMg = styled.img`
@@ -41,6 +55,12 @@ export const ItemDetailsSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 30px;
+  overflow-y: auto;
+
+  ${RespondTo.mobileBreakpoint`
+max-width:100%;
+
+  `}
 `;
 
 export const DetailsDescription = styled.p`
@@ -75,6 +95,10 @@ export const SecondaryImg = styled.img`
   height: 8rem;
   border-radius: 20px;
   object-fit: cover;
+  ${RespondTo.mobileBreakpoint`
+  height: 5.25rem;
+
+  `}
 `;
 
 export const DetailsName = styled.h1`

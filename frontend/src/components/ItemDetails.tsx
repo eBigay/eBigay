@@ -1,9 +1,6 @@
-import { useState } from "react";
-import { Avatar, Skeleton } from "@mui/material";
+import { Avatar } from "@mui/material";
 import _ from "lodash";
 import { formatDistance } from "date-fns";
-import { SwiperSlide } from "swiper/react";
-import { Navigation, Thumbs, Lazy, type Swiper as SwiperRef } from "swiper";
 import { useNavigate } from "react-router";
 import ScreenOverlay from "./layout/ScreenOverlay";
 
@@ -30,13 +27,10 @@ import {
 
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import useAuthContext from "../hooks/useAuthContext";
-import Loading from "./Loading";
 import useModalContext from "../hooks/useModalContext";
 import ItemImagesSlider from "./ItemImagesSlider";
 
 const ItemDetails = () => {
-  const [activeThumb, setActiveThumb] = useState<SwiperRef>();
-
   const { modal, handleModal, modalContent } = useModalContext();
 
   const {
@@ -83,7 +77,7 @@ const ItemDetails = () => {
               <h3>{user.phoneNumber}</h3>
             ) : (
               <PrimaryButton
-                width="70%"
+                width="12rem"
                 height="70px"
                 fontSize="l"
                 onClick={() => {

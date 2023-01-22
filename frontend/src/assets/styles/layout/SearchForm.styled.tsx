@@ -1,4 +1,5 @@
 import { Clear, Search } from "@mui/icons-material";
+import { Autocomplete } from "@mui/material";
 import styled from "styled-components";
 import RespondTo, { MinWidth } from "../../theme/responsive";
 
@@ -56,6 +57,9 @@ export const StyledForm = styled.form`
   align-items: center;
   height: 100%;
   margin: 0;
+  &:nth-child(1) {
+    width: 100%;
+  }
 `;
 export const StyledButton = styled.button`
   border: none;
@@ -92,4 +96,20 @@ export const StyledSearch = styled(Search)<ISearchButtonProps>`
     align-self: center;
     margin: 0 1rem 0 auto;
   }
+`;
+
+export const StyledAutocomplete = styled(Autocomplete).attrs({
+  className: "StyledAutocomplete",
+})`
+  flex: 1;
+  border: 0;
+  height: 4rem;
+  color: ${({ theme }) => theme.colors.clr3};
+  font-family: Poppins;
+  font-size: ${({ theme }) => theme.fontSizes.fsS};
+  background-color: transparent;
+
+  ${MinWidth.tabletBreakpoint`
+  height: 3.5rem
+  `}
 `;

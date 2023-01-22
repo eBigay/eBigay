@@ -1,5 +1,22 @@
 import styled from "styled-components";
 import { Swiper } from "swiper/react";
+import RespondTo from "../../theme/responsive";
+
+export const StyledSwiperContainer = styled.div`
+  width: 50%;
+  height: 75%;
+  ${RespondTo.mobileBreakpoint`
+  width: 100%;
+  height: 50%;
+  `}
+`;
+
+export const StyledSwiperWrapper = styled.div`
+  height: 100%;
+  ${RespondTo.mobileBreakpoint`
+  height: 60%;
+  `}
+`;
 
 export const StyledSwiperMain = styled(Swiper)`
   position: relative;
@@ -24,6 +41,7 @@ export const StyledSwiperMain = styled(Swiper)`
 `;
 
 export const StyledSwiperThumbs = styled(Swiper)`
+  height: 100%;
   margin-top: auto;
   .swiper-slide {
     cursor: pointer;
