@@ -73,6 +73,7 @@ const theme = {
     laptopBreakpoint: "1200px",
     narrowBreakpoint: "1480px",
     wideBreakpoint: "1600px",
+    superWideBreakpoint: "2100px",
   },
 };
 export default theme;

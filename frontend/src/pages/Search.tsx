@@ -41,7 +41,7 @@ const Search = () => {
     page: 0,
     sortBy: "createdAt",
     sortOrder: "desc",
-    limit: 6,
+    limit: 12,
   });
   const [isLeftContainerOpen, setIsLeftContainerOpen] =
     useState<boolean>(false);

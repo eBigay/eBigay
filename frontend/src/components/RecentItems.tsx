@@ -19,7 +19,7 @@ const RecentItems = () => {
     page: 0,
     sortBy: "createdAt",
     sortOrder: "desc",
-    limit: 8,
+    limit: 12,
   });
 
   const {

@@ -31,6 +31,9 @@ export const StyledHeader = styled.header`
     ${MinWidth.wideBreakpoint`
   padding: 0 15rem;
   `}
+    ${MinWidth.superWideBreakpoint`
+  padding: 0 25rem;
+  `}
 `;
 
 export const LinksContainer = styled.nav<IStyledLinksProps>`
