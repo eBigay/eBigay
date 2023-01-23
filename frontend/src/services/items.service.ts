@@ -13,7 +13,7 @@ const query = async (
   },
   pageParam: number = 1
 ): Promise<IItem[]> => {
-  const { queryText, category, sortBy, sortOrder, limit } = filterBy;
+  const { queryText = "", category, sortBy, sortOrder, limit } = filterBy;
   return httpService.get<IItem[]>(
     `items?q=${queryText}&_limit=${limit}&_page=${pageParam}&_sort=${sortBy}&_order=${sortOrder}${
       category ? `&category=${category}` : ""

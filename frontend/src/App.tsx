@@ -1,17 +1,18 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { Suspense } from "react";
+import { ToastContainer } from "react-toastify";
 import routes from "./routes";
 import Header from "./components/layout/Header";
 import theme from "./assets/theme/theme";
 import Loading from "./components/Loading";
-import RootContextProvider from "./context/RootContext";
+import ModalContextProvider from "./context/ModalContext";
 import { AuthContextProvider } from "./context/AuthContext";
 
 const App = () => {
   return (
     <AuthContextProvider>
-      <RootContextProvider>
+      <ModalContextProvider>
         <ThemeProvider theme={theme}>
           <BrowserRouter>
             <Header />
@@ -27,8 +28,9 @@ const App = () => {
               </Routes>
             </Suspense>
           </BrowserRouter>
+          <ToastContainer />
         </ThemeProvider>
-      </RootContextProvider>
+      </ModalContextProvider>
     </AuthContextProvider>
   );
 };

@@ -1,6 +1,6 @@
 import { Clear, Search } from "@mui/icons-material";
-import styled from "styled-components";
 import { Autocomplete } from "@mui/material";
+import styled from "styled-components";
 import RespondTo, { MinWidth } from "../../theme/responsive";
 
 interface IStyledSearch {
@@ -11,7 +11,7 @@ interface ISearchButtonProps {
 }
 export const StyledContainer = styled.div<IStyledSearch>`
   align-self: center;
-  flex: 0.7;
+  flex: 0.75;
 
   ${RespondTo.tabletBreakpoint`
 display: ${({ isSearchBarOpen }: IStyledSearch) => !isSearchBarOpen && "none"};
@@ -23,10 +23,6 @@ height: 100%;
 z-index: 1000;
 background-color: ${({ theme }: any) => theme.colors.clr4};
   `}
-
-  ${MinWidth.wideBreakpoint`
-flex: 0.5;
-`}
 `;
 export const StyledFormContainer = styled.div`
   display: flex;
@@ -37,7 +33,8 @@ export const StyledFormContainer = styled.div`
   background-color: #f5f5f5;
   padding:0;
   border: 1px solid ${({ theme }: any) => theme.colors.clr3light};
-  border-radius: 10px;
+  border-radius: 50px;
+
   `}
 `;
 export const StyledAutocomplete = styled(Autocomplete).attrs({
@@ -52,21 +49,18 @@ export const StyledAutocomplete = styled(Autocomplete).attrs({
   background-color: transparent;
 
   ${MinWidth.tabletBreakpoint`
-  height: 3.5rem
+  height: 3.0rem
+
   `}
 `;
-export const StyledForm = styled.form.attrs({ className: "StyledForm" })`
+
+export const StyledForm = styled.form`
   display: flex;
   align-items: center;
-  height: 50px;
+  height: 100%;
   margin: 0;
   &:nth-child(1) {
     width: 100%;
-  }
-  .PrimaryButton {
-    ${RespondTo.tabletBreakpoint`
-  display: none;
-  `}
   }
 `;
 export const StyledButton = styled.button`
@@ -79,7 +73,7 @@ export const StyledButton = styled.button`
   position: relative;
   position: absolute;
   right: 0.4rem;
-  top: 1.3rem;
+  top: 1.6rem;
   ${MinWidth.tabletBreakpoint`
   display:none;
 `}
@@ -90,7 +84,6 @@ export const StyledSearchButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 0.3rem 0 1rem;
 `;
 export const StyledClearIcon = styled(Clear)`
   cursor: pointer;
@@ -98,11 +91,11 @@ export const StyledClearIcon = styled(Clear)`
 `;
 export const StyledSearch = styled(Search)<ISearchButtonProps>`
   && {
-    cursor: ${({ isdisabled }) => (isdisabled ? "default" : "pointer")};
+    cursor: pointer;
     opacity: ${({ isdisabled }) => !isdisabled && 0.5};
     font-size: 2rem;
     color: #fbb527;
     align-self: center;
-    margin: 0;
+    margin: 0 1rem 0 auto;
   }
 `;

@@ -1,6 +1,11 @@
-import { Dispatch, SetStateAction, useState } from "react";
-import { useLocation, useNavigate } from "react-router";
-import PrimaryButton from "../assets/styles/base/Button.styled";
+import React, {
+  Dispatch,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { useNavigate } from "react-router";
 import {
   StyledButton,
   StyledClearIcon,
@@ -21,23 +26,27 @@ const SearchForm = ({
   isSearchBarOpen,
   setIsSearchBarOpen,
 }: ISearchFormProps) => {
+  const inputSearchRef = useRef<HTMLInputElement>(null);
+
   const [query, setQuery] = useState<string>("");
 
   const navigate = useNavigate();
-  const location = useLocation();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (!location.pathname.includes("search")) {
-      navigate(`/search?q=${query}`);
-      return;
+  useEffect(() => {
+    if (inputSearchRef.current) {
+      inputSearchRef.current.focus();
     }
-    navigate(`/search?q=${query}`);
-    window.location.reload();
-  };
+  }, []);
 
   const toggleSearchBarOpen = () => {
     setIsSearchBarOpen(!isSearchBarOpen);
+  };
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    navigate(`/search/?q=${query}`);
+    toggleSearchBarOpen();
+    setQuery("");
   };
 
   return (
@@ -48,16 +57,6 @@ const SearchForm = ({
             <StyledSearch isdisabled={query} />
           </StyledSearchButton>
           <Autocomplete query={query} setQuery={setQuery} />
-          <PrimaryButton
-            width="115px"
-            height="50px"
-            fontSize="xs"
-            borderRadius="10px"
-            disabled={!query}
-            type="submit"
-          >
-            Search
-          </PrimaryButton>
         </StyledForm>
         <StyledButton onClick={toggleSearchBarOpen}>
           <StyledClearIcon />

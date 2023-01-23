@@ -29,19 +29,19 @@ import ItemCard from "../components/ItemCard";
 import Loading from "../components/Loading";
 import TopContainer from "../components/layout/TopContainer";
 import LeftContainer from "../components/layout/LeftContainer";
+
 import Text from "../data/enums";
-import FadeIn from "../assets/styles/layout/FadeIn.styled";
 
 const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [filterBy, setFilterBy] = useState<IFilterBy>({
-    queryText: searchParams.get("q") || "",
+    queryText: "",
     category: searchParams.get("category") || "",
     page: 0,
     sortBy: "createdAt",
     sortOrder: "desc",
-    limit: 6,
+    limit: 12,
   });
   const [isLeftContainerOpen, setIsLeftContainerOpen] =
     useState<boolean>(false);
@@ -68,16 +68,7 @@ const Search = () => {
       setShowLoader(false);
     }, 900);
     return () => clearTimeout(timeoutId);
-  }, []);
-
-  const debouncedFetchNextPage = debounce(fetchNextPage, 500);
-
-  useIntersectionObserver({
-    target: observerElem,
-    onIntersect: debouncedFetchNextPage,
-    enabled: hasNextPage,
-    dependencies: [showLoader, isLoading, isFetchingNextPage],
-  });
+  }, [searchParams]);
 
   const onSetFilter = useCallback(
     (property: string, value: any) => {
@@ -85,40 +76,51 @@ const Search = () => {
       if (property === "category") {
         setIsLeftContainerOpen(false);
         newFilter.queryText = "";
+        const queryParams = {
+          category: newFilter.category,
+        };
+        setSearchParams(queryParams);
       }
-      const queryParams = {
-        category: newFilter.category,
-      };
-      setSearchParams(queryParams);
       setFilterBy(newFilter);
     },
     [filterBy, setSearchParams]
   );
+
+  useEffect(() => {
+    onSetFilter("queryText", searchParams.get("q") ?? "");
+  }, [searchParams]);
+
+  const debouncedFetchNextPage = debounce(fetchNextPage, 500);
+
+  useIntersectionObserver({
+    target: observerElem,
+    onIntersect: debouncedFetchNextPage,
+    enabled: hasNextPage && !isFetchingNextPage,
+    dependencies: [showLoader, isLoading, isFetchingNextPage],
+  });
 
   const toggleLeftContainer = () => {
     setIsLeftContainerOpen((LeftContainerOpenState) => !LeftContainerOpenState);
   };
 
   useOverflow(isLeftContainerOpen);
+
+  if (showLoader) return <Loading pos="center" />;
   return (
     <>
-      <FadeIn>
-        <TopContainer>
-          <PrimaryButton
-            fontSize="s"
-            width="fit-content"
-            height="50px"
-            onClick={toggleLeftContainer}
-          >
-            Filter By
-          </PrimaryButton>
-        </TopContainer>
-        <StyledSearchHeader>{Text.SearchPageHeader}</StyledSearchHeader>
-        <StyledSearchSubHeader>
-          {Text.SearchPageSubHeader}
-        </StyledSearchSubHeader>
-        <LeonhardCulmann>Leonhard Culmann&apos;s</LeonhardCulmann>
-      </FadeIn>
+      <TopContainer>
+        <PrimaryButton
+          fontSize="s"
+          width="fit-content"
+          height="50px"
+          onClick={toggleLeftContainer}
+        >
+          Filter By
+        </PrimaryButton>
+      </TopContainer>
+      <StyledSearchHeader>{Text.SearchPageHeader}</StyledSearchHeader>
+      <StyledSearchSubHeader>{Text.SearchPageSubHeader}</StyledSearchSubHeader>
+      <LeonhardCulmann>Leonhard Culmann&apos;s</LeonhardCulmann>
       <StyledSearchContainer>
         <LeftContainer isLeftContainerOpen={isLeftContainerOpen}>
           <Categories
@@ -128,12 +130,11 @@ const Search = () => {
         </LeftContainer>
         <ListContainer>
           {isSuccess &&
-            data.pages &&
             data.pages.map((page) =>
               page.map((item) => <ItemCard key={item.id} item={item} />)
             )}
-          {(isLoading || showLoader) && <Loading pos="center" />}
-          {isError && <FetchErrorMessage>{error.message}</FetchErrorMessage>}
+          {isLoading && <Loading pos="center" />}
+          {isError && <FetchErrorMessage>{error}</FetchErrorMessage>}
         </ListContainer>
       </StyledSearchContainer>
       <div ref={observerElem}>

@@ -1,5 +1,9 @@
+import { useState } from "react";
 import { Avatar } from "@mui/material";
+import _ from "lodash";
 import { formatDistance } from "date-fns";
+import { SwiperSlide } from "swiper/react";
+import { Navigation, Thumbs, Lazy, type Swiper as SwiperRef } from "swiper";
 import { useNavigate } from "react-router";
 import ScreenOverlay from "./layout/ScreenOverlay";
 
@@ -14,8 +18,11 @@ import {
   PopUp,
   ItemDetailsContainer,
   ItemDetailsSection,
+  MainIMg,
   DetailsDescription,
   CreatedByContainer,
+  ImgsWrapper,
+  SecondaryImg,
   DetailsName,
   CancelIcon,
   CreatedByLocation,
@@ -23,13 +30,18 @@ import {
   ImagesListWrapper,
   CreatedByTime,
 } from "../assets/styles/components/ItemDetails.styled";
-
+import {
+  StyledSwiperMain,
+  StyledSwiperThumbs,
+} from "../assets/styles/components/ItemImagesSlider.styled";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import useAuthContext from "../hooks/useAuthContext";
+import Loading from "./Loading";
 import useModalContext from "../hooks/useModalContext";
-import ItemImagesSlider from "./ItemImagesSlider";
 
 const ItemDetails = () => {
+  const [activeThumb, setActiveThumb] = useState<SwiperRef>();
+
   const { modal, handleModal, modalContent } = useModalContext();
 
   const {
@@ -60,7 +72,32 @@ const ItemDetails = () => {
       />
       <PopUp isItemDetailsOpen={modal}>
         <ItemDetailsContainer>
-          {images && <ItemImagesSlider images={images} />}
+          <StyledSwiperMain
+            slidesPerView={1}
+            loop
+            spaceBetween={10}
+            navigation
+            lazy
+            modules={[Navigation, Thumbs, Lazy]}
+            grabCursor
+            thumbs={{
+              swiper:
+                activeThumb && !activeThumb.destroyed ? activeThumb : null,
+            }}
+          >
+            {images &&
+              images.map((image) => (
+                <SwiperSlide key={_.uniqueId()}>
+                  <MainIMg
+                    data-src={image}
+                    className="swiper-lazy"
+                    alt="main"
+                  />
+
+                  <Loading className="swiper-lazy-preloader" />
+                </SwiperSlide>
+              ))}
+          </StyledSwiperMain>
           <ItemDetailsSection>
             <DetailsName>{itemName}</DetailsName>
             <CreatedByContainer>
@@ -73,10 +110,10 @@ const ItemDetails = () => {
             </CreatedByContainer>
             <DetailsDescription>{description}</DetailsDescription>
             {user ? (
-              <h3>Phone Number: {user.phoneNumber}</h3>
+              <h3>{user.phoneNumber}</h3>
             ) : (
               <PrimaryButton
-                width="12rem"
+                width="70%"
                 height="70px"
                 fontSize="l"
                 onClick={() => {
@@ -87,7 +124,34 @@ const ItemDetails = () => {
                 Log in to details
               </PrimaryButton>
             )}
-            <ImagesListWrapper />
+            <ImagesListWrapper>
+              <StyledSwiperThumbs
+                onSwiper={setActiveThumb}
+                loop
+                lazy
+                spaceBetween={10}
+                slidesPerView={3}
+                modules={[Navigation, Thumbs, Lazy]}
+              >
+                {images &&
+                  images.map((image) => (
+                    <SwiperSlide key={_.uniqueId()}>
+                      <ImgsWrapper>
+                        <SecondaryImg
+                          data-src={image}
+                          loading="lazy"
+                          className="swiper-lazy"
+                        />
+                        <Loading
+                          pos="absolute"
+                          size="xsmall"
+                          className="swiper-lazy-preloader"
+                        />
+                      </ImgsWrapper>
+                    </SwiperSlide>
+                  ))}
+              </StyledSwiperThumbs>
+            </ImagesListWrapper>
           </ItemDetailsSection>
         </ItemDetailsContainer>
         <CancelIcon onClick={toggleItemDetailsOpen} />

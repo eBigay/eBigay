@@ -4,8 +4,7 @@ export interface IItem {
   id?: string;
   qty: number;
   itemName: string;
-  mainImg: string;
-  imgs?: string[];
+  images: string[];
   category: string;
   location: any;
   createdAt: number;

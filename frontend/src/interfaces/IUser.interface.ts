@@ -1,10 +1,11 @@
 export interface IUser {
   id?: string;
   email: string;
-  name: string;
+  username: string;
   isAdmin: boolean;
-  accessToken?: string;
-  imgUrl?: string;
+  ACCESS_TOKEN?: string;
+  imageUrl?: string;
+  phoneNumber: string;
 }
 export interface IUserRespone {
   user: IUser;
@@ -15,7 +16,7 @@ export interface IUserState {
 }
 
 export interface IUserRegister {
-  imgUrl?: string;
+  imageUrl?: string;
   username: string;
   email: string;
   password: string;

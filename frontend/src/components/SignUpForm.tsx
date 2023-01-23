@@ -1,36 +1,56 @@
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Formik, FormikValues } from "formik";
+import { Avatar } from "@mui/material";
 import useAuth from "../hooks/useAuth";
-import Input from "./Input";
+import Input from "./layout/Input";
 import Logo from "./layout/Logo";
-import { IUserRegister } from "../interfaces/IUser.interface";
 import SignUpSchema from "../schemas/SignUpSchema";
 import FormInputsData from "../data/FormInputsData";
-import useUploadImage from "../hooks/useUploadImage";
 import LoginInputContainer, {
-  ImageInput,
   UserImageName,
   PrivacyPolicy,
   SignUpImageContainer,
   SignUpPlusImage,
-  ErrorMessage,
 } from "../assets/styles/components/LoginInput.styled";
 import PrimaryButton from "../assets/styles/base/Button.styled";
-import {
-  FormLoading,
-  FormLoadingContainer,
-  FormLoadingLabel,
-} from "../assets/styles/pages/LoginSignup.styled";
-import FadeIn from "../assets/styles/layout/FadeIn.styled";
-import SignUpProfile from "../assets/svgs/SignUpProfile.svg";
 import SignUpPlus from "../assets/svgs/SignUpPlus.svg";
+import { IUserRegister } from "../interfaces/IUser.interface";
 
+// @ts-ignore
+import UploadWidget from "./UploadWidget";
+
+interface SignUpValues {
+  username: string;
+  email: string;
+  password: string;
+  phoneNumber: string;
+  location: string;
+}
 const SignUpInput = () => {
-  const { signup } = useAuth();
-  const { mutate: signupUser, isError, error, isLoading, isSuccess } = signup;
+  const [imageUrl, updateImageUrl] = useState<string>();
+  const [error, updateError] = useState<any>();
 
-  const initialValues: IUserRegister = {
+  const { signup } = useAuth();
+  const { mutate: signupUser } = signup;
+
+  const imageName = () => {
+    if (!imageUrl) return "";
+    return imageUrl.length > 25 ? `${imageUrl.slice(0, 25)}...` : imageUrl;
+  };
+
+  function handleOnUpload(error: any, result: any, widget: any) {
+    if (error) {
+      updateError(error);
+      widget.close({
+        quiet: true,
+      });
+      return;
+    }
+    updateImageUrl(result?.info?.secure_url);
+  }
+
+  const initialValues: SignUpValues = {
     username: "",
     email: "",
     password: "",
@@ -38,52 +58,13 @@ const SignUpInput = () => {
     location: "",
   };
 
-  const [userImage, setUserImage] = useState<File>();
-
-  const imageName = () => {
-    if (!userImage) return "";
-    return userImage.name.length > 25
-      ? `${userImage.name.slice(0, 25)}...`
-      : userImage.name;
-  };
-
-  const {
-    data,
-    isFetching: isUploading,
-    isSuccess: isUploadSuccess,
-    isError: isUploadError,
-    error: uploadError,
-    refetch,
-  } = useUploadImage(userImage!);
-
-  useEffect(() => {
-    if (typeof userImage !== "undefined") {
-      refetch();
-    }
-  }, [userImage, refetch]);
-
-  const onImageInvalid = (event: ChangeEvent<HTMLInputElement>) =>
-    event.target.setCustomValidity("Select profile image");
-
-  const onImageInput = (event: ChangeEvent<HTMLInputElement>) =>
-    event.target.setCustomValidity("");
-
-  const onImageChange = (event: ChangeEvent<HTMLInputElement>) => {
-    if (event.target.files) {
-      setUserImage(event.target.files[0]);
-    }
-  };
-
-  const submitForm = (values: IUserRegister) => {
-    const imgUrl: string | undefined = isUploadSuccess && data.data.url;
-    const valuesToSubmit: IUserRegister = { ...values, imgUrl };
-    signupUser(valuesToSubmit);
-  };
-
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={submitForm}
+      onSubmit={(values) => {
+        const valuesToSubmit: IUserRegister = { ...values, imageUrl };
+        signupUser(valuesToSubmit);
+      }}
       validationSchema={SignUpSchema}
     >
       {({ handleSubmit }: FormikValues) => (
@@ -91,17 +72,20 @@ const SignUpInput = () => {
           <>
             <Logo noNavigate />
             <SignUpImageContainer>
-              <ImageInput
-                type="file"
-                name="userImage"
-                accept=".jpg,.jpeg,.png"
-                required
-                onInvalid={onImageInvalid}
-                onInput={onImageInput}
-                onChange={onImageChange}
-              />
-              <img src={SignUpProfile} alt="new profile" />
-              <SignUpPlusImage src={SignUpPlus} alt="new profile" />
+              <UploadWidget onUpload={handleOnUpload}>
+                {({ open }: any) => {
+                  function handleOnClick(e: any) {
+                    e.preventDefault();
+                    open();
+                  }
+                  return (
+                    <div onClick={handleOnClick}>
+                      <Avatar src={imageUrl} sx={{ width: 120, height: 120 }} />
+                      <SignUpPlusImage src={SignUpPlus} alt="new profile" />
+                    </div>
+                  );
+                }}
+              </UploadWidget>
             </SignUpImageContainer>
             <UserImageName>{imageName()}</UserImageName>
             {FormInputsData.map((input) => (
@@ -123,30 +107,10 @@ const SignUpInput = () => {
               height="70px"
               fontSize="l"
               type="submit"
-              disabled={isUploading}
             >
               Sign up
             </PrimaryButton>
-            <FormLoadingContainer>
-              {isUploading && (
-                <>
-                  <FormLoading size="small" absolutePos signupPage />
-                  <FormLoadingLabel>Uploading image</FormLoadingLabel>
-                </>
-              )}
-              {(isLoading || isSuccess) && (
-                <FormLoading size="small" absolutePos signupPage />
-              )}
-              {isUploadError && uploadError instanceof Error && (
-                <h2>{uploadError.message}</h2>
-              )}
-              {isError && (
-                <FadeIn>
-                  {/* @ts-ignore */}
-                  <ErrorMessage>{error.response.data.message}</ErrorMessage>
-                </FadeIn>
-              )}
-            </FormLoadingContainer>
+            {error && <h2>{error}</h2>}
           </>
         </LoginInputContainer>
       )}

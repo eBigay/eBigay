@@ -21,9 +21,8 @@ const ItemList = ({ isLoading, isError, error, items }: IItemListProps) => {
   if (isError) return <FetchErrorMessage>{error.message}</FetchErrorMessage>;
   return (
     <ListContainer>
-      {items?.map((item: IItem) => (
-        <ItemCard key={item.id} item={item} />
-      ))}
+      {Array.isArray(items) &&
+        items?.map((item: IItem) => <ItemCard key={item.id} item={item} />)}
     </ListContainer>
   );
 };

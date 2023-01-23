@@ -6,8 +6,8 @@ import StyledInput, {
   InputLeftImage,
   InputRightImage,
   FadeInErrorMessage,
-} from "../assets/styles/layout/Inputs.styled";
-import IInputProps from "../interfaces/IInputProps";
+} from "../../assets/styles/layout/Inputs.styled";
+import IInputProps from "../../interfaces/IInputProps";
 
 const Input = ({
   image,

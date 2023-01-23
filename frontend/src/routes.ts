@@ -19,6 +19,10 @@ const Profile = lazy(async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return import("./pages/Profile");
 });
+const AddNew = lazy(async () => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return import("./pages/AddNewItem");
+});
 
 const routes = [
   {
@@ -52,6 +56,11 @@ const routes = [
     path: "/profile",
     element: Profile,
     key: "Profile",
+  },
+  {
+    path: "/addnew",
+    element: AddNew,
+    key: "AddNew",
   },
   {
     path: "*",
