@@ -53,23 +53,13 @@ margin: ${({ LoginPage }: LoginInputContainerProps) =>
   }
 `;
 
-export const ImageInput = styled.input.attrs({ className: "imageInput" })`
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  top: 0px;
-  z-index: 2;
-  opacity: 0;
-`;
-
 export const UserImageName = styled.h3.attrs({
   className: "UserImageName",
 })`
-  position: absolute;
-  top: 177px;
   width: 100%;
   text-align: center;
   font-weight: 500;
+  margin: 0.5rem 0;
   font-size: ${({ theme }) => theme.fontSizes.fsM};
   color: ${({ theme }) => theme.colors.clr9};
   ${RespondTo.mobileBreakpoint`
@@ -84,6 +74,7 @@ export const SignUpImageContainer = styled.div.attrs({
   width: max-content;
   position: relative;
   margin-bottom: 2rem;
+  cursor: pointer;
 `;
 
 export const SignUpPlusImage = styled.img.attrs({ className: "SignUpImage" })`

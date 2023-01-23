@@ -53,7 +53,8 @@ export const LinksContainer = styled.nav<IStyledLinksProps>`
 		width: 65%;
 		height: 100%;
 		padding-top: 6.9rem;
-		flex-direction: column;
+		flex-direction: column-reverse;
+    justify-content: flex-end;
 		background-color: ${({ theme }: any) => theme.colors.clr4};
 		transform: ${({ isMenuOpen }: IStyledLinksProps) =>
       isMenuOpen ? "translateX(0%)" : "translateX(100%)"};

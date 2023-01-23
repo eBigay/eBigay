@@ -11,6 +11,7 @@ const ItemCardContainer = styled(FadeInAndUp).attrs({
 export const ItemImage = styled.img`
   width: 100%;
   height: 100%;
+  object-fit: cover;
 `;
 
 export const ItemInfo = styled.div`
@@ -46,6 +47,7 @@ export const Icon = styled.div.attrs({ className: "icon" })`
 `;
 
 export const ItemImageContainer = styled.div`
+  height: 20rem;
   position: relative;
   &:hover {
     ${ItemInfo} {

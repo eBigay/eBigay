@@ -19,15 +19,12 @@ export const PopUp = styled.div.attrs({
   height: 80vh;
   width: 80vw;
   z-index: 100;
-  ${RespondTo.laptopBreakpoint`
-  top: 50%;
-  width: 85vw;
-  `}
-
   ${RespondTo.mobileBreakpoint`
-  width: 90vw;
-  height: 85vh;
-  `}
+    top: 50%;
+    height: 97vh;
+  width: 97vw;
+
+`}
 `;
 
 export const ItemDetailsContainer = styled.div.attrs({
@@ -38,30 +35,18 @@ export const ItemDetailsContainer = styled.div.attrs({
   display: flex;
   gap: 40px;
   padding: 70px 60px;
-  ${RespondTo.laptopBreakpoint`
-  padding: 2.5rem;
-`}
-  ${RespondTo.laptopBreakpoint`
-  padding: 2rem 1.5rem;
-`}
-
+  word-break: break-all;
   ${RespondTo.mobileBreakpoint`
-  flex-direction: column-reverse;
-  gap: 20px;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  ::-webkit-scrollbar {
-  display: none;
-}
-  .swiper {
-    overflow: visible;
-    margin-left: 0;
-    margin-right: 0;
-  }
-  `}
+ padding: 3rem 2.5rem;
+ flex-direction: column;
+ gap: 0.25rem;
+
+`}
 `;
 
 export const MainIMg = styled.img`
+  position: relative;
+
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -79,23 +64,12 @@ export const ItemDetailsSection = styled.div.attrs({
   display: flex;
   flex-direction: column;
   gap: 30px;
+  overflow-y: auto;
 
   ${RespondTo.mobileBreakpoint`
-  max-width: 100%;
-  gap: 20px;
-  button {
-    font-size: ${({ theme }: any) => theme.fontSizes.fsS};
-    height: 3rem;
-    margin: 0 auto;
-  }
-  `}
+max-width:100%;
 
-  ${RespondTo.tabletBreakpoint`
-  button {
-    font-size: ${({ theme }: any) => theme.fontSizes.fsM};
-    height: 3rem;
-  }
-`}
+  `}
 `;
 
 export const DetailsDescription = styled.p.attrs({
@@ -103,16 +77,7 @@ export const DetailsDescription = styled.p.attrs({
 })`
   color: ${({ theme }) => theme.colors.clr3};
   font-size: ${({ theme }) => theme.fontSizes.fsXL};
-  line-height: 30px;
-  ${RespondTo.tabletBreakpoint`
-  font-size: ${({ theme }: any) => theme.fontSizes.fsL};
-  line-height: 25px;
-  `}
-  ${RespondTo.mobileBreakpoint`
-  font-size: ${({ theme }: any) => theme.fontSizes.fsM};
-  line-height: 20px;
-  margin: 10px 0;
-  `}
+  font-size: ${({ theme }) => theme.fontSizes.fsM};
 `;
 
 export const PhoneNumberContainer = styled.div.attrs({
@@ -170,6 +135,8 @@ export const CreatedByName = styled.h3.attrs({ className: "CreatedByName" })`
 export const ImgsWrapper = styled.div.attrs({ className: "ImgsWrapper" })`
   display: flex;
   gap: 37px;
+  align-items: center;
+  justify-content: center;
   margin-top: auto;
   ${RespondTo.mobileBreakpoint`
   .swiper-lazy-preloader {
@@ -183,16 +150,19 @@ export const SecondaryImg = styled.img`
   height: 8rem;
   border-radius: 20px;
   object-fit: cover;
+  ${RespondTo.mobileBreakpoint`
+  height: 4rem;
+
+  `}
 `;
 
 export const DetailsName = styled.h1.attrs({ className: "DetailsName" })`
   font-weight: 600;
-  font-size: ${({ theme }) => theme.fontSizes.fsXXl};
-  word-break: break-word;
+  font-size: ${({ theme }) => theme.fontSizes.fsXXL};
   ${RespondTo.mobileBreakpoint`
-    line-height: 32px;
   font-size: ${({ theme }: any) => theme.fontSizes.fsXL};
-`}
+
+  `}
 `;
 
 export const CancelIcon = styled(Close)`

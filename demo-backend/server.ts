@@ -18,7 +18,7 @@ server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 server.use(jsonServer.defaults());
 
-const SECRET_KEY = process.env.SECRET_KEY;
+const SECRET_KEY = "77a333708faa8bb381702f7af5fe26f9b9a8d71b57f6f64a7307ec077923e20a"
 
 const expiresInDefault = "1h";
 const expiresInLong = "7d";
@@ -56,7 +56,7 @@ function isAuthenticated({ user, password }: IsAuthenticatedArgs) {
 server.post("/auth/signup", (req: Request, res: Response) => {
   console.log("register endpoint called; request body:");
   console.log(req.body);
-  const { email, password, username, phoneNumber, location, imgUrl }: IUser =
+  const { email, password, username, phoneNumber, location, imageUrl }: IUser =
     req.body;
   if (isEmailExist(email)) {
     const status = 401;
@@ -87,7 +87,7 @@ server.post("/auth/signup", (req: Request, res: Response) => {
       username,
       phoneNumber,
       location,
-      imgUrl,
+      imageUrl,
     }); // add some data
     fs.writeFile(
       "./users.json",
@@ -114,7 +114,7 @@ server.post("/auth/signup", (req: Request, res: Response) => {
     username,
     phoneNumber,
     location,
-    imgUrl,
+    imageUrl,
   };
   res.status(200).json(returnValues);
 });

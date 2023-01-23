@@ -4,6 +4,7 @@ import {
   useQuery,
   useQueryClient,
 } from "react-query";
+import { toast } from "react-toastify";
 import itemsService from "../services/items.service";
 import { IItem } from "../interfaces/IItem.interface";
 import { IFilterBy } from "../interfaces/IFilterBy.interface";
@@ -26,6 +27,7 @@ function useItems() {
       ["items", filterBy],
       ({ pageParam = 1 }) => fetchItems(filterBy, pageParam),
       {
+        keepPreviousData: true,
         getNextPageParam: (lastPage, allPages) => {
           const nextPage = allPages?.length + 1; /* eslint-disable-line */
           return lastPage?.length !== 0 ? nextPage : undefined;
@@ -39,10 +41,14 @@ function useItems() {
 
   const add = useMutation(addItem, {
     onSuccess: (addedItem) => {
-      queryClient.setQueryData("items", (currentItems: any) => [
-        ...currentItems,
+      queryClient.setQueryData("items", (currentItems: IItem[] | undefined) => [
+        ...(currentItems || []),
         addedItem,
       ]);
+      toast.success("New Item Added!");
+    },
+    onError: (error: string) => {
+      toast.error(`${error}`);
     },
   });
 

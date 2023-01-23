@@ -1,6 +1,6 @@
 export default interface IUser {
   id?: string;
-  imgUrl: string | undefined;
+  imageUrl: string | undefined;
   username: string;
   email: string;
   password: string;

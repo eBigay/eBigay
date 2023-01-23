@@ -12,7 +12,6 @@ import ItemList from "./ItemList";
 const RecentItems = () => {
   const { useQueryAllItems } = useItems();
 
-  /* eslint-disable-next-line */
   const [filterBy, setFilterBy] = useState<IFilterBy>({
     queryText: "",
     category: "",

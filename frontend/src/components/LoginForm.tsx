@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import LoginSchema from "../schemas/LoginSchema";
 import Logo from "./layout/Logo";
-import Input from "./Input";
 import LoginInputContainer, {
   ErrorMessageContainer,
   MiddleFlex,
@@ -12,6 +11,7 @@ import LoginInputContainer, {
   RememberMeLabel,
   ErrorMessage,
 } from "../assets/styles/components/LoginInput.styled";
+import Input from "./layout/Input";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import FadeIn from "../assets/styles/layout/FadeIn.styled";
 import { FormLoading } from "../assets/styles/pages/LoginSignup.styled";

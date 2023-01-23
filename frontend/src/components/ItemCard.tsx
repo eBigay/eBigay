@@ -1,11 +1,10 @@
-import { memo, useContext } from "react";
+import { memo } from "react";
 import {
   MessageOutlined,
   SearchOutlined,
   FavoriteBorderOutlined,
 } from "@mui/icons-material";
 import { formatDistance } from "date-fns";
-
 import { useNavigate } from "react-router";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import ItemCardContainer, {
@@ -22,19 +21,19 @@ import ItemCardContainer, {
 } from "../assets/styles/components/ItemCard.styled";
 import { CreatedByTime } from "../assets/styles/components/ItemDetails.styled";
 import Location from "../assets/svgs/Location.svg";
-import { rootContext } from "../context/RootContext";
 import { IItem } from "../interfaces/IItem.interface";
-import { AuthContext } from "../context/AuthContext";
+import useModalContext from "../hooks/useModalContext";
+import useAuthContext from "../hooks/useAuthContext";
 
 interface IItemCard {
   item: IItem;
 }
 
 const ItemCard = ({ item }: IItemCard) => {
-  const { handleModal } = useContext(rootContext);
+  const { handleModal } = useModalContext();
   const {
     state: { user },
-  } = useContext(AuthContext);
+  } = useAuthContext();
 
   const handleOpenProductDetails = () => {
     handleModal(item);
@@ -48,7 +47,7 @@ const ItemCard = ({ item }: IItemCard) => {
   return (
     <ItemCardContainer>
       <ItemImageContainer>
-        <ItemImage src={item.mainImg} alt={item.itemName} />
+        <ItemImage src={item.images[0]} alt={item.itemName} />
         <ItemInfo>
           <Icon>
             <SearchOutlined onClick={handleOpenProductDetails} />

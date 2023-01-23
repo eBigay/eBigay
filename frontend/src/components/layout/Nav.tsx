@@ -24,6 +24,7 @@ import {
 import PrimaryButton from "../../assets/styles/base/Button.styled";
 import ScreenOverlay from "./ScreenOverlay";
 import SearchForm from "../SearchForm";
+
 import useAuthContext from "../../hooks/useAuthContext";
 import useAuth from "../../hooks/useAuth";
 
@@ -107,7 +108,7 @@ const Nav = ({
               aria-haspopup="true"
               aria-expanded={open ? "true" : undefined}
             >
-              <Avatar src={user.imgUrl} sx={{ width: 40, height: 40 }} />
+              <Avatar src={user.imageUrl} sx={{ width: 40, height: 40 }} />
             </IconButton>
           </Tooltip>
         ) : (
@@ -159,14 +160,14 @@ const Nav = ({
           anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
         >
           <MenuItem onClick={() => navigate("/profile")}>
-            <Avatar src={user?.imgUrl} sx={{ width: 40, height: 40 }} />
+            <Avatar src={user?.imageUrl} sx={{ width: 40, height: 40 }} />
             Profile
           </MenuItem>
           <MenuItem>
             <Avatar /> My account
           </MenuItem>
           <Divider />
-          <MenuItem>
+          <MenuItem onClick={() => navigate("/addnew")}>
             <ListItemIcon>
               <VolunteerActivism fontSize="small" />
             </ListItemIcon>

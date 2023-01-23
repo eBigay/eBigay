@@ -1,5 +1,6 @@
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 import { IUserRegister } from "../interfaces/IUser.interface";
 import userService from "../services/user.service";
 import useAuthContext from "./useAuthContext";
@@ -19,7 +20,9 @@ const useAuth = () => {
         navigate("/");
       }, 1100);
     },
-    onError: (error) => console.log(error) /* eslint-disable-line */,
+    onError: (error: any) => {
+      toast.error(`${error.response.data.message}`);
+    },
   });
 
   const loginUser = (credentials: {
@@ -37,7 +40,9 @@ const useAuth = () => {
         navigate("/");
       }, 1100);
     },
-    onError: (error) => console.log(error) /* eslint-disable-line */,
+    onError: (error: any) => {
+      toast.error(`${error.response.data.message}`);
+    },
   });
 
   const logoutUser = () => {
@@ -47,6 +52,7 @@ const useAuth = () => {
   const logout = useMutation(logoutUser, {
     onSuccess: () => {
       dispatch({ type: "LOGOUT" });
+      navigate("/login");
     },
   });
 
