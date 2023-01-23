@@ -4,11 +4,10 @@ import {
   useQuery,
   useQueryClient,
 } from "react-query";
+import { toast } from "react-toastify";
 import itemsService from "../services/items.service";
 import { IItem } from "../interfaces/IItem.interface";
 import { IFilterBy } from "../interfaces/IFilterBy.interface";
-
-import { toast } from "react-toastify";
 
 function useItems() {
   const queryClient = useQueryClient();
@@ -20,6 +19,7 @@ function useItems() {
   const useQueryAllItems = (filterBy: IFilterBy) =>
     useQuery(["items", filterBy], () => fetchItems(filterBy, filterBy.page), {
       keepPreviousData: true,
+      onError: (error) => console.log(error) /* eslint-disable-line */,
     });
 
   const useInfiniteQueryAllItems = (filterBy: IFilterBy) =>

@@ -1,20 +1,17 @@
 import styled from "styled-components";
 import RespondTo, { MinWidth } from "../../theme/responsive";
+import FadeIn from "../layout/FadeIn.styled";
 
-export const CategoriesContainer = styled.div.attrs({
+export const CategoriesContainer = styled(FadeIn).attrs({
   className: "CategoriesContainer",
 })`
   width: 300px;
   border: 1px solid ${({ theme }) => theme.colors.clr3light};
   border-radius: 10px;
-<<<<<<< HEAD
-  padding: 2rem 0;
-=======
   padding: 2rem 0 0;
->>>>>>> 6b54f960bc2de1d89bdad5d54e89471edcf8dcba
   margin: 0;
   ${RespondTo.laptopBreakpoint`
-   padding: 5rem 0 0;
+   padding: 0;
    width: 100%;
    border: unset;
   `}

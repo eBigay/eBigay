@@ -12,10 +12,10 @@ import {
   StyledContainer,
   StyledForm,
   StyledFormContainer,
-  StyledInput,
   StyledSearchButton,
   StyledSearch,
 } from "../assets/styles/layout/SearchForm.styled";
+import Autocomplete from "./Autocomplete";
 
 interface ISearchFormProps {
   isSearchBarOpen: boolean;
@@ -38,12 +38,6 @@ const SearchForm = ({
     }
   }, []);
 
-  const handleChange = ({
-    target: { value },
-  }: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(value);
-  };
-
   const toggleSearchBarOpen = () => {
     setIsSearchBarOpen(!isSearchBarOpen);
   };
@@ -62,13 +56,7 @@ const SearchForm = ({
           <StyledSearchButton disabled={!query} type="submit">
             <StyledSearch isdisabled={query} />
           </StyledSearchButton>
-          <StyledInput
-            type="text"
-            onChange={handleChange}
-            value={query}
-            placeholder="Search for anything"
-            ref={inputSearchRef}
-          />
+          <Autocomplete query={query} setQuery={setQuery} />
         </StyledForm>
         <StyledButton onClick={toggleSearchBarOpen}>
           <StyledClearIcon />

@@ -10,12 +10,13 @@ export interface IUser {
 export interface IUserRespone {
   user: IUser;
 }
+
 export interface IUserState {
   user: IUser | null;
 }
 
 export interface IUserRegister {
-  imageUrl: string | undefined;
+  imageUrl?: string;
   username: string;
   email: string;
   password: string;

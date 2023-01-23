@@ -7,6 +7,8 @@ type SpinnerProps = {
 type LoadingProps = {
   pos?: string;
   absolutePos?: boolean;
+  height?: string;
+  marginTop?: string;
 };
 
 const rotateAnimation = keyframes`
@@ -49,11 +51,16 @@ export const Spinner = styled.circle.attrs({ className: "Spinner" })`
 
 const LoadingContainer = styled.div<LoadingProps>`
   width: 100%;
-  height: ${({ pos }) => (pos === "center" ? "100vh" : "unset")};
+  height: ${({ pos, height }) =>
+    pos === "center" ? "100vh" : height || "unset"};
   display: flex;
   justify-content: center;
   align-items: center;
+<<<<<<< HEAD
   /* margin-top: 3rem; */
+=======
+  margin-top: ${({ marginTop }) => marginTop || "3rem"};
+>>>>>>> b578f1dea9cba647cab8a26c69300e006c3bef8d
   position: ${({ absolutePos }) => (absolutePos ? "absolute" : "relative")};
   top: ${({ absolutePos }) => absolutePos && "-35px"};
   ${RespondTo.laptopBreakpoint`

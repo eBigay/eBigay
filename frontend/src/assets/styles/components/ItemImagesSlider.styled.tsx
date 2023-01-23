@@ -30,12 +30,12 @@ export const StyledSwiperMain = styled(Swiper)`
 
   .swiper-button-prev {
     position: absolute;
-    left: 0;
+    left: 5px;
     color: #000;
   }
 
   .swiper-button-next {
-    right: 0;
+    right: 5px;
     color: #000;
   }
 `;

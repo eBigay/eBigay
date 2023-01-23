@@ -41,7 +41,7 @@ const Search = () => {
     page: 0,
     sortBy: "createdAt",
     sortOrder: "desc",
-    limit: 6,
+    limit: 12,
   });
   const [isLeftContainerOpen, setIsLeftContainerOpen] =
     useState<boolean>(false);
@@ -70,23 +70,9 @@ const Search = () => {
     return () => clearTimeout(timeoutId);
   }, [searchParams]);
 
-  useEffect(() => {
-    onSetFilter("queryText", searchParams.get("q") ?? "");
-  }, [searchParams]);
-
-  const debouncedFetchNextPage = debounce(fetchNextPage, 500);
-
-  useIntersectionObserver({
-    target: observerElem,
-    onIntersect: debouncedFetchNextPage,
-    enabled: hasNextPage && !isFetchingNextPage,
-    dependencies: [showLoader, isLoading, isFetchingNextPage],
-  });
-
   const onSetFilter = useCallback(
     (property: string, value: any) => {
       const newFilter = { ...filterBy, [property]: value };
-      console.log(newFilter);
       if (property === "category") {
         setIsLeftContainerOpen(false);
         newFilter.queryText = "";
@@ -99,6 +85,19 @@ const Search = () => {
     },
     [filterBy, setSearchParams]
   );
+
+  useEffect(() => {
+    onSetFilter("queryText", searchParams.get("q") ?? "");
+  }, [searchParams]);
+
+  const debouncedFetchNextPage = debounce(fetchNextPage, 500);
+
+  useIntersectionObserver({
+    target: observerElem,
+    onIntersect: debouncedFetchNextPage,
+    enabled: hasNextPage && !isFetchingNextPage,
+    dependencies: [showLoader, isLoading, isFetchingNextPage],
+  });
 
   const toggleLeftContainer = () => {
     setIsLeftContainerOpen((LeftContainerOpenState) => !LeftContainerOpenState);

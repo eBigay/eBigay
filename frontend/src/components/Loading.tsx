@@ -8,10 +8,25 @@ type InputProps = {
   pos?: string;
   absolutePos?: boolean;
   className?: string;
+  height?: string;
+  marginTop?: string;
 };
 
-const Loading = ({ className, size, pos, absolutePos }: InputProps) => (
-  <LoadingContainer pos={pos} absolutePos={absolutePos} className={className}>
+const Loading = ({
+  className,
+  size,
+  pos,
+  absolutePos,
+  height,
+  marginTop,
+}: InputProps) => (
+  <LoadingContainer
+    pos={pos}
+    absolutePos={absolutePos}
+    className={className}
+    height={height}
+    marginTop={marginTop}
+  >
     <SpinnerContainer size={size}>
       <svg>
         <Spinner cx="50" cy="50" r="45" />

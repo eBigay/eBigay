@@ -26,7 +26,7 @@ background-color: ${({ theme }: any) => theme.colors.clr4};
 `;
 export const StyledFormContainer = styled.div`
   display: flex;
-  padding: 0.4rem 5.6rem 0.4rem 0.4rem;
+  padding: 0.4rem 3rem 0.4rem 0.4rem;
   max-width: none;
   border-bottom: 1px solid ${({ theme }) => theme.colors.clr3light};
   ${MinWidth.tabletBreakpoint`
@@ -37,7 +37,9 @@ export const StyledFormContainer = styled.div`
 
   `}
 `;
-export const StyledInput = styled.input`
+export const StyledAutocomplete = styled(Autocomplete).attrs({
+  className: "StyledAutocomplete",
+})`
   flex: 1;
   border: 0;
   height: 4rem;
@@ -96,20 +98,4 @@ export const StyledSearch = styled(Search)<ISearchButtonProps>`
     align-self: center;
     margin: 0 1rem 0 auto;
   }
-`;
-
-export const StyledAutocomplete = styled(Autocomplete).attrs({
-  className: "StyledAutocomplete",
-})`
-  flex: 1;
-  border: 0;
-  height: 4rem;
-  color: ${({ theme }) => theme.colors.clr3};
-  font-family: Poppins;
-  font-size: ${({ theme }) => theme.fontSizes.fsS};
-  background-color: transparent;
-
-  ${MinWidth.tabletBreakpoint`
-  height: 3.5rem
-  `}
 `;

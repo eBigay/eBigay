@@ -1,13 +1,13 @@
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Formik, FormikValues } from "formik";
+import { Avatar } from "@mui/material";
 import useAuth from "../hooks/useAuth";
 import Input from "./layout/Input";
 import Logo from "./layout/Logo";
 import SignUpSchema from "../schemas/SignUpSchema";
 import FormInputsData from "../data/FormInputsData";
 import LoginInputContainer, {
-  ImageInput,
   UserImageName,
   PrivacyPolicy,
   SignUpImageContainer,
@@ -16,10 +16,9 @@ import LoginInputContainer, {
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import SignUpPlus from "../assets/svgs/SignUpPlus.svg";
 import { IUserRegister } from "../interfaces/IUser.interface";
-import { Avatar } from "@mui/material";
 
 // @ts-ignore
-import UploadWidget from "../components/UploadWidget";
+import UploadWidget from "./UploadWidget";
 
 interface SignUpValues {
   username: string;

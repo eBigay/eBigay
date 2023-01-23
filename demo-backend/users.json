@@ -1,1 +1,77 @@
-{"users":[{"id":1,"email":"koren3210@gmail.com","password":"01523841Aa","username":"Koren Turgeman","phoneNumber":"054234322","imageUrl":"https://ca.slack-edge.com/T021743D5T8-U0276DVNY2F-f2361f5e4429-512","isAdmin":true},{"id":2,"email":"yanivwein22@gmail.com","password":"123123Aa","username":"Yaniv Weinshtein","imageUrl":"https://res.cloudinary.com/di8d3r9vo/image/upload/v1673521008/neleytd4qo8y1vsnooo1.png"},{"id":3,"email":"test@test.test","password":"123ASDasd","username":"testtest","phoneNumber":"1231231231","location":"123","imageUrl":"http://res.cloudinary.com/di8d3r9vo/image/upload/v1673608188/rgd3rc4uoy3ftzuuwtab.png"},{"username":"koko","email":"koren32101@icloud.com","phoneNumber":"2342342343","location":"lat: 33.2153081, long: 35.5780119","imageUrl":"https://res.cloudinary.com/di8d3r9vo/image/upload/v1673890656/ncyrgulnvtg5ncxu0qsl.jpg","id":"5ad696e2-8017-4ef5-ad62-e2eb4a664439"},{"username":"koko","email":"sdvsdv@gmail.com","phoneNumber":"346354634525","location":"lat: 33.2153342, long: 35.5780433","imageUrl":"https://res.cloudinary.com/di8d3r9vo/image/upload/v1674064559/hxg6cbwj4yqnb47mkbvp.jpg","id":"04f0d260-6b54-4a1d-a44a-a099663e20dc"},{"username":"koko","email":"vsdvsdbsd@fsdf.com","phoneNumber":"4234232342","location":"lat: 33.2153081, long: 35.5780119","imageUrl":"https://res.cloudinary.com/di8d3r9vo/image/upload/v1674152572/tl64o2wwsq0udpxaugcs.jpg","id":"06789c44-808f-4586-a513-a3209645b33c"},{"username":"koren1313","email":"fwegfefgq@ewfewf.com","phoneNumber":"3643646efegr","location":"lat: 33.215308, long: 35.57795","imageUrl":"https://res.cloudinary.com/di8d3r9vo/image/upload/v1674243024/gih290v7umoistwmg8ky.jpg","id":"f894d373-282a-44e5-8530-e46e11373ba2"},{"username":"csacsa","email":"koren3210@gmail.com","phoneNumber":"34352354523624","location":"lat: 33.2153342, long: 35.5780433","id":"7c545171-74d9-43bd-a511-f421eb2538f1"}]}
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "koren3210@gmail.com",
+      "password": "01523841Aa",
+      "username": "Koren Turgeman",
+      "phoneNumber": "054234322",
+      "imageUrl": "https://ca.slack-edge.com/T021743D5T8-U0276DVNY2F-f2361f5e4429-512",
+      "isAdmin": true
+    },
+    {
+      "id": 2,
+      "email": "yanivwein22@gmail.com",
+      "password": "123123Aa",
+      "username": "Yaniv Weinshtein",
+      "imageUrl": "https://res.cloudinary.com/di8d3r9vo/image/upload/v1673521008/neleytd4qo8y1vsnooo1.png"
+    },
+    {
+      "id": 3,
+      "email": "test@test.test",
+      "password": "123ASDasd",
+      "username": "testtest",
+      "phoneNumber": "1231231231",
+      "location": "123",
+      "imageUrl": "http://res.cloudinary.com/di8d3r9vo/image/upload/v1673608188/rgd3rc4uoy3ftzuuwtab.png"
+    },
+    {
+      "username": "koko",
+      "email": "koren32101@icloud.com",
+      "phoneNumber": "2342342343",
+      "location": "lat: 33.2153081, long: 35.5780119",
+      "imageUrl": "https://res.cloudinary.com/di8d3r9vo/image/upload/v1673890656/ncyrgulnvtg5ncxu0qsl.jpg",
+      "id": "5ad696e2-8017-4ef5-ad62-e2eb4a664439"
+    },
+    {
+      "username": "koko",
+      "email": "sdvsdv@gmail.com",
+      "phoneNumber": "346354634525",
+      "location": "lat: 33.2153342, long: 35.5780433",
+      "imageUrl": "https://res.cloudinary.com/di8d3r9vo/image/upload/v1674064559/hxg6cbwj4yqnb47mkbvp.jpg",
+      "id": "04f0d260-6b54-4a1d-a44a-a099663e20dc"
+    },
+    {
+      "username": "koko",
+      "email": "vsdvsdbsd@fsdf.com",
+      "phoneNumber": "4234232342",
+      "location": "lat: 33.2153081, long: 35.5780119",
+      "imageUrl": "https://res.cloudinary.com/di8d3r9vo/image/upload/v1674152572/tl64o2wwsq0udpxaugcs.jpg",
+      "id": "06789c44-808f-4586-a513-a3209645b33c"
+    },
+    {
+      "username": "koren1313",
+      "email": "fwegfefgq@ewfewf.com",
+      "phoneNumber": "3643646efegr",
+      "location": "lat: 33.215308, long: 35.57795",
+      "imageUrl": "https://res.cloudinary.com/di8d3r9vo/image/upload/v1674243024/gih290v7umoistwmg8ky.jpg",
+      "id": "f894d373-282a-44e5-8530-e46e11373ba2"
+    },
+    {
+      "username": "csacsa",
+      "email": "koren3210@gmail.com",
+      "phoneNumber": "34352354523624",
+      "location": "lat: 33.2153342, long: 35.5780433",
+      "id": "7c545171-74d9-43bd-a511-f421eb2538f1"
+    },
+    {
+      "id": "7c545171-74d9-43bd-a511-f421eb2538f11",
+      "email": "korefvergwen3210@gmail.com",
+      "password": "523525efwefaAfwef",
+      "username": "kokokoko",
+      "phoneNumber": "54235436223",
+      "location": "lat: 33.2153073, long: 35.577974",
+      "imageUrl": "https://res.cloudinary.com/di8d3r9vo/image/upload/v1674495923/th8qi2olzldeoubd3prv.jpg"
+    }
+  ]
+}

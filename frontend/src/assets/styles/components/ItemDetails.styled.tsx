@@ -6,7 +6,9 @@ interface IsItemDetailsOpen {
   isItemDetailsOpen?: boolean;
 }
 
-export const PopUp = styled.div<IsItemDetailsOpen>`
+export const PopUp = styled.div.attrs({
+  className: "PopUp",
+})<IsItemDetailsOpen>`
   display: ${({ isItemDetailsOpen }) => (isItemDetailsOpen ? "flex" : "none")};
   background-color: #f4f5f7;
   border-radius: 20px;
@@ -25,7 +27,9 @@ export const PopUp = styled.div<IsItemDetailsOpen>`
 `}
 `;
 
-export const ItemDetailsContainer = styled.div`
+export const ItemDetailsContainer = styled.div.attrs({
+  className: "ItemDetailsContainer",
+})`
   width: 100%;
   height: 100%;
   display: flex;
@@ -47,9 +51,14 @@ export const MainIMg = styled.img`
   width: 100%;
   object-fit: cover;
   border-radius: 20px;
+  ${RespondTo.mobileBreakpoint`
+  width: 80vw;
+  `}
 `;
 
-export const ItemDetailsSection = styled.div`
+export const ItemDetailsSection = styled.div.attrs({
+  className: "ItemDetailsSection",
+})`
   max-width: 50%;
   height: 100%;
   display: flex;
@@ -63,32 +72,77 @@ max-width:100%;
   `}
 `;
 
-export const DetailsDescription = styled.p`
+export const DetailsDescription = styled.p.attrs({
+  className: "DetailsDescription",
+})`
   color: ${({ theme }) => theme.colors.clr3};
   font-size: ${({ theme }) => theme.fontSizes.fsXL};
   font-size: ${({ theme }) => theme.fontSizes.fsM};
 `;
 
-export const CreatedByContainer = styled.div`
+export const PhoneNumberContainer = styled.div.attrs({
+  className: "PhoneNumberContainer",
+})`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 12px;
+`;
+
+export const PhoneNumber = styled.a.attrs({
+  className: "PhoneNumber",
+})`
+  color: ${({ theme }) => theme.colors.clr3};
+  font-size: ${({ theme }) => theme.fontSizes.fsL};
+  text-decoration: none;
+  ${RespondTo.mobileBreakpoint`
+  font-size: ${({ theme }: any) => theme.fontSizes.fsM};
+  `}
+`;
+
+export const PhoneImage = styled.img.attrs({
+  className: "PhoneImage",
+})`
+  width: 23px;
+  height: 23px;
+  ${RespondTo.mobileBreakpoint`
+  width: 20px;
+  height: 20px;
+`}
+`;
+
+export const CreatedByContainer = styled.div.attrs({
+  className: "CreatedByContainer",
+})`
   display: flex;
   gap: 15px;
 `;
-export const CreatedByWrapper = styled.div`
+export const CreatedByWrapper = styled.div.attrs({
+  className: "CreatedByWrapper",
+})`
   display: flex;
   flex-direction: column;
   gap: 15px;
+  ${RespondTo.mobileBreakpoint`
+  gap: 0;
+`}
 `;
-export const CreatedByName = styled.h3`
+export const CreatedByName = styled.h3.attrs({ className: "CreatedByName" })`
   font-size: ${({ theme }) => theme.fontSizes.l};
   font-weight: 600;
 `;
 
-export const ImgsWrapper = styled.div`
+export const ImgsWrapper = styled.div.attrs({ className: "ImgsWrapper" })`
   display: flex;
   gap: 37px;
   align-items: center;
   justify-content: center;
   margin-top: auto;
+  ${RespondTo.mobileBreakpoint`
+  .swiper-lazy-preloader {
+    margin-top:  0;
+  }
+  `}
 `;
 
 export const SecondaryImg = styled.img`
@@ -102,7 +156,7 @@ export const SecondaryImg = styled.img`
   `}
 `;
 
-export const DetailsName = styled.h1`
+export const DetailsName = styled.h1.attrs({ className: "DetailsName" })`
   font-weight: 600;
   font-size: ${({ theme }) => theme.fontSizes.fsXXL};
   ${RespondTo.mobileBreakpoint`
@@ -117,25 +171,34 @@ export const CancelIcon = styled(Close)`
   right: 1.5rem;
   transform: scale(1.5);
   cursor: pointer;
+  z-index: 10;
   &:hover {
     color: ${({ theme }) => theme.colors.clr3};
     transition: 0.4s ease;
   }
 `;
 
-export const CreatedByLocation = styled.h3`
+export const CreatedByLocation = styled.h3.attrs({
+  className: "CreatedByLocation",
+})`
   color: ${({ theme }) => theme.colors.clr3};
   font-size: ${({ theme }) => theme.fontSizes.fsS};
   font-weight: 400;
 `;
-export const CreatedByTime = styled.h3`
+export const CreatedByTime = styled.h3.attrs({ className: "CreatedByTime" })`
   color: ${({ theme }) => theme.colors.clr3};
   font-size: ${({ theme }) => theme.fontSizes.fsXs};
   font-weight: 600;
 `;
 
-export const LocationFlag = styled.img``;
+export const LocationFlag = styled.img.attrs({ className: "LocationFlag" })``;
 
-export const ImagesListWrapper = styled.div`
+export const ImagesListWrapper = styled.div.attrs({
+  className: "ImagesListWrapper",
+})`
   margin-top: auto;
+  height: 8rem;
+  ${RespondTo.mobileBreakpoint`
+    margin-top:  1rem;    
+  `}
 `;

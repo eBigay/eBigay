@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { Formik, FormikValues } from "formik";
+import { ClearOutlined } from "@mui/icons-material";
+import { v4 as uuidv4 } from "uuid";
 import {
   StyledNewItemContainer,
   StyledAddNewItemText,
@@ -8,19 +11,14 @@ import {
   ImageWrapper,
   StyledCancelButton,
 } from "../assets/styles/pages/AddNewItem.styled";
-import { Formik, FormikValues } from "formik";
 
 import Input from "../components/layout/Input";
 
 // @ts-ignore
 import UploadWidget from "../components/UploadWidget";
 import PrimaryButton from "../assets/styles/base/Button.styled";
-import { ClearOutlined } from "@mui/icons-material";
 import useItems from "../hooks/useItems";
 import useAuthContext from "../hooks/useAuthContext";
-import { ToastContainer, toast } from "react-toastify";
-
-import { v4 as uuidv4 } from "uuid";
 
 import itemSchema from "../schemas/ItemSchema";
 
@@ -48,7 +46,6 @@ const AddNewItem = () => {
     state: { user },
   } = useAuthContext();
 
-  const [url, updateUrl] = useState<string>();
   const [urls, updateUrls] = useState<string[]>([]);
   const [error, updateError] = useState<any>();
 
@@ -62,7 +59,6 @@ const AddNewItem = () => {
     }
     if (result.event === "success")
       updateUrls((prevUrls) => [...prevUrls, result?.info?.secure_url]);
-    updateUrl(result?.info?.secure_url);
   }
 
   const handleDeleteImage = (urlToDelete: string) => {
@@ -97,16 +93,12 @@ const AddNewItem = () => {
       >
         {({ handleSubmit }: FormikValues) => (
           <StyledForm onSubmit={handleSubmit}>
-            <Input
-              type="text"
-              placeholder="item name"
-              valueName="itemName"
-            ></Input>
+            <Input type="text" placeholder="item name" valueName="itemName" />
             <Input
               type="text"
               placeholder="description"
               valueName="description"
-            ></Input>
+            />
             <UploadWidget onUpload={handleOnUpload}>
               {({ open }: any) => {
                 function handleOnClick(e: any) {
@@ -140,18 +132,6 @@ const AddNewItem = () => {
           </>
         )}
       </AddNewItemImageContainer>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
     </StyledNewItemContainer>
   );
 };

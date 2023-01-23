@@ -1,9 +1,9 @@
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router";
+import { toast } from "react-toastify";
 import { IUserRegister } from "../interfaces/IUser.interface";
 import userService from "../services/user.service";
 import useAuthContext from "./useAuthContext";
-import { toast } from "react-toastify";
 
 const useAuth = () => {
   const { dispatch } = useAuthContext();
@@ -15,8 +15,10 @@ const useAuth = () => {
 
   const signup = useMutation(signupUser, {
     onSuccess: (user) => {
-      dispatch({ type: "LOGIN", payload: { user } });
-      navigate("/");
+      setTimeout(() => {
+        dispatch({ type: "LOGIN", payload: { user } });
+        navigate("/");
+      }, 1100);
     },
     onError: (error: string) => {
       toast.error(`${error}`, {
@@ -42,8 +44,10 @@ const useAuth = () => {
 
   const login = useMutation(loginUser, {
     onSuccess: (user) => {
-      dispatch({ type: "LOGIN", payload: { user } });
-      navigate("/");
+      setTimeout(() => {
+        dispatch({ type: "LOGIN", payload: { user } });
+        navigate("/");
+      }, 1100);
     },
     onError: (error: string) => {
       toast.error(`${error}`, {

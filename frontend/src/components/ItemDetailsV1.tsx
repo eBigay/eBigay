@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Avatar, Skeleton } from "@mui/material";
+import { Avatar } from "@mui/material";
 import _ from "lodash";
 import { formatDistance } from "date-fns";
 import { SwiperSlide } from "swiper/react";

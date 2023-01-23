@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const uploadFile = (file: File) => {
-  const CLOUD_NAME = "di8d3r9vo";
-  const PRESET_NAME = "g4fcacfw";
+  const CLOUD_NAME = import.meta.env.VITE_CLOUD_NAME || "";
+  const PRESET_NAME = import.meta.env.VITE_PRESENT_NAME || "";
   const UPLOAD_URL = `https://api.cloudinary.com/v1_1/${CLOUD_NAME}/auto/upload`;
   const formData = new FormData();
   formData.append("file", file);

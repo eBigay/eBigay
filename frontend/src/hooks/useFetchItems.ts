@@ -20,7 +20,7 @@ export const useAddItem = () => {
     onSuccess: (data: IItem) => {
       //! 'data' refers to the *entire* response from the POST request
       // queryClient.invalidateQueries('super-heroes')
-      // ? Refetch updated data on success
+      // ? invalidate the query and force a refetch on success
       //* OR
       queryClient.setQueriesData("items", (oldQueryData: any) => {
         return {

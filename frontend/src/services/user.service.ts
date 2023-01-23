@@ -30,7 +30,7 @@ const signup = async (userInfo: IUserRegister): Promise<IUser> => {
 
 const logout = async (): Promise<void> => {
   try {
-    localStorage.removeItem("user");
+    return localStorage.removeItem("user");
   } catch (err) {
     throw err;
   }

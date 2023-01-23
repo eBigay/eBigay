@@ -1,5 +1,4 @@
 import { Avatar } from "@mui/material";
-import _ from "lodash";
 import { formatDistance } from "date-fns";
 import { useNavigate } from "react-router";
 import ScreenOverlay from "./layout/ScreenOverlay";
@@ -88,7 +87,7 @@ const ItemDetails = () => {
                 Log in to details
               </PrimaryButton>
             )}
-            <ImagesListWrapper></ImagesListWrapper>
+            <ImagesListWrapper />
           </ItemDetailsSection>
         </ItemDetailsContainer>
         <CancelIcon onClick={toggleItemDetailsOpen} />
