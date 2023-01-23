@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { IUserRegister } from "../interfaces/IUser.interface";
 import userService from "../services/user.service";
 import useAuthContext from "./useAuthContext";
+import { toast } from "react-toastify";
 
 const useAuth = () => {
   const { dispatch } = useAuthContext();
@@ -17,7 +18,18 @@ const useAuth = () => {
       dispatch({ type: "LOGIN", payload: { user } });
       navigate("/");
     },
-    onError: (error) => console.log(error) /* eslint-disable-line */,
+    onError: (error: string) => {
+      toast.error(`${error}`, {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    },
   });
 
   const loginUser = (credentials: {
@@ -33,7 +45,18 @@ const useAuth = () => {
       dispatch({ type: "LOGIN", payload: { user } });
       navigate("/");
     },
-    onError: (error) => console.log(error) /* eslint-disable-line */,
+    onError: (error: string) => {
+      toast.error(`${error}`, {
+        position: "bottom-left",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    },
   });
 
   const logoutUser = () => {

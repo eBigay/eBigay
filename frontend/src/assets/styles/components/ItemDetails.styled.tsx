@@ -33,7 +33,7 @@ export const ItemDetailsContainer = styled.div`
   padding: 70px 60px;
   word-break: break-all;
   ${RespondTo.mobileBreakpoint`
- padding: 1rem;
+ padding: 3rem 2.5rem;
  flex-direction: column;
  gap: 0.25rem;
 
@@ -66,6 +66,7 @@ max-width:100%;
 export const DetailsDescription = styled.p`
   color: ${({ theme }) => theme.colors.clr3};
   font-size: ${({ theme }) => theme.fontSizes.fsXL};
+  font-size: ${({ theme }) => theme.fontSizes.fsM};
 `;
 
 export const CreatedByContainer = styled.div`
@@ -96,7 +97,7 @@ export const SecondaryImg = styled.img`
   border-radius: 20px;
   object-fit: cover;
   ${RespondTo.mobileBreakpoint`
-  height: 5.25rem;
+  height: 4rem;
 
   `}
 `;
@@ -104,6 +105,10 @@ export const SecondaryImg = styled.img`
 export const DetailsName = styled.h1`
   font-weight: 600;
   font-size: ${({ theme }) => theme.fontSizes.fsXXL};
+  ${RespondTo.mobileBreakpoint`
+  font-size: ${({ theme }: any) => theme.fontSizes.fsXL};
+
+  `}
 `;
 
 export const CancelIcon = styled(Close)`

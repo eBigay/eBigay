@@ -74,7 +74,7 @@ const ItemDetails = () => {
             </CreatedByContainer>
             <DetailsDescription>{description}</DetailsDescription>
             {user ? (
-              <h3>{user.phoneNumber}</h3>
+              <h3>Phone Number: {user.phoneNumber}</h3>
             ) : (
               <PrimaryButton
                 width="12rem"
