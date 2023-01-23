@@ -62,7 +62,7 @@ const Autocomplete = ({ query, setQuery }: AutocompleteProps) => {
           placeholder="Search here..."
           sx={{
             "@media (max-width: 1000px)": {
-              width: "100%",
+              width: "100vh",
             },
           }}
         />

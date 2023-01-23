@@ -21,14 +21,17 @@ left: 0;
 width: 100%;
 height: 100%;
 z-index: 1000;
-background-color: ${({ theme }: any) => theme.colors.clr4};
+background-color: rgba(255,255,255,0.9);
+backdrop-filter: blur(3px);
   `}
 
   ${MinWidth.wideBreakpoint`
 flex: 0.5;
 `}
 `;
-export const StyledFormContainer = styled.div`
+export const StyledFormContainer = styled.div.attrs({
+  className: "StyledFormContainer",
+})`
   display: flex;
   padding: 0.4rem 3rem 0.4rem 0.4rem;
   max-width: none;
@@ -52,7 +55,7 @@ export const StyledAutocomplete = styled(Autocomplete).attrs({
   background-color: transparent;
 
   ${MinWidth.tabletBreakpoint`
-  height: 3.5rem
+  height: 3.5rem;
   `}
 `;
 export const StyledForm = styled.form.attrs({ className: "StyledForm" })`
