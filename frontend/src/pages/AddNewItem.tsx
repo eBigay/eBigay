@@ -1,13 +1,6 @@
 import { useState } from "react";
 import { Formik, FormikValues } from "formik";
-import {
-  FormControl,
-  InputLabel,
-  MenuItem,
-  Select,
-  Autocomplete,
-  TextField,
-} from "@mui/material";
+import { Autocomplete, TextField } from "@mui/material";
 import { ClearOutlined } from "@mui/icons-material";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -57,6 +50,7 @@ const AddNewItem = () => {
 
   const [urls, updateUrls] = useState<string[]>([]);
   const [uploadError, setUploadError] = useState<string>("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   function handleOnUpload(error: any, result: any, widget: any) {
     if (error) {
@@ -81,14 +75,13 @@ const AddNewItem = () => {
     const newItem = {
       id: uuidv4(),
       ...values,
+      category: selectedCategory,
       images: urls,
       createdAt: Date.now(),
       createdBy: user,
     };
     addItem(newItem);
   };
-
-  const [selectedCategory, setSelectedCategory] = useState("");
 
   return (
     <StyledNewItemContainer>
@@ -128,64 +121,49 @@ const AddNewItem = () => {
                     "@media (max-width: 600px)": {
                       width: "100vh",
                     },
+                    input: {
+                      "&::placeholder": {
+                        // <----- Add this.
+                        opacity: 1,
+                      },
+                    },
                   }}
                 />
               )}
               inputValue={selectedCategory}
-              onInputChange={(event, value) => setSelectedCategory(value)}
+              onInputChange={(event, value) => {
+                setSelectedCategory(value);
+              }}
               sx={{
                 width: 500,
+                "@media (max-width: 1200px)": {
+                  width: "90%",
+                },
+                "@media (max-width: 1000px)": {
+                  width: "100%",
+                },
+                "@media (max-width: 600px)": {
+                  width: "90%",
+                },
                 ".MuiFormControl-root": {
                   width: "100%",
                 },
                 ".MuiInputBase-root ": {
-                  height: 60,
+                  height: 70,
+                  borderRadius: 2.5,
+                  fontSize: 20,
+                  fontFamily: "Poppins",
+                  color: "rgba(144, 135, 170,1)",
+                  opacity: 1,
+                  "@media (max-width: 600px)": {
+                    fontSize: 14,
+                  },
                 },
                 ".MuiOutlinedInput-root ": {
                   padding: "5px 30px",
                 },
-                ".MuiAutocomplete-input": {
-                  // padding: "12px 2px",
-                },
-                "@media (max-width: 1000px)": {
-                  // padding: "8px 0 0",
-                },
-                "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                  // padding: "4px 0 0",
-                },
               }}
             />
-
-            <FormControl
-              sx={{
-                m: 1,
-                minWidth: 500,
-                "@media (max-width: 1000px)": {
-                  minWidth: "100%",
-                },
-                "@media (max-width: 600px)": {
-                  minWidth: "90%",
-                },
-              }}
-            >
-              <InputLabel id="demo-simple-select-label">Category</InputLabel>
-              <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                label="Category"
-                placeholder="Category"
-                displayEmpty
-                value={selectedCategory}
-                onChange={(event) => setSelectedCategory(event.target.value)}
-                sx={{ height: 60 }}
-              >
-                {CategoriesToFilter.map((category) => (
-                  <MenuItem key={category.id} value={category.category}>
-                    {category.category}
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
 
             {/* eslint-disable */}
             <UploadWidget onUpload={handleOnUpload}>
