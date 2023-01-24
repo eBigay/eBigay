@@ -53,13 +53,24 @@ export const LinksContainer = styled.nav<IStyledLinksProps>`
 		width: 65%;
 		height: 100%;
 		padding-top: 6.9rem;
-		flex-direction: column-reverse;
-    justify-content: flex-end;
+		flex-direction: column;
+    justify-content: flex-start;
 		background-color: ${({ theme }: any) => theme.colors.clr4};
 		transform: ${({ isMenuOpen }: IStyledLinksProps) =>
       isMenuOpen ? "translateX(0%)" : "translateX(100%)"};
 		transition: 0.5s ease-in-out;
   `}
+`;
+
+export const StyledBottomContainer = styled.div.attrs({
+  className: "StyledBottomContainer",
+})`
+  position: relative;
+
+  ${RespondTo.tabletBreakpoint`
+position: absolute;
+bottom: 5%;
+}`}
 `;
 
 export const StyledLink = styled(NavLink)`
