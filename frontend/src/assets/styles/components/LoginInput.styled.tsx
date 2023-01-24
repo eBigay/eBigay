@@ -15,7 +15,6 @@ const LoginInputContainer = styled.form.attrs({
   align-items: center;
   font-size: ${({ theme }) => theme.fontSizes.fsL};
   margin: ${({ LoginPage }) => (LoginPage ? "15rem auto 0" : "10rem auto 0")};
-  height: 100%;
   .Password {
     margin-bottom: ${({ LoginPage }) => (LoginPage ? "1rem" : "1.7rem")};
   }

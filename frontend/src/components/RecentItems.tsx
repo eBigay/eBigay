@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { UseQueryResult } from "react-query";
 import useItems from "../hooks/useItems";
 import { RecentItemsHeader } from "../assets/styles/components/RecentItems.styled";
@@ -12,14 +10,14 @@ import ItemList from "./ItemList";
 const RecentItems = () => {
   const { useQueryAllItems } = useItems();
 
-  const [filterBy, setFilterBy] = useState<IFilterBy>({
+  const filterBy: IFilterBy = {
     queryText: "",
     category: "",
     page: 0,
     sortBy: "createdAt",
     sortOrder: "desc",
     limit: 12,
-  });
+  };
 
   const {
     isLoading,

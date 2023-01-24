@@ -13,6 +13,7 @@ const LoginSignupPage = styled(FadeIn).attrs({
   height: 100%;
   padding: 0;
   overflow: hidden;
+  overflow-y: scroll;
   min-height: 100vh;
   ${RespondTo.tabletBreakpoint`
   flex-direction: column;

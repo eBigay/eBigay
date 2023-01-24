@@ -40,12 +40,13 @@ function useItems() {
   };
 
   const add = useMutation(addItem, {
-    onSuccess: (addedItem) => {
+    onSuccess: (newItem) => {
+      const { itemName } = newItem;
       queryClient.setQueryData("items", (currentItems: IItem[] | undefined) => [
         ...(currentItems || []),
-        addedItem,
+        newItem,
       ]);
-      toast.success("New Item Added!");
+      toast.success(`Added New Item: ${itemName}`);
     },
     onError: (error: string) => {
       toast.error(`${error}`);

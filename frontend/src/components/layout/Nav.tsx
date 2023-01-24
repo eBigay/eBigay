@@ -71,7 +71,7 @@ const Nav = ({
 
   const handleLogOut = () => {
     logoutUser();
-    toggleIsMenuOpen();
+    if (isMenuOpen) toggleIsMenuOpen();
   };
 
   return (

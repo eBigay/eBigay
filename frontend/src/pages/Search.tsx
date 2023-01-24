@@ -105,7 +105,7 @@ const Search = () => {
 
   useOverflow(isLeftContainerOpen);
 
-  if (showLoader) return <Loading pos="center" />;
+  // if (showLoader) return <Loading pos="center" />;
   return (
     <>
       <TopContainer>

@@ -11,7 +11,7 @@ const BasicToastContainer = () => {
       closeOnClick
       rtl={false}
       draggable
-      theme={"light"}
+      theme="light"
     />
   );
 };
