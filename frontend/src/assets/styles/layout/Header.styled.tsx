@@ -45,11 +45,15 @@ export const LinksContainer = styled.nav<IStyledLinksProps>`
   font-family: Poppins;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.clr2};
+  ${RespondTo.laptopBreakpoint`
+  gap: 30px;
+`}
   ${RespondTo.tabletBreakpoint`
   position: fixed;
 		top: 0;
 		right: 0;
 		z-index: 50;
+    gap: 50px;
 		width: 65%;
 		height: 100%;
 		padding-top: 6.9rem;

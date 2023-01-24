@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Formik, FormikValues } from "formik";
-import { Autocomplete, TextField } from "@mui/material";
 import { ClearOutlined } from "@mui/icons-material";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -22,7 +22,7 @@ import useItems from "../hooks/useItems";
 import useAuthContext from "../hooks/useAuthContext";
 
 import itemSchema from "../schemas/ItemSchema";
-import CategoriesToFilter from "../data/CategoriesToFilter";
+import CategoryAutocomplete from "../components/CategoryAutocomplete";
 
 interface NewItemValues {
   itemName: string;
@@ -75,13 +75,19 @@ const AddNewItem = () => {
     const newItem = {
       id: uuidv4(),
       ...values,
-      category: selectedCategory,
+      category: selectedCategory.toLowerCase(),
       images: urls,
       createdAt: Date.now(),
       createdBy: user,
     };
     addItem(newItem);
   };
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) navigate("/");
+  }, [user]);
 
   return (
     <StyledNewItemContainer>
@@ -103,68 +109,10 @@ const AddNewItem = () => {
               placeholder="description"
               valueName="description"
             />
-
-            <Autocomplete
-              disablePortal
-              autoComplete
-              autoHighlight
-              freeSolo // allows to search when the options array is empty
-              id="categories"
-              options={CategoriesToFilter.map((category) => category.category)}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  key={params.id}
-                  placeholder="Categories"
-                  sx={{
-                    width: "90%",
-                    "@media (max-width: 600px)": {
-                      width: "100vh",
-                    },
-                    input: {
-                      "&::placeholder": {
-                        // <----- Add this.
-                        opacity: 1,
-                      },
-                    },
-                  }}
-                />
-              )}
-              inputValue={selectedCategory}
-              onInputChange={(event, value) => {
-                setSelectedCategory(value);
-              }}
-              sx={{
-                width: 500,
-                "@media (max-width: 1200px)": {
-                  width: "90%",
-                },
-                "@media (max-width: 1000px)": {
-                  width: "100%",
-                },
-                "@media (max-width: 600px)": {
-                  width: "90%",
-                },
-                ".MuiFormControl-root": {
-                  width: "100%",
-                },
-                ".MuiInputBase-root ": {
-                  height: 70,
-                  borderRadius: 2.5,
-                  fontSize: 20,
-                  fontFamily: "Poppins",
-                  color: "rgba(144, 135, 170,1)",
-                  opacity: 1,
-                  "@media (max-width: 600px)": {
-                    fontSize: 14,
-                  },
-                },
-                ".MuiOutlinedInput-root ": {
-                  padding: "5px 30px",
-                },
-              }}
+            <CategoryAutocomplete
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
             />
-
             {/* eslint-disable */}
             <UploadWidget onUpload={handleOnUpload}>
               {({ open }: any) => {
@@ -174,7 +122,7 @@ const AddNewItem = () => {
                 }
                 return (
                   <PrimaryButton onClick={handleOnClick}>
-                    Upload an Image
+                    Upload Images
                   </PrimaryButton>
                 );
               }}
