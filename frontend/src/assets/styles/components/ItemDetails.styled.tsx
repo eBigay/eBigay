@@ -132,7 +132,7 @@ export const CreatedByWrapper = styled.div.attrs({
 })`
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 2px;
   ${RespondTo.mobileBreakpoint`
   gap: 0;
 `}
@@ -140,6 +140,7 @@ export const CreatedByWrapper = styled.div.attrs({
 export const CreatedByName = styled.h3.attrs({ className: "CreatedByName" })`
   font-size: ${({ theme }) => theme.fontSizes.l};
   font-weight: 600;
+  line-height: 1;
 `;
 
 export const ImgsWrapper = styled.div.attrs({ className: "ImgsWrapper" })`
