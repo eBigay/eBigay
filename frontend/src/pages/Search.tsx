@@ -105,7 +105,7 @@ const Search = () => {
 
   useOverflow(isLeftContainerOpen);
 
-  if (showLoader) return <Loading pos="center" />;
+  // if (showLoader) return <Loading pos="center" />;
   return (
     <>
       <TopContainer>
@@ -130,6 +130,7 @@ const Search = () => {
         </LeftContainer>
         <ListContainer>
           {isSuccess &&
+            data.pages &&
             data.pages.map((page) =>
               page.map((item) => <ItemCard key={item.id} item={item} />)
             )}

@@ -8,6 +8,7 @@ import useOverflow from "../hooks/useOverflow";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import Calling from "../assets/svgs/Calling.svg";
 
 import {
   CreatedByName,
@@ -22,6 +23,9 @@ import {
   CreatedByWrapper,
   ImagesListWrapper,
   CreatedByTime,
+  PhoneNumberContainer,
+  PhoneImage,
+  PhoneNumber,
 } from "../assets/styles/components/ItemDetails.styled";
 
 import PrimaryButton from "../assets/styles/base/Button.styled";
@@ -71,20 +75,30 @@ const ItemDetails = () => {
                 <CreatedByTime>{relativeTimeString}</CreatedByTime>
               </CreatedByWrapper>
             </CreatedByContainer>
-            <DetailsDescription>{description}</DetailsDescription>
             {user ? (
-              <h3>Phone Number: {user.phoneNumber}</h3>
+              <>
+                <DetailsDescription>{description}</DetailsDescription>
+                <PhoneNumberContainer>
+                  <PhoneImage src={Calling} alt="phone" />
+                  <PhoneNumber href={`tel:${createdBy.phoneNumber}`}>
+                    {createdBy.phoneNumber}
+                  </PhoneNumber>
+                </PhoneNumberContainer>
+              </>
             ) : (
               <PrimaryButton
                 width="12rem"
-                height="70px"
+                height="3.5rem"
                 fontSize="l"
                 onClick={() => {
-                  navigate("/login");
                   toggleItemDetailsOpen();
+                  setTimeout(() => {
+                    navigate("/login");
+                    window.scroll({ top: 0, behavior: "smooth" });
+                  }, 100);
                 }}
               >
-                Log in to details
+                Log in for details
               </PrimaryButton>
             )}
             <ImagesListWrapper />

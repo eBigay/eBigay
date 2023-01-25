@@ -29,7 +29,7 @@ interface SignUpValues {
 }
 const SignUpInput = () => {
   const [imageUrl, updateImageUrl] = useState<string>();
-  const [error, updateError] = useState<any>();
+  const [signUpError, setSignUpError] = useState<string>("");
 
   const { signup } = useAuth();
   const { mutate: signupUser } = signup;
@@ -41,7 +41,7 @@ const SignUpInput = () => {
 
   function handleOnUpload(error: any, result: any, widget: any) {
     if (error) {
-      updateError(error);
+      setSignUpError(error);
       widget.close({
         quiet: true,
       });
@@ -72,6 +72,7 @@ const SignUpInput = () => {
           <>
             <Logo noNavigate />
             <SignUpImageContainer>
+              {/* eslint-disable */}
               <UploadWidget onUpload={handleOnUpload}>
                 {({ open }: any) => {
                   function handleOnClick(e: any) {
@@ -86,6 +87,7 @@ const SignUpInput = () => {
                   );
                 }}
               </UploadWidget>
+              {/* eslint-enable */}
             </SignUpImageContainer>
             <UserImageName>{imageName()}</UserImageName>
             {FormInputsData.map((input) => (
@@ -110,7 +112,7 @@ const SignUpInput = () => {
             >
               Sign up
             </PrimaryButton>
-            {error && <h2>{error}</h2>}
+            {signUpError !== "" && <h2>{signUpError}</h2>}
           </>
         </LoginInputContainer>
       )}

@@ -28,7 +28,6 @@ const StyledLeftContainer = styled.aside<IStyledLeftContainer>`
     width: 70%;
     `}
     ${MinWidth.laptopBreakpoint`
-    padding-left: 5rem;
     padding-right: 27px;
     `}
 `;

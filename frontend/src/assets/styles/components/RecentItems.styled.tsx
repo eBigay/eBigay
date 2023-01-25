@@ -20,6 +20,9 @@ export const RecentItemsHeader = styled.h2.attrs({
   ${MinWidth.wideBreakpoint`
   padding: 0 15rem;
   `}
+    ${MinWidth.superWideBreakpoint`
+  padding: 0 25rem;
+  `}
 
   &::before,
   &::after {
@@ -35,19 +38,4 @@ export const RecentItemsHeader = styled.h2.attrs({
 export const FetchErrorMessage = styled.p`
   font-size: ${({ theme }) => theme.fontSizes.fsL};
   text-align: center;
-`;
-
-export const RecentItemsContainer = styled.div`
-  padding: 0 5rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-template-rows: auto;
-  gap: 50px 27px;
-  ${RespondTo.mobileBreakpoint`
-   grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-   padding: 0 2rem;
-  `}
-  ${MinWidth.wideBreakpoint`
-  padding: 0 15rem;
-  `}
 `;

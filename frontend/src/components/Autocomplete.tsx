@@ -19,7 +19,7 @@ const Autocomplete = ({ query, setQuery }: AutocompleteProps) => {
     page: 0,
     sortBy: "createdAt",
     sortOrder: "desc",
-    limit: 6,
+    limit: 8,
   });
 
   const { useQueryAllItems } = useItems();
@@ -61,8 +61,9 @@ const Autocomplete = ({ query, setQuery }: AutocompleteProps) => {
           key={params.id}
           placeholder="Search here..."
           sx={{
-            "@media (max-width: 1000px)": {
-              width: "100%",
+            width: "90%",
+            "@media (max-width: 600px)": {
+              width: "100vh",
             },
           }}
         />
@@ -71,11 +72,18 @@ const Autocomplete = ({ query, setQuery }: AutocompleteProps) => {
       ref={inputSearchRef}
       onInputChange={(event, value) => handleChange(value)}
       sx={{
+        ".MuiOutlinedInput-root ": {
+          padding: "0px",
+          ".MuiAutocomplete-input": {
+            padding: "12px 2px",
+          },
+        },
         "@media (max-width: 1000px)": {
-          paddingTop: "5px",
+          padding: "8px 0 0",
         },
         "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
           border: "none",
+          padding: "4px 0 0",
         },
       }}
     />

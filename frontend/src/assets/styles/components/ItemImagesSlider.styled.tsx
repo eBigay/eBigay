@@ -7,7 +7,7 @@ export const StyledSwiperContainer = styled.div`
   height: 75%;
   ${RespondTo.mobileBreakpoint`
   width: 100%;
-  height: 50%;
+  height: 45%;
   `}
 `;
 

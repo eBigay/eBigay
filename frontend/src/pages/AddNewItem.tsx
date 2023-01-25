@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Formik, FormikValues } from "formik";
+import { Autocomplete, TextField } from "@mui/material";
 import { ClearOutlined } from "@mui/icons-material";
 import { v4 as uuidv4 } from "uuid";
 import {
@@ -21,6 +22,7 @@ import useItems from "../hooks/useItems";
 import useAuthContext from "../hooks/useAuthContext";
 
 import itemSchema from "../schemas/ItemSchema";
+import CategoriesToFilter from "../data/CategoriesToFilter";
 
 interface NewItemValues {
   itemName: string;
@@ -47,11 +49,12 @@ const AddNewItem = () => {
   } = useAuthContext();
 
   const [urls, updateUrls] = useState<string[]>([]);
-  const [error, updateError] = useState<any>();
+  const [uploadError, setUploadError] = useState<string>("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   function handleOnUpload(error: any, result: any, widget: any) {
     if (error) {
-      updateError(error);
+      setUploadError(error);
       widget.close({
         quiet: true,
       });
@@ -72,6 +75,7 @@ const AddNewItem = () => {
     const newItem = {
       id: uuidv4(),
       ...values,
+      category: selectedCategory,
       images: urls,
       createdAt: Date.now(),
       createdBy: user,
@@ -99,6 +103,69 @@ const AddNewItem = () => {
               placeholder="description"
               valueName="description"
             />
+
+            <Autocomplete
+              disablePortal
+              autoComplete
+              autoHighlight
+              freeSolo // allows to search when the options array is empty
+              id="categories"
+              options={CategoriesToFilter.map((category) => category.category)}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  key={params.id}
+                  placeholder="Categories"
+                  sx={{
+                    width: "90%",
+                    "@media (max-width: 600px)": {
+                      width: "100vh",
+                    },
+                    input: {
+                      "&::placeholder": {
+                        // <----- Add this.
+                        opacity: 1,
+                      },
+                    },
+                  }}
+                />
+              )}
+              inputValue={selectedCategory}
+              onInputChange={(event, value) => {
+                setSelectedCategory(value);
+              }}
+              sx={{
+                width: 500,
+                "@media (max-width: 1200px)": {
+                  width: "90%",
+                },
+                "@media (max-width: 1000px)": {
+                  width: "100%",
+                },
+                "@media (max-width: 600px)": {
+                  width: "90%",
+                },
+                ".MuiFormControl-root": {
+                  width: "100%",
+                },
+                ".MuiInputBase-root ": {
+                  height: 70,
+                  borderRadius: 2.5,
+                  fontSize: 20,
+                  fontFamily: "Poppins",
+                  color: "rgba(144, 135, 170,1)",
+                  opacity: 1,
+                  "@media (max-width: 600px)": {
+                    fontSize: 14,
+                  },
+                },
+                ".MuiOutlinedInput-root ": {
+                  padding: "5px 30px",
+                },
+              }}
+            />
+
+            {/* eslint-disable */}
             <UploadWidget onUpload={handleOnUpload}>
               {({ open }: any) => {
                 function handleOnClick(e: any) {
@@ -112,9 +179,11 @@ const AddNewItem = () => {
                 );
               }}
             </UploadWidget>
+            {/* eslint-enable */}
             <PrimaryButton width="120px" fontSize="l" type="submit">
               Add Item
             </PrimaryButton>
+            {uploadError !== "" && <h2>{uploadError}</h2>}
           </StyledForm>
         )}
       </Formik>

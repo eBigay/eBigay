@@ -10,6 +10,7 @@ const login = async (credentials: {
   email: string;
   password: string;
   rememberMe: boolean;
+  /* eslint-disable-next-line */
 }): Promise<IUser | undefined> => {
   try {
     const user = await httpService.post<IUser>("auth/login", credentials);

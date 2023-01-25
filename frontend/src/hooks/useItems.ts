@@ -40,33 +40,16 @@ function useItems() {
   };
 
   const add = useMutation(addItem, {
-    onSuccess: (addedItem) => {
+    onSuccess: (newItem) => {
+      const { itemName } = newItem;
       queryClient.setQueryData("items", (currentItems: IItem[] | undefined) => [
         ...(currentItems || []),
-        addedItem,
+        newItem,
       ]);
-      toast.success("New Item Added!", {
-        position: "bottom-left",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.success(`Added New Item: ${itemName}`);
     },
     onError: (error: string) => {
-      toast.error(`${error}`, {
-        position: "bottom-left",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+      toast.error(`${error}`);
     },
   });
 

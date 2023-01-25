@@ -20,17 +20,8 @@ const useAuth = () => {
         navigate("/");
       }, 1100);
     },
-    onError: (error: string) => {
-      toast.error(`${error}`, {
-        position: "bottom-left",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+    onError: (error: any) => {
+      toast.error(`${error.response.data.message}`);
     },
   });
 
@@ -49,17 +40,8 @@ const useAuth = () => {
         navigate("/");
       }, 1100);
     },
-    onError: (error: string) => {
-      toast.error(`${error}`, {
-        position: "bottom-left",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+    onError: (error: any) => {
+      toast.error(`${error.response.data.message}`);
     },
   });
 
@@ -70,7 +52,11 @@ const useAuth = () => {
   const logout = useMutation(logoutUser, {
     onSuccess: () => {
       dispatch({ type: "LOGOUT" });
-      navigate("/login");
+      if (
+        window.location.pathname === "/profile" ||
+        window.location.pathname === "/addnew"
+      )
+        navigate("/");
     },
   });
 
