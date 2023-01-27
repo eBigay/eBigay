@@ -57,14 +57,14 @@ const LoginForm = () => {
             image={Message}
             type="email"
             placeholder="Email"
-            valueName="email"
+            name="email"
           />
           <Input
             image={Lock}
             type="password"
             otherImage={Hide}
             placeholder="Password"
-            valueName="password"
+            name="password"
           />
           <MiddleFlex>
             <RememberMeLabel htmlFor="checkbox">
@@ -81,17 +81,6 @@ const LoginForm = () => {
           <PrimaryButton width="500px" height="70px" fontSize="l" type="submit">
             Log in
           </PrimaryButton>
-          <ErrorMessageContainer>
-            {isError && (
-              <FadeIn>
-                {/* @ts-ignore */}
-                <ErrorMessage>{error.response.data.message}</ErrorMessage>
-              </FadeIn>
-            )}
-            {(isLoading || isSuccess) && (
-              <FormLoading size="small" absolutePos />
-            )}
-          </ErrorMessageContainer>
         </LoginInputContainer>
       )}
     </Formik>

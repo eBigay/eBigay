@@ -95,7 +95,7 @@ const SignUpInput = () => {
                 otherImage={input.otherImage}
                 type={input.type}
                 placeholder={input.placeholder}
-                valueName={input.valueName}
+                name={input.name}
               />
             ))}
             <PrivacyPolicy>

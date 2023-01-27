@@ -47,11 +47,12 @@ export const StyledAutocomplete = styled(Autocomplete).attrs({
   font-family: Poppins;
   font-size: ${({ theme }) => theme.fontSizes.fsS};
   background-color: transparent;
-
   ${MinWidth.tabletBreakpoint`
   height: 3.0rem
-
   `}
+  input {
+    padding: 5px 4px 5px 6px !important;
+  }
 `;
 
 export const StyledForm = styled.form`
@@ -96,6 +97,5 @@ export const StyledSearch = styled(Search)<ISearchButtonProps>`
     font-size: 2rem;
     color: #fbb527;
     align-self: center;
-    margin: 0 1rem 0 auto;
   }
 `;

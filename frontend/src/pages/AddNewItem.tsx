@@ -21,6 +21,8 @@ import useItems from "../hooks/useItems";
 import useAuthContext from "../hooks/useAuthContext";
 
 import itemSchema from "../schemas/ItemSchema";
+import FormikController from "../components/layout/FormControl";
+import CategoriesToFilter from "../data/CategoriesToFilter";
 
 interface NewItemValues {
   itemName: string;
@@ -48,6 +50,10 @@ const AddNewItem = () => {
 
   const [urls, updateUrls] = useState<string[]>([]);
   const [error, updateError] = useState<any>();
+
+  const updatedCategories = CategoriesToFilter.map((category) => {
+    return { key: category.id, value: category.category };
+  });
 
   function handleOnUpload(error: any, result: any, widget: any) {
     if (error) {
@@ -93,11 +99,22 @@ const AddNewItem = () => {
       >
         {({ handleSubmit }: FormikValues) => (
           <StyledForm onSubmit={handleSubmit}>
-            <Input type="text" placeholder="item name" valueName="itemName" />
-            <Input
+            <FormikController
+              control="input"
               type="text"
-              placeholder="description"
-              valueName="description"
+              placeholder="item name"
+              name="itemName"
+            />
+            <FormikController
+              control="textArea"
+              label="Description"
+              name="description"
+            />
+            <FormikController
+              control="select"
+              label="category "
+              name="select"
+              options={updatedCategories}
             />
             <UploadWidget onUpload={handleOnUpload}>
               {({ open }: any) => {

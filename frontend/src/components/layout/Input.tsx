@@ -14,7 +14,7 @@ const Input = ({
   otherImage,
   type,
   placeholder,
-  valueName,
+  name,
   width = 500,
   height = 70,
 }: IInputProps) => {
@@ -38,8 +38,8 @@ const Input = ({
 
   const { values, errors, touched, handleChange, handleBlur } =
     useFormikContext<FormikValues>();
-  const inputErrors = get(errors, valueName!);
-  const inputTouched = get(touched, valueName!);
+  const inputErrors = get(errors, name!);
+  const inputTouched = get(touched, name!);
   return (
     <StyledInput
       width={width}
@@ -53,11 +53,11 @@ const Input = ({
         value={
           location[0]
             ? `lat: ${location[0]}, long: ${location[1]}`
-            : get(values, valueName!)
+            : get(values, name!)
         }
         onChange={handleChange}
         onBlur={handleBlur}
-        name={valueName}
+        name={name}
       />
       {otherImage && (
         <InputRightImage
