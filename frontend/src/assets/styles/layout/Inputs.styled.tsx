@@ -1,7 +1,7 @@
 import styled from "styled-components";
+import { Field } from "formik";
 import RespondTo from "../../theme/responsive";
 import FadeIn from "./FadeIn.styled";
-import { Field } from "formik";
 
 interface InputProps {
   width: number;

@@ -1,9 +1,9 @@
 import { FormikValues, useFormikContext } from "formik";
+import { get } from "lodash";
 import StyledInput, {
   FadeInErrorMessage,
   InnerField,
 } from "../../assets/styles/layout/Inputs.styled";
-import { get } from "lodash";
 
 function TextArea(props: any) {
   const { label, name, width = 500, height, ...rest } = props;

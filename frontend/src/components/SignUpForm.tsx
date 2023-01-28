@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Formik, FormikValues } from "formik";
 import { Avatar } from "@mui/material";
 import useAuth from "../hooks/useAuth";
-import Input from "./layout/Input";
 import Logo from "./layout/Logo";
 import SignUpSchema from "../schemas/SignUpSchema";
 import FormInputsData from "../data/FormInputsData";

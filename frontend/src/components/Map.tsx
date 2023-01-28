@@ -1,5 +1,4 @@
-import { MapContainer } from "react-leaflet";
-import { TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 
 interface IMapProps {
@@ -20,7 +19,7 @@ const Map = ({ lat, long }: IMapProps) => {
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <Marker position={[lat, long]}>
-        <Popup></Popup>
+        <Popup />
       </Marker>
     </MapContainer>
   );

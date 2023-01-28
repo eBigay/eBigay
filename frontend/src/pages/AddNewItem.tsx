@@ -49,7 +49,6 @@ const AddNewItem = () => {
 
   const [urls, updateUrls] = useState<string[]>([]);
   const [uploadError, setUploadError] = useState<string>("");
-  const [selectedCategory, setSelectedCategory] = useState("");
 
   const updatedCategories = CategoriesToFilter.map((category) => {
     return { key: category.id, value: category.category };

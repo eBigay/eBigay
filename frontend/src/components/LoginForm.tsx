@@ -5,15 +5,11 @@ import useAuth from "../hooks/useAuth";
 import LoginSchema from "../schemas/LoginSchema";
 import Logo from "./layout/Logo";
 import LoginInputContainer, {
-  ErrorMessageContainer,
   MiddleFlex,
   RememberMeInput,
   RememberMeLabel,
-  ErrorMessage,
 } from "../assets/styles/components/LoginInput.styled";
 import PrimaryButton from "../assets/styles/base/Button.styled";
-import FadeIn from "../assets/styles/layout/FadeIn.styled";
-import { FormLoading } from "../assets/styles/pages/LoginSignup.styled";
 import Lock from "../assets/svgs/Lock.svg";
 import Hide from "../assets/svgs/Hide.svg";
 import Message from "../assets/svgs/Message.svg";
@@ -24,7 +20,7 @@ const LoginForm = () => {
 
   const { login } = useAuth();
 
-  const { mutate: loginUser, isError, error, isLoading, isSuccess } = login;
+  const { mutate: loginUser } = login;
   interface LoginValues {
     email: string;
     password: string;

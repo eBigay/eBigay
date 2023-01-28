@@ -82,6 +82,8 @@ const ItemDetails = () => {
                     {createdBy.phoneNumber}
                   </PhoneNumber>
                 </PhoneNumberContainer>
+
+                {/* temp split the location data. to do: accept the location from the user as an object {lat: 32234 , long:43433} */}
                 <a
                   target="_blank"
                   rel="noopener noreferrer"
