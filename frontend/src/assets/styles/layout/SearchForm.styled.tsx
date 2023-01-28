@@ -21,12 +21,20 @@ left: 0;
 width: 100%;
 height: 100%;
 z-index: 1000;
-background-color: ${({ theme }: any) => theme.colors.clr4};
+background-color: rgba(255,255,255,0.9);
+backdrop-filter: blur(3px);
   `}
+
+  ${MinWidth.wideBreakpoint`
+flex: 0.5;
+`}
 `;
-export const StyledFormContainer = styled.div`
+export const StyledFormContainer = styled.div.attrs({
+  className: "StyledFormContainer",
+})`
   display: flex;
   padding: 0.4rem 3rem 0.4rem 0.4rem;
+  justify-content: space-evenly;
   max-width: none;
   border-bottom: 1px solid ${({ theme }) => theme.colors.clr3light};
   ${MinWidth.tabletBreakpoint`
@@ -34,25 +42,27 @@ export const StyledFormContainer = styled.div`
   padding:0;
   border: 1px solid ${({ theme }: any) => theme.colors.clr3light};
   border-radius: 50px;
-
+  `}
+  ${RespondTo.tabletBreakpoint`
+  padding: 0;
   `}
 `;
 export const StyledAutocomplete = styled(Autocomplete).attrs({
   className: "StyledAutocomplete",
 })`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex: 1;
   border: 0;
-  height: 4rem;
+  height: 60px;
   color: ${({ theme }) => theme.colors.clr3};
   font-family: Poppins;
   font-size: ${({ theme }) => theme.fontSizes.fsS};
   background-color: transparent;
   ${MinWidth.tabletBreakpoint`
-  height: 3.0rem
+  height: 3rem
   `}
-  input {
-    padding: 5px 4px 5px 6px !important;
-  }
 `;
 
 export const StyledForm = styled.form`
@@ -74,7 +84,7 @@ export const StyledButton = styled.button`
   position: relative;
   position: absolute;
   right: 0.4rem;
-  top: 1.6rem;
+  top: 1.4rem;
   ${MinWidth.tabletBreakpoint`
   display:none;
 `}
@@ -97,5 +107,6 @@ export const StyledSearch = styled(Search)<ISearchButtonProps>`
     font-size: 2rem;
     color: #fbb527;
     align-self: center;
+    margin: 0 0 0 0.5rem;
   }
 `;

@@ -46,7 +46,6 @@ const SearchForm = ({
     event.preventDefault();
     navigate(`/search/?q=${query}`);
     toggleSearchBarOpen();
-    setQuery("");
   };
 
   return (

@@ -14,11 +14,15 @@ const ListContainer = styled.div.attrs({ className: "listContainer" })`
     padding: 0 5rem;
     `}
   ${RespondTo.mobileBreakpoint`
-       grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-       padding: 0 2rem;
+    padding: 0 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
       `}
   ${MinWidth.wideBreakpoint`
   padding: 0 15rem;
+  `}
+  ${MinWidth.superWideBreakpoint`
+  padding: 0 25rem;
+  grid-template-columns: repeat(4, minmax(230px, 1fr));
   `}
 `;
 

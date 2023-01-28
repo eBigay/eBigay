@@ -9,6 +9,9 @@ const HeroContainer = styled.div`
   ${MinWidth.wideBreakpoint`
   padding: 0 15rem;
   `}
+  ${MinWidth.superWideBreakpoint`
+  padding: 0 25rem;
+  `}
   ${RespondTo.laptopBreakpoint`
   padding: 0 5rem;
   `}

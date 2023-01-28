@@ -21,9 +21,8 @@ export const PopUp = styled.div.attrs({
   z-index: 100;
   ${RespondTo.mobileBreakpoint`
     top: 50%;
-    height: 97vh;
-  width: 97vw;
-
+    width: 93vw;
+  height: 93vh;
 `}
 `;
 
@@ -36,17 +35,18 @@ export const ItemDetailsContainer = styled.div.attrs({
   gap: 40px;
   padding: 70px 60px;
   word-break: break-all;
+  ${RespondTo.laptopBreakpoint`
+  padding: 2rem 1.5rem;
+`}
   ${RespondTo.mobileBreakpoint`
- padding: 3rem 2.5rem;
+ padding: 3rem 1.5rem 2rem;
  flex-direction: column;
- gap: 0.25rem;
-
+ gap: 3rem;
 `}
 `;
 
 export const MainIMg = styled.img`
   position: relative;
-
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -59,25 +59,35 @@ export const MainIMg = styled.img`
 export const ItemDetailsSection = styled.div.attrs({
   className: "ItemDetailsSection",
 })`
-  max-width: 50%;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   gap: 30px;
   overflow-y: auto;
-
+  ${RespondTo.tabletBreakpoint`
+  button {
+    font-size: ${({ theme }: any) => theme.fontSizes.fsM};
+    height: 3rem;
+  }
+`}
   ${RespondTo.mobileBreakpoint`
-max-width:100%;
-
+  max-width: 100%;
+  gap: 20px;
+  button {
+    font-size: ${({ theme }: any) => theme.fontSizes.fsS};
+    height: 4rem;
+    margin: 0 auto ;
+  }
   `}
 `;
-
 export const DetailsDescription = styled.p.attrs({
   className: "DetailsDescription",
 })`
   color: ${({ theme }) => theme.colors.clr3};
   font-size: ${({ theme }) => theme.fontSizes.fsXL};
   font-size: ${({ theme }) => theme.fontSizes.fsM};
+  word-break: break-word;
 `;
 
 export const PhoneNumberContainer = styled.div.attrs({
@@ -122,7 +132,7 @@ export const CreatedByWrapper = styled.div.attrs({
 })`
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 2px;
   ${RespondTo.mobileBreakpoint`
   gap: 0;
 `}
@@ -130,6 +140,7 @@ export const CreatedByWrapper = styled.div.attrs({
 export const CreatedByName = styled.h3.attrs({ className: "CreatedByName" })`
   font-size: ${({ theme }) => theme.fontSizes.l};
   font-weight: 600;
+  line-height: 1;
 `;
 
 export const ImgsWrapper = styled.div.attrs({ className: "ImgsWrapper" })`
@@ -137,7 +148,6 @@ export const ImgsWrapper = styled.div.attrs({ className: "ImgsWrapper" })`
   gap: 37px;
   align-items: center;
   justify-content: center;
-  margin-top: auto;
   ${RespondTo.mobileBreakpoint`
   .swiper-lazy-preloader {
     margin-top:  0;
@@ -150,10 +160,6 @@ export const SecondaryImg = styled.img`
   height: 8rem;
   border-radius: 20px;
   object-fit: cover;
-  ${RespondTo.mobileBreakpoint`
-  height: 4rem;
-
-  `}
 `;
 
 export const DetailsName = styled.h1.attrs({ className: "DetailsName" })`
@@ -161,7 +167,6 @@ export const DetailsName = styled.h1.attrs({ className: "DetailsName" })`
   font-size: ${({ theme }) => theme.fontSizes.fsXXL};
   ${RespondTo.mobileBreakpoint`
   font-size: ${({ theme }: any) => theme.fontSizes.fsXL};
-
   `}
 `;
 
@@ -196,7 +201,6 @@ export const LocationFlag = styled.img.attrs({ className: "LocationFlag" })``;
 export const ImagesListWrapper = styled.div.attrs({
   className: "ImagesListWrapper",
 })`
-  margin-top: auto;
   height: 8rem;
   ${RespondTo.mobileBreakpoint`
     margin-top:  1rem;    

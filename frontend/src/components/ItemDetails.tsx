@@ -5,6 +5,7 @@ import ScreenOverlay from "./layout/ScreenOverlay";
 
 import useOverflow from "../hooks/useOverflow";
 
+import Calling from "../assets/svgs/Calling.svg";
 import {
   CreatedByName,
   PopUp,
@@ -18,12 +19,16 @@ import {
   CreatedByWrapper,
   ImagesListWrapper,
   CreatedByTime,
+  PhoneNumberContainer,
+  PhoneImage,
+  PhoneNumber,
 } from "../assets/styles/components/ItemDetails.styled";
 
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import useAuthContext from "../hooks/useAuthContext";
 import useModalContext from "../hooks/useModalContext";
 import ItemImagesSlider from "./ItemImagesSlider";
+import Map from "./Map";
 
 const ItemDetails = () => {
   const { modal, handleModal, modalContent } = useModalContext();
@@ -32,7 +37,7 @@ const ItemDetails = () => {
     state: { user },
   } = useAuthContext();
 
-  const { description, itemName, createdBy, images, location, createdAt } =
+  const { description, itemName, createdBy, images, location, createdAt, qty } =
     modalContent;
 
   const relativeTimeString = formatDistance(createdAt, new Date(), {
@@ -67,20 +72,45 @@ const ItemDetails = () => {
                 <CreatedByTime>{relativeTimeString}</CreatedByTime>
               </CreatedByWrapper>
             </CreatedByContainer>
-            <DetailsDescription>{description}</DetailsDescription>
             {user ? (
-              <h3>Phone Number: {user.phoneNumber}</h3>
+              <>
+                <DetailsDescription>{`quantity: ${qty}`}</DetailsDescription>
+                <DetailsDescription>{`description: ${description}`}</DetailsDescription>
+                <PhoneNumberContainer>
+                  <PhoneImage src={Calling} alt="phone" />
+                  <PhoneNumber href={`tel:${createdBy.phoneNumber}`}>
+                    {createdBy.phoneNumber}
+                  </PhoneNumber>
+                </PhoneNumberContainer>
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={`https://maps.google.com?q=${
+                    createdBy.location?.split(",")[0].split(":")[1]
+                  },${createdBy.location?.split(",")[1].split(":")[1]}`}
+                >
+                  {createdBy && createdBy.location && (
+                    <Map
+                      lat={+createdBy.location?.split(",")[0].split(":")[1]}
+                      long={+createdBy.location?.split(",")[1].split(":")[1]}
+                    />
+                  )}
+                </a>
+              </>
             ) : (
               <PrimaryButton
                 width="12rem"
-                height="70px"
+                height="3.5rem"
                 fontSize="l"
                 onClick={() => {
-                  navigate("/login");
                   toggleItemDetailsOpen();
+                  setTimeout(() => {
+                    navigate("/login");
+                    window.scroll({ top: 0, behavior: "smooth" });
+                  }, 100);
                 }}
               >
-                Log in to details
+                Log in for details
               </PrimaryButton>
             )}
             <ImagesListWrapper />

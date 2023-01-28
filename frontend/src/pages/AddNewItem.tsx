@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Formik, FormikValues } from "formik";
 import { ClearOutlined } from "@mui/icons-material";
 import { v4 as uuidv4 } from "uuid";
@@ -11,8 +12,6 @@ import {
   ImageWrapper,
   StyledCancelButton,
 } from "../assets/styles/pages/AddNewItem.styled";
-
-import Input from "../components/layout/Input";
 
 // @ts-ignore
 import UploadWidget from "../components/UploadWidget";
@@ -49,7 +48,8 @@ const AddNewItem = () => {
   } = useAuthContext();
 
   const [urls, updateUrls] = useState<string[]>([]);
-  const [error, updateError] = useState<any>();
+  const [uploadError, setUploadError] = useState<string>("");
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const updatedCategories = CategoriesToFilter.map((category) => {
     return { key: category.id, value: category.category };
@@ -57,7 +57,7 @@ const AddNewItem = () => {
 
   function handleOnUpload(error: any, result: any, widget: any) {
     if (error) {
-      updateError(error);
+      setUploadError(error);
       widget.close({
         quiet: true,
       });
@@ -78,12 +78,19 @@ const AddNewItem = () => {
     const newItem = {
       id: uuidv4(),
       ...values,
+      category: selectedCategory.toLowerCase(),
       images: urls,
       createdAt: Date.now(),
       createdBy: user,
     };
     addItem(newItem);
   };
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!user) navigate("/");
+  }, [user]);
 
   return (
     <StyledNewItemContainer>
@@ -93,7 +100,7 @@ const AddNewItem = () => {
         onSubmit={(values, { resetForm }) => {
           handleAddNewItem(values);
           updateUrls(() => []);
-          resetForm();
+          resetForm({});
         }}
         validationSchema={itemSchema}
       >
@@ -112,9 +119,15 @@ const AddNewItem = () => {
             />
             <FormikController
               control="select"
-              label="category "
+              label="category:"
               name="select"
               options={updatedCategories}
+            />
+            <FormikController
+              control="select"
+              label="quantity:"
+              name="select"
+              options={[1, 2, 3, 4, 5, 6, 7, 8]}
             />
             <UploadWidget onUpload={handleOnUpload}>
               {({ open }: any) => {
@@ -124,7 +137,7 @@ const AddNewItem = () => {
                 }
                 return (
                   <PrimaryButton onClick={handleOnClick}>
-                    Upload an Image
+                    Upload Images
                   </PrimaryButton>
                 );
               }}
@@ -132,6 +145,7 @@ const AddNewItem = () => {
             <PrimaryButton width="120px" fontSize="l" type="submit">
               Add Item
             </PrimaryButton>
+            {uploadError !== "" && <h2>{uploadError}</h2>}
           </StyledForm>
         )}
       </Formik>

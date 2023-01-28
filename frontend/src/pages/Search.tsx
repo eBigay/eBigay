@@ -31,6 +31,7 @@ import TopContainer from "../components/layout/TopContainer";
 import LeftContainer from "../components/layout/LeftContainer";
 
 import Text from "../data/enums";
+import FadeIn from "../assets/styles/layout/FadeIn.styled";
 
 const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -118,9 +119,13 @@ const Search = () => {
           Filter By
         </PrimaryButton>
       </TopContainer>
-      <StyledSearchHeader>{Text.SearchPageHeader}</StyledSearchHeader>
-      <StyledSearchSubHeader>{Text.SearchPageSubHeader}</StyledSearchSubHeader>
-      <LeonhardCulmann>Leonhard Culmann&apos;s</LeonhardCulmann>
+      <FadeIn>
+        <StyledSearchHeader>{Text.SearchPageHeader}</StyledSearchHeader>
+        <StyledSearchSubHeader>
+          {Text.SearchPageSubHeader}
+        </StyledSearchSubHeader>
+        <LeonhardCulmann>Leonhard Culmann&apos;s</LeonhardCulmann>
+      </FadeIn>
       <StyledSearchContainer>
         <LeftContainer isLeftContainerOpen={isLeftContainerOpen}>
           <Categories
@@ -130,6 +135,7 @@ const Search = () => {
         </LeftContainer>
         <ListContainer>
           {isSuccess &&
+            data.pages &&
             data.pages.map((page) =>
               page.map((item) => <ItemCard key={item.id} item={item} />)
             )}

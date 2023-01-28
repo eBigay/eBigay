@@ -1,21 +1,25 @@
-import { Field, ErrorMessage } from "formik";
+import { ErrorMessage } from "formik";
+import StyledSelectConainter, {
+  StyledLabel,
+  StyledSelect,
+} from "../../assets/styles/components/Select.styled";
 
 function Select(props: any) {
   const { label, name, options, ...rest } = props;
   return (
-    <div>
-      <label htmlFor={name}>{label}</label>
-      <Field as="select" id={name} name={name} {...rest}>
+    <StyledSelectConainter>
+      <StyledLabel htmlFor={name}>{label}</StyledLabel>
+      <StyledSelect as="select" id={name} name={name} {...rest}>
         {options.map((option: any) => {
           return (
-            <option key={option.key} value={option.value}>
-              {option.value}
+            <option key={option.key || option} value={option.value || option}>
+              {option.value || option}
             </option>
           );
         })}
-      </Field>
+      </StyledSelect>
       <ErrorMessage name={name} />
-    </div>
+    </StyledSelectConainter>
   );
 }
 

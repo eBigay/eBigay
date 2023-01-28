@@ -85,7 +85,11 @@ const useAuth = () => {
   const logout = useMutation(logoutUser, {
     onSuccess: () => {
       dispatch({ type: "LOGOUT" });
-      navigate("/login");
+      if (
+        window.location.pathname === "/profile" ||
+        window.location.pathname === "/addnew"
+      )
+        navigate("/");
     },
   });
 

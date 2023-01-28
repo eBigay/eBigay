@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useFormikContext, FormikValues } from "formik";
 import { get } from "lodash";
 import StyledInput, {
-  InnerInput,
   InputLeftImage,
   InputRightImage,
   FadeInErrorMessage,
+  InnerField,
 } from "../../assets/styles/layout/Inputs.styled";
 import IInputProps from "../../interfaces/IInputProps";
 
@@ -47,7 +47,8 @@ const Input = ({
       className={inputErrors && inputTouched ? "inputError" : ""}
     >
       <InputLeftImage src={image} alt="" />
-      <InnerInput
+      <InnerField
+        as="input"
         type={type === "password" ? passwordType : type}
         placeholder={placeholder}
         value={

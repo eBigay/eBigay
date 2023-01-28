@@ -31,39 +31,24 @@ const StyledInput = styled.div<InputProps>`
   }
 
   ${RespondTo.laptopBreakpoint`
-  width: 90%;
+  width: unset;
+  min-width: 90%;
 `}
   ${RespondTo.tabletBreakpoint`
-  width: 100%;
+    width: unset;
+
+  min-width: 100%;
   `}
   ${RespondTo.mobileBreakpoint`
-  width: 90%;
+    width: unset;
+
+  min-width: 90%;
   `}
 `;
 
-export const InnerInput = styled.input.attrs({ className: "InnerInput" })`
-  width: 100%;
-  color: ${({ theme }) => theme.colors.clr3};
-  font-family: Poppins;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 167.2%;
-  border: none;
-  background-color: transparent;
-  transition: color 0.3s ease-in-out; // the actual color change is happening in "StyledInput" above
-  &::placeholder {
-    color: ${({ theme }) => theme.colors.clr3};
-  }
-  /* remove the blue background on auto-fill */
-  :-webkit-autofill {
-    background-clip: clip;
-    -webkit-background-clip: text;
-  }
-  ${RespondTo.mobileBreakpoint`
-  font-size: ${({ theme }: any) => theme.fontSizes.fsS};
-  `}
-`;
-export const InnerTextArea = styled(Field).attrs({ className: "InnerInput" })`
+export const InnerField = styled(Field).attrs({
+  className: "InnerTextArea",
+})`
   width: 100%;
   color: ${({ theme }) => theme.colors.clr3};
   font-family: Poppins;

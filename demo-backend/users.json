@@ -7,6 +7,7 @@
       "username": "Koren Turgeman",
       "phoneNumber": "054234322",
       "imageUrl": "https://ca.slack-edge.com/T021743D5T8-U0276DVNY2F-f2361f5e4429-512",
+      "location": "lat: 33.2153073, long: 35.577974",
       "isAdmin": true
     },
     {
@@ -14,14 +15,16 @@
       "email": "yanivwein22@gmail.com",
       "password": "123123Aa",
       "username": "Yaniv Weinshtein",
-      "imageUrl": "https://res.cloudinary.com/di8d3r9vo/image/upload/v1673521008/neleytd4qo8y1vsnooo1.png"
+      "phoneNumber": "1231231231",
+      "location": "123",
+      "imageUrl": "https://res.cloudinary.com/di8d3r9vo/image/upload/v1674501574/lkzfmn4kwckilidwku3f.png"
     },
     {
       "id": 3,
       "email": "test@test.test",
       "password": "123ASDasd",
       "username": "testtest",
-      "phoneNumber": "1231231231",
+      "phoneNumber": "0505050505",
       "location": "123",
       "imageUrl": "http://res.cloudinary.com/di8d3r9vo/image/upload/v1673608188/rgd3rc4uoy3ftzuuwtab.png"
     },
@@ -72,6 +75,14 @@
       "phoneNumber": "54235436223",
       "location": "lat: 33.2153073, long: 35.577974",
       "imageUrl": "https://res.cloudinary.com/di8d3r9vo/image/upload/v1674495923/th8qi2olzldeoubd3prv.jpg"
+    },
+    {
+      "id": "7c545171-74d9-43bd-a511-f421eb2538f111",
+      "email": "yanivwein222@gmail.com",
+      "password": "123123Aa",
+      "username": "yanivwein22@gmail.com",
+      "phoneNumber": "yanivwein22@gmail.com",
+      "location": "yanivwein22@gmail.com"
     }
   ]
 }

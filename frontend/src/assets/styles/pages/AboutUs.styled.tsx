@@ -6,6 +6,9 @@ const StyledAbout = styled.div`
   ${MinWidth.wideBreakpoint`
   padding: 0 15rem;
   `}
+  ${MinWidth.superWideBreakpoint`
+  padding: 0 25rem;
+  `}
   ${RespondTo.mobileBreakpoint`
   padding: 0 1.2rem;
   `}
@@ -34,6 +37,9 @@ export const BackLink = styled.p`
   left: 275px;
   font-size: 18px;
   `}
+  ${MinWidth.superWideBreakpoint`
+    left: 440px;
+  `}
   ${RespondTo.mobileBreakpoint`
     left: 45px;
     top: 145px;
@@ -52,6 +58,9 @@ export const BackImage = styled.img<BackButtonProps>`
   ${MinWidth.wideBreakpoint`
   left: ${({ hover }: BackButtonProps) => (hover ? "230px" : "240px")};
   `};
+  ${MinWidth.superWideBreakpoint`
+  left: ${({ hover }: BackButtonProps) => (hover ? "390px" : "400px")};
+  `}
   ${RespondTo.mobileBreakpoint`
     left: ${({ hover }: BackButtonProps) => (hover ? "15px" : "20px")};
     top: 150px;

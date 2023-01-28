@@ -7,7 +7,7 @@ export const StyledSwiperContainer = styled.div`
   height: 75%;
   ${RespondTo.mobileBreakpoint`
   width: 100%;
-  height: 50%;
+  height: 45%;
   `}
 `;
 
@@ -42,7 +42,6 @@ export const StyledSwiperMain = styled(Swiper)`
 
 export const StyledSwiperThumbs = styled(Swiper)`
   height: 100%;
-  margin-top: auto;
   .swiper-slide {
     cursor: pointer;
     img {

@@ -44,7 +44,6 @@ const ItemImagesSlider = ({ images }: SliderProps) => {
             images.map((image) => (
               <SwiperSlide key={_.uniqueId()}>
                 <MainIMg data-src={image} className="swiper-lazy" alt="main" />
-
                 <Loading className="swiper-lazy-preloader" />
               </SwiperSlide>
             ))}

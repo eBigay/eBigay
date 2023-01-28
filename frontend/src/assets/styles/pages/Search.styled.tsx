@@ -77,6 +77,9 @@ const StyledSearchContainer = styled.section`
   ${MinWidth.wideBreakpoint`
   padding: 3rem 15rem 3rem;
 `}
+  ${MinWidth.superWideBreakpoint`
+  padding: 3rem 25rem 3rem;
+`}
 `;
 
 export const StyledNoSearch = styled.h2`

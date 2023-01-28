@@ -11,13 +11,13 @@ import LoginInputContainer, {
   RememberMeLabel,
   ErrorMessage,
 } from "../assets/styles/components/LoginInput.styled";
-import Input from "./layout/Input";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import FadeIn from "../assets/styles/layout/FadeIn.styled";
 import { FormLoading } from "../assets/styles/pages/LoginSignup.styled";
 import Lock from "../assets/svgs/Lock.svg";
 import Hide from "../assets/svgs/Hide.svg";
 import Message from "../assets/svgs/Message.svg";
+import FormikController from "./layout/FormControl";
 
 const LoginForm = () => {
   const [rememberMe, setRememberMe] = useState<boolean>(false);
@@ -53,13 +53,15 @@ const LoginForm = () => {
       {({ handleSubmit }: FormikValues) => (
         <LoginInputContainer onSubmit={handleSubmit}>
           <Logo noNavigate />
-          <Input
+          <FormikController
+            control="input"
             image={Message}
             type="email"
             placeholder="Email"
             name="email"
           />
-          <Input
+          <FormikController
+            control="input"
             image={Lock}
             type="password"
             otherImage={Hide}
