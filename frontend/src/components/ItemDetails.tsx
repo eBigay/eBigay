@@ -5,10 +5,6 @@ import ScreenOverlay from "./layout/ScreenOverlay";
 
 import useOverflow from "../hooks/useOverflow";
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
-
 import {
   CreatedByName,
   PopUp,
