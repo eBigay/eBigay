@@ -77,7 +77,6 @@ const AddNewItem = () => {
     const newItem = {
       id: uuidv4(),
       ...values,
-      category: selectedCategory.toLowerCase(),
       images: urls,
       createdAt: Date.now(),
       createdBy: user,
