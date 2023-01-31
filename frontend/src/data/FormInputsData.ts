@@ -12,33 +12,33 @@ const FormInputsData: IInputProps[] = [
     image: Profile,
     type: "text",
     placeholder: "Username",
-    valueName: "username",
+    name: "username",
   },
   {
     image: Message,
     type: "email",
     placeholder: "Email",
-    valueName: "email",
+    name: "email",
   },
   {
     image: Lock,
     otherImage: Hide,
     type: "password",
     placeholder: "Password",
-    valueName: "password",
+    name: "password",
   },
   {
     image: Calling,
     type: "tel",
     placeholder: "Phone Number",
-    valueName: "phoneNumber",
+    name: "phoneNumber",
   },
   {
     image: Location,
     otherImage: Discovery,
     type: "text",
     placeholder: "Location",
-    valueName: "location",
+    name: "location",
   },
 ];
 

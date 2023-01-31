@@ -42,7 +42,6 @@ export const StyledSwiperMain = styled(Swiper)`
 
 export const StyledSwiperThumbs = styled(Swiper)`
   height: 100%;
-  margin-top: auto;
   .swiper-slide {
     cursor: pointer;
     img {

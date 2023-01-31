@@ -1,3 +1,4 @@
+import axios, { AxiosError } from "axios";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
@@ -20,8 +21,24 @@ const useAuth = () => {
         navigate("/");
       }, 1100);
     },
-    onError: (error: any) => {
-      toast.error(`${error.response.data.message}`);
+    onError: (error: AxiosError | Error) => {
+      toast.error(
+        `${
+          axios.isAxiosError(error)
+            ? error.response?.data.message
+            : error.message
+        }`,
+        {
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
     },
   });
 
@@ -40,8 +57,24 @@ const useAuth = () => {
         navigate("/");
       }, 1100);
     },
-    onError: (error: any) => {
-      toast.error(`${error.response.data.message}`);
+    onError: (error: AxiosError | Error) => {
+      toast.error(
+        `${
+          axios.isAxiosError(error)
+            ? error.response?.data.message
+            : error.message
+        }`,
+        {
+          position: "bottom-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
+      );
     },
   });
 

@@ -59,7 +59,7 @@ export const MainIMg = styled.img`
 export const ItemDetailsSection = styled.div.attrs({
   className: "ItemDetailsSection",
 })`
-  max-width: 50%;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -148,7 +148,6 @@ export const ImgsWrapper = styled.div.attrs({ className: "ImgsWrapper" })`
   gap: 37px;
   align-items: center;
   justify-content: center;
-  margin-top: auto;
   ${RespondTo.mobileBreakpoint`
   .swiper-lazy-preloader {
     margin-top:  0;
@@ -202,7 +201,6 @@ export const LocationFlag = styled.img.attrs({ className: "LocationFlag" })``;
 export const ImagesListWrapper = styled.div.attrs({
   className: "ImagesListWrapper",
 })`
-  margin-top: auto;
   height: 8rem;
   ${RespondTo.mobileBreakpoint`
     margin-top:  1rem;    

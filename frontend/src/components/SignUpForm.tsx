@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { Formik, FormikValues } from "formik";
 import { Avatar } from "@mui/material";
 import useAuth from "../hooks/useAuth";
-import Input from "./layout/Input";
 import Logo from "./layout/Logo";
 import SignUpSchema from "../schemas/SignUpSchema";
 import FormInputsData from "../data/FormInputsData";
@@ -19,6 +18,7 @@ import { IUserRegister } from "../interfaces/IUser.interface";
 
 // @ts-ignore
 import UploadWidget from "./UploadWidget";
+import FormikController from "./layout/FormControl";
 
 interface SignUpValues {
   username: string;
@@ -91,13 +91,14 @@ const SignUpInput = () => {
             </SignUpImageContainer>
             <UserImageName>{imageName()}</UserImageName>
             {FormInputsData.map((input) => (
-              <Input
+              <FormikController
+                control="input"
                 key={input.placeholder}
                 image={input.image}
                 otherImage={input.otherImage}
                 type={input.type}
                 placeholder={input.placeholder}
-                valueName={input.valueName}
+                name={input.name}
               />
             ))}
             <PrivacyPolicy>

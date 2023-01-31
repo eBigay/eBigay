@@ -1,14 +1,28 @@
-import { useEffect, useRef, useState } from "react";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
 
-const Map = () => {
-  const ref = useRef<HTMLDivElement>(null);
-  const [map, setMap] = useState<google.maps.Map>();
+interface IMapProps {
+  lat: number;
+  long: number;
+}
 
-  useEffect(() => {
-    if (ref.current && !map) {
-      setMap(new window.google.maps.Map(ref.current, {}));
-    }
-  }, [ref, map]);
+const Map = ({ lat, long }: IMapProps) => {
+  return (
+    <MapContainer
+      center={[lat, long]}
+      zoom={13}
+      scrollWheelZoom={false}
+      style={{
+        height: "10rem",
+        width: "100%",
+      }}
+    >
+      <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+      <Marker position={[lat, long]}>
+        <Popup />
+      </Marker>
+    </MapContainer>
+  );
 };
 
 export default Map;

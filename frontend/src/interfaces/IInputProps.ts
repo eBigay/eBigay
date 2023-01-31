@@ -5,7 +5,7 @@ interface IInputProps {
   placeholder: string;
   width?: number;
   height?: number;
-  valueName: string;
+  name: string;
 }
 
 export default IInputProps;

@@ -34,6 +34,7 @@ export const StyledFormContainer = styled.div.attrs({
 })`
   display: flex;
   padding: 0.4rem 3rem 0.4rem 0.4rem;
+  justify-content: space-evenly;
   max-width: none;
   border-bottom: 1px solid ${({ theme }) => theme.colors.clr3light};
   ${MinWidth.tabletBreakpoint`
@@ -49,6 +50,9 @@ export const StyledFormContainer = styled.div.attrs({
 export const StyledAutocomplete = styled(Autocomplete).attrs({
   className: "StyledAutocomplete",
 })`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   flex: 1;
   border: 0;
   height: 60px;
@@ -56,7 +60,6 @@ export const StyledAutocomplete = styled(Autocomplete).attrs({
   font-family: Poppins;
   font-size: ${({ theme }) => theme.fontSizes.fsS};
   background-color: transparent;
-
   ${MinWidth.tabletBreakpoint`
   height: 3rem
   `}

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Field } from "formik";
 import RespondTo from "../../theme/responsive";
 import FadeIn from "./FadeIn.styled";
 
@@ -30,17 +31,24 @@ const StyledInput = styled.div<InputProps>`
   }
 
   ${RespondTo.laptopBreakpoint`
-  width: 90%;
+  width: unset;
+  min-width: 90%;
 `}
   ${RespondTo.tabletBreakpoint`
-  width: 100%;
+    width: unset;
+
+  min-width: 100%;
   `}
   ${RespondTo.mobileBreakpoint`
-  width: 90%;
+    width: unset;
+
+  min-width: 90%;
   `}
 `;
 
-export const InnerInput = styled.input.attrs({ className: "InnerInput" })`
+export const InnerField = styled(Field).attrs({
+  className: "InnerTextArea",
+})`
   width: 100%;
   color: ${({ theme }) => theme.colors.clr3};
   font-family: Poppins;

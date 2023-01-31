@@ -21,8 +21,10 @@ const UploadWidget = ({ children, onUpload }) => {
     // about unsigned uploads at: https://cloudinary.com/documentation/upload_images#unsigned_upload
 
     const options = {
-      cloudName: import.meta.env.VITE_CLOUD_NAME || "",
-      uploadPreset: import.meta.env.VITE_PRESENT_NAME || "",
+      // cloudName: import.meta.env.VITE_CLOUD_NAME || "",
+      // uploadPreset: import.meta.env.VITE_PRESENT_NAME || "",
+      cloudName: "di8d3r9vo", // Ex: mycloudname
+      uploadPreset: "g4fcacfw", // Ex: myuploadpreset
     };
 
     return cloudinary.current?.createUploadWidget(

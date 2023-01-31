@@ -5,11 +5,7 @@ import ScreenOverlay from "./layout/ScreenOverlay";
 
 import useOverflow from "../hooks/useOverflow";
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
 import Calling from "../assets/svgs/Calling.svg";
-
 import {
   CreatedByName,
   PopUp,
@@ -32,6 +28,7 @@ import PrimaryButton from "../assets/styles/base/Button.styled";
 import useAuthContext from "../hooks/useAuthContext";
 import useModalContext from "../hooks/useModalContext";
 import ItemImagesSlider from "./ItemImagesSlider";
+import Map from "./Map";
 
 const ItemDetails = () => {
   const { modal, handleModal, modalContent } = useModalContext();
@@ -40,7 +37,7 @@ const ItemDetails = () => {
     state: { user },
   } = useAuthContext();
 
-  const { description, itemName, createdBy, images, location, createdAt } =
+  const { description, itemName, createdBy, images, location, createdAt, qty } =
     modalContent;
 
   const relativeTimeString = formatDistance(createdAt, new Date(), {
@@ -77,13 +74,30 @@ const ItemDetails = () => {
             </CreatedByContainer>
             {user ? (
               <>
-                <DetailsDescription>{description}</DetailsDescription>
+                <DetailsDescription>{`quantity: ${qty}`}</DetailsDescription>
+                <DetailsDescription>{`description: ${description}`}</DetailsDescription>
                 <PhoneNumberContainer>
                   <PhoneImage src={Calling} alt="phone" />
                   <PhoneNumber href={`tel:${createdBy.phoneNumber}`}>
                     {createdBy.phoneNumber}
                   </PhoneNumber>
                 </PhoneNumberContainer>
+
+                {/* temp split the location data. to do: accept the location from the user as an object {lat: 32234 , long:43433} */}
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={`https://maps.google.com?q=${
+                    createdBy.location?.split(",")[0].split(":")[1]
+                  },${createdBy.location?.split(",")[1].split(":")[1]}`}
+                >
+                  {createdBy && createdBy.location && (
+                    <Map
+                      lat={+createdBy.location?.split(",")[0].split(":")[1]}
+                      long={+createdBy.location?.split(",")[1].split(":")[1]}
+                    />
+                  )}
+                </a>
               </>
             ) : (
               <PrimaryButton

@@ -6,6 +6,7 @@ export interface IUser {
   ACCESS_TOKEN?: string;
   imageUrl?: string;
   phoneNumber: string;
+  location?: string;
 }
 export interface IUserRespone {
   user: IUser;

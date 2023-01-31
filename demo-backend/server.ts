@@ -18,7 +18,8 @@ server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
 server.use(jsonServer.defaults());
 
-const SECRET_KEY = "77a333708faa8bb381702f7af5fe26f9b9a8d71b57f6f64a7307ec077923e20a"
+const SECRET_KEY =
+  "77a333708faa8bb381702f7af5fe26f9b9a8d71b57f6f64a7307ec077923e20a";
 
 const expiresInDefault = "1h";
 const expiresInLong = "7d";

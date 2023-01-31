@@ -58,7 +58,7 @@ const LoadingContainer = styled.div<LoadingProps>`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: ${({ marginTop }) => marginTop || "3rem"};
+  margin-top: ${({ marginTop }) => marginTop || "0"};
   position: ${({ absolutePos }) => (absolutePos ? "absolute" : "relative")};
   top: ${({ absolutePos }) => absolutePos && "-35px"};
   ${RespondTo.laptopBreakpoint`
