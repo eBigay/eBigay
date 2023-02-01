@@ -2,7 +2,7 @@ import styled from "styled-components";
 import FadeIn from "../layout/FadeIn.styled";
 
 const ProfileContainer = styled(FadeIn)`
-  margin-top: 5rem;
+  height: 100vh;
 `;
 
 export const StyledWelcome = styled.div`

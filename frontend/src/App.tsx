@@ -23,7 +23,16 @@ const App = () => {
                     key={route.key}
                     element={<route.element {...route.props} />}
                     path={route.path}
-                  />
+                  >
+                    {route.nested &&
+                      route.nested.map((nestedRoute) => (
+                        <Route
+                          key={nestedRoute.key}
+                          element={<nestedRoute.element />}
+                          path={nestedRoute.path}
+                        />
+                      ))}
+                  </Route>
                 ))}
               </Routes>
               <BasicToastContainer />

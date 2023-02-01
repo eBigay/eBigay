@@ -1,4 +1,4 @@
-import { UseQueryResult } from "react-query";
+import { UseInfiniteQueryResult } from "@tanstack/react-query";
 import useItems from "../hooks/useItems";
 import { RecentItemsHeader } from "../assets/styles/components/RecentItems.styled";
 
@@ -8,7 +8,7 @@ import { IFilterBy } from "../interfaces/IFilterBy.interface";
 import ItemList from "./ItemList";
 
 const RecentItems = () => {
-  const { useQueryAllItems } = useItems();
+  const { useInfiniteQueryAllItems } = useItems();
 
   const filterBy: IFilterBy = {
     queryText: "",
@@ -20,11 +20,11 @@ const RecentItems = () => {
   };
 
   const {
+    data,
     isLoading,
-    data: items,
     isError,
     error,
-  }: UseQueryResult<IItem[], any> = useQueryAllItems(filterBy);
+  }: UseInfiniteQueryResult<IItem[], any> = useInfiniteQueryAllItems(filterBy);
 
   return (
     <>
@@ -33,7 +33,7 @@ const RecentItems = () => {
         isLoading={isLoading}
         isError={isError}
         error={error}
-        items={items ?? []}
+        items={data?.pages[0] || []}
       />
     </>
   );

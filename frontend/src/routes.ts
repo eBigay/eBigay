@@ -1,4 +1,5 @@
 import { lazy } from "react";
+import PrivateRoutes from "./components/PrivateRoutes";
 import NotFound from "./pages/NotFound";
 
 const Home = lazy(() => {
@@ -53,19 +54,25 @@ const routes = [
     key: "Search",
   },
   {
-    path: "/profile",
-    element: Profile,
-    key: "Profile",
-  },
-  {
-    path: "/addnew",
-    element: AddNew,
-    key: "AddNew",
-  },
-  {
     path: "*",
     element: NotFound,
     key: "NotFound",
+  },
+  {
+    element: PrivateRoutes,
+    key: "Private",
+    nested: [
+      {
+        path: "/addnew",
+        element: AddNew,
+        key: "AddNew",
+      },
+      {
+        path: "/profile",
+        element: Profile,
+        key: "Profile",
+      },
+    ],
   },
 ];
 

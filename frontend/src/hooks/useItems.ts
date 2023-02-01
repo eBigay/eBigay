@@ -3,7 +3,7 @@ import {
   useMutation,
   useQuery,
   useQueryClient,
-} from "react-query";
+} from "@tanstack/react-query";
 import { toast } from "react-toastify";
 import itemsService from "../services/items.service";
 import { IItem } from "../interfaces/IItem.interface";
@@ -35,6 +35,16 @@ function useItems() {
       }
     );
 
+  const fetchUserItems = async (id?: string) => {
+    return await itemsService.getUserItems(id);
+  };
+
+  const useFetchUserItems = (id?: string) =>
+    useQuery(["items", id], () => fetchUserItems(id), {
+      keepPreviousData: true,
+      onError: (error) => console.log(error),
+    });
+
   const addItem = (item: IItem) => {
     return itemsService.create(item);
   };
@@ -42,8 +52,8 @@ function useItems() {
   const add = useMutation(addItem, {
     onSuccess: (newItem) => {
       const { itemName } = newItem;
-      queryClient.setQueryData("items", (currentItems: IItem[] | undefined) => [
-        ...(currentItems || []),
+      queryClient.setQueryData(["items"], (oldItems: IItem[] | undefined) => [
+        ...(oldItems || []),
         newItem,
       ]);
       toast.success(`Added New Item: ${itemName}`);
@@ -59,11 +69,12 @@ function useItems() {
 
   const update = useMutation(updateItem, {
     onSuccess: (updatedItem) => {
-      queryClient.setQueryData("items", (currentItems: any) =>
-        currentItems.map((item: IItem) =>
+      queryClient.setQueryData(["items"], (oldItems: any) =>
+        oldItems.map((item: IItem) =>
           item.id === updatedItem.id ? updatedItem : item
         )
       );
+      queryClient.invalidateQueries(["items"]);
     },
   });
 
@@ -72,16 +83,15 @@ function useItems() {
   };
 
   const remove = useMutation(removeItem, {
-    onSuccess: (id) => {
-      queryClient.setQueryData("items", (currentItems: any) =>
-        currentItems.filter((item: IItem) => item.id !== id)
-      );
+    onSuccess: () => {
+      queryClient.invalidateQueries(["items"]);
     },
   });
 
   return {
     useQueryAllItems,
     useInfiniteQueryAllItems,
+    useFetchUserItems,
     add,
     update,
     remove,

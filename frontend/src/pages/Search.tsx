@@ -2,7 +2,7 @@ import { RefObject, useCallback, useEffect, useRef, useState } from "react";
 import { debounce } from "lodash";
 import { useSearchParams } from "react-router-dom";
 
-import { UseInfiniteQueryResult } from "react-query";
+import { UseInfiniteQueryResult } from "@tanstack/react-query";
 import useItems from "../hooks/useItems";
 import useOverflow from "../hooks/useOverflow";
 import useIntersectionObserver from "../hooks/useIntersctionObserver";

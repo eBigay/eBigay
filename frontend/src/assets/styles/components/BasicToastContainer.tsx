@@ -1,9 +1,9 @@
-import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import StyledToastContainer from "../layout/Toast.styled";
 
 const BasicToastContainer = () => {
   return (
-    <ToastContainer
+    <StyledToastContainer
       position="bottom-left"
       autoClose={2000}
       hideProgressBar={false}

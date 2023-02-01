@@ -77,16 +77,16 @@ async function ajax<T>(
   }
 }
 const httpService: HttpService = {
-  async get(endpoint, data) {
+  get(endpoint, data) {
     return ajax(endpoint, "GET", data);
   },
-  async post(endpoint, data) {
+  post(endpoint, data) {
     return ajax(endpoint, "POST", data);
   },
-  async put(endpoint, data) {
+  put(endpoint, data) {
     return ajax(endpoint, "PUT", data);
   },
-  async delete(endpoint, data) {
+  delete(endpoint, data) {
     return ajax(endpoint, "DELETE", data);
   },
 };

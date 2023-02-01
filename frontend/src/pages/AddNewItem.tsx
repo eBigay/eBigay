@@ -86,10 +86,6 @@ const AddNewItem = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!user) navigate("/");
-  }, [user]);
-
   return (
     <StyledNewItemContainer>
       <StyledAddNewItemText>Add new Item:</StyledAddNewItemText>

@@ -9,7 +9,7 @@ export const StyledSearchHeader = styled.h1.attrs({
   line-height: 70px;
   text-align: center;
   padding: 0 5rem;
-  margin: 10rem auto 1.5rem;
+  margin: 4rem auto 1.5rem;
   width: 1400px;
   ${RespondTo.narrowBreakpoint`
   padding: 0;

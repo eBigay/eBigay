@@ -1,4 +1,4 @@
-import { useMutation, useQuery, useQueryClient } from "react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { IItem } from "../interfaces/IItem.interface";
 import itemsService from "../services/items.service";
 
@@ -11,7 +11,7 @@ const addItem = (item: IItem) => {
 };
 
 const useFetchItems = () => {
-  return useQuery("Items", fetchItems);
+  return useQuery(["Items"], fetchItems);
 };
 
 export const useAddItem = () => {
@@ -22,7 +22,7 @@ export const useAddItem = () => {
       // queryClient.invalidateQueries('super-heroes')
       // ? invalidate the query and force a refetch on success
       //* OR
-      queryClient.setQueriesData("items", (oldQueryData: any) => {
+      queryClient.setQueriesData(["items"], (oldQueryData: any) => {
         return {
           ...oldQueryData,
           data: [...oldQueryData.data, data],

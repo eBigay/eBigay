@@ -14,7 +14,7 @@ const query = async (
   pageParam: number = 1
 ): Promise<IItem[]> => {
   const { queryText = "", category, sortBy, sortOrder, limit } = filterBy;
-  return httpService.get<IItem[]>(
+  return await httpService.get<IItem[]>(
     `items?q=${queryText}&_limit=${limit}&_page=${pageParam}&_sort=${sortBy}&_order=${sortOrder}${
       category ? `&category=${category}` : ""
     }`
@@ -22,19 +22,24 @@ const query = async (
 };
 
 const getById = async (item: IItem): Promise<IItem> => {
-  return httpService.get<IItem>(`items/${item.id}`);
+  return await httpService.get<IItem>(`items/${item.id}`);
 };
 
 const create = async (item: IItem): Promise<IItem> => {
-  return httpService.post<IItem>("items", item);
+  return await httpService.post<IItem>("items", item);
 };
 
 const update = async (item: IItem): Promise<IItem> => {
-  return httpService.put<IItem>(`items/${item.id}`, item);
+  return await httpService.put<IItem>(`items/${item.id}`, item);
 };
 
 const remove = async (id: string) => {
-  await httpService.delete(`items/${id}`);
+  return await httpService.delete(`items/${id}`);
+};
+
+const getUserItems = async (id?: string) => {
+  if (!id) return Promise.reject();
+  return await httpService.get<IItem[]>(`items?createdBy.id=${id}`);
 };
 
 const itemsService = {
@@ -43,6 +48,7 @@ const itemsService = {
   create,
   update,
   remove,
+  getUserItems,
 };
 
 export default itemsService;

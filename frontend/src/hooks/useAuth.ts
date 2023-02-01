@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { IUserRegister } from "../interfaces/IUser.interface";

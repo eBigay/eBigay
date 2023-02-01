@@ -2,7 +2,7 @@ import styled from "styled-components";
 import RespondTo, { MinWidth } from "../../theme/responsive";
 
 export const StyledNewItemContainer = styled.div`
-  margin-top: 150px;
+  margin-top: 50px;
   ${RespondTo.wideBreakpoint`
     padding: 0 5rem;
     `}

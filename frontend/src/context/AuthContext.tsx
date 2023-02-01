@@ -37,15 +37,8 @@ type AuthProviderProps = {
 
 export const AuthContextProvider = ({ children }: AuthProviderProps) => {
   const [state, dispatch] = useReducer(authReducer, {
-    user: null,
+    user: JSON.parse(`${localStorage.getItem("user")}`) || null,
   });
-
-  useEffect(() => {
-    const user = JSON.parse(`${localStorage.getItem("user")}`);
-    if (user) {
-      dispatch({ type: "LOGIN", payload: { user } });
-    }
-  }, []);
 
   const value = useMemo(() => ({ state, dispatch }), [state]);
 

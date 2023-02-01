@@ -4,9 +4,9 @@ import { MinWidth } from "../../theme/responsive";
 const StyledTopContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 9rem 0 0 2rem;
+  padding: 2rem 0 0 2rem;
   ${MinWidth.mobileBreakpoint`
-  padding: 9rem 0 0 5rem;
+  padding: 2rem 0 0 5rem;
 
   `}
   ${MinWidth.laptopBreakpoint`

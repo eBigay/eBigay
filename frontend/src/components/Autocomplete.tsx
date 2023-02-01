@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction, useEffect, useRef, useState } from "react";
-import { UseQueryResult } from "react-query";
+import { UseQueryResult } from "@tanstack/react-query";
 import { TextField } from "@mui/material";
 import useItems from "../hooks/useItems";
 import { IItem } from "../interfaces/IItem.interface";

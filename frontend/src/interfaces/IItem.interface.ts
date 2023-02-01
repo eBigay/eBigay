@@ -1,7 +1,7 @@
 import { IUser } from "./IUser.interface";
 
 export interface IItem {
-  id?: string;
+  id: string;
   qty: number;
   itemName: string;
   images: string[];
