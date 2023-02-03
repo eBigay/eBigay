@@ -72,7 +72,6 @@ const AddNewItem = () => {
 
   const handleAddNewItem = (values: NewItemValues) => {
     if (!user) return;
-    delete user?.ACCESS_TOKEN;
 
     const newItem = {
       id: uuidv4(),
@@ -83,8 +82,6 @@ const AddNewItem = () => {
     };
     addItem(newItem);
   };
-
-  const navigate = useNavigate();
 
   return (
     <StyledNewItemContainer>

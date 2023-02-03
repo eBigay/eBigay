@@ -52,10 +52,7 @@ function useItems() {
   const add = useMutation(addItem, {
     onSuccess: (newItem) => {
       const { itemName } = newItem;
-      queryClient.setQueryData(["items"], (oldItems: IItem[] | undefined) => [
-        ...(oldItems || []),
-        newItem,
-      ]);
+      queryClient.invalidateQueries(["items"]);
       toast.success(`Added New Item: ${itemName}`);
     },
     onError: (error: string) => {
@@ -68,12 +65,7 @@ function useItems() {
   };
 
   const update = useMutation(updateItem, {
-    onSuccess: (updatedItem) => {
-      queryClient.setQueryData(["items"], (oldItems: any) =>
-        oldItems.map((item: IItem) =>
-          item.id === updatedItem.id ? updatedItem : item
-        )
-      );
+    onSuccess: () => {
       queryClient.invalidateQueries(["items"]);
     },
   });
@@ -84,7 +76,12 @@ function useItems() {
 
   const remove = useMutation(removeItem, {
     onSuccess: () => {
-      queryClient.invalidateQueries(["items"]);
+      queryClient.invalidateQueries(["items"]).then(() => {
+        toast.success(`Item removed`);
+      });
+    },
+    onError: (error: string) => {
+      toast.error(`${error}`);
     },
   });
 

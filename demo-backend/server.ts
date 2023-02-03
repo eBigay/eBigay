@@ -140,6 +140,7 @@ server.post("/auth/login", (req: Request, res: Response) => {
   }
   const ACCESS_TOKEN = createToken({ email, password }, rememberMe);
   console.log("Access Token:" + ACCESS_TOKEN);
+
   res.status(200).json({ ...user, ACCESS_TOKEN });
 });
 

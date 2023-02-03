@@ -5,6 +5,8 @@ const PrivateRoutes = () => {
     state: { user },
   } = useAuthContext();
 
+  console.log(user);
+
   return user?.ACCESS_TOKEN ? <Outlet /> : <Navigate to="/login" />;
 };
 
