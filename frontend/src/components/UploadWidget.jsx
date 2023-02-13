@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 let cloudinary;
 let widget;
@@ -15,9 +15,10 @@ const UploadWidget = ({ children, onUpload }) => {
   }, []);
 
   function createWidget() {
+    console.log(import.meta.env);
     const options = {
-      cloudName: "di8d3r9vo",
-      uploadPreset: "g4fcacfw",
+      cloudName: import.meta.env.VITE_CLOUD_NAME,
+      uploadPreset: import.meta.env.VITE_CLOUD_PRESET,
     };
 
     return cloudinary?.createUploadWidget(options, function (error, result) {

@@ -1,9 +1,7 @@
 export interface IUser {
-  id?: string;
+  _id?: string;
   email: string;
   username: string;
-  isAdmin: boolean;
-  ACCESS_TOKEN?: string;
   imageUrl?: string;
   phoneNumber: string;
   location?: string;

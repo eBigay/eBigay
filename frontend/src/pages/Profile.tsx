@@ -17,14 +17,12 @@ import { Delete } from "@mui/icons-material";
 
 const Profile = () => {
   const {
-    state: { user },
+    auth: { user },
   } = useAuthContext();
 
   const { useFetchUserItems } = useItems();
 
-  const { data: items }: UseQueryResult<IItem[], any> = useFetchUserItems(
-    user?.id
-  );
+  const { data: items }: UseQueryResult<any> = useFetchUserItems(user?._id);
 
   const { remove } = useItems();
   const { mutate: removeItem } = remove;

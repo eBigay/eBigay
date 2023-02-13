@@ -126,69 +126,6 @@
         "location": "lat: 33.2153073, long: 35.577974",
         "imageUrl": "https://res.cloudinary.com/di8d3r9vo/image/upload/v1674495923/th8qi2olzldeoubd3prv.jpg"
       }
-    },
-    {
-      "id": "42bd920b-591d-43fd-9139-bf4c82dd5f59",
-      "itemName": "faef",
-      "description": "wafef",
-      "qty": 1,
-      "location": "israel",
-      "category": "electronics",
-      "images": [],
-      "createdAt": 1675463156023,
-      "createdBy": {
-        "id": 1,
-        "email": "koren3210@gmail.com",
-        "password": "01523841Aa",
-        "username": "Koren Turgeman",
-        "phoneNumber": "054234322",
-        "imageUrl": "https://ca.slack-edge.com/T021743D5T8-U0276DVNY2F-f2361f5e4429-512",
-        "location": "lat: 33.2153073, long: 35.577974",
-        "isAdmin": true,
-        "ACCESS_TOKEN": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtvcmVuMzIxMEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjAxNTIzODQxQWEiLCJpYXQiOjE2NzU0NjA3NDMsImV4cCI6MTY3NTQ2NDM0M30.9l9Aos59h6RbRQuX7dJkaavDp9r52gsI4IRsLUYUIe8"
-      }
-    },
-    {
-      "id": "9cddf0d9-701f-40b0-9c84-8d4fb1f2cf62",
-      "itemName": "sdvsd",
-      "description": "vsdv",
-      "qty": 1,
-      "location": "israel",
-      "category": "electronics",
-      "images": [],
-      "createdAt": 1675463158141,
-      "createdBy": {
-        "id": 1,
-        "email": "koren3210@gmail.com",
-        "password": "01523841Aa",
-        "username": "Koren Turgeman",
-        "phoneNumber": "054234322",
-        "imageUrl": "https://ca.slack-edge.com/T021743D5T8-U0276DVNY2F-f2361f5e4429-512",
-        "location": "lat: 33.2153073, long: 35.577974",
-        "isAdmin": true,
-        "ACCESS_TOKEN": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtvcmVuMzIxMEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjAxNTIzODQxQWEiLCJpYXQiOjE2NzU0NjA3NDMsImV4cCI6MTY3NTQ2NDM0M30.9l9Aos59h6RbRQuX7dJkaavDp9r52gsI4IRsLUYUIe8"
-      }
-    },
-    {
-      "id": "8cf75e2c-07f8-4079-a950-87eb316db667",
-      "itemName": "sdvsd",
-      "description": "vsdvd",
-      "qty": 1,
-      "location": "israel",
-      "category": "electronics",
-      "images": [],
-      "createdAt": 1675463161075,
-      "createdBy": {
-        "id": 1,
-        "email": "koren3210@gmail.com",
-        "password": "01523841Aa",
-        "username": "Koren Turgeman",
-        "phoneNumber": "054234322",
-        "imageUrl": "https://ca.slack-edge.com/T021743D5T8-U0276DVNY2F-f2361f5e4429-512",
-        "location": "lat: 33.2153073, long: 35.577974",
-        "isAdmin": true,
-        "ACCESS_TOKEN": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImtvcmVuMzIxMEBnbWFpbC5jb20iLCJwYXNzd29yZCI6IjAxNTIzODQxQWEiLCJpYXQiOjE2NzU0NjA3NDMsImV4cCI6MTY3NTQ2NDM0M30.9l9Aos59h6RbRQuX7dJkaavDp9r52gsI4IRsLUYUIe8"
-      }
     }
   ]
 }
