@@ -44,7 +44,7 @@ const useItemsService = () => {
 
   const getUserItems = async (_id?: string) => {
     if (!_id) return Promise.reject();
-    return await axiosPrivate.get(`items?createdBy.id=${_id}`);
+    return await axiosPrivate.get(`items/createdBy?id=${_id}`);
   };
 
   return {

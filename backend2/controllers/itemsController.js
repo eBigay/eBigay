@@ -1,4 +1,5 @@
 const Item = require("../model/Item");
+const ObjectId = require("mongoose").Types.ObjectId;
 
 const getAllItems = async (req, res) => {
   const limit = req.query.limit;
@@ -6,6 +7,9 @@ const getAllItems = async (req, res) => {
   const sortBy = req.query.sort;
   const order = req.query.order;
   const page = Number(req.query.page) || 1;
+  const createdBy = req.query.createdBy;
+
+  console.log(createdBy);
 
   const keyword = req.query.q
     ? {
@@ -21,7 +25,8 @@ const getAllItems = async (req, res) => {
   const items = await Item.find({ ...keyword, ...categoryFilter })
     .limit(limit)
     .skip(limit * (page - 1))
-    .sort({ [sortBy]: order });
+    .sort({ [sortBy]: order })
+    .exec();
 
   if (!items) return res.status(204).json({ message: "No items found." });
   res.json(items);
@@ -101,9 +106,23 @@ const getItem = async (req, res) => {
 };
 
 const getUserItem = async (req, res) => {
-  const createdById = req.query;
-  console.log(createdById);
-  res.send("hello");
+  const id = req.query.id;
+  if (!id) {
+    return res.status(400).json({ message: "ID parameter is required." });
+  }
+
+  console.log("id", id);
+
+  const items = await Item.find({}).populate({
+    path: "createdBy",
+    match: {
+      _id: ObjectId(id),
+    },
+  });
+
+  console.log(items);
+
+  res.json(items);
 };
 
 module.exports = {
