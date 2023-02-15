@@ -16,6 +16,7 @@
     "fix": "eslint --fix ."
   },
   "dependencies": {
+    "@fvilers/disable-react-devtools": "github:fvilers/disable-react-devtools",
     "@mui/icons-material": "^5.10.9",
     "@mui/material": "^5.10.13",
     "@mui/styled-engine-sc": "^5.10.14",
@@ -26,6 +27,7 @@
     "axios": "^1.2.1",
     "cloudinary-core": "^2.13.0",
     "date-fns": "^2.29.3",
+    "disable-react-devtools": "^1.0.0",
     "esbuild": "^0.16.4",
     "formik": "^2.2.9",
     "json-server": "^0.17.1",
