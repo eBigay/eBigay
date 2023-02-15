@@ -1,29 +1,30 @@
+import axios from "../api/axios";
+import { IAuth } from "../interfaces/IAuthState.interface";
 import { IUser, IUserRegister } from "../interfaces/IUser.interface";
 import httpService from "./http.service";
-
-const saveLocalUser = (user: IUser): IUser => {
-  localStorage.setItem("user", JSON.stringify(user));
-  return user;
-};
 
 const login = async (credentials: {
   email: string;
   password: string;
-  rememberMe: boolean;
-  /* eslint-disable-next-line */
-}): Promise<IUser | undefined> => {
+}): Promise<IAuth | undefined> => {
   try {
-    const user = await httpService.post<IUser>("auth/login", credentials);
-    if (user) return saveLocalUser(user);
+    const res = await axios.post<IAuth>("auth", credentials, {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    });
+    return res.data;
   } catch (err) {
     throw err;
   }
 };
 
-const signup = async (userInfo: IUserRegister): Promise<IUser> => {
+const signup = async (userInfo: IUserRegister): Promise<IAuth> => {
   try {
-    const user = await httpService.post<IUser>("auth/signup", userInfo);
-    return saveLocalUser(user);
+    const res = await axios.post<IAuth>("register", userInfo, {
+      headers: { "Content-Type": "application/json" },
+      withCredentials: true,
+    });
+    return res.data;
   } catch (err) {
     throw err;
   }
@@ -31,7 +32,9 @@ const signup = async (userInfo: IUserRegister): Promise<IUser> => {
 
 const logout = async (): Promise<void> => {
   try {
-    return localStorage.removeItem("user");
+    await axios("/logout", {
+      withCredentials: true,
+    });
   } catch (err) {
     throw err;
   }
@@ -39,7 +42,7 @@ const logout = async (): Promise<void> => {
 
 const updateUser = async (user: IUser): Promise<void> => {
   try {
-    await httpService.put(`user/${user.id}`, user);
+    await httpService.put(`user/${user._id}`, user);
   } catch (err) {
     throw err;
   }

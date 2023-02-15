@@ -1,30 +1,26 @@
 import { Avatar } from "@mui/material";
 import { UseQueryResult } from "@tanstack/react-query";
 import { DataGrid } from "@mui/x-data-grid";
+import { formatDistance } from "date-fns";
+import { Delete } from "@mui/icons-material";
 import useAuthContext from "../hooks/useAuthContext";
 import useItems from "../hooks/useItems";
-import { IItem } from "../interfaces/IItem.interface";
 
 import ProfileContainer, {
   StyledWelcome,
-  Container,
 } from "../assets/styles/pages/Profile.styled";
 import PrimaryButton from "../assets/styles/base/Button.styled";
 import MainLayout from "../assets/styles/layout/MainLayout.styled";
 import { CreatedByTime } from "../assets/styles/components/ItemDetails.styled";
-import { formatDistance } from "date-fns";
-import { Delete } from "@mui/icons-material";
 
 const Profile = () => {
   const {
-    state: { user },
+    auth: { user },
   } = useAuthContext();
 
   const { useFetchUserItems } = useItems();
 
-  const { data: items }: UseQueryResult<IItem[], any> = useFetchUserItems(
-    user?.id
-  );
+  const { data: items }: UseQueryResult<any> = useFetchUserItems(user?._id);
 
   const { remove } = useItems();
   const { mutate: removeItem } = remove;

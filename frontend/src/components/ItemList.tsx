@@ -22,7 +22,7 @@ const ItemList = ({ isLoading, isError, error, items }: IItemListProps) => {
   return (
     <ListContainer>
       {Array.isArray(items) &&
-        items.map((item: IItem) => <ItemCard key={item.id} item={item} />)}
+        items.map((item: IItem) => <ItemCard key={item._id} item={item} />)}
     </ListContainer>
   );
 };

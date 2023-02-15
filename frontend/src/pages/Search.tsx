@@ -42,7 +42,7 @@ const Search = () => {
     page: 0,
     sortBy: "createdAt",
     sortOrder: "desc",
-    limit: 12,
+    limit: 3,
   });
   const [isLeftContainerOpen, setIsLeftContainerOpen] =
     useState<boolean>(false);
@@ -137,7 +137,7 @@ const Search = () => {
           {isSuccess &&
             data.pages &&
             data.pages.map((page) =>
-              page.map((item) => <ItemCard key={item.id} item={item} />)
+              page.map((item) => <ItemCard key={item._id} item={item} />)
             )}
           {isLoading && <Loading pos="center" />}
           {isError && <FetchErrorMessage>{error}</FetchErrorMessage>}

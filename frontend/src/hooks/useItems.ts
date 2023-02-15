@@ -5,20 +5,22 @@ import {
   useQueryClient,
 } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import itemsService from "../services/items.service";
 import { IItem } from "../interfaces/IItem.interface";
 import { IFilterBy } from "../interfaces/IFilterBy.interface";
+import useAxiosService from "../services/items.service";
 
 function useItems() {
+  const { query, create, updateDetails, removeItemAction, getUserItems } =
+    useAxiosService();
+
   const queryClient = useQueryClient();
 
   const fetchItems = (filterBy: IFilterBy, pageParam: number) => {
-    return itemsService.query(filterBy, pageParam);
+    return query(filterBy, pageParam);
   };
 
   const useQueryAllItems = (filterBy: IFilterBy) =>
     useQuery(["items", filterBy], () => fetchItems(filterBy, filterBy.page), {
-      keepPreviousData: true,
       onError: (error) => console.log(error) /* eslint-disable-line */,
     });
 
@@ -27,26 +29,26 @@ function useItems() {
       ["items", filterBy],
       ({ pageParam = 1 }) => fetchItems(filterBy, pageParam),
       {
-        keepPreviousData: true,
         getNextPageParam: (lastPage, allPages) => {
+          console.log("last", lastPage, "all", allPages);
           const nextPage = allPages?.length + 1; /* eslint-disable-line */
           return lastPage?.length !== 0 ? nextPage : undefined;
         },
       }
     );
 
-  const fetchUserItems = async (id?: string) => {
-    return await itemsService.getUserItems(id);
+  const fetchUserItems = async (_id?: string) => {
+    return getUserItems(_id);
   };
 
-  const useFetchUserItems = (id?: string) =>
-    useQuery(["items", id], () => fetchUserItems(id), {
+  const useFetchUserItems = (_id?: string) =>
+    useQuery(["items", _id], () => fetchUserItems(_id), {
       keepPreviousData: true,
       onError: (error) => console.log(error),
     });
 
   const addItem = (item: IItem) => {
-    return itemsService.create(item);
+    return create(item);
   };
 
   const add = useMutation(addItem, {
@@ -61,7 +63,7 @@ function useItems() {
   });
 
   const updateItem = (item: IItem) => {
-    return itemsService.update(item);
+    return updateDetails(item);
   };
 
   const update = useMutation(updateItem, {
@@ -71,13 +73,13 @@ function useItems() {
   });
 
   const removeItem = (id: string) => {
-    return itemsService.remove(id);
+    return removeItemAction(id);
   };
 
   const remove = useMutation(removeItem, {
     onSuccess: () => {
       queryClient.invalidateQueries(["items"]).then(() => {
-        toast.success(`Item removed`);
+        toast.success("Item removed");
       });
     },
     onError: (error: string) => {

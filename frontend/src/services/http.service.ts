@@ -29,15 +29,20 @@ const injectToken = (config: AxiosRequestConfig): AxiosRequestConfig => {
 };
 
 interface HttpService {
-  get<T>(endpoint: string, data?: object): Promise<T>;
+  get<T>(
+    endpoint: string,
+    data?: object,
+    config?: AxiosRequestConfig
+  ): Promise<T>;
   post<T>(endpoint: string, data: object): Promise<T>;
   put<T>(endpoint: string, data: object): Promise<T>;
   delete<T>(endpoint: string, data?: object): Promise<T>;
+  patch<T>(endpoint: string, data?: object): Promise<T>;
 }
 
 async function ajax<T>(
   endpoint: string,
-  method: "GET" | "POST" | "PUT" | "DELETE" = "GET",
+  method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH" = "GET",
   data: object | null = null
 ): Promise<T> {
   try {
@@ -88,6 +93,9 @@ const httpService: HttpService = {
   },
   delete(endpoint, data) {
     return ajax(endpoint, "DELETE", data);
+  },
+  patch(endpoint, data) {
+    return ajax(endpoint, "PATCH", data);
   },
 };
 

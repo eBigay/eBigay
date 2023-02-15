@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import { Formik, FormikValues } from "formik";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
@@ -14,9 +14,10 @@ import Lock from "../assets/svgs/Lock.svg";
 import Hide from "../assets/svgs/Hide.svg";
 import Message from "../assets/svgs/Message.svg";
 import FormikController from "./layout/FormControl";
+import useAuthContext from "../hooks/useAuthContext";
 
 const LoginForm = () => {
-  const [rememberMe, setRememberMe] = useState<boolean>(false);
+  const { persistState, setPersistState } = useAuthContext();
 
   const { login } = useAuth();
 
@@ -35,10 +36,18 @@ const LoginForm = () => {
     const values = {
       email: credentials.email,
       password: credentials.password,
-      rememberMe,
     };
     loginUser(values);
   };
+
+  const togglePersist = () => {
+    setPersistState((prev: boolean) => !prev);
+  };
+
+  useEffect(() => {
+    console.log("persistState", persistState, typeof persistState);
+    localStorage.setItem("persist", persistState);
+  }, [persistState]);
 
   return (
     <Formik
@@ -69,8 +78,8 @@ const LoginForm = () => {
               <RememberMeInput
                 type="checkbox"
                 id="checkbox"
-                checked={rememberMe}
-                onChange={() => setRememberMe(!rememberMe)}
+                checked={persistState}
+                onChange={togglePersist}
               />{" "}
               Remember me
             </RememberMeLabel>

@@ -1,6 +1,8 @@
 import { lazy } from "react";
 import PrivateRoutes from "./components/PrivateRoutes";
 import NotFound from "./pages/NotFound";
+import Settings from "./pages/Settings";
+import Unauthorized from "./pages/Unauthorized";
 
 const Home = lazy(() => {
   return import("./pages/Home");
@@ -24,6 +26,11 @@ const AddNew = lazy(async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return import("./pages/AddNewItem");
 });
+
+const ROLES = {
+  User: 1998,
+  Admin: 2023,
+};
 
 const routes = [
   {
@@ -59,8 +66,15 @@ const routes = [
     key: "NotFound",
   },
   {
+    path: "/unauthorized",
+    element: Unauthorized,
+    key: "Unauthorized",
+  },
+
+  {
     element: PrivateRoutes,
     key: "Private",
+    props: { allowedRoles: [ROLES.User] },
     nested: [
       {
         path: "/addnew",
@@ -71,6 +85,11 @@ const routes = [
         path: "/profile",
         element: Profile,
         key: "Profile",
+      },
+      {
+        path: "/settings",
+        element: Settings,
+        key: "settings",
       },
     ],
   },

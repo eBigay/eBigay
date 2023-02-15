@@ -56,7 +56,7 @@ const Nav = ({
   const navigate = useNavigate();
 
   const {
-    state: { user },
+    auth: { user },
   } = useAuthContext();
 
   const { logout } = useAuth();
@@ -187,7 +187,7 @@ const Nav = ({
               </ListItemIcon>
               Add new item
             </MenuItem>
-            <MenuItem>
+            <MenuItem onClick={() => navigate("/settingsx")}>
               <ListItemIcon>
                 <Settings fontSize="small" />
               </ListItemIcon>
