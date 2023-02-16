@@ -8,6 +8,7 @@ import Loading from "./components/Loading";
 import ModalContextProvider from "./context/ModalContext";
 import { AuthContextProvider } from "./context/AuthContext";
 import BasicToastContainer from "./assets/styles/components/BasicToastContainer";
+import PersistLogin from "./components/PersistLogin";
 
 const App = () => {
   return (
@@ -18,13 +19,24 @@ const App = () => {
             <Header />
             <Suspense fallback={<Loading pos="center" />}>
               <Routes>
-                {routes.map((route) => (
-                  <Route
-                    key={route.key}
-                    element={<route.element {...route.props} />}
-                    path={route.path}
-                  />
-                ))}
+                <Route element={<PersistLogin />}>
+                  {routes.map((route) => (
+                    <Route
+                      key={route.key}
+                      element={<route.element {...route.props} />}
+                      path={route.path}
+                    >
+                      {route.nested &&
+                        route.nested.map((nestedRoute) => (
+                          <Route
+                            key={nestedRoute.key}
+                            element={<nestedRoute.element />}
+                            path={nestedRoute.path}
+                          />
+                        ))}
+                    </Route>
+                  ))}
+                </Route>
               </Routes>
               <BasicToastContainer />
             </Suspense>

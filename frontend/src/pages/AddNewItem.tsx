@@ -1,8 +1,6 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { Formik, FormikValues } from "formik";
 import { ClearOutlined } from "@mui/icons-material";
-import { v4 as uuidv4 } from "uuid";
 import {
   StyledNewItemContainer,
   StyledAddNewItemText,
@@ -44,7 +42,7 @@ const AddNewItem = () => {
   const { mutate: addItem } = add;
 
   const {
-    state: { user },
+    auth: { user },
   } = useAuthContext();
 
   const [urls, updateUrls] = useState<string[]>([]);
@@ -72,10 +70,8 @@ const AddNewItem = () => {
 
   const handleAddNewItem = (values: NewItemValues) => {
     if (!user) return;
-    delete user?.ACCESS_TOKEN;
 
     const newItem = {
-      id: uuidv4(),
       ...values,
       images: urls,
       createdAt: Date.now(),
@@ -83,12 +79,6 @@ const AddNewItem = () => {
     };
     addItem(newItem);
   };
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!user) navigate("/");
-  }, [user]);
 
   return (
     <StyledNewItemContainer>

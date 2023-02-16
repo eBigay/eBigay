@@ -34,7 +34,7 @@ const ItemDetails = () => {
   const { modal, handleModal, modalContent } = useModalContext();
 
   const {
-    state: { user },
+    auth: { user },
   } = useAuthContext();
 
   const { description, itemName, createdBy, images, location, createdAt, qty } =

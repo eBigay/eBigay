@@ -5,7 +5,7 @@ const HeroContainer = styled.div`
   display: flex;
   padding-left: 80px;
   padding-right: 36px;
-  margin-top: 151px;
+  margin-top: 51px;
   ${MinWidth.wideBreakpoint`
   padding: 0 15rem;
   `}
@@ -64,6 +64,18 @@ export const HeroImage = styled.img`
   max-height: 526px;
   ${RespondTo.laptopBreakpoint`
     display: none; 
+  `}
+`;
+
+export const ButtonsWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  ${RespondTo.laptopBreakpoint`
+  justify-content: center;
   `}
 `;
 

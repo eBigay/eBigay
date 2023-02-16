@@ -32,7 +32,7 @@ interface IItemCard {
 const ItemCard = ({ item }: IItemCard) => {
   const { handleModal } = useModalContext();
   const {
-    state: { user },
+    auth: { user },
   } = useAuthContext();
 
   const handleOpenProductDetails = () => {

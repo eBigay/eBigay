@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { useMutation } from "react-query";
+import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router";
 import { toast } from "react-toastify";
 import { IUserRegister } from "../interfaces/IUser.interface";
@@ -15,11 +15,9 @@ const useAuth = () => {
   };
 
   const signup = useMutation(signupUser, {
-    onSuccess: (user) => {
-      setTimeout(() => {
-        dispatch({ type: "LOGIN", payload: { user } });
-        navigate("/");
-      }, 1100);
+    onSuccess: (auth) => {
+      dispatch({ type: "LOGIN", payload: { ...auth } });
+      navigate("/");
     },
     onError: (error: AxiosError | Error) => {
       toast.error(
@@ -42,18 +40,14 @@ const useAuth = () => {
     },
   });
 
-  const loginUser = (credentials: {
-    email: string;
-    password: string;
-    rememberMe: boolean;
-  }) => {
+  const loginUser = (credentials: { email: string; password: string }) => {
     return userService.login(credentials);
   };
 
   const login = useMutation(loginUser, {
-    onSuccess: (user) => {
+    onSuccess: (auth) => {
       setTimeout(() => {
-        dispatch({ type: "LOGIN", payload: { user } });
+        dispatch({ type: "LOGIN", payload: { ...auth } });
         navigate("/");
       }, 1100);
     },

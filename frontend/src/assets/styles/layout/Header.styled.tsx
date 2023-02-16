@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { NavLink } from "react-router-dom";
 import { Menu, Search } from "@mui/icons-material";
 import RespondTo, { MinWidth } from "../../theme/responsive";
@@ -6,12 +6,20 @@ import RespondTo, { MinWidth } from "../../theme/responsive";
 interface IStyledLinksProps {
   isMenuOpen: boolean;
 }
+interface IStyledHeaderProps {
+  isFixed: boolean;
+}
 
-export const StyledHeader = styled.header`
+const scrollAnimation = keyframes`
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(0px); }
+`;
+
+export const StyledHeader = styled.header<IStyledHeaderProps>`
   padding: 0 5rem;
   display: flex;
   justify-content: space-between;
-  position: fixed;
+  position: ${({ isFixed }) => (isFixed ? "fixed" : "unset")};
   top: 0;
   right: 0;
   left: 0;
@@ -20,6 +28,9 @@ export const StyledHeader = styled.header`
   min-height: 5rem;
   background-color: #ffffff;
   box-shadow: 0 4px 6px rgba(186, 167, 167, 0.25);
+  &.fixed {
+    animation: ${scrollAnimation} 500ms ease-in-out;
+  }
   ${RespondTo.tabletBreakpoint`
   align-items:center;
   `}
@@ -53,8 +64,8 @@ export const LinksContainer = styled.nav<IStyledLinksProps>`
 		top: 0;
 		right: 0;
 		z-index: 50;
-    gap: 50px;
-		width: 65%;
+    gap: 2px;
+		width: 35%;
 		height: 100%;
 		padding-top: 6.9rem;
 		flex-direction: column;
@@ -64,6 +75,9 @@ export const LinksContainer = styled.nav<IStyledLinksProps>`
       isMenuOpen ? "translateX(0%)" : "translateX(100%)"};
 		transition: 0.5s ease-in-out;
   `}
+    ${RespondTo.mobileBreakpoint`
+    width: 65%;
+    `}
 `;
 
 export const StyledBottomContainer = styled.div.attrs({
@@ -73,7 +87,7 @@ export const StyledBottomContainer = styled.div.attrs({
 
   ${RespondTo.tabletBreakpoint`
 position: absolute;
-bottom: 5%;
+top: 5%;
 }`}
 `;
 
@@ -167,4 +181,12 @@ export const StyledCancelButton = styled.button<IStyledLinksProps>`
   &:hover {
     background-color: #d9d9d9;
   }
+`;
+
+export const Welcome = styled.h1`
+  color: ${({ theme }) => theme.colors.clr3};
+  font-size: ${({ theme }) => theme.fontSizes.fsM};
+  ${MinWidth.tabletBreakpoint`
+display:none;
+}`}
 `;

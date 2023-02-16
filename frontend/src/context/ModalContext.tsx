@@ -3,7 +3,7 @@ import useModal from "../hooks/useModal";
 import { IItem } from "../interfaces/IItem.interface";
 
 const INITIAL_STATE: IItem = {
-  id: "",
+  _id: "",
   qty: 0,
   itemName: "",
   category: "",
@@ -12,12 +12,11 @@ const INITIAL_STATE: IItem = {
   description: "",
   images: [],
   createdBy: {
-    id: "",
+    _id: "",
     phoneNumber: "0",
     email: "",
     username: "",
     imageUrl: "",
-    isAdmin: false,
   },
 };
 

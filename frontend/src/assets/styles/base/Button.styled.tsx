@@ -11,6 +11,9 @@ type ButtonProps = {
 const PrimaryButton = styled.button.attrs({
   className: "PrimaryButton",
 })<ButtonProps>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: ${({ theme }) => theme.colors.clr1};
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
   color: ${({ theme }) => theme.colors.clr2};
