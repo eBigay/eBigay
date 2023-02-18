@@ -18,8 +18,19 @@ router
     verifyRoles(ROLES_LIST.Admin, ROLES_LIST.User),
     itemsController.updateItem
   )
-  .delete(verifyJWT, verifyRoles(ROLES_LIST.Admin), itemsController.deleteItem);
+  .delete(
+    verifyJWT,
+    verifyRoles(ROLES_LIST.Admin, ROLES_LIST.User),
+    itemsController.deleteItem
+  );
 
+router
+  .route("/:id")
+  .delete(
+    verifyJWT,
+    verifyRoles(ROLES_LIST.Admin, ROLES_LIST.User),
+    itemsController.deleteItem
+  );
 router
   .route("/createdBy")
   .get(

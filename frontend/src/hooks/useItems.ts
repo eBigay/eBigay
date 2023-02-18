@@ -5,9 +5,10 @@ import {
   useQueryClient,
 } from "@tanstack/react-query";
 import { toast } from "react-toastify";
-import { IItem } from "../interfaces/IItem.interface";
+import { IItem, INewItem } from "../interfaces/IItem.interface";
 import { IFilterBy } from "../interfaces/IFilterBy.interface";
 import useAxiosService from "../services/items.service";
+import { AxiosError } from "axios";
 
 function useItems() {
   const { query, create, updateDetails, removeItemAction, getUserItems } =
@@ -44,10 +45,12 @@ function useItems() {
   const useFetchUserItems = (_id?: string) =>
     useQuery(["items", _id], () => fetchUserItems(_id), {
       keepPreviousData: true,
-      onError: (error) => console.log(error),
+      onError: (error: AxiosError<any>) => {
+        toast.error(`${error.response?.data.message}`);
+      },
     });
 
-  const addItem = (item: IItem) => {
+  const addItem = (item: INewItem) => {
     return create(item);
   };
 
@@ -57,8 +60,8 @@ function useItems() {
       queryClient.invalidateQueries(["items"]);
       toast.success(`Added New Item: ${itemName}`);
     },
-    onError: (error: string) => {
-      toast.error(`${error}`);
+    onError: (error: AxiosError<any>) => {
+      toast.error(`${error.response?.data.message}`);
     },
   });
 
@@ -82,8 +85,8 @@ function useItems() {
         toast.success("Item removed");
       });
     },
-    onError: (error: string) => {
-      toast.error(`${error}`);
+    onError: (error: AxiosError<any>) => {
+      toast.error(`${error.response?.data.message}`);
     },
   });
 

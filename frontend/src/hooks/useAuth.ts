@@ -7,7 +7,7 @@ import userService from "../services/user.service";
 import useAuthContext from "./useAuthContext";
 
 const useAuth = () => {
-  const { dispatch } = useAuthContext();
+  const { dispatch, setPersistState } = useAuthContext();
   const navigate = useNavigate();
 
   const signupUser = (userInfo: IUserRegister) => {
@@ -79,11 +79,8 @@ const useAuth = () => {
   const logout = useMutation(logoutUser, {
     onSuccess: () => {
       dispatch({ type: "LOGOUT" });
-      if (
-        window.location.pathname === "/profile" ||
-        window.location.pathname === "/addnew"
-      )
-        navigate("/");
+      setPersistState(false);
+      navigate("/");
     },
   });
 

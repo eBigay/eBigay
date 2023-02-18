@@ -32,7 +32,6 @@ const Profile = () => {
   };
 
   const columns = [
-    { field: "id", headerName: "ID" },
     {
       field: "itemName",
       headerName: "Name",
@@ -55,7 +54,7 @@ const Profile = () => {
       headerName: "remove",
       flex: 1,
       renderCell: (params: any) => (
-        <PrimaryButton fontSize="s" onClick={() => removeItem(params.row.id)}>
+        <PrimaryButton fontSize="s" onClick={() => removeItem(params.row._id)}>
           <Delete />
         </PrimaryButton>
       ),
@@ -72,6 +71,8 @@ const Profile = () => {
     },
   ];
 
+  console.log(items);
+
   return (
     <>
       <StyledWelcome>
@@ -80,7 +81,11 @@ const Profile = () => {
       </StyledWelcome>
       <ProfileContainer>
         <MainLayout>
-          <DataGrid columns={columns} rows={items || []} />
+          <DataGrid
+            columns={columns}
+            rows={items || []}
+            getRowId={(row) => row._id}
+          />
         </MainLayout>
       </ProfileContainer>
     </>

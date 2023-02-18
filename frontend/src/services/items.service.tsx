@@ -1,4 +1,4 @@
-import { IItem } from "../interfaces/IItem.interface";
+import { IItem, INewItem } from "../interfaces/IItem.interface";
 import { IFilterBy } from "../interfaces/IFilterBy.interface";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
@@ -26,11 +26,13 @@ const useItemsService = () => {
   };
 
   const getById = async (item: IItem): Promise<IItem> => {
-    return axiosPrivate.get(`items/${item._id}`);
+    const res = await axiosPrivate.get(`items/${item._id}`);
+    return res.data;
   };
 
-  const create = async (item: IItem): Promise<IItem> => {
-    return axiosPrivate.post("items", item);
+  const create = async (item: INewItem): Promise<IItem> => {
+    const res = await axiosPrivate.post("items", item);
+    return res.data;
   };
 
   const updateDetails = async (item: IItem): Promise<IItem> => {
@@ -38,12 +40,14 @@ const useItemsService = () => {
   };
 
   const removeItemAction = async (_id: string) => {
-    return axiosPrivate.delete(`items/${_id}`);
+    const res = await axiosPrivate.delete(`items/${_id}`);
+    return res.data;
   };
 
   const getUserItems = async (_id?: string) => {
     if (!_id) return Promise.reject();
-    return axiosPrivate.get(`items/createdBy?id=${_id}`);
+    const res = await axiosPrivate.get(`items/createdBy?id=${_id}`);
+    return res.data;
   };
 
   return {
