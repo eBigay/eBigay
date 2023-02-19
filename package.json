@@ -4,7 +4,8 @@
   "description": "![Hero](https://user-images.githubusercontent.com/117192937/208264575-ed0dbef3-90dc-43a2-8f00-97080364e18c.PNG) ### coming soon...",
   "main": "index.js",
   "scripts": {
-    "build": "cd backend2 && npm install && cd ../frontend && npm install && npm run build",
+    "prebuild": "cd backend2 && npm install",
+    "build": "cd ../frontend && npm install && npm run build",
     "start": "node backend2/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
