@@ -2780,3 +2780,7 @@
 
 20230219	16:12:49	0eb56bf4-e7f9-41bc-ba3d-16157cf9ef6b	OPTIONS	http://localhost:5173	/items?q=&limit=8&page=0&sort=createdAt&order=desc
 20230219	16:12:49	c23c438d-a80a-4978-bd93-b0ce9750feaf	GET	http://localhost:5173	/items?q=&limit=8&page=0&sort=createdAt&order=desc
+20230219	16:21:17	56af373f-e542-40d1-a91f-ad35a1518fec	GET	http://localhost:5173	/refresh
+20230219	16:21:17	b032af21-2a8f-4277-8f6a-7c438e6d33e6	OPTIONS	http://localhost:5173	/items?q=&limit=8&page=0&sort=createdAt&order=desc
+20230219	16:21:17	c84819a8-a657-4b0a-9890-395240c5827f	GET	http://localhost:5173	/items?q=&limit=8&page=0&sort=createdAt&order=desc
+20230219	16:21:18	0fe3826d-478a-4e75-8b26-3c2dbc4b4e73	GET	http://localhost:5173	/refresh
