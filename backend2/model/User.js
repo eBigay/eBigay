@@ -5,6 +5,7 @@ const userSchema = new Schema({
   username: {
     type: String,
     required: true,
+    unique: true,
   },
   roles: {
     User: {
@@ -20,6 +21,7 @@ const userSchema = new Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
   },
   imageUrl: {
     type: String,
@@ -32,6 +34,10 @@ const userSchema = new Schema({
   phoneNumber: {
     type: String,
     required: false,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
   },
   refreshToken: String,
 });

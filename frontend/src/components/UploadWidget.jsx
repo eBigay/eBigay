@@ -15,7 +15,6 @@ const UploadWidget = ({ children, onUpload }) => {
   }, []);
 
   function createWidget() {
-    console.log(import.meta.env);
     const options = {
       cloudName: import.meta.env.VITE_CLOUD_NAME,
       uploadPreset: import.meta.env.VITE_CLOUD_PRESET,

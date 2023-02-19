@@ -32,7 +32,7 @@ const itemSchema = new Schema({
     required: true,
   },
   createdBy: {
-    type: Object,
+    type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true,
   },

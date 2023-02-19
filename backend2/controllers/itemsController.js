@@ -1,5 +1,4 @@
 const Item = require("../model/Item");
-const ObjectId = require("mongoose").Types.ObjectId;
 
 const getAllItems = async (req, res) => {
   const limit = req.query.limit;
@@ -7,9 +6,6 @@ const getAllItems = async (req, res) => {
   const sortBy = req.query.sort;
   const order = req.query.order;
   const page = Number(req.query.page) || 1;
-  const createdBy = req.query.createdBy;
-
-  console.log(createdBy);
 
   const keyword = req.query.q
     ? {
@@ -23,6 +19,7 @@ const getAllItems = async (req, res) => {
   const categoryFilter = category ? { category: category } : {};
 
   const items = await Item.find({ ...keyword, ...categoryFilter })
+    .populate("createdBy", "username imageUrl location phoneNumber email")
     .limit(limit)
     .skip(limit * (page - 1))
     .sort({ [sortBy]: order })
@@ -51,7 +48,7 @@ const createNewItem = async (req, res) => {
       qty: req.body.qty,
       category: req.body.category,
       images: req.body.images,
-      loaction: req.body.loaction,
+      location: req.body.location,
       createdBy: req.body.createdBy,
       createdAt: req.body.createdAt,
     });
@@ -72,14 +69,20 @@ const updateItem = async (req, res) => {
       .status(204)
       .json({ message: `No item matches ID ${req.body.id}.` });
   }
-  if (req.body?.firstname) item.firstname = req.body.firstname;
-  if (req.body?.lastname) item.lastname = req.body.lastname;
+  if (req.body?.itemName) item.itemName = req.body.itemName;
+  if (req.body?.description) item.description = req.body.description;
+  if (req.body?.qty) item.qty = req.body.qty;
+  if (req.body?.category) item.category = req.body.category;
+  if (req.body?.images) item.images = req.body.images;
+  if (req.body?.location) item.location = req.body.location;
+  if (req.body?.createdAt) item.createdAt = req.body.createdAt;
+  if (req.body?.createdBy) item.createdBy = req.body.createdBy;
   const result = await item.save();
   res.json(result);
 };
 
 const deleteItem = async (req, res) => {
-  if (!req?.body?.id)
+  if (!req?.params?.id)
     return res.status(400).json({ message: "ItemID required." });
 
   const item = await Item.findOne({ id: req.body.id }).exec();
@@ -88,6 +91,9 @@ const deleteItem = async (req, res) => {
       .status(204)
       .json({ message: `No item matches ID ${req.body.id}.` });
   }
+
+  if (!item.createdBy.equals(req.user._id))
+    return res.status(401).json({ message: "you are not authorized" });
   const result = await item.deleteOne(); //{ _id: req.body.id }
   res.json(result);
 };
@@ -111,16 +117,7 @@ const getUserItem = async (req, res) => {
     return res.status(400).json({ message: "ID parameter is required." });
   }
 
-  console.log("id", id);
-
-  const items = await Item.find({}).populate({
-    path: "createdBy",
-    match: {
-      _id: ObjectId(id),
-    },
-  });
-
-  console.log(items);
+  const items = await Item.find({ createdBy: id });
 
   res.json(items);
 };
@@ -133,3 +130,4 @@ module.exports = {
   getItem,
   getUserItem,
 };
+

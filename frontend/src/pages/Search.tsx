@@ -116,7 +116,7 @@ const Search = () => {
           height="50px"
           onClick={toggleLeftContainer}
         >
-          Filter By
+          Categories
         </PrimaryButton>
       </TopContainer>
       <FadeIn>

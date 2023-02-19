@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Formik, FormikValues } from "formik";
 import { ClearOutlined } from "@mui/icons-material";
 import {
@@ -75,7 +75,7 @@ const AddNewItem = () => {
       ...values,
       images: urls,
       createdAt: Date.now(),
-      createdBy: user,
+      createdBy: user._id,
     };
     addItem(newItem);
   };

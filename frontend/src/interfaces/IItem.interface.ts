@@ -11,3 +11,13 @@ export interface IItem {
   description: string;
   createdBy: IUser;
 }
+export interface INewItem {
+  qty: number;
+  itemName: string;
+  images: string[];
+  category: string;
+  location: any;
+  createdAt: number;
+  description: string;
+  createdBy: string;
+}
