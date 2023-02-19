@@ -2777,3 +2777,4 @@
 20230219	15:13:50	bdfc4e3c-a1b6-4d69-9dac-f43e3425234c	GET	http://localhost:5173	/items?q=&limit=3&page=1&sort=createdAt&order=desc
 20230219	15:32:14	e47b7a0d-8d58-4757-bb0a-e8bdbaf97f56	OPTIONS	http://localhost:5173	/items?q=&limit=8&page=0&sort=createdAt&order=desc
 20230219	15:32:14	95ad4180-25ec-4985-a163-935c0d4b177a	GET	http://localhost:5173	/items?q=&limit=8&page=0&sort=createdAt&order=desc
+
