@@ -80,10 +80,6 @@ const AddNewItem = () => {
     addItem(newItem);
   };
 
-  useEffect(() => {
-    console.log(urls);
-  }, [urls]);
-
   return (
     <StyledNewItemContainer>
       <StyledAddNewItemText>Add new Item:</StyledAddNewItemText>
