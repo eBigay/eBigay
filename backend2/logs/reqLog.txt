@@ -2737,3 +2737,14 @@
 20230215	18:03:47	e5964168-a6a7-4e15-8259-ce71682a2c19	GET	http://localhost:5173	/logout
 20230215	18:04:02	a8ecbb53-d0f4-403c-8a97-29197cb0674b	OPTIONS	http://localhost:5173	/auth
 20230215	18:04:02	42a5bf99-0a7a-48a0-9b1e-db6c0ef37808	POST	http://localhost:5173	/auth
+20230219	13:40:34	363998cb-0c2d-47a7-b69d-8399d73b678b	OPTIONS	http://localhost:5173	/items?q=&limit=8&page=0&sort=createdAt&order=desc
+20230219	13:40:34	4d4d9e07-b902-405e-8c25-a4c6ac7356f1	OPTIONS	http://localhost:5173	/items?q=&limit=12&page=1&sort=createdAt&order=desc
+20230219	13:40:34	0cf50530-c1e0-435a-bf49-37208f69604b	GET	http://localhost:5173	/items?q=&limit=12&page=1&sort=createdAt&order=desc
+20230219	13:40:34	b89d0d04-cf19-4ad9-bc8d-78401c4553ed	GET	http://localhost:5173	/items?q=&limit=8&page=0&sort=createdAt&order=desc
+20230219	13:40:50	df9c42fd-3541-4c87-a9ae-91a14720031f	GET	http://localhost:5173	/refresh
+20230219	13:40:50	00067807-3e71-4ab1-940e-2483fff22e16	OPTIONS	http://localhost:5173	/items?q=&limit=8&page=0&sort=createdAt&order=desc
+20230219	13:40:50	f59ab9d1-4c98-4765-a305-9a37d28aaa9e	GET	http://localhost:5173	/items?q=&limit=8&page=0&sort=createdAt&order=desc
+20230219	13:40:52	2752ad80-956c-4211-b9f1-7f4aae3eb59d	GET	http://localhost:5173	/refresh
+20230219	13:40:56	f08e26ac-e22b-4c6a-8418-93d0361ebab8	OPTIONS	http://localhost:5173	/items?q=&limit=12&page=1&sort=createdAt&order=desc
+20230219	13:40:56	55dc215f-ac9c-42cc-a35d-6d5b6a636159	GET	http://localhost:5173	/items?q=&limit=12&page=1&sort=createdAt&order=desc
+20230219	13:41:09	1a67206b-658a-4350-8377-d039ff7c17b3	GET	http://localhost:5173	/logout
