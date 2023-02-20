@@ -33,7 +33,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.resolve(__dirname, "frontend/dist/index.html")));
+  app.use(express.static(path.resolve(__dirname, "../frontend/dist/index.html")));
   app.use((req, res, next) => {
     if (req.header("x-forwarded-proto") !== "https")
       res.redirect(`https://${req.header("host")}${req.url}`);
@@ -57,7 +57,7 @@ app.use("/users", require("./routes/api/users"));
 // Make every server-side-route to match the index.html
 // our SPA (single page app) (the index.html file) and allow vue/react-router to take it from there
 app.get("/**", (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+  res.sendFile(path.join(__dirname, "..", "frontend", "dist", "index.html"));
 });
 
 app.use(errorHandler);
