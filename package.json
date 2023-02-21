@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "prebuild": "cd backend2 && npm install",
-    "build": "cd ./frontend && npm install && npm run build",
+    "build": "cd ./frontend && npm install --force && npm run build",
     "start": "node backend2/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
