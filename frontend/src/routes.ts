@@ -7,12 +7,13 @@ import Unauthorized from "./pages/Unauthorized";
 const Home = lazy(() => {
   return import("./pages/Home");
 });
-const Search = lazy(() => {
-  return import("./pages/Search");
-});
 const About = lazy(async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   return import("./pages/About");
+});
+const Search = lazy(async () => {
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  return import("./pages/Search");
 });
 const LoginSignup = lazy(async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));

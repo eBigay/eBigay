@@ -9,7 +9,7 @@ const keys = Object.keys(theme.breakpoints) as Array<
 const RespondTo = keys.reduce((accumulator, label) => {
   accumulator[label] = (...args: CssParams) => {
     return css`
-      @media (width < ${theme.breakpoints[label]}) {
+      @media (max-width: ${theme.breakpoints[label]}) {
         ${css(...args)};
       }
     `;
@@ -22,7 +22,7 @@ export default RespondTo;
 export const MinWidth = keys.reduce((accumulator, label) => {
   accumulator[label] = (...args: CssParams) => {
     return css`
-      @media (width > ${theme.breakpoints[label]}) {
+      @media (min-width: ${theme.breakpoints[label]}) {
         ${css(...args)};
       }
     `;

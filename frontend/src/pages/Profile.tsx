@@ -20,7 +20,9 @@ const Profile = () => {
 
   const { useFetchUserItems } = useItems();
 
-  const { data: items }: UseQueryResult<any> = useFetchUserItems(user?._id);
+  const { data: items, isLoading }: UseQueryResult<any> = useFetchUserItems(
+    user?._id
+  );
 
   const { remove } = useItems();
   const { mutate: removeItem } = remove;
@@ -82,6 +84,7 @@ const Profile = () => {
       <ProfileContainer>
         <MainLayout>
           <DataGrid
+            loading={isLoading}
             columns={columns}
             rows={items || []}
             getRowId={(row) => row._id}
@@ -93,4 +96,3 @@ const Profile = () => {
 };
 
 export default Profile;
-

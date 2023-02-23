@@ -7,11 +7,11 @@ const UploadWidget = ({ children, onUpload }) => {
   useEffect(() => {
     cloudinary = window.cloudinary;
 
-    requestIdleCallback(() => {
-      if (!widget) {
-        widget = createWidget();
-      }
-    });
+    // requestIdleCallback(() => {
+    if (!widget) {
+      widget = createWidget();
+    }
+    // });
   }, []);
 
   function createWidget() {

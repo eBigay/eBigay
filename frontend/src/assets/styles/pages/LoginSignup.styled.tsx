@@ -8,19 +8,15 @@ const LoginSignupPage = styled(FadeIn).attrs({
 })`
   position: relative;
   display: flex;
+  flex-direction: column;
+  gap: 2rem;
   z-index: 1;
   width: 100%;
-  height: 100%;
-  padding: 0;
-  overflow: hidden;
-  overflow-y: scroll;
-  min-height: 100vh;
-  ${RespondTo.tabletBreakpoint`
-  flex-direction: column;
-  justify-content: space-between;
-  `}
-  ${MinWidth.wideBreakpoint`
-  height: 1150px;
+  padding: 3rem 0;
+  justify-content: center;
+  align-items: center;
+  ${MinWidth.tabletBreakpoint`
+  height: 90vh;
   `}
 `;
 
@@ -38,22 +34,10 @@ export const LoginImage = styled.img.attrs({
 export const LoginSignupRedirect = styled.div.attrs({
   className: "LogInSignUpRedirect",
 })`
-  position: absolute;
-  bottom: 2%;
-  right: 0%;
-  left: 50%;
-  margin-right: auto;
-  margin-left: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  ${RespondTo.tabletBreakpoint`
-  position: relative;
-  left: 0;
-  padding-bottom: 1rem;
-  width: 500px;
-  `}
   ${RespondTo.mobileBreakpoint`
   width: 85%;
   `}

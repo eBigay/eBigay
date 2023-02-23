@@ -14,17 +14,11 @@ const LoginInputContainer = styled.form.attrs({
   justify-content: center;
   align-items: center;
   font-size: ${({ theme }) => theme.fontSizes.fsL};
-  margin: ${({ LoginPage }) => (LoginPage ? "15rem auto 0" : "10rem auto 0")};
   .Password {
     margin-bottom: ${({ LoginPage }) => (LoginPage ? "1rem" : "1.7rem")};
   }
   ${MinWidth.wideBreakpoint`
   justify-content: flex-start;
-  `}
-
-  ${RespondTo.wideBreakpoint`
-margin: ${({ LoginPage }: LoginInputContainerProps) =>
-    LoginPage ? "15rem auto 10rem" : "10rem auto 10rem"};
   `}
 
   ${RespondTo.laptopBreakpoint`
@@ -34,8 +28,6 @@ margin: ${({ LoginPage }: LoginInputContainerProps) =>
         }
 `}
   ${RespondTo.tabletBreakpoint`
-    margin: ${({ LoginPage }: LoginInputContainerProps) =>
-      LoginPage ? "12rem auto 3rem" : "10rem auto 3rem"};
   button {
           width: 100%;
         }

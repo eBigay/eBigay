@@ -70,7 +70,6 @@ const SignUpInput = () => {
       {({ handleSubmit }: FormikValues) => (
         <LoginInputContainer onSubmit={handleSubmit}>
           <>
-            <Logo noNavigate />
             <SignUpImageContainer>
               {/* eslint-disable */}
               <UploadWidget onUpload={handleOnUpload}>
