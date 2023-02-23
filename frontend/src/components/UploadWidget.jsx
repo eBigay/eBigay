@@ -16,8 +16,8 @@ const UploadWidget = ({ children, onUpload }) => {
 
   function createWidget() {
     const options = {
-      cloudName: import.meta.env.VITE_CLOUD_NAME,
-      uploadPreset: import.meta.env.VITE_CLOUD_PRESET,
+      cloudName: process.env.VITE_CLOUD_NAME,
+      uploadPreset: process.env.VITE_CLOUD_PRESET,
     };
 
     return cloudinary?.createUploadWidget(options, function (error, result) {
