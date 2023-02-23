@@ -18,10 +18,10 @@ const LoginSignup = ({ type }: LoginSignupProps) => {
   const navigate = useNavigate();
   return (
     <LoginSignupPage>
-      <LoginImage
+      {/* <LoginImage
         src={type === "login" ? LoginBackground : LoginBackground2}
         alt="Background"
-      />
+      /> */}
       {type === "login" ? <LoginForm /> : <SignUpForm />}
       <LoginSignupRedirect>
         <LogInSignUpParagraph>

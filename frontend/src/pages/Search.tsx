@@ -139,7 +139,7 @@ const Search = () => {
             data.pages.map((page) =>
               page.map((item) => <ItemCard key={item._id} item={item} />)
             )}
-          {isLoading && <Loading pos="center" />}
+          {isLoading && <Loading />}
           {isError && <FetchErrorMessage>{error}</FetchErrorMessage>}
         </ListContainer>
       </StyledSearchContainer>

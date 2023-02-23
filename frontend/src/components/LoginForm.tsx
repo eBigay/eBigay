@@ -15,13 +15,14 @@ import Hide from "../assets/svgs/Hide.svg";
 import Message from "../assets/svgs/Message.svg";
 import FormikController from "./layout/FormControl";
 import useAuthContext from "../hooks/useAuthContext";
+import { CircularProgress } from "@mui/material";
 
 const LoginForm = () => {
   const { persistState, setPersistState } = useAuthContext();
 
   const { login } = useAuth();
 
-  const { mutate: loginUser } = login;
+  const { mutate: loginUser, isLoading } = login;
   interface LoginValues {
     email: string;
     password: string;
@@ -86,7 +87,7 @@ const LoginForm = () => {
             <Link to="forgotPassword">Forgot password?</Link>
           </MiddleFlex>
           <PrimaryButton width="500px" height="70px" fontSize="l" type="submit">
-            Log in
+            {isLoading ? <CircularProgress color="inherit" /> : "Log in"}
           </PrimaryButton>
         </LoginInputContainer>
       )}
