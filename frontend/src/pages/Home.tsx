@@ -4,11 +4,16 @@ import Hero from "../components/Hero";
 import RecentItems from "../components/RecentItems";
 import ItemDetails from "../components/ItemDetails";
 import FadeIn from "../assets/styles/layout/FadeIn.styled";
+import Chat from "../components/Chat";
+import Modal from "../components/Modal";
+import useModalContext from "../hooks/useModalContext";
 
 const Home = () => {
+  const { modalType } = useModalContext();
+
   return (
     <>
-      <ItemDetails />
+      <Modal>{modalType === "item" ? <ItemDetails /> : <Chat />}</Modal>
       <FadeIn>
         <Hero />
         <FeaturedCategories />

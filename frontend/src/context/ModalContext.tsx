@@ -1,4 +1,10 @@
-import { createContext, useMemo } from "react";
+import {
+  createContext,
+  Dispatch,
+  SetStateAction,
+  useMemo,
+  useState,
+} from "react";
 import useModal from "../hooks/useModal";
 import { IItem } from "../interfaces/IItem.interface";
 
@@ -10,6 +16,7 @@ const INITIAL_STATE: IItem = {
   location: "",
   createdAt: 0,
   description: "",
+  condition: "",
   images: [],
   createdBy: {
     _id: "",
@@ -22,8 +29,10 @@ const INITIAL_STATE: IItem = {
 
 export type ModalContextType = {
   modal: boolean;
-  handleModal: (content?: IItem) => void;
-  modalContent: IItem;
+  handleModal: (content?: any) => void;
+  modalContent: any;
+  modalType: string;
+  setModalType: Dispatch<SetStateAction<string>>;
 };
 
 export const modalContext = createContext<ModalContextType>(
@@ -32,6 +41,7 @@ export const modalContext = createContext<ModalContextType>(
 const ModalContextProvider = ({
   children,
 }: React.PropsWithChildren<Record<string, unknown>>) => {
+  const [modalType, setModalType] = useState("item");
   const { modal, handleModal, modalContent } = useModal(INITIAL_STATE);
 
   const providerValue = useMemo(
@@ -39,8 +49,10 @@ const ModalContextProvider = ({
       modal,
       handleModal,
       modalContent,
+      modalType,
+      setModalType,
     }),
-    [modal, handleModal, modalContent]
+    [modal, handleModal, modalContent, modalType, setModalType]
   );
   return (
     <modalContext.Provider value={providerValue}>

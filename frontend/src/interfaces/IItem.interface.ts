@@ -8,6 +8,7 @@ export interface IItem {
   category: string;
   location: any;
   createdAt: number;
+  condition: string;
   description: string;
   createdBy: IUser;
 }
@@ -18,6 +19,7 @@ export interface INewItem {
   category: string;
   location: any;
   createdAt: number;
+  condition: string;
   description: string;
   createdBy: string;
 }

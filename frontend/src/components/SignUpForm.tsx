@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Formik, FormikValues } from "formik";
-import { Avatar } from "@mui/material";
+import { Avatar, CircularProgress } from "@mui/material";
 import useAuth from "../hooks/useAuth";
 import Logo from "./layout/Logo";
 import SignUpSchema from "../schemas/SignUpSchema";
@@ -32,7 +32,7 @@ const SignUpInput = () => {
   const [signUpError, setSignUpError] = useState<string>("");
 
   const { signup } = useAuth();
-  const { mutate: signupUser } = signup;
+  const { mutate: signupUser, isLoading } = signup;
 
   const imageName = () => {
     if (!imageUrl) return "";
@@ -110,7 +110,7 @@ const SignUpInput = () => {
               fontSize="l"
               type="submit"
             >
-              Sign up
+              {isLoading ? <CircularProgress color="inherit" /> : "Sign Up"}
             </PrimaryButton>
             {signUpError !== "" && <h2>{signUpError}</h2>}
           </>

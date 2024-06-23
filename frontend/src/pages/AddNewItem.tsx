@@ -1,6 +1,8 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Formik, FormikValues } from "formik";
-import { ClearOutlined } from "@mui/icons-material";
+import { toast } from "react-toastify";
+
+import { ClearOutlined, AddAPhoto } from "@mui/icons-material";
 import {
   StyledNewItemContainer,
   StyledAddNewItemText,
@@ -9,6 +11,7 @@ import {
   AddNewItemImage,
   ImageWrapper,
   StyledCancelButton,
+  StyledAddPhotosButton,
 } from "../assets/styles/pages/AddNewItem.styled";
 
 // @ts-ignore
@@ -27,15 +30,20 @@ interface NewItemValues {
   qty: number;
   location: string;
   category: string;
+  condition: string;
 }
 
 const AddNewItem = () => {
+  const [urls, updateUrls] = useState<string[]>([]);
+  const [uploadError, setUploadError] = useState<string>("");
+
   const initialValues: NewItemValues = {
     itemName: "",
     description: "",
     qty: 1,
     location: "israel",
-    category: "electronics",
+    category: "Electronics",
+    condition: "New",
   };
 
   const { add } = useItems();
@@ -45,10 +53,7 @@ const AddNewItem = () => {
     auth: { user },
   } = useAuthContext();
 
-  const [urls, updateUrls] = useState<string[]>([]);
-  const [uploadError, setUploadError] = useState<string>("");
-
-  const updatedCategories = CategoriesToFilter.map((category) => {
+  const selectCategories = CategoriesToFilter.map((category) => {
     return { key: category.id, value: category.category };
   });
 
@@ -60,8 +65,7 @@ const AddNewItem = () => {
       });
       return;
     }
-    if (result.event === "success")
-      updateUrls((prevUrls) => [...prevUrls, result?.info?.secure_url]);
+    updateUrls((prevUrls) => [...prevUrls, result?.info?.url]);
   }
 
   const handleDeleteImage = (urlToDelete: string) => {
@@ -70,7 +74,10 @@ const AddNewItem = () => {
 
   const handleAddNewItem = (values: NewItemValues) => {
     if (!user) return;
-
+    if (!urls.length) {
+      toast.error("item images are required");
+      return;
+    }
     const newItem = {
       ...values,
       images: urls,
@@ -86,6 +93,7 @@ const AddNewItem = () => {
       <Formik
         initialValues={initialValues}
         onSubmit={(values, { resetForm }) => {
+          console.log("Formik values:", values); // Add this line for debugging
           handleAddNewItem(values);
           updateUrls(() => []);
           resetForm({});
@@ -107,14 +115,20 @@ const AddNewItem = () => {
             />
             <FormikController
               control="select"
-              label="category:"
-              name="select"
-              options={updatedCategories}
+              label="Category:"
+              name="category"
+              options={selectCategories}
             />
             <FormikController
               control="select"
-              label="quantity:"
-              name="select"
+              label="Condition:"
+              name="condition"
+              options={["New", "Used(like-new)", "Used(good)", "Used(fair)"]}
+            />
+            <FormikController
+              control="select"
+              label="Quantity:"
+              name="qty"
               options={[1, 2, 3, 4, 5, 6, 7, 8]}
             />
             <UploadWidget onUpload={handleOnUpload}>
@@ -124,9 +138,10 @@ const AddNewItem = () => {
                   open();
                 }
                 return (
-                  <PrimaryButton onClick={handleOnClick}>
-                    Upload Images
-                  </PrimaryButton>
+                  <StyledAddPhotosButton onClick={handleOnClick}>
+                    <AddAPhoto />
+                    Add photos
+                  </StyledAddPhotosButton>
                 );
               }}
             </UploadWidget>

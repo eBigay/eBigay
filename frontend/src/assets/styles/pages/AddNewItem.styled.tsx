@@ -53,6 +53,32 @@ export const StyledCancelButton = styled.button`
   border-radius: 50%;
   background-color: #676767;
 `;
+export const StyledAddPhotosButton = styled.button`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(144, 135, 170, 0.5);
+  background-color: transparent;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 500px;
+  height: 70px;
+  ${RespondTo.laptopBreakpoint`
+  width: unset;
+  min-width: 90%;
+`}
+  ${RespondTo.tabletBreakpoint`
+    width: unset;
+
+  min-width: 100%;
+  `}
+  ${RespondTo.mobileBreakpoint`
+    width: unset;
+
+  min-width: 90%;
+  `}
+`;
 
 export const StyledForm = styled.form.attrs({
   className: "add-new-form",

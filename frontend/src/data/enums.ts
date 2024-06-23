@@ -3,7 +3,7 @@ enum Text {
   FooterText = "Although the eBigay platform is free, we show ads to maintain it for the community. Payments for developers, servers and domain hosting. All to make sure this platform stays free for everyone, enjoy!",
   CopyRights = "© All rights reserved 2022",
   HeroHeader = "Join Positive Karma Movement Today",
-  HeroSubHeader = "Give away long forgotten item another chance to serve the humanity",
+  HeroSubHeader = "Give away long forgotten item, another chance to serve the humanity",
   SearchPageHeader = "Join the positive karma movement and give away long forgotten items another chance to serve the humanity",
   SearchPageSubHeader = "“One man's trash is another man's treasure”",
 }

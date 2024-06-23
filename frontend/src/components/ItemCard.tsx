@@ -30,13 +30,19 @@ interface IItemCard {
 }
 
 const ItemCard = ({ item }: IItemCard) => {
-  const { handleModal } = useModalContext();
+  const { handleModal, setModalType } = useModalContext();
   const {
     auth: { user },
   } = useAuthContext();
 
   const handleOpenProductDetails = () => {
+    setModalType("item");
     handleModal(item);
+  };
+
+  const handleOpenChat = () => {
+    setModalType("chat");
+    handleModal({});
   };
 
   const relativeTimeString = formatDistance(item.createdAt, new Date(), {
@@ -53,7 +59,7 @@ const ItemCard = ({ item }: IItemCard) => {
             <SearchOutlined onClick={handleOpenProductDetails} />
           </Icon>
           <Icon>
-            <MessageOutlined />
+            <MessageOutlined onClick={handleOpenChat} />
           </Icon>
           <Icon>
             <FavoriteBorderOutlined />
