@@ -39,7 +39,8 @@ const Hero = () => {
               window.scroll({ top: 0, behavior: "smooth" });
             }}
           >
-            Give a Product <VolunteerActivism fontSize="medium" />
+            Give a Product
+            <VolunteerActivism fontSize="medium" />
           </PrimaryButton>
         </ButtonsWrapper>
       </HeroContent>

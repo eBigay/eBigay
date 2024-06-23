@@ -8,6 +8,7 @@ const itemSchema = yup.object().shape({
     .max(200, "max 200 chars"),
   qty: yup.number().required("Required Field"),
   category: yup.string().required("Required Field"),
+  condition: yup.string().required("Required Field"),
 });
 
 export default itemSchema;

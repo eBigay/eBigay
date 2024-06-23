@@ -32,8 +32,13 @@ import LeftContainer from "../components/layout/LeftContainer";
 
 import Text from "../data/enums";
 import FadeIn from "../assets/styles/layout/FadeIn.styled";
+import Modal from "../components/Modal";
+import useModalContext from "../hooks/useModalContext";
+import Chat from "../components/Chat";
 
 const Search = () => {
+  const { modalType } = useModalContext();
+
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [filterBy, setFilterBy] = useState<IFilterBy>({
@@ -46,6 +51,7 @@ const Search = () => {
   });
   const [isLeftContainerOpen, setIsLeftContainerOpen] =
     useState<boolean>(false);
+
   const [showLoader, setShowLoader] = useState(false);
 
   const observerElem: RefObject<any> = useRef(null);
@@ -150,7 +156,7 @@ const Search = () => {
           <Loading size="small" />
         )}
       </div>
-      <ItemDetails />
+      <Modal>{modalType === "item" ? <ItemDetails /> : <Chat />}</Modal>
       <ScreenOverlay
         styleMode="darken"
         handleClick={toggleLeftContainer}
